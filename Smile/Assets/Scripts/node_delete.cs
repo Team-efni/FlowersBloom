@@ -48,6 +48,6 @@ public class node_delete : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(delete_node_AFK_state());
+        StartCoroutine(delete_node_AFK_state());
     }
 }
