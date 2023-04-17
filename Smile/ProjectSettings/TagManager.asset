@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Node
+  - Monster
   layers:
   - Default
   - TransparentFX
