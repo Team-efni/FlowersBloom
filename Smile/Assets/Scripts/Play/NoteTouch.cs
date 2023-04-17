@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour
+public class NoteTouch : MonoBehaviour
 {
-    [SerializeField] private int moveSpeed;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +13,11 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (transform.right * moveSpeed * Time.deltaTime);
+        
     }
 
+    public void touchClick()
+    {
+        Debug.Log("touch" + this.name);
+    }
 }
