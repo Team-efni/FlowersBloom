@@ -27,8 +27,6 @@ public class NoteController : MonoBehaviour
         {
             Debug.Log("Player Meet");
             NoteSetting();
-            GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true); // leftPad
-            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true); // rightPad
             GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true); // Note_Bg
         }
     }
@@ -42,7 +40,6 @@ public class NoteController : MonoBehaviour
         {
             noteNum[i] = Random.Range(0, 4);
             note[i].GetComponent<Image>().sprite = noteSprite[noteNum[i]];
-        }    
-
+        }
     }
 }
