@@ -25,9 +25,9 @@ public class NoteController : MonoBehaviour
         {
             Debug.Log("Player Meet");
             NoteSetting();
-            this.transform.GetChild(0).gameObject.SetActive(true);
-            GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
-            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+            GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true); // leftPad
+            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true); // rightPad
+            GameObject.Find("Canvas").transform.GetChild(2).gameObject.SetActive(true); // Note_Bg
         }
     }
 
