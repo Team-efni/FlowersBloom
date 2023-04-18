@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoteController : MonoBehaviour
 {
     public Sprite[] noteSprite;
-
+    public GameObject[] note;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,14 @@ public class NoteController : MonoBehaviour
 
     private void NoteSetting()
     {
+        int[] noteNum = new int[note.Length];
+
         // 랜덤으로 노트 생성
-        
+        for (int i = 0; i < note.Length; i++)
+        {
+            noteNum[i] = Random.Range(0, 4);
+            note[i].GetComponent<Image>().sprite = noteSprite[noteNum[i]];
+        }    
+
     }
 }
