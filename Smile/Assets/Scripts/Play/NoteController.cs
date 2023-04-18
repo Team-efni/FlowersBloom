@@ -6,6 +6,7 @@ public class NoteController : MonoBehaviour
 {
     public Sprite[] noteSprite;
 
+
     // Start is called before the first frame update
     void Start()
     {

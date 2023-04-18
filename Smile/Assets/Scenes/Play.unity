@@ -1441,7 +1441,7 @@ GameObject:
   - component: {fileID: 1547773923}
   - component: {fileID: 1547773922}
   m_Layer: 5
-  m_Name: Test
+  m_Name: PositionEX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
