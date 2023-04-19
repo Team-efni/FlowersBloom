@@ -7,6 +7,7 @@
 *위 스크립트의 초기 버전은 김시훈이 작성하였음
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
 */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -39,8 +40,11 @@ public class node : MonoBehaviour
     public Sprite Node_image_C;
     public Sprite Node_image_D;
 
+    [Header("아래의 항목에다가 해당 컷씬의 난이도를 지정합니다")]
+    public int difficulty = 1;
+
     //노드를 리스트의 순서에 따라 하나를 차례로 배치하는 함수
-    void node_placement()
+    void node_placement(int node_array)
     {
         if (node_location.Count == 0)
         {
@@ -49,11 +53,9 @@ public class node : MonoBehaviour
         else
         {
             SpriteRenderer sr = nodes_prefab.GetComponent<SpriteRenderer>();
-            sr.sprite = node_location[0].procedure;
+            sr.sprite = node_location[node_array].procedure;
 
-            Instantiate(nodes_prefab, node_location[0].vector2, Quaternion.identity);
-
-            node_location.RemoveAt(0);
+            Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
         }
     }
 
@@ -63,34 +65,96 @@ public class node : MonoBehaviour
     {
         UnityEngine.Debug.Log("좌표 설정 완료 2초 대기...");
 
-        yield return new WaitForSeconds(2.0f);
-        node_placement();
-
-        yield return new WaitForSeconds(0.8f);
-        node_placement();
-
-        yield return new WaitForSeconds(1.2f);
-        node_placement();
-
-        yield return new WaitForSeconds(0.5f);
-        node_placement();
+        for(int i=0; i<node_location.Count; i++)
+        {
+            yield return new WaitForSeconds(set_node_wait());
+            node_placement(i);
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //노드가 배치될 위치를 지정해 저장한다
-        node_location.Add(new Node_data(new Vector2(-980, -280), Node_image_A));
-        node_location.Add(new Node_data(new Vector2(-540, 350), Node_image_B));
-        node_location.Add(new Node_data(new Vector2(915, -290), Node_image_C));
-        node_location.Add(new Node_data(new Vector2(440, 200), Node_image_D));
+        switch (difficulty)
+        {
+            case 1:
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                break;
+            case 2:
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                break;
+            case 3:
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                break;
+            default:
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                break;
+        }
+
 
         StartCoroutine(D_Coroutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private int call_random()
     {
+        System.Random r = new System.Random();
+        return r.Next(-210000000, 210000000);
+    }
 
+    private Vector2 set_node_coordinate()
+    {
+        System.Random random = new System.Random(unchecked((int)((long)Thread.CurrentThread.ManagedThreadId + (DateTime.UtcNow.Ticks)) - call_random()));
+
+        Vector2 vector = new Vector2(random.Next(-1300, 1301), random.Next(-500, 501));
+        
+        //노드끼리 일정 거리가 떨어지면 탈출
+        while (check_radius_between_nodes(vector))
+        {
+            vector = new Vector2(random.Next(-1300, 1301), random.Next(-500, 501));
+        }
+
+
+        return vector;
+    }
+
+    private float set_node_wait()
+    {
+        System.Random random = new System.Random(unchecked((int)((long)Thread.CurrentThread.ManagedThreadId + (DateTime.UtcNow.Ticks)) - call_random()));
+        return 0.25f*random.Next(2, 6);
+    }
+
+    private bool check_radius_between_nodes(Vector2 vector)
+    {
+        int node_set_locate_count=node_location.Count;
+
+        for (int i = node_set_locate_count < 4 ? 0 : node_set_locate_count - 4; i < node_set_locate_count; i++) 
+        {
+            Vector2 call_vec = node_location[i].vector2;
+
+            if (Vector2.Distance(vector, call_vec) < 420f)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
