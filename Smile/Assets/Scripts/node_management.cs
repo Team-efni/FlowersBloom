@@ -21,16 +21,41 @@ public class node_management : MonoBehaviour
     public Animator animator;
     public node_delete nd;
 
-    [Header("노드 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
+    [Header("EASY MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
     [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_UNSATISFACTORY_TOUCH = 1.65f;
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_EASY = (85f - 10f) / 60f;
     [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_SUCCESSFULL_TOUCH = 1.85f;
+    public float ENTRANCE_SUCCESSFULL_TOUCH_EASY = (85f - 7f) / 60f;
     [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
-    public float EXIT_SUCCESSFULL_TOUCH = 2.05f;
+    public float EXIT_SUCCESSFULL_TOUCH_EASY = (85f + 1f) / 60f;
     [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
-    public float EXIT_UNSATISFACTORY_TOUCH = 2.15f;
+    public float EXIT_UNSATISFACTORY_TOUCH_EASY = (85f + 6f) / 60f;
 
+    [Header("NORMAL MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
+    [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_NORMAL = (68f - 9f) / 60f;
+    [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
+    public float ENTRANCE_SUCCESSFULL_TOUCH_NORMAL = (68f - 6f) / 60f;
+    [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
+    public float EXIT_SUCCESSFULL_TOUCH_NORMAL = (68f + 1f) / 60f;
+    [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
+    public float EXIT_UNSATISFACTORY_TOUCH_NORMAL = (68f + 5f) / 60f;
+
+    [Header("HARD MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
+    [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_HARD = (58f - 9f) / 60f;
+    [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
+    public float ENTRANCE_SUCCESSFULL_TOUCH_HARD = (58f - 5f) / 60f;
+    [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
+    public float EXIT_SUCCESSFULL_TOUCH_HARD = (58f + 1f) / 60f;
+    [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
+    public float EXIT_UNSATISFACTORY_TOUCH_HARD = (58f + 5f) / 60f;
+
+
+    private float ENTRANCE_UNSATISFACTORY_TOUCH = (85f - 20f) / 60f;
+    private float ENTRANCE_SUCCESSFULL_TOUCH = (85f - 10f) / 60f;
+    private float EXIT_SUCCESSFULL_TOUCH = (85f + 1f) / 60f;
+    private float EXIT_UNSATISFACTORY_TOUCH = (85f + 6f) / 60f; 
 
     public void node_click_event(GameObject clickObject)
     {
@@ -84,6 +109,47 @@ public class node_management : MonoBehaviour
         return stateInfo.normalizedTime * stateInfo.length;
     }
 
+    private void Awake()
+    {
+        animator.SetInteger("Difficulty", node.difficulty);
+    }
+
+    private void Start()
+    {
+        switch(node.difficulty)
+        {
+            case 1:
+                ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_EASY;
+                ENTRANCE_SUCCESSFULL_TOUCH = ENTRANCE_SUCCESSFULL_TOUCH_EASY;
+                EXIT_SUCCESSFULL_TOUCH = EXIT_SUCCESSFULL_TOUCH_EASY;
+                EXIT_UNSATISFACTORY_TOUCH = EXIT_UNSATISFACTORY_TOUCH_EASY;
+
+                //Debug.Log("노드 난이도: EASY");
+                break;
+            case 2:
+                ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_NORMAL;
+                ENTRANCE_SUCCESSFULL_TOUCH = ENTRANCE_SUCCESSFULL_TOUCH_NORMAL;
+                EXIT_SUCCESSFULL_TOUCH = EXIT_SUCCESSFULL_TOUCH_NORMAL;
+                EXIT_UNSATISFACTORY_TOUCH = EXIT_UNSATISFACTORY_TOUCH_NORMAL;
+
+                //Debug.Log("노드 난이도: NORMAL");
+                break;
+            case 3:
+                ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_HARD ;
+                ENTRANCE_SUCCESSFULL_TOUCH = ENTRANCE_SUCCESSFULL_TOUCH_HARD;
+                EXIT_SUCCESSFULL_TOUCH = EXIT_SUCCESSFULL_TOUCH_HARD;
+                EXIT_UNSATISFACTORY_TOUCH = EXIT_UNSATISFACTORY_TOUCH_HARD;
+
+                //Debug.Log("노드 난이도: HARD");
+                break;
+            default:
+                ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_EASY;
+                ENTRANCE_SUCCESSFULL_TOUCH = ENTRANCE_SUCCESSFULL_TOUCH_EASY;
+                EXIT_SUCCESSFULL_TOUCH = EXIT_SUCCESSFULL_TOUCH_EASY;
+                EXIT_UNSATISFACTORY_TOUCH = EXIT_UNSATISFACTORY_TOUCH_EASY;
+                break;
+        }
+    }
 
     void Update()
     {

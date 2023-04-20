@@ -17,7 +17,11 @@ public class node_delete : MonoBehaviour
     public GameObject node_prefab;
     public node_management n_m;
 
-    private const float MAX_TIME = 2.25f;
+    private float MAX_TIME_EASY = 1.6f;
+    private float MAX_TIME_NORMAL = 1.3f;
+    private float MAX_TIME_HARD = 1.1f;
+
+    private float MAX_TIME = 1.6f;
 
     public void delete_node_after_click()
     {
@@ -48,6 +52,22 @@ public class node_delete : MonoBehaviour
 
     private void Start()
     {
+        switch(node.difficulty)
+        {
+            case 1:
+                MAX_TIME = MAX_TIME_EASY;
+                break;
+            case 2:
+                MAX_TIME = MAX_TIME_NORMAL;
+                break;
+            case 3:
+                MAX_TIME = MAX_TIME_HARD;
+                break;
+            default:
+                MAX_TIME = MAX_TIME_EASY;
+                break;
+        }
+
         StartCoroutine(delete_node_AFK_state());
     }
 }
