@@ -4,6 +4,12 @@
 *구현 목표
 *-노드의 일괄적인 생성 담당
 *
+*난이도 변경 시 수정절차
+*-Initialize_node_setting() 수정 (난이도에 따른 노드의 개수 변경)
+*-node_management의 시간값 수정
+*-AnimationClip 노드 감소 타이밍 수정
+*-node_delete의 MAX_TIME 수정 ㅇ
+*
 *위 스크립트의 초기 버전은 김시훈이 작성하였음
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
 */
@@ -95,6 +101,7 @@ public class node : MonoBehaviour
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
                 break;
 
             case 2: //normal
@@ -115,6 +122,9 @@ public class node : MonoBehaviour
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
                 break;
 
             default: //default
@@ -122,6 +132,7 @@ public class node : MonoBehaviour
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
 
                 difficulty = 1;
                 break;

@@ -21,41 +21,45 @@ public class node_management : MonoBehaviour
     public Animator animator;
     public node_delete nd;
 
+    public static float EASY_FPS = 120f;
+    public static float NORMAL_FPS = 96f;
+    public static float HARD_FPS = 78f;
+
     [Header("EASY MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
     [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_UNSATISFACTORY_TOUCH_EASY = (85f - 10f) / 60f;
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_EASY = (EASY_FPS - 30f) / 60f;
     [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_SUCCESSFULL_TOUCH_EASY = (85f - 7f) / 60f;
+    public float ENTRANCE_SUCCESSFULL_TOUCH_EASY = (EASY_FPS - 20f) / 60f;
     [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
-    public float EXIT_SUCCESSFULL_TOUCH_EASY = (85f + 1f) / 60f;
+    public float EXIT_SUCCESSFULL_TOUCH_EASY = (EASY_FPS - 10f) / 60f;
     [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
-    public float EXIT_UNSATISFACTORY_TOUCH_EASY = (85f + 6f) / 60f;
+    public float EXIT_UNSATISFACTORY_TOUCH_EASY = (EASY_FPS - 5f) / 60f;
 
     [Header("NORMAL MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
     [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_UNSATISFACTORY_TOUCH_NORMAL = (68f - 9f) / 60f;
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_NORMAL = (NORMAL_FPS - 24f) / 60f;
     [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_SUCCESSFULL_TOUCH_NORMAL = (68f - 6f) / 60f;
+    public float ENTRANCE_SUCCESSFULL_TOUCH_NORMAL = (NORMAL_FPS - 16f) / 60f;
     [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
-    public float EXIT_SUCCESSFULL_TOUCH_NORMAL = (68f + 1f) / 60f;
+    public float EXIT_SUCCESSFULL_TOUCH_NORMAL = (NORMAL_FPS - 8f) / 60f;
     [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
-    public float EXIT_UNSATISFACTORY_TOUCH_NORMAL = (68f + 5f) / 60f;
+    public float EXIT_UNSATISFACTORY_TOUCH_NORMAL = (NORMAL_FPS - 4f) / 60f;
 
     [Header("HARD MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
     [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_UNSATISFACTORY_TOUCH_HARD = (58f - 9f) / 60f;
+    public float ENTRANCE_UNSATISFACTORY_TOUCH_HARD = (HARD_FPS - 19f) / 60f;
     [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
-    public float ENTRANCE_SUCCESSFULL_TOUCH_HARD = (58f - 5f) / 60f;
+    public float ENTRANCE_SUCCESSFULL_TOUCH_HARD = (HARD_FPS - 13f) / 60f;
     [Tooltip("성공적인 타이밍의 종점 (sec 단위)")]
-    public float EXIT_SUCCESSFULL_TOUCH_HARD = (58f + 1f) / 60f;
+    public float EXIT_SUCCESSFULL_TOUCH_HARD = (HARD_FPS - 7f) / 60f;
     [Tooltip("조금 미흡한 부분의 종점 (sec 단위)")]
-    public float EXIT_UNSATISFACTORY_TOUCH_HARD = (58f + 5f) / 60f;
+    public float EXIT_UNSATISFACTORY_TOUCH_HARD = (HARD_FPS - 4) / 60f;
 
 
-    private float ENTRANCE_UNSATISFACTORY_TOUCH = (85f - 20f) / 60f;
-    private float ENTRANCE_SUCCESSFULL_TOUCH = (85f - 10f) / 60f;
-    private float EXIT_SUCCESSFULL_TOUCH = (85f + 1f) / 60f;
-    private float EXIT_UNSATISFACTORY_TOUCH = (85f + 6f) / 60f; 
+    private float ENTRANCE_UNSATISFACTORY_TOUCH = (EASY_FPS - 30f) / 60f;
+    private float ENTRANCE_SUCCESSFULL_TOUCH = (EASY_FPS - 20f) / 60f;
+    private float EXIT_SUCCESSFULL_TOUCH = (EASY_FPS - 10f) / 60f;
+    private float EXIT_UNSATISFACTORY_TOUCH = (EASY_FPS - 5f) / 60f;
 
     public void node_click_event(GameObject clickObject)
     {

@@ -17,11 +17,11 @@ public class node_delete : MonoBehaviour
     public GameObject node_prefab;
     public node_management n_m;
 
-    private float MAX_TIME_EASY = 1.6f;
-    private float MAX_TIME_NORMAL = 1.3f;
-    private float MAX_TIME_HARD = 1.1f;
+    private float MAX_TIME_EASY = node_management.EASY_FPS / 60f;
+    private float MAX_TIME_NORMAL = node_management.NORMAL_FPS / 60f;
+    private float MAX_TIME_HARD = node_management.HARD_FPS / 60f;
 
-    private float MAX_TIME = 1.6f;
+    private float MAX_TIME = node_management.EASY_FPS / 60f;
 
     public void delete_node_after_click()
     {
