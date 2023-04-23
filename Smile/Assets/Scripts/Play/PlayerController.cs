@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
-    
+
+    public node nd;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,10 @@ public class PlayerController : MonoBehaviour
             // ∏ÛΩ∫≈Õø° ¥Í¿∏∏È ∏ÿ√ﬂ∞Ì RN æ¿ »£√‚
             moveSpeed = 0;
             Debug.Log("Go to RN");
+
+            node.start_cutscene = true;
+            animator.SetBool("start_cutscene", node.start_cutscene);
+            nd.Start_Cutscene_Mode();
         }
     }
 }

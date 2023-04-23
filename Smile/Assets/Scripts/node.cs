@@ -49,6 +49,9 @@ public class node : MonoBehaviour
     [Header("아래의 항목에다가 해당 컷씬의 난이도를 지정합니다")]
     public static int difficulty = 3; //difault value 1
 
+    [Header("아래의 항목에다가 컷씬 시작 여부를 지정합니다")]
+    public static bool start_cutscene = false; //difault value false
+
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
     public float radius_MAX = 1000f; //difault value 1000f
@@ -84,7 +87,7 @@ public class node : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public void Start_Cutscene_Mode()
     {
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
