@@ -74,7 +74,7 @@ public class node : MonoBehaviour
     private IEnumerator D_Coroutine()
     {
         UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
-        yield return new WaitForSeconds(1.3f);
+        yield return new WaitForSeconds(1.5f);
 
         for (int i=0; i<node_location.Count; i++)
         {
