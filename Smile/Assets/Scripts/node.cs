@@ -86,6 +86,7 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
 
@@ -170,13 +171,13 @@ public class node : MonoBehaviour
         switch(difficulty)
         {
             case 1:
-                return 0.2f * random.Next(5, 11);
+                return 0.1f * random.Next(8, 14);
             case 2:
-                return 0.1f * random.Next(5, 9);
+                return 0.1f * random.Next(6, 11);
             case 3:
-                return 0.1f * random.Next(3, 8);
+                return 0.1f * random.Next(4, 9);
             default:
-                return 0.25f * random.Next(2, 6);
+                return 0.1f * random.Next(8, 14);
         }
     }
 
