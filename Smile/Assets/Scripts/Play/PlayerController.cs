@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int moveSpeed;
 
-
     public IScenePass scenePass;
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = transform.position + (transform.right * moveSpeed * Time.deltaTime);
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
