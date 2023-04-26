@@ -3,12 +3,13 @@
 *
 *구현 목표
 *-노드의 일괄적인 생성 담당
+*-노드간 Line Renderer를 통한 연결
 *
 *난이도 변경 시 수정절차
 *-Initialize_node_setting() 수정 (난이도에 따른 노드의 개수 변경)
 *-node_management의 시간값 수정
 *-AnimationClip 노드 감소 타이밍 수정
-*-node_delete의 MAX_TIME 수정 ㅇ
+*-node_delete의 MAX_TIME 수정 
 *
 *위 스크립트의 초기 버전은 김시훈이 작성하였음
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
@@ -18,6 +19,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -39,6 +41,7 @@ public class node : MonoBehaviour
 {
     private List<Node_data> node_location = new List<Node_data>();
     public GameObject nodes_prefab;
+    public LineRenderer line_renderer;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite Node_image_A;
@@ -52,6 +55,10 @@ public class node : MonoBehaviour
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
     public float radius_MAX = 1000f; //difault value 1000f
+
+
+    public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+
 
     //노드를 리스트의 순서에 따라 하나를 차례로 배치하는 함수
     void node_placement(int node_array)
@@ -69,17 +76,42 @@ public class node : MonoBehaviour
         }
     }
 
+    private void Insert_Line(List<Vector2> v)
+    {
+        List<Vector2> vector = new List<Vector2>(v);
+
+        //list 안의 원소들을 Reverse 시킨다
+        vector.Reverse();
+
+        //line renderer에 좌표를 넣는다
+        for (int i = 0; i < vector.Count; i++)
+        {
+            line_renderer.positionCount = LineIndex; 
+            line_renderer.SetPosition(i, vector[i]);
+        }
+    }
+
+    public void Delete_Line() //아직 미사용
+    {
+        LineIndex = LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        UnityEngine.Debug.Log("진행");
+    }
+
 
     //노드를 생성하는 부분입니다. Coroutine으로 구현
     private IEnumerator D_Coroutine()
     {
+        List<Vector2> vector = new List<Vector2>();
         UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
         yield return new WaitForSeconds(1.5f);
 
         for (int i=0; i<node_location.Count; i++)
         {
+            vector.Add(node_location[i].vector2);
             yield return new WaitForSeconds(set_node_wait());
             node_placement(i);
+            LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+            Insert_Line(vector);
         }
     }
 
@@ -91,6 +123,11 @@ public class node : MonoBehaviour
         Initialize_node_setting();
 
         StartCoroutine(D_Coroutine());
+    }
+
+    private void Update()
+    {
+        line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
     }
 
     private void Initialize_node_setting()

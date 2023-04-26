@@ -27,6 +27,8 @@ public class node_delete : MonoBehaviour
     {
         //노드의 Prefab을 제거합니다.
         Destroy(node_prefab);
+
+        node.LineIndex = node.LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
     }
 
     private IEnumerator delete_node_AFK_state()
@@ -47,7 +49,7 @@ public class node_delete : MonoBehaviour
         UnityEngine.Debug.Log("MISS: NON-CLICK");
 
         // 노드의 Prefab을 제거합니다.
-        Destroy(node_prefab);
+        delete_node_after_click();
     }
 
     private void Start()
