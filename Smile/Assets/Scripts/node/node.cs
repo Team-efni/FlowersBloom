@@ -42,6 +42,7 @@ public class node : MonoBehaviour
     private List<Node_data> node_location = new List<Node_data>();
     public GameObject nodes_prefab;
     public LineRenderer line_renderer;
+    public Transform ParentObject;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite Node_image_A;
@@ -50,7 +51,7 @@ public class node : MonoBehaviour
     public Sprite Node_image_D;
 
     [Header("아래의 항목에다가 해당 컷씬의 난이도를 지정합니다")]
-    public static int difficulty = 3; //difault value 1
+    public static int difficulty = 1; //difault value 1
 
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
@@ -72,7 +73,7 @@ public class node : MonoBehaviour
             SpriteRenderer sr = nodes_prefab.GetComponent<SpriteRenderer>();
             sr.sprite = node_location[node_array].procedure;
 
-            Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
+            Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity, ParentObject);
         }
     }
 
@@ -111,7 +112,7 @@ public class node : MonoBehaviour
             yield return new WaitForSeconds(set_node_wait());
             node_placement(i);
             LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
-            Insert_Line(vector);
+            //Insert_Line(vector);
         }
     }
 
@@ -127,7 +128,14 @@ public class node : MonoBehaviour
 
     private void Update()
     {
-        line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        //line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+
+        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
+        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("UI_Touch");
+        foreach (GameObject UI in UI_Touch)
+        {
+            UI.SetActive(false);
+        }
     }
 
     private void Initialize_node_setting()
