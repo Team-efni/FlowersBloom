@@ -25,12 +25,12 @@ using UnityEngine.Events;
 
 public class Node_data
 {
-    public Vector2 vector2 = new Vector2();
+    public Vector3 vector3 = new Vector3();
     public Sprite procedure;
 
-    public Node_data(Vector2 _vector2, Sprite _procedure)
+    public Node_data(Vector3 _vector3, Sprite _procedure)
     {
-        this.vector2 = _vector2;
+        this.vector3 = _vector3;
 
         //TODO: 이미지 적용 안될 때 예외처리 필요
         this.procedure = _procedure;
@@ -41,7 +41,13 @@ public class node : MonoBehaviour
 {
     private List<Node_data> node_location = new List<Node_data>();
     public GameObject nodes_prefab;
+<<<<<<< HEAD
     public LineRenderer line_renderer;
+    public Transform ParentObject;
+=======
+    public Transform parentBack;
+    public LineRenderer line_renderer;
+>>>>>>> CutBackup
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite Node_image_A;
@@ -50,7 +56,7 @@ public class node : MonoBehaviour
     public Sprite Node_image_D;
 
     [Header("아래의 항목에다가 해당 컷씬의 난이도를 지정합니다")]
-    public static int difficulty = 3; //difault value 1
+    public static int difficulty = 1; //difault value 1
 
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
@@ -72,13 +78,23 @@ public class node : MonoBehaviour
             SpriteRenderer sr = nodes_prefab.GetComponent<SpriteRenderer>();
             sr.sprite = node_location[node_array].procedure;
 
-            Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
+<<<<<<< HEAD
+            Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity, ParentObject);
         }
     }
 
     private void Insert_Line(List<Vector2> v)
     {
         List<Vector2> vector = new List<Vector2>(v);
+=======
+            Instantiate(nodes_prefab, node_location[node_array].vector3, Quaternion.identity);//, parentBack);
+        }
+    }
+
+    private void Insert_Line(List<Vector3> v)
+    {
+        List<Vector3> vector = new List<Vector3>(v);
+>>>>>>> CutBackup
 
         //list 안의 원소들을 Reverse 시킨다
         vector.Reverse();
@@ -101,17 +117,28 @@ public class node : MonoBehaviour
     //노드를 생성하는 부분입니다. Coroutine으로 구현
     private IEnumerator D_Coroutine()
     {
+<<<<<<< HEAD
         List<Vector2> vector = new List<Vector2>();
+=======
+        List<Vector3> vector = new List<Vector3>();
+>>>>>>> CutBackup
         UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
         yield return new WaitForSeconds(1.5f);
 
         for (int i=0; i<node_location.Count; i++)
         {
+<<<<<<< HEAD
             vector.Add(node_location[i].vector2);
             yield return new WaitForSeconds(set_node_wait());
             node_placement(i);
+=======
+            vector.Add(node_location[i].vector3);
+            yield return new WaitForSeconds(set_node_wait());
+            node_placement(i);
+
+>>>>>>> CutBackup
             LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
-            Insert_Line(vector);
+            //Insert_Line(vector);
         }
     }
 
@@ -127,7 +154,17 @@ public class node : MonoBehaviour
 
     private void Update()
     {
-        line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        //line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+<<<<<<< HEAD
+
+        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
+        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("UI_Touch");
+        foreach (GameObject UI in UI_Touch)
+        {
+            UI.SetActive(false);
+        }
+=======
+>>>>>>> CutBackup
     }
 
     private void Initialize_node_setting()
@@ -185,18 +222,17 @@ public class node : MonoBehaviour
         return r.Next(-210000000, 210000000);
     }
 
-    private Vector2 set_node_coordinate()
+    private Vector3 set_node_coordinate()
     {
         System.Random random = new System.Random(unchecked((int)((long)Thread.CurrentThread.ManagedThreadId + (DateTime.UtcNow.Ticks)) - call_random()));
 
-        Vector2 vector = new Vector2(random.Next(-1300, 1301), random.Next(-500, 501));
+        Vector3 vector = new Vector3(random.Next(-1300, 1301), random.Next(-500, 501), 0);
         
         //노드끼리 일정 거리가 떨어지면 탈출
         while (check_radius_between_nodes(vector))
         {
-            vector = new Vector2(random.Next(-1300, 1301), random.Next(-500, 501));
+            vector = new Vector3(random.Next(-1300, 1301), random.Next(-500, 501), 0);
         }
-
 
         return vector;
     }
@@ -218,19 +254,19 @@ public class node : MonoBehaviour
         }
     }
 
-    private bool check_radius_between_nodes(Vector2 vector)
+    private bool check_radius_between_nodes(Vector3 vector)
     {
         int node_set_locate_count=node_location.Count;
 
         for (int i = node_set_locate_count < 4 ? 0 : node_set_locate_count - 4; i < node_set_locate_count; i++) 
         {
-            Vector2 call_vec = node_location[i].vector2;
+            Vector3 call_vec = node_location[i].vector3;
 
-            if (Vector2.Distance(vector, call_vec) < radius_MIN)
+            if (Vector3.Distance(vector, call_vec) < radius_MIN)
             {
                 return true;
             }
-            else if (Vector2.Distance(vector, call_vec) > radius_MAX)
+            else if (Vector3.Distance(vector, call_vec) > radius_MAX)
             {
                 return true;
             }
