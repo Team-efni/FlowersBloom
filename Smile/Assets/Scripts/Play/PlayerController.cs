@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int moveSpeed;
+    //[SerializeField] private int moveSpeed;
 
     public IScenePass scenePass;
 
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + (transform.right * moveSpeed * Time.deltaTime);
+        //transform.position = transform.position + (transform.right * moveSpeed * Time.deltaTime);
     }
 
 
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
             // 몬스터에 닿으면 멈추고 RN 씬 호출
             Debug.Log("Go to RN");
             
-            moveSpeed = 0;
+            //moveSpeed = 0;
 
             // 기회가 남아있다면 감소하고 씬 이동
             if (notePoint > 0)
