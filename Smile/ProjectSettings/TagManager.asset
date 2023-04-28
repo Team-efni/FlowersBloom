@@ -3,14 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-<<<<<<< HEAD
-  tags: []
-=======
   tags:
   - Node
   - Monster
-  - UI_Touch
->>>>>>> CutBackup
+  - NoteManager
   layers:
   - Default
   - TransparentFX
@@ -21,7 +17,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Node
   - 
   - 
   - 

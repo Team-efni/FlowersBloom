@@ -33,11 +33,7 @@ public class ScenePass : MonoBehaviour, IScenePass
 
     private IEnumerator LoadSceneAsyncCoroutine(string sceneName)
     {
-<<<<<<< HEAD
-        asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive); //¾À µ¤¾î¾²±â
-=======
-        asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single); //¾À ºÒ·¯¿À±â
->>>>>>> CutBackup
+        asyncLoad = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
         asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
@@ -51,8 +47,7 @@ public class ScenePass : MonoBehaviour, IScenePass
         }
     }
 
-    public void SceneLoadStart
-        ()
+    public void SceneLoadStart()
     {
         while(!enable) 
         {
