@@ -111,7 +111,7 @@ public class node : MonoBehaviour
             yield return new WaitForSeconds(set_node_wait());
             node_placement(i);
             LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
-            Insert_Line(vector);
+            //Insert_Line(vector);
         }
     }
 
