@@ -7,11 +7,11 @@ public class NoteController : MonoBehaviour
 {
     public Sprite[] noteSprite;
     public GameObject[] note;
-    public int[] noteNums;
+    private int[] noteNums;
     public bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
-    public GameObject MonsterParent;
+    public GameObject target;
 
     // Start is called before the first frame update
     void Start()
@@ -112,7 +112,7 @@ public class NoteController : MonoBehaviour
             // 모두 성공한 경우
             Debug.Log("All Success");
             meetMonster = false;
-            MonsterParent.SetActive(false);
+            MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
         }
     }
@@ -120,5 +120,29 @@ public class NoteController : MonoBehaviour
     private void DoBgShow(bool check)
     {
         GameObject.Find("Canvas").transform.GetChild(3).gameObject.SetActive(check); // Note_Bg
+    }
+
+    // 몬스터 죽기
+    private void MonsterDie()
+    {
+        StartCoroutine("MonsterFadeOut");
+    }
+
+    // 몬스터 페이드 아웃 처리
+    IEnumerator MonsterFadeOut()
+    {
+        int i = 10;
+        while(i > 0)
+        {
+            i -= 1;
+            float f = i / 10.0f;
+            Color c = target.GetComponent<SpriteRenderer>().color;
+            c.a = f;
+            target.GetComponent<SpriteRenderer>().color = c;
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        target.gameObject.SetActive(false);
+        
     }
 }
