@@ -49,9 +49,6 @@ public class node : MonoBehaviour
     public Sprite Node_image_C;
     public Sprite Node_image_D;
 
-    [Header("아래의 항목에다가 해당 컷씬의 난이도를 지정합니다")]
-    public static int difficulty = 3; //difault value 1
-
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
     public float radius_MAX = 1000f; //difault value 1000f
@@ -132,7 +129,7 @@ public class node : MonoBehaviour
 
     private void Initialize_node_setting()
     {
-        switch (difficulty)
+        switch (UniteData.Difficulty)
         {
             case 1: //easy
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
@@ -172,7 +169,7 @@ public class node : MonoBehaviour
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
 
-                difficulty = 1;
+                UniteData.Difficulty = 1;
                 break;
         }
     }
@@ -205,7 +202,7 @@ public class node : MonoBehaviour
     {
         System.Random random = new System.Random(unchecked((int)((long)Thread.CurrentThread.ManagedThreadId + (DateTime.UtcNow.Ticks)) - call_random()));
 
-        switch(difficulty)
+        switch(UniteData.Difficulty)
         {
             case 1:
                 return 0.1f * random.Next(8, 14);

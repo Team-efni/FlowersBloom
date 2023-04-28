@@ -115,12 +115,12 @@ public class node_management : MonoBehaviour
 
     private void Awake()
     {
-        animator.SetInteger("Difficulty", node.difficulty);
+        animator.SetInteger("Difficulty", UniteData.Difficulty);
     }
 
     private void Start()
     {
-        switch(node.difficulty)
+        switch(UniteData.Difficulty)
         {
             case 1:
                 ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_EASY;

@@ -54,7 +54,7 @@ public class node_delete : MonoBehaviour
 
     private void Start()
     {
-        switch(node.difficulty)
+        switch(UniteData.Difficulty)
         {
             case 1:
                 MAX_TIME = MAX_TIME_EASY;
