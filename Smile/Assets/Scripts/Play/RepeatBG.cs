@@ -23,4 +23,5 @@ public class RepeatBG : MonoBehaviour
         newPos = Mathf.Repeat(Time.time * speed, posValue);
         transform.position = (startPos + Vector2.left * newPos);
     }
+
 }

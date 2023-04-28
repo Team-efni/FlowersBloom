@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class NoteController : MonoBehaviour
 {
     public Sprite[] noteSprite;
     public GameObject[] note;
-    private int[] noteNums;
+    public int[] noteNums;
     public bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
@@ -52,10 +53,20 @@ public class NoteController : MonoBehaviour
     }
 
     public void NoteDisabled()
-    {// 노트 반투명으로 만들기
-        //note[noteIndex].SetActive(false);
+    {
+        // 노트 회색으로 만들기
         Image image = note[noteIndex].GetComponent<Image>();
         image.color = new Color(128/ 255f, 128/ 255f, 128 / 255f, 255/ 255f);
+    }
+
+    public void NoteAbled()
+    {
+        // 노트 원래색으로 만들기
+        for (int i = 0; i < note.Length; i++)
+        {
+            Image image = note[i].GetComponent<Image>();
+            image.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
+        }
     }
 
     public void touchClickLeftUp()
@@ -114,6 +125,7 @@ public class NoteController : MonoBehaviour
             meetMonster = false;
             MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
+            returnNote();
         }
     }
 
@@ -139,10 +151,16 @@ public class NoteController : MonoBehaviour
             Color c = target.GetComponent<SpriteRenderer>().color;
             c.a = f;
             target.GetComponent<SpriteRenderer>().color = c;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
 
         target.gameObject.SetActive(false);
-        
+    }
+
+    // 노트들 처음 상태로 되돌리기
+    void returnNote()
+    {
+        noteIndex = 0;
+        NoteAbled();
     }
 }
