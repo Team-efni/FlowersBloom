@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour
     public GameObject Cut_Scene_prefab;
 
     // 기회 포인트 관련
-    public int notePoint = 2; // 기회 포인트
+    //public int notePoint = 2; // 기회 포인트 -> Data/UniteData.cs로 이동
     public GameObject[] go_notePoints; // 기회 포인트 오브젝트
 
     // 목숨 포인트 관련
-    public int lifePoint = 3; // 목숨 포인트
+    //public int lifePoint = 3; // 목숨 포인트 -> Data/UniteData.cs로 이동
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +40,10 @@ public class PlayerController : MonoBehaviour
             //moveSpeed = 0;
 
             // 기회가 남아있다면 감소하고 씬 이동
-            if (notePoint > 0)
+            if (UniteData.notePoint > 0)
             {
-                notePoint--;
-                go_notePoints[notePoint].gameObject.SetActive(false);
+                UniteData.notePoint--;
+                go_notePoints[UniteData.notePoint].gameObject.SetActive(false);
 
                 //씬 바로 이동
                 //scenePass.SceneLoadStart();
@@ -53,15 +53,15 @@ public class PlayerController : MonoBehaviour
             }
 
             // 기회가 0이라면 목숨 포인트 감소
-            else if (notePoint == 0)
+            else if (UniteData.notePoint == 0)
             {
                 // 목숨 포인트가 남아있다면 감소
-                if(lifePoint > 0)
+                if(UniteData.lifePoint > 0)
                 {
-                    lifePoint--;
+                    UniteData.lifePoint--;
                 }
                 // 남아있지 않다면 게임 오버    
-                else if(lifePoint == 0)
+                else if(UniteData.lifePoint == 0)
                 {
                     Debug.Log("GameOver");
                 }

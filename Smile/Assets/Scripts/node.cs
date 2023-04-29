@@ -146,6 +146,8 @@ public class node : MonoBehaviour
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
                 node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
                 break;
 
             case 3: //hard
