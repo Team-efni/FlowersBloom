@@ -80,7 +80,10 @@ public class node_management : MonoBehaviour
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 빠를 때 [MISS]
         if (elapsedTime < ENTRANCE_UNSATISFACTORY_TOUCH)
         {
-            Debug.Log("MISS");
+            if (Node_Result.Miss_Node_Click())
+            {
+                Debug.Log("Game Over");
+            }
         }
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 느릴 때 [FAST]
         else if (elapsedTime > ENTRANCE_UNSATISFACTORY_TOUCH && elapsedTime < ENTRANCE_SUCCESSFULL_TOUCH)
@@ -100,7 +103,10 @@ public class node_management : MonoBehaviour
         // 클릭 시간이 조금 미흡한 타이밍의 종점보다 느릴 때 [MISS]
         else if (elapsedTime > EXIT_UNSATISFACTORY_TOUCH)
         {
-            Debug.Log("MISS");
+            if (Node_Result.Miss_Node_Click())
+            {
+                Debug.Log("Game Over");
+            }
         }
     }
 

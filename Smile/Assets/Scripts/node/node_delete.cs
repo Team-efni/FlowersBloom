@@ -46,7 +46,10 @@ public class node_delete : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
 
         //실패처리
-        UnityEngine.Debug.Log("MISS: NON-CLICK");
+        if (Node_Result.Miss_Node_Click())
+        {
+            Debug.Log("Game Over");
+        }
 
         // 노드의 Prefab을 제거합니다.
         delete_node_after_click();
