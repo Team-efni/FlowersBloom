@@ -12,6 +12,8 @@ public class UniteData
     //유저 관련 데이터
 
     //설정 관련 데이터
+    public static float BGM = 1f; //배경음악 볼륨
+    public static float Effect = 1f; //효과음 볼륨
 
     //게임 파일 관련 데이터
 
