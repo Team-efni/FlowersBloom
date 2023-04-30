@@ -4,6 +4,7 @@
 *구현 목표
 *-씬 전환
 *-미리 씬 로드
+*-그냥 일련의 로드 과정 없이 씬 로드
 *
 *위 스크립트의 초기 버전은 김시훈이 작성하였음
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
@@ -57,7 +58,7 @@ public class ScenePass : MonoBehaviour, IScenePass
         return;
     }
 
-    public void SceneLoad_Immediately(string sceneName)
+    public void SceneLoad_Immediately(string sceneName) //애니메이션에서 씬 이동을 지정하기 위한 방법
     {
         SceneManager.LoadScene(sceneName);
     }
