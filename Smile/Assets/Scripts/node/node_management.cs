@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class node_management : MonoBehaviour
 {
@@ -82,7 +83,9 @@ public class node_management : MonoBehaviour
         {
             if (Node_Result.Miss_Node_Click())
             {
-                Debug.Log("Game Over");
+                Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                fadeAnimator.SetBool("IsStartFade", true);
             }
         }
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 느릴 때 [FAST]
@@ -105,7 +108,9 @@ public class node_management : MonoBehaviour
         {
             if (Node_Result.Miss_Node_Click())
             {
-                Debug.Log("Game Over");
+                Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                fadeAnimator.SetBool("IsStartFade", true);
             }
         }
     }

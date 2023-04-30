@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class node_delete : MonoBehaviour
 {
@@ -48,7 +49,9 @@ public class node_delete : MonoBehaviour
         //실패처리
         if (Node_Result.Miss_Node_Click())
         {
-            Debug.Log("Game Over");
+            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+            // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+            fadeAnimator.SetBool("IsStartFade", true);
         }
 
         // 노드의 Prefab을 제거합니다.

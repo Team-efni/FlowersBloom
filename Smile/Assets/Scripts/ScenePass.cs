@@ -56,4 +56,9 @@ public class ScenePass : MonoBehaviour, IScenePass
         asyncLoad.allowSceneActivation = true;
         return;
     }
+
+    public void SceneLoad_Immediately(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
 }
