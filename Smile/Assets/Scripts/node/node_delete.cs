@@ -30,6 +30,8 @@ public class node_delete : MonoBehaviour
         Destroy(node_prefab);
 
         node.LineIndex = node.LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+
+        UniteData.Node_Click_Counter += 1;
     }
 
     private IEnumerator delete_node_AFK_state()
@@ -46,7 +48,10 @@ public class node_delete : MonoBehaviour
         // 계산된 시간만큼 대기합니다.
         yield return new WaitForSeconds(waitTime);
 
-        //실패처리
+        //목숨 감소
+        UniteData.Node_LifePoint -= 1;
+
+        //게임실패처리
         if (Node_Result.Miss_Node_Click())
         {
             Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();

@@ -81,6 +81,7 @@ public class node_management : MonoBehaviour
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 빠를 때 [MISS]
         if (elapsedTime < ENTRANCE_UNSATISFACTORY_TOUCH)
         {
+            UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
             {
                 Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
@@ -106,6 +107,7 @@ public class node_management : MonoBehaviour
         // 클릭 시간이 조금 미흡한 타이밍의 종점보다 느릴 때 [MISS]
         else if (elapsedTime > EXIT_UNSATISFACTORY_TOUCH)
         {
+            UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
             {
                 Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();

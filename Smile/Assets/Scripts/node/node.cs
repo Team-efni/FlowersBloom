@@ -22,6 +22,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Node_data
 {
@@ -125,6 +126,19 @@ public class node : MonoBehaviour
     private void Update()
     {
         line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+
+        //만약 컷씬을 클리어 했을 때
+        if (UniteData.Node_LifePoint > 0 && UniteData.Node_Click_Counter == node_location.Count)
+        {
+            //데이터 초기화
+            UniteData.Node_LifePoint = 2;
+            UniteData.Node_Click_Counter = 0;
+
+            //클리어 애니메이션 실행
+            SceneManager.LoadScene("Play");
+        }
+
+
     }
 
     private void Initialize_node_setting()

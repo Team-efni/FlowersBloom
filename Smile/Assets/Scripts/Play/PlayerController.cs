@@ -63,7 +63,11 @@ public class PlayerController : MonoBehaviour
                 // 남아있지 않다면 게임 오버    
                 else if(UniteData.lifePoint == 0)
                 {
-                    Debug.Log("GameOver");
+                    Make_Invisible_UI();
+
+                    Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                    // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                    fadeAnimator.SetBool("IsStartFade", true);
                 }
             }
         }
@@ -73,12 +77,7 @@ public class PlayerController : MonoBehaviour
     public static Vector3 CamabsolutePosition = new Vector3(0, 0, 0);
     private IEnumerator LoadCutScene()
     {
-        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
-        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("PlayScene_UI");
-        foreach (GameObject UI in UI_Touch)
-        {
-            UI.SetActive(false);
-        }
+        Make_Invisible_UI();
 
         GameObject Cam = GameObject.Find("Main Camera");
 
@@ -98,5 +97,17 @@ public class PlayerController : MonoBehaviour
         //컷씬 애니메이션이 끝나면 씬 바로 이동
         yield return new WaitForSeconds(1.17f);
         scenePass.SceneLoadStart();
+    }
+
+    private void Make_Invisible_UI()
+    {
+        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
+        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("PlayScene_UI");
+        foreach (GameObject UI in UI_Touch)
+        {
+            UI.SetActive(false);
+        }
+
+        GameObject Cam = GameObject.Find("Main Camera");
     }
 }
