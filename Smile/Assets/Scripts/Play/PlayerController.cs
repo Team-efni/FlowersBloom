@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public IScenePass scenePass;
     public GameObject Cut_Scene_prefab;
+    public NoteController s_noteController;
 
     // 기회 포인트 관련
     //public int notePoint = 2; // 기회 포인트 -> Data/UniteData.cs로 이동
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Monster"))
+        if(!s_noteController.noteSuccess && collision.CompareTag("Monster"))
         {
             // 몬스터에 닿으면 멈추고 RN 씬 호출
             Debug.Log("Go to RN");

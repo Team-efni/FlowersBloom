@@ -14,6 +14,8 @@ public class NoteController : MonoBehaviour
 
     public GameObject target;
 
+    public bool noteSuccess = false; // 노트 성공
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,7 @@ public class NoteController : MonoBehaviour
 
     private void NoteSetting()
     {
+        noteSuccess = false;
         noteNums = new int[note.Length];
 
         // 랜덤으로 노트 생성
@@ -123,6 +126,7 @@ public class NoteController : MonoBehaviour
             // 모두 성공한 경우
             Debug.Log("All Success");
             meetMonster = false;
+            noteSuccess = true;
             MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
             returnNote();

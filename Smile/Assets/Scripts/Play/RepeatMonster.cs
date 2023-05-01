@@ -5,6 +5,7 @@ using UnityEngine;
 public class RepeatMonster : MonoBehaviour
 {
     public GameObject Monster;
+    [SerializeField] private int monsterCount; // 몬스터 등장 횟수
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,15 @@ public class RepeatMonster : MonoBehaviour
     {
         if (collision.CompareTag("NoteManager"))
         {
-            MonsterColorOrigin();
+            if (monsterCount > 0)
+            {
+                monsterCount--;
+                MonsterColorOrigin();
+            }
+            else if(monsterCount == 0)
+            {
+                Debug.Log("Game Clear");
+            }
         }
     }
 }
