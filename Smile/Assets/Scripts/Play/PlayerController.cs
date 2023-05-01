@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     public IScenePass scenePass;
     public GameObject Cut_Scene_prefab;
+    public NoteController s_noteController;
 
     // 기회 포인트 관련
     //public int notePoint = 2; // 기회 포인트 -> Data/UniteData.cs로 이동
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         scenePass = GetComponent<IScenePass>();
         scenePass.LoadSceneAsync("InGame-RN");
+        UniteData.Move_Progress = true;
     }
 
     // Update is called once per frame
@@ -32,10 +34,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Monster"))
+        if(!s_noteController.noteSuccess && collision.CompareTag("Monster"))
         {
-            // 몬스터에 닿으면 멈추고 RN 씬 호출
-            Debug.Log("Go to RN");
+            // 몬스터에 닿으면 움직임을 멈춤
+            UniteData.Move_Progress = false;
             
             //moveSpeed = 0;
 
@@ -63,7 +65,11 @@ public class PlayerController : MonoBehaviour
                 // 남아있지 않다면 게임 오버    
                 else if(UniteData.lifePoint == 0)
                 {
-                    Debug.Log("GameOver");
+                    Make_Invisible_UI();
+
+                    Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                    // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
+                    fadeAnimator.SetBool("IsStartFade", true);
                 }
             }
         }
@@ -73,12 +79,7 @@ public class PlayerController : MonoBehaviour
     public static Vector3 CamabsolutePosition = new Vector3(0, 0, 0);
     private IEnumerator LoadCutScene()
     {
-        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
-        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("PlayScene_UI");
-        foreach (GameObject UI in UI_Touch)
-        {
-            UI.SetActive(false);
-        }
+        Make_Invisible_UI();
 
         GameObject Cam = GameObject.Find("Main Camera");
 
@@ -98,5 +99,17 @@ public class PlayerController : MonoBehaviour
         //컷씬 애니메이션이 끝나면 씬 바로 이동
         yield return new WaitForSeconds(1.17f);
         scenePass.SceneLoadStart();
+    }
+
+    private void Make_Invisible_UI()
+    {
+        //게임 오브젝트 중 UI_Touch Tag를 SetActive(false)로 설정한다
+        GameObject[] UI_Touch = GameObject.FindGameObjectsWithTag("PlayScene_UI");
+        foreach (GameObject UI in UI_Touch)
+        {
+            UI.SetActive(false);
+        }
+
+        GameObject Cam = GameObject.Find("Main Camera");
     }
 }

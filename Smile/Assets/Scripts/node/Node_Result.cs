@@ -6,17 +6,6 @@ using UnityEngine.UI;
 public class Node_Result : MonoBehaviour
 {
     public GameObject[] LifePoint;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //ÄÆ¾À ¸ñ¼û ½Ã½ºÅÛ
     public static bool Miss_Node_Click()

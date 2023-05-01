@@ -11,6 +11,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class node_delete : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class node_delete : MonoBehaviour
         //노드의 Prefab을 제거합니다.
         Destroy(node_prefab);
 
-        node.LineIndex = node.LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        //node.LineIndex = node.LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+
+        UniteData.Node_Click_Counter += 1;
     }
 
     private IEnumerator delete_node_AFK_state()
@@ -45,10 +48,15 @@ public class node_delete : MonoBehaviour
         // 계산된 시간만큼 대기합니다.
         yield return new WaitForSeconds(waitTime);
 
-        //실패처리
+        //목숨 감소
+        UniteData.Node_LifePoint -= 1;
+
+        //게임실패처리
         if (Node_Result.Miss_Node_Click())
         {
-            Debug.Log("Game Over");
+            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+            // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+            fadeAnimator.SetBool("IsStartFade", true);
         }
 
         // 노드의 Prefab을 제거합니다.
