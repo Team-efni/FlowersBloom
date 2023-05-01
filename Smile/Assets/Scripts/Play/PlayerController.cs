@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         scenePass = GetComponent<IScenePass>();
         scenePass.LoadSceneAsync("InGame-RN");
+        UniteData.Move_Progress = true;
     }
 
     // Update is called once per frame
@@ -34,8 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.CompareTag("Monster"))
         {
-            // 몬스터에 닿으면 멈추고 RN 씬 호출
-            Debug.Log("Go to RN");
+            // 몬스터에 닿으면 움직임을 멈춤
+            UniteData.Move_Progress = false;
             
             //moveSpeed = 0;
 
@@ -66,7 +67,7 @@ public class PlayerController : MonoBehaviour
                     Make_Invisible_UI();
 
                     Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-                    // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                    // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
                     fadeAnimator.SetBool("IsStartFade", true);
                 }
             }

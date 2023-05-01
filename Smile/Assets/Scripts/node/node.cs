@@ -42,7 +42,8 @@ public class node : MonoBehaviour
 {
     private List<Node_data> node_location = new List<Node_data>();
     public GameObject nodes_prefab;
-    public LineRenderer line_renderer;
+    //public LineRenderer line_renderer;
+    public GameObject Highlight_Node;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite Node_image_A;
@@ -55,7 +56,7 @@ public class node : MonoBehaviour
     public float radius_MAX = 1000f; //difault value 1000f
 
 
-    public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+    //public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
 
     //노드를 리스트의 순서에 따라 하나를 차례로 배치하는 함수
@@ -71,10 +72,14 @@ public class node : MonoBehaviour
             sr.sprite = node_location[node_array].procedure;
 
             Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
+            
+            //노드 하이라이트 부여
+            //Highlight_Node.transform.position = node_location[node_array].vector2;
+            //식별성 이슈 발생으로 인해 보류
         }
     }
 
-    private void Insert_Line(List<Vector2> v)
+    /*private void Insert_Line(List<Vector2> v)
     {
         List<Vector2> vector = new List<Vector2>(v);
 
@@ -84,16 +89,16 @@ public class node : MonoBehaviour
         //line renderer에 좌표를 넣는다
         for (int i = 0; i < vector.Count; i++)
         {
-            line_renderer.positionCount = LineIndex; 
-            line_renderer.SetPosition(i, vector[i]);
+            //line_renderer.positionCount = LineIndex; 
+            //line_renderer.SetPosition(i, vector[i]);
         }
     }
 
     public void Delete_Line() //아직 미사용
     {
-        LineIndex = LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        //LineIndex = LineIndex - 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
         UnityEngine.Debug.Log("진행");
-    }
+    }*/
 
 
     //노드를 생성하는 부분입니다. Coroutine으로 구현
@@ -108,7 +113,7 @@ public class node : MonoBehaviour
             vector.Add(node_location[i].vector2);
             yield return new WaitForSeconds(set_node_wait());
             node_placement(i);
-            LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+            //LineIndex = LineIndex + 1; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
             //Insert_Line(vector);
         }
     }
@@ -116,7 +121,7 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
 
@@ -125,7 +130,7 @@ public class node : MonoBehaviour
 
     private void Update()
     {
-        line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
+        //line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
         //만약 컷씬을 클리어 했을 때
         if (UniteData.Node_LifePoint > 0 && UniteData.Node_Click_Counter == node_location.Count)

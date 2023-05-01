@@ -20,7 +20,7 @@ public class RepeatBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        newPos = Mathf.Repeat(Time.time * speed, posValue);
+        newPos = Mathf.Repeat(Time.time * speed * (UniteData.Move_Progress ? 1f : 0f), posValue);
         transform.position = (startPos + Vector2.left * newPos);
     }
 
