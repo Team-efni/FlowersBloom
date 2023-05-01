@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class BtnType : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class BtnType : MonoBehaviour
                 Debug.Log("팀원");
                 break;
             case BTNType.Back:
+                SaveSettingData();
                 CanvasGroupOn(mainGroup);
                 CanvasGroupOff(optionGroup);
                 break;
@@ -55,5 +57,15 @@ public class BtnType : MonoBehaviour
         cg.blocksRaycasts = false;
     }
 
- 
+    //설정에서 나갈 시 모든 데이터를 저장합니다
+    private void SaveSettingData()
+    {
+        Slider BGM=GameObject.Find("MusicSlider").GetComponent<Slider>();
+        UniteData.BGM = BGM.value;
+
+        Slider Effect=GameObject.Find("SoundEffectSlider").GetComponent<Slider>();
+        UniteData.Effect = Effect.value;
+
+        UnityEngine.Debug.Log(UniteData.BGM + " / " + UniteData.Effect);
+    }    
 }
