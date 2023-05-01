@@ -537,6 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   posValue: 14469.03
+  gameClear: 0
 --- !u!1 &610206677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   posValue: 14469.03
+  gameClear: 0
 --- !u!1001 &943078077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1733,7 +1735,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: d9a057aba293de647b5539d62dff5807, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2030,6 +2032,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   posValue: 14469.03
+  gameClear: 0
 --- !u!1 &1136827836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2367,7 +2370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62a714afa8944e54ba75e8b43ff9ea81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Monster: {fileID: 1077886640}
+  monster: {fileID: 1077886640}
+  bgGroup: {fileID: 841810794}
   monsterCount: 5
 --- !u!61 &1258250797
 BoxCollider2D:
@@ -3264,6 +3268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 500
   posValue: 4511
+  gameClear: 0
 --- !u!1 &1975152773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,3 +3737,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 500
   posValue: 1027
+  gameClear: 0

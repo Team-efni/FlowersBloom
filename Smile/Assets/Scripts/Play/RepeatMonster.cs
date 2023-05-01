@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepeatMonster : MonoBehaviour
 {
-    public GameObject Monster;
+    public GameObject monster;
     [SerializeField] private int monsterCount; // 몬스터 등장 횟수
 
     // Start is called before the first frame update
@@ -22,12 +22,12 @@ public class RepeatMonster : MonoBehaviour
     public void MonsterColorOrigin()
     {
         Debug.Log("MonsterColorOrigin");
-        Monster.SetActive(true);
+        monster.SetActive(true);
 
         // 줄여놨던 a값 다시 원상 복귀
-        Color c = Monster.GetComponent<SpriteRenderer>().color;
+        Color c = monster.GetComponent<SpriteRenderer>().color;
         c.a = 225f;
-        Monster.GetComponent<SpriteRenderer>().color = c;
+        monster.GetComponent<SpriteRenderer>().color = c;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +42,10 @@ public class RepeatMonster : MonoBehaviour
             else if(monsterCount == 0)
             {
                 Debug.Log("Game Clear");
+                
+                
             }
         }
     }
+
 }
