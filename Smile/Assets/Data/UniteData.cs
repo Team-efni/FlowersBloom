@@ -19,6 +19,7 @@ public class UniteData
     public static string Closed_Monster = "Rose"; //최근접 몬스터
 
     //유저 관련 데이터
+    public static bool[] GameClear = { false, false, false}; // 난이도별 클리어 유무
 
     //설정 관련 데이터
     public static float BGM = 1f; //배경음악 볼륨

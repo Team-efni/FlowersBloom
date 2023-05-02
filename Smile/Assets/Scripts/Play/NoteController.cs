@@ -1,36 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteController : MonoBehaviour
 {
-    public Sprite[] noteSprite;
-    public GameObject[] note;
-    public int[] noteNums;
-    public bool meetMonster = false;
+    [Header("등장하는 노트 이미지")] public Sprite[] noteSprite;
+    [Header("사용할 상단 노트 UI 오브젝트")] public GameObject[] note;
+    private int[] noteNums;
+    private bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
-    public GameObject target;
+    [Header("fade out할 몬스터 오브젝트")] public GameObject target;
 
-    public bool noteSuccess = false; // 노트 성공
+    public bool noteSuccess; // 노트 성공
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialized();
         //현재 게임모드 지정
         UniteData.GameMode = "Play";
 
-        noteIndex = 0;
+/*        noteIndex = 0;
         meetMonster = false;
-        DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
+        DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화*/ //이거 충돌 원인 .................... 이런
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Initialized()
+    {
+        noteIndex = 0;
+        meetMonster = false;
+        noteSuccess = false;
+        DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
+
     }
 
     // Show Note
