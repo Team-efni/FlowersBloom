@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,13 +17,32 @@ public class PlayerController : MonoBehaviour
 
     // 목숨 포인트 관련
     //public int lifePoint = 3; // 목숨 포인트 -> Data/UniteData.cs로 이동
+    public GameObject[] go_lifePoints;
 
     // Start is called before the first frame update
     void Start()
     {
         scenePass = GetComponent<IScenePass>();
         scenePass.LoadSceneAsync("InGame-RN");
+        //UniteData.Move_Progress = true;
+
+        Initialized();
+    }
+
+    public void Initialized()
+    {
         UniteData.Move_Progress = true;
+        UniteData.lifePoint = 3;
+        UniteData.notePoint = 2;
+
+        for (int i = 0; i < go_notePoints.Length; i++)
+        {
+            go_notePoints[i].gameObject.SetActive(true);
+        }
+        for (int i = 0; i < go_lifePoints.Length; i++)
+        {
+            go_lifePoints[i].gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -61,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 if(UniteData.lifePoint > 0)
                 {
                     UniteData.lifePoint--;
+                    go_lifePoints[UniteData.lifePoint].gameObject.SetActive(false);
                 }
                 // 남아있지 않다면 게임 오버    
                 else if(UniteData.lifePoint == 0)
