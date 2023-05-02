@@ -14,6 +14,7 @@ public class UniteData
     public static int Node_Click_Counter = 0; //노드 클릭 횟수
 
     public static bool Move_Progress = true; //Play씬에서 움직임/정지 제어
+    public static Vector2 Player_Location_Past= Vector2.zero;
 
     public static string Selected_Character = "Dandelion"; //유저가 선택한 캐릭터
     public static string Closed_Monster = "Rose"; //최근접 몬스터
