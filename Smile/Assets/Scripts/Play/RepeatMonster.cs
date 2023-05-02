@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class RepeatMonster : MonoBehaviour
 {
-    public GameObject monster;
-    public int monsterCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
-
-    public GameClear s_gameclear;
+    public GameObject Monster;
+    [SerializeField] private int monsterCount; // 몬스터 등장 횟수
 
     // Start is called before the first frame update
     void Start()
     {
-        Initialized();
+        
     }
 
     // Update is called once per frame
@@ -21,68 +19,30 @@ public class RepeatMonster : MonoBehaviour
         
     }
 
-    public void Initialized()
-    {
-        switch (UniteData.Difficulty)
-        {
-            case 1 :
-                monsterCount = 6;
-                break;
-
-            case 2 :
-                monsterCount = 7;
-                break;
-
-            case 3 :
-                monsterCount = 10;
-                break;
-
-            default : 
-                monsterCount = 6;
-                break;
-        }
-        
-    }
-
     public void MonsterColorOrigin()
     {
         Debug.Log("MonsterColorOrigin");
-        monster.SetActive(true);
+        Monster.SetActive(true);
 
         // 줄여놨던 a값 다시 원상 복귀
-        Color c = monster.GetComponent<SpriteRenderer>().color;
+        Color c = Monster.GetComponent<SpriteRenderer>().color;
         c.a = 225f;
-        monster.GetComponent<SpriteRenderer>().color = c;
+        Monster.GetComponent<SpriteRenderer>().color = c;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("NoteManager"))
         {
-            /* 게임 클리어 테스트 용 코드
-            if (monsterCount == 6)
-            {
-                monsterCount--;
-                Debug.Log("Game Clear");
-                s_gameclear.ClearGame();
-            }
-            */
-
-
-            // /* 플레이용 코드
-            if (monsterCount > 1)
+            if (monsterCount > 0)
             {
                 monsterCount--;
                 MonsterColorOrigin();
             }
-            else if (monsterCount == 1)
+            else if(monsterCount == 0)
             {
                 Debug.Log("Game Clear");
-                s_gameclear.ClearGame();
             }
-
-            // */
         }
     }
-
 }
