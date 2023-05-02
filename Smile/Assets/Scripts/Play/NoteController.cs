@@ -1,36 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class NoteController : MonoBehaviour
 {
-    public Sprite[] noteSprite;
-    public GameObject[] note;
-    public int[] noteNums;
-    public bool meetMonster = false;
+    [Header("µîÀåÇÏ´Â ³ëÆ® ÀÌ¹ÌÁö")] public Sprite[] noteSprite;
+    [Header("»ç¿ëÇÒ »ó´Ü ³ëÆ® UI ¿ÀºêÁ§Æ®")] public GameObject[] note;
+    private int[] noteNums;
+    private bool meetMonster = false;
     private int noteIndex = 0;  // ÇöÀç ´­·¯¾ßÇÒ ³ëÆ®ÀÇ ÀÚ¸®
 
-    public GameObject target;
+    [Header("fade outÇÒ ¸ó½ºÅÍ ¿ÀºêÁ§Æ®")] public GameObject target;
 
-    public bool noteSuccess = false; // ³ëÆ® ¼º°ø
+    public bool noteSuccess; // ³ëÆ® ¼º°ø
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
+        Initialized();
+=======
         //ÇöÀç °ÔÀÓ¸ğµå ÁöÁ¤
         UniteData.GameMode = "Play";
 
         noteIndex = 0;
         meetMonster = false;
         DoBgShow(false); // ½ÃÀÛÇÒ ¶§´Â »ó´Ü ³ëÆ® UI ºñÈ°¼ºÈ­
+>>>>>>> f0e2791 (ìƒˆ ì´ë¯¸ì§€ ì ìš©)
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void Initialized()
+    {
+        noteIndex = 0;
+        meetMonster = false;
+        noteSuccess = false;
+        DoBgShow(false); // ½ÃÀÛÇÒ ¶§´Â »ó´Ü ³ëÆ® UI ºñÈ°¼ºÈ­
+
     }
 
     // Show Note
