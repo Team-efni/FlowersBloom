@@ -58,7 +58,9 @@ public class PlayerController : MonoBehaviour
         {
             // 몬스터에 닿으면 움직임을 멈춤
             UniteData.Move_Progress = false;
+
             
+
             //moveSpeed = 0;
 
             // 기회가 남아있다면 감소하고 씬 이동
