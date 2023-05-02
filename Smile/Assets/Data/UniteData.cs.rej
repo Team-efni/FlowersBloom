@@ -1,9 +1,0 @@
-diff a/Smile/Assets/Data/UniteData.cs b/Smile/Assets/Data/UniteData.cs	(rejected hunks)
-@@ -21,7 +21,6 @@
-     public static string Closed_Monster = "Rose"; //�ֱ��� ����
- 
-     //���� ���� ������
--    public static bool[] GameClear = { false, false, false}; // ���̵��� Ŭ���� ����
- 
-     //���� ���� ������
-     public static float BGM = 1f; //������� ����
