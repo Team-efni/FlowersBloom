@@ -7,6 +7,8 @@ public class RepeatMonster : MonoBehaviour
     public GameObject monster;
     [SerializeField] private int monsterCount; // 몬스터 등장 횟수
 
+    public GameClear s_gameclear;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,16 +36,15 @@ public class RepeatMonster : MonoBehaviour
     {
         if (collision.CompareTag("NoteManager"))
         {
-            if (monsterCount > 0)
+            /*if (monsterCount > 0)
             {
                 monsterCount--;
                 MonsterColorOrigin();
-            }
-            else if(monsterCount == 0)
+            }*/
+             if(monsterCount == 5)
             {
                 Debug.Log("Game Clear");
-                
-                
+                s_gameclear.ClearGame();
             }
         }
     }
