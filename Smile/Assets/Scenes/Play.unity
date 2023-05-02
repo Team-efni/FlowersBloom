@@ -1065,10 +1065,7 @@ MonoBehaviour:
   go_notePoints:
   - {fileID: 610206677}
   - {fileID: 1472557600}
-  go_lifePoints:
-  - {fileID: 995975331}
-  - {fileID: 2049995662}
-  - {fileID: 2120075221}
+  go_lifePoints: []
 --- !u!50 &848280318
 Rigidbody2D:
   serializedVersion: 4
