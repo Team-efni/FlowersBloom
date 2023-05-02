@@ -4,6 +4,7 @@
 *구현 목표
 *-노드의 일괄적인 생성 담당
 *-노드간 Line Renderer를 통한 연결
+*-씬 시작 담당
 *
 *난이도 변경 시 수정절차
 *-Initialize_node_setting() 수정 (난이도에 따른 노드의 개수 변경)
@@ -28,13 +29,15 @@ public class Node_data
 {
     public Vector2 vector2 = new Vector2();
     public Sprite procedure;
+    public Sprite Ring_Color;
 
-    public Node_data(Vector2 _vector2, Sprite _procedure)
+    public Node_data(Vector2 _vector2, Sprite _procedure, Sprite _ring_Color)
     {
         this.vector2 = _vector2;
 
         //TODO: 이미지 적용 안될 때 예외처리 필요
         this.procedure = _procedure;
+        this.Ring_Color = _ring_Color;
     }
 }
 
@@ -50,6 +53,9 @@ public class node : MonoBehaviour
     public Sprite Node_image_B;
     public Sprite Node_image_C;
     public Sprite Node_image_D;
+
+    [Header("아래의 항목에다가 노트의 링을 넣으면 됩니다")]
+    public Sprite[] Ring;
 
     [Header("노트간 간격을 조절합니다")]
     public float radius_MIN = 420f; //difault value 420f
@@ -69,7 +75,9 @@ public class node : MonoBehaviour
         else
         {
             SpriteRenderer sr = nodes_prefab.GetComponent<SpriteRenderer>();
+            SpriteRenderer rn = nodes_prefab.transform.Find("ring").GetComponent<SpriteRenderer>();
             sr.sprite = node_location[node_array].procedure;
+            rn.sprite = node_location[node_array].Ring_Color;
 
             Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
             
@@ -151,44 +159,44 @@ public class node : MonoBehaviour
         switch (UniteData.Difficulty)
         {
             case 1: //easy
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
                 break;
 
             case 2: //normal
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
                 break;
 
             case 3: //hard
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
                 break;
 
             default: //default
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[2]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[3]));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0]));
 
                 UniteData.Difficulty = 1;
                 break;
