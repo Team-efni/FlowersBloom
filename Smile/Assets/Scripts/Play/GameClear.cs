@@ -1,22 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class GameClear : MonoBehaviour
 {
     public GameObject bgGroup;
     public GameObject player;
 
-    private float xScreenHalfSize;
-    private bool b_playerMove = false; // 플레이어 이동 판단
+    private float playerStartPositionX;
+
+    private float xScreenSize;
+    private float playerMaxMovePosX; // 플레이어 최대 이동 거리
+
+    private bool b_playerMove; // 플레이어 이동 판단 - 게임 재시작시 초기화
 
     [SerializeField] float moveSpeed; // Floor2의 RepeatBG Speed랑 똑같은 속도로 설정
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialized();
+
+        xScreenSize = Camera.main.orthographicSize * Camera.main.aspect * 2;
+        playerStartPositionX = player.transform.position.x;
+        playerMaxMovePosX = playerStartPositionX + xScreenSize;
+    }
+
+    public void Initialized()
+    {
         b_playerMove = false;
-        xScreenHalfSize = Camera.main.orthographicSize;
     }
 
     // Update is called once per frame
@@ -24,9 +37,17 @@ public class GameClear : MonoBehaviour
     {
         if(b_playerMove)
         {
-            if(player.transform.position.x < xScreenHalfSize * 2)
+            if(player.transform.position.x < playerMaxMovePosX)
             {
                 PlayerMove();
+            }
+
+            // 화면 밖에 도착하면 페이드 아웃 애니메이션 후 씬 전환
+            else
+            {
+                Animator fadeAnimator = GameObject.Find("FadeOut_Clear").GetComponent<Animator>();
+                
+                fadeAnimator.SetBool("IsStartFade", true);
             }
             
         }
@@ -35,14 +56,17 @@ public class GameClear : MonoBehaviour
     public void ClearGame()
     {
         bgStop();
+        UniteData.Move_Progress = false;
+        UniteData.GameClear[UniteData.Difficulty] = true;
         b_playerMove = true;
     }
 
     private void bgStop()
     {
-        for (int i = 0; i < bgGroup.transform.childCount; i++)
+        // 배경 자식으로 찾기 -> 나중에 태그로 찾는거로 수정해야함
+        for (int i = 0; i < bgGroup.transform.childCount-1; i++)
         {
-            bgGroup.transform.GetChild(i).GetComponent<RepeatBG>().setGameClearTrue();
+            bgGroup.transform.GetChild(i).GetComponent<RepeatBG>().SetGameClearTrue();
         }
     }
 

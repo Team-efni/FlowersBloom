@@ -11,12 +11,21 @@ public class RepeatBG : MonoBehaviour
     private Vector2 startPos;
     private float newPos;
 
-    public bool gameClear = false;
+    private bool gameClear;
 
     // Start is called before the first frame update
     void Start()
     {
+        Initialized();
+    }
+
+    public void Initialized()
+    {
+        Debug.Log("repeatBG_I : " + transform.position.x);
+        transform.position = GameObject.Find("OriginPos").transform.position;
         startPos = transform.position;
+        gameClear = false;
+        newPos = 0f;
     }
 
     // Update is called once per frame
@@ -27,9 +36,8 @@ public class RepeatBG : MonoBehaviour
         transform.position = (startPos + Vector2.left * newPos);
     }
 
-    public void setGameClearTrue()
+    public void SetGameClearTrue()
     {
         gameClear = true;
     }
-
 }
