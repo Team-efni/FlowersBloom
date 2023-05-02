@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 1185183942132619911}
   - component: {fileID: 1185183942132619896}
   - component: {fileID: 1185183942132619897}
-  - component: {fileID: 1359284264874466236}
   m_Layer: 0
-  m_Name: BackBoard
+  m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,25 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1359284264874466236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1185183942132619910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e380ab867d658648a78ae006aeb277b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BackBoard:
-  - {fileID: 21300000, guid: 9ca9b713b3d0a49429c8a53e87a48892, type: 3}
-  - {fileID: 21300000, guid: 7452c77fc82690147bd42287efe7b05a, type: 3}
-  - {fileID: 21300000, guid: 9340a61fb3ff53b40ad8a5f7c06a1e5f, type: 3}
-  - {fileID: 21300000, guid: 5650115c3295b8747ab3c5ee9531eee6, type: 3}
-  BackBoardRenderer_Top: {fileID: 1185183942529719451}
-  BackBoardRenderer_Bottom: {fileID: 1185183942701016683}
 --- !u!1 &1185183942529719449
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +120,7 @@ GameObject:
   - component: {fileID: 1185183942529719451}
   - component: {fileID: 1185183942529719452}
   m_Layer: 0
-  m_Name: CutScene_Top
+  m_Name: CutScene_User
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +226,7 @@ GameObject:
   - component: {fileID: 1185183942701016683}
   - component: {fileID: 1185183942701016684}
   m_Layer: 0
-  m_Name: CutScene_Bottom
+  m_Name: CutScene_Mob
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

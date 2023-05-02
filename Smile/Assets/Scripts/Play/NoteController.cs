@@ -18,16 +18,7 @@ public class NoteController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
         Initialized();
-=======
-        //ÇöÀç °ÔÀÓ¸ğµå ÁöÁ¤
-        UniteData.GameMode = "Play";
-
-        noteIndex = 0;
-        meetMonster = false;
-        DoBgShow(false); // ½ÃÀÛÇÒ ¶§´Â »ó´Ü ³ëÆ® UI ºñÈ°¼ºÈ­
->>>>>>> f0e2791 (ìƒˆ ì´ë¯¸ì§€ ì ìš©)
     }
 
     // Update is called once per frame
