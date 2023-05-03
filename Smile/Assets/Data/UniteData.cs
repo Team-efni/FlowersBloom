@@ -19,6 +19,8 @@ public class UniteData
     public static string Selected_Character = "Dandelion"; //유저가 선택한 캐릭터
     public static string Closed_Monster = "Rose"; //최근접 몬스터
 
+    public static bool ReStart = false; // 유저가 재시작 버튼을 누른 경우
+
     //유저 관련 데이터
     public static bool[] GameClear = { false, false, false}; // 난이도별 클리어 유무
 

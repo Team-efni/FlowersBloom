@@ -25,6 +25,7 @@ public class GameclearManager : MonoBehaviour
 
     public void RetryGame()
     {
+        UniteData.ReStart = true;
         SceneManager.LoadScene("Play");
     }
 }

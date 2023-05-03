@@ -2702,6 +2702,7 @@ GameObject:
   - component: {fileID: 1305994536}
   - component: {fileID: 1305994537}
   - component: {fileID: 1305994538}
+  - component: {fileID: 1305994539}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2751,6 +2752,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35371c8175e8b184aa006efce71494ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1305994539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305994535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a4881c2e757847489b8d5d05bbea04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monster_Image:
+  - {fileID: 21300000, guid: d9a057aba293de647b5539d62dff5807, type: 3}
+  - {fileID: 21300000, guid: 97372efc81ba6fd46b5cc3038a8f7585, type: 3}
+  monster: {fileID: 1077886640}
 --- !u!1 &1472557600
 GameObject:
   m_ObjectHideFlags: 0
