@@ -7,11 +7,13 @@ public class NoteController : MonoBehaviour
 {
     [Header("등장하는 노트 이미지")] public Sprite[] noteSprite;
     [Header("사용할 상단 노트 UI 오브젝트")] public GameObject[] note;
+    private int noteLength; // 난이도에 따른 노트 등장 개수
     private int[] noteNums;
     private bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
+    [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
     public bool noteSuccess; // 노트 성공
 
@@ -21,10 +23,6 @@ public class NoteController : MonoBehaviour
         Initialized();
         //현재 게임모드 지정
         UniteData.GameMode = "Play";
-
-/*        noteIndex = 0;
-        meetMonster = false;
-        DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화*/ //이거 충돌 원인 .................... 이런
     }
 
     // Update is called once per frame
@@ -39,7 +37,6 @@ public class NoteController : MonoBehaviour
         meetMonster = false;
         noteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
-
     }
 
     // Show Note
@@ -48,6 +45,7 @@ public class NoteController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Player Meet");
+            Set_Note_Count(); // 만난 몬스터 확인
             NoteSetting();
             DoBgShow(true); // 상단 노트 UI 활성화
             meetMonster = true;
@@ -57,14 +55,16 @@ public class NoteController : MonoBehaviour
     private void NoteSetting()
     {
         noteSuccess = false;
-        noteNums = new int[note.Length];
+        noteNums = new int[noteLength];
 
         // 랜덤으로 노트 생성
-        for (int i = 0; i < note.Length; i++)
+        for (int i = 0; i < noteLength; i++)
         {
             noteNums[i] = Random.Range(0, 4);
             note[i].GetComponent<Image>().sprite = noteSprite[noteNums[i]];
         }
+
+        Set_Note();
     }
 
     public void NoteDisabled()
@@ -77,7 +77,7 @@ public class NoteController : MonoBehaviour
     public void NoteAbled()
     {
         // 노트 원래색으로 만들기
-        for (int i = 0; i < note.Length; i++)
+        for (int i = 0; i < noteLength; i++)
         {
             Image image = note[i].GetComponent<Image>();
             image.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
@@ -133,7 +133,7 @@ public class NoteController : MonoBehaviour
         NoteDisabled();
         noteIndex++;
 
-        if (noteIndex == note.Length)
+        if (noteIndex == noteLength)
         {
             // 모두 성공한 경우
             Debug.Log("All Success");
@@ -147,7 +147,7 @@ public class NoteController : MonoBehaviour
 
     private void DoBgShow(bool check)
     {
-        GameObject.Find("Canvas").transform.GetChild(3).gameObject.SetActive(check); // Note_Bg
+        Note_Bg.SetActive(check); // Note_Bg
     }
 
     // 몬스터 죽기
@@ -178,5 +178,40 @@ public class NoteController : MonoBehaviour
     {
         noteIndex = 0;
         NoteAbled();
+    }
+
+    private void Set_Note_Count()
+    {
+        switch(UniteData.Closed_Monster)
+        {
+            case "Rose":
+                noteLength = 3;
+                break;
+            case "Cosmos":
+                noteLength = 5;
+                break;
+            case "MorningGlory":
+                noteLength = 6;
+                break;
+            default:
+                noteLength = 3;
+                break;
+        }
+        Debug.Log("noteLength : " + noteLength);
+    }
+
+    private void Set_Note()
+    {
+        // 자식 노트들 모두 비활성화
+        for (int i = 0; i < 6; i++)
+        {
+            Note_Bg.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        // 몬스터에 해당하는 수만큼 활성화
+        for (int i = 0; i < noteLength; i++)
+        {
+            Note_Bg.transform.GetChild(i).gameObject.SetActive(true);
+        }
     }
 }
