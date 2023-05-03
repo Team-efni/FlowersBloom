@@ -22,7 +22,7 @@ public class RepeatBG : MonoBehaviour
     public void Initialized()
     {
         //Debug.Log("repeatBG_I : " + transform.position.x);
-        transform.position = GameObject.Find("OriginPos").transform.position;
+        //transform.position = GameObject.Find("OriginPos").transform.position;
 
         if (UniteData.Player_Location_Past != Vector2.zero && this.gameObject.name == "Floor2") 
         {
