@@ -25,6 +25,6 @@ public class StartBtnTest : MonoBehaviour
         //SceneManager.LoadScene("Play");
         
         //로드 불러오기
-        sceneLoader.SceneLoadStart();
+        sceneLoader.SceneLoadStart("Play");
     }
 }

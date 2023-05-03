@@ -21,11 +21,12 @@ public class RepeatBG : MonoBehaviour
 
     public void Initialized()
     {
-        Debug.Log("repeatBG_I : " + transform.position.x);
+        //Debug.Log("repeatBG_I : " + transform.position.x);
         transform.position = GameObject.Find("OriginPos").transform.position;
-        
-        if(UniteData.Player_Location_Past!=Vector2.zero)
+
+        if (UniteData.Player_Location_Past != Vector2.zero && this.gameObject.name == "Floor2") 
         {
+            Debug.Log("Floor2 Á¢±ÙµÊ");
             startPos = UniteData.Player_Location_Past; //ÄÆ¾À¿¡¼­ µÇµ¹¾Æ¿Ã ¶§ ¸Ê ·Îµù ¿À·ù ¹ß»ý 
         }
         else
@@ -33,7 +34,7 @@ public class RepeatBG : MonoBehaviour
             startPos = transform.position;
         }
 
-        Debug.Log("SP: "+startPos);
+        //Debug.Log("SP: "+startPos);
 
         gameClear = false;
         newPos = 0f;
@@ -50,7 +51,7 @@ public class RepeatBG : MonoBehaviour
             }
             else
             {
-                UniteData.Player_Location_Past = startPos + Vector2.left * newPos - new Vector2(2f * speed, 0);
+                UniteData.Player_Location_Past = startPos + Vector2.left * newPos - new Vector2(-9f * speed, 0);
             }
         }
         transform.position = (startPos + Vector2.left * newPos);
@@ -58,7 +59,7 @@ public class RepeatBG : MonoBehaviour
 
     public void SetGameClearTrue()
     {
-        UniteData.Player_Location_Past = Vector2.zero;
+        //UniteData.Player_Location_Past = Vector2.zero;
         gameClear = true;
     }
 }

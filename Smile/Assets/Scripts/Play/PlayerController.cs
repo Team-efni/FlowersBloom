@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
 
         //컷씬 애니메이션이 끝나면 씬 바로 이동
         yield return new WaitForSeconds(1.17f);
-        scenePass.SceneLoadStart();
+        scenePass.SceneLoadStart("InGame-RN");
     }
 
     private void Make_Invisible_UI()

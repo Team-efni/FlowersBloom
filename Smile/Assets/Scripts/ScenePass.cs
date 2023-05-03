@@ -19,7 +19,7 @@ using UnityEngine.SceneManagement;
 public interface IScenePass
 {
     public void LoadSceneAsync(string sceneName);
-    public void SceneLoadStart();
+    public void SceneLoadStart(string sceneName);
 }
 
 
@@ -48,13 +48,16 @@ public class ScenePass : MonoBehaviour, IScenePass
         }
     }
 
-    public void SceneLoadStart()
+    public void SceneLoadStart(string sceneName)
     {
-        while(!enable) 
+        if(enable)
         {
-            
+            asyncLoad.allowSceneActivation = true;
         }
-        asyncLoad.allowSceneActivation = true;
+        else
+        {
+            SceneLoad_Immediately(sceneName);
+        }
         return;
     }
 
