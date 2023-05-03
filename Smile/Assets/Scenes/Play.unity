@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 275228090}
   m_Layer: 0
   m_Name: "3.\uC911\uACBD_2-\uB098\uBB34"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1198,7 +1198,7 @@ GameObject:
   - component: {fileID: 901603107}
   m_Layer: 0
   m_Name: "2.\uC911\uACBD_1-\uB3CC"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2039,7 +2039,7 @@ GameObject:
   - component: {fileID: 1121523351}
   m_Layer: 0
   m_Name: "4. \uC6D0\uACBD_1-\uC0B0"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2430,7 +2430,7 @@ GameObject:
   - component: {fileID: 1244001942}
   m_Layer: 0
   m_Name: "\uADFC\uACBD_2-\uAC00\uC2DC"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3678,7 +3678,7 @@ GameObject:
   - component: {fileID: 1972340542}
   m_Layer: 0
   m_Name: "Floor2-\uB545"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3913,7 +3913,7 @@ GameObject:
   - component: {fileID: 2001298233}
   m_Layer: 0
   m_Name: "5. \uC6D0\uACBD_2-\uAD6C\uB984"
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

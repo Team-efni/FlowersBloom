@@ -59,17 +59,6 @@ public class RepeatMonster : MonoBehaviour
     {
         if (collision.CompareTag("NoteManager"))
         {
-            /* 게임 클리어 테스트 용 코드
-            if (monsterCount == 6)
-            {
-                monsterCount--;
-                Debug.Log("Game Clear");
-                s_gameclear.ClearGame();
-            }
-            */
-
-
-            // /* 플레이용 코드
             if (monsterCount > 1)
             {
                 monsterCount--;
@@ -80,8 +69,6 @@ public class RepeatMonster : MonoBehaviour
                 Debug.Log("Game Clear");
                 s_gameclear.ClearGame();
             }
-
-            // */
         }
     }
 

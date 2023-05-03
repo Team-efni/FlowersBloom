@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - NoteManager
   - PlayScene_UI
+  - Background
   layers:
   - Default
   - TransparentFX

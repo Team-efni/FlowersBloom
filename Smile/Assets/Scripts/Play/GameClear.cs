@@ -63,10 +63,11 @@ public class GameClear : MonoBehaviour
 
     private void bgStop()
     {
-        // 배경 자식으로 찾기 -> 나중에 태그로 찾는거로 수정해야함
-        for (int i = 0; i < bgGroup.transform.childCount-1; i++)
+        GameObject[] Background = GameObject.FindGameObjectsWithTag("Background");
+
+        for (int i = 0; i < Background.Length; i++)
         {
-            bgGroup.transform.GetChild(i).GetComponent<RepeatBG>().SetGameClearTrue();
+            Background[i].GetComponent<RepeatBG>().SetGameClearTrue();
         }
     }
 
