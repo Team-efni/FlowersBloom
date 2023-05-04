@@ -11,6 +11,7 @@ public class ReStartGame : MonoBehaviour
     private PlayerController s_pc;
     private RepeatBG s_sb;
     private RepeatMonster s_rm;
+    private BtnStop s_bs;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class ReStartGame : MonoBehaviour
         s_pc = FindObjectOfType<PlayerController>();
         s_sb = FindObjectOfType<RepeatBG>();
         s_rm = FindObjectOfType<RepeatMonster>();
+        s_bs = FindObjectOfType<BtnStop>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class ReStartGame : MonoBehaviour
             s_nc.Initialized();
             s_pc.Initialized();
             s_rm.Initialized();
+            s_bs.Initialized();
 
             UniteData.ReStart = false;
         }

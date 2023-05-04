@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 1e21a2f0fb4f41848b3a18bf51606ca1
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - OSeong and HanEum
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 152ce4057b67e7746a0cc6df94052379, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
