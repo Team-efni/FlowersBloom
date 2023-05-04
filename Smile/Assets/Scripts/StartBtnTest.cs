@@ -23,7 +23,10 @@ public class StartBtnTest : MonoBehaviour
     public void StartBtn()
     {
         //SceneManager.LoadScene("Play");
-        
+
+        //게임 관련 전역변수 초기화
+        UniteData.Player_Location_Past = Vector2.zero;
+
         //로드 불러오기
         sceneLoader.SceneLoadStart("Play");
     }

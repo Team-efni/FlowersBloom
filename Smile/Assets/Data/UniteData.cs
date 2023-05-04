@@ -16,8 +16,8 @@ public class UniteData
     public static bool Move_Progress = true; //Play씬에서 움직임/정지 제어
     public static Vector2 Player_Location_Past= Vector2.zero;
 
-    public static string Selected_Character = "Dandelion"; //유저가 선택한 캐릭터
-    public static string Closed_Monster = "Rose"; //최근접 몬스터 ["Rose", "Cosmos", "MorningGlory"]
+    public static string Selected_Character = "Dandelion"; //유저가 선택한 캐릭터 ["Dandelion", "Tulip"]
+    public static string Closed_Monster = "Rose"; //최근접 몬스터 ["Rose", "Kosmos", "MorningGlory"]
 
     public static bool ReStart = false; // 유저가 재시작 버튼을 누른 경우
 

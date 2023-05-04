@@ -26,8 +26,8 @@ public class RepeatBG : MonoBehaviour
 
         if (UniteData.Player_Location_Past != Vector2.zero && this.gameObject.name == "Floor2") 
         {
-            Debug.Log("Floor2 접근됨");
-            startPos = UniteData.Player_Location_Past; //컷씬에서 되돌아올 때 맵 로딩 오류 발생 
+            //Debug.Log("Floor2 접근됨");
+            startPos = UniteData.Player_Location_Past;
         }
         else
         {
@@ -51,6 +51,7 @@ public class RepeatBG : MonoBehaviour
             }
             else
             {
+                //일단 저장해두고 컷씬 클리어하면 Floor2를 이 위치로 불러옴
                 UniteData.Player_Location_Past = startPos + Vector2.left * newPos - new Vector2(-9f * speed, 0);
             }
         }
