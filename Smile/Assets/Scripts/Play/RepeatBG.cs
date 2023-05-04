@@ -36,7 +36,7 @@ public class RepeatBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("CLASS: "+timer.GetTime());
+        //Debug.Log("CLASS: "+timer.GetTime());
         if(!gameClear)
         {
             if(UniteData.Move_Progress)
