@@ -187,7 +187,7 @@ public class NoteController : MonoBehaviour
             case "Rose":
                 noteLength = 3;
                 break;
-            case "Kosmos":
+            case "Cosmos":
                 noteLength = 5;
                 break;
             case "MorningGlory":
