@@ -54,6 +54,7 @@ public class node_delete : MonoBehaviour
         //게임실패처리
         if (Node_Result.Miss_Node_Click())
         {
+
             Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
             // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
             fadeAnimator.SetBool("IsStartFade", true);

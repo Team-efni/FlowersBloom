@@ -61,6 +61,7 @@ public class node : MonoBehaviour
     public float radius_MIN = 420f; //difault value 420f
     public float radius_MAX = 1000f; //difault value 1000f
 
+    private IScenePass sceneLoader;
 
     //public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
@@ -113,8 +114,6 @@ public class node : MonoBehaviour
     private IEnumerator D_Coroutine()
     {
         List<Vector2> vector = new List<Vector2>();
-        //UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
-        yield return new WaitForSeconds(0.8f);
 
         for (int i=0; i<node_location.Count; i++)
         {
@@ -129,6 +128,11 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Play 씬을 ScenePass를 통해 비동기적으로 로드한다
+        sceneLoader = GetComponent<IScenePass>();
+        sceneLoader.LoadSceneAsync("Play");
+
+
         UniteData.GameMode = "CutScene";
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
@@ -148,7 +152,7 @@ public class node : MonoBehaviour
             UniteData.Node_Click_Counter = 0;
             UniteData.GameMode = "Play";
             //클리어 애니메이션 실행
-            SceneManager.LoadScene("Play");
+            sceneLoader.SceneLoadStart("Play");
         }
 
 

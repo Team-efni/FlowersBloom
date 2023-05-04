@@ -1101,6 +1101,7 @@ GameObject:
   - component: {fileID: 1741721796}
   - component: {fileID: 1741721795}
   - component: {fileID: 1741721794}
+  - component: {fileID: 1741721797}
   m_Layer: 0
   m_Name: Node_Manage
   m_TagString: Untagged
@@ -1233,10 +1234,10 @@ MonoBehaviour:
   Node_image_C: {fileID: 21300000, guid: 638b65fb808edf94eba68ee6f50a828e, type: 3}
   Node_image_D: {fileID: 21300000, guid: bf4fa3def1506e1478bf8f9ec99ac610, type: 3}
   Ring:
-  - {fileID: 21300000, guid: 28e7a837e59e8a946a299cc30d5cb40f, type: 3}
-  - {fileID: 21300000, guid: 8dd0c2d59a9395841b071474b336b01c, type: 3}
-  - {fileID: 21300000, guid: d5f6b9957f9ad0145bc6f631d37dea37, type: 3}
-  - {fileID: 21300000, guid: c34666dc9768cb242abe048620d3d416, type: 3}
+  - {fileID: 21300000, guid: 0809af20b771c4f43bc87405ab059b5a, type: 3}
+  - {fileID: 21300000, guid: ce4e765be706e27438f043d254789bf0, type: 3}
+  - {fileID: 21300000, guid: edf1f24e0c4c6d840bf218ea20008bc2, type: 3}
+  - {fileID: 21300000, guid: 06bbf9f25c013664693b4a5c762ffd68, type: 3}
   radius_MIN: 420
   radius_MAX: 1000
 --- !u!4 &1741721796
@@ -1254,6 +1255,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741721797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741721793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cd851cdaa25664f843f01bacde5770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2032884487
 GameObject:
   m_ObjectHideFlags: 0
