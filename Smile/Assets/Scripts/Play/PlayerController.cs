@@ -19,11 +19,15 @@ public class PlayerController : MonoBehaviour
     //public int lifePoint = 3; // 목숨 포인트 -> Data/UniteData.cs로 이동
     public GameObject[] go_lifePoints;
 
+    // 플레이어 애니메이션
+    Animator playerAinm;
+
     // Start is called before the first frame update
     void Start()
     {
         scenePass = GetComponent<IScenePass>();
         scenePass.LoadSceneAsync("InGame-RN");
+        playerAinm = GetComponent<Animator>();
         //UniteData.Move_Progress = true;
 
         Initialized();
@@ -34,6 +38,8 @@ public class PlayerController : MonoBehaviour
         UniteData.Move_Progress = true;
         UniteData.lifePoint = 3;
         UniteData.notePoint = 2;
+
+        playerAinm.SetBool("IsMoving", true);
 
         for (int i = 0; i < go_notePoints.Length; i++)
         {
@@ -59,7 +65,8 @@ public class PlayerController : MonoBehaviour
             // 몬스터에 닿으면 움직임을 멈춤
             UniteData.Move_Progress = false;
 
-            
+            // 플레이어 애니메이션 멈춤
+            playerAinm.SetBool("IsMoving", false);
 
             //moveSpeed = 0;
 
