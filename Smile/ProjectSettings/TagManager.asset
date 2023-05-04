@@ -46,3 +46,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3384049489
+    locked: 0
+  - name: Player
+    uniqueID: 1229521541
+    locked: 0
+  - name: Monster
+    uniqueID: 1652337641
+    locked: 0
+  - name: Canvas
+    uniqueID: 993476265
+    locked: 0
+  - name: FadeOut
+    uniqueID: 1075064253
+    locked: 0
