@@ -39,8 +39,8 @@ public class ReStartGame : MonoBehaviour
             s_gc.Initialized();
             s_nc.Initialized();
             s_pc.Initialized();
-            s_rm.Initialized();
             s_bs.Initialized();
+            s_rm.Initialized();
 
             UniteData.ReStart = false;
         }

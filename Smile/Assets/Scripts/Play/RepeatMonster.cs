@@ -5,14 +5,15 @@ using UnityEngine;
 public class RepeatMonster : MonoBehaviour
 {
     public GameObject monster;
-    public int monsterCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
+    static public int monsterCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
 
     public GameClear s_gameclear;
 
     // Start is called before the first frame update
     void Start()
     {
-        Initialized();
+        if(UniteData.ReStart)
+            Initialized();
     }
 
     // Update is called once per frame
@@ -23,6 +24,7 @@ public class RepeatMonster : MonoBehaviour
 
     public void Initialized()
     {
+        Debug.Log("몬스터 마리수 초기화");
         switch (UniteData.Difficulty)
         {
             case 1 :
@@ -41,11 +43,12 @@ public class RepeatMonster : MonoBehaviour
                 monsterCount = 6;
                 break;
         }
-        
+        UniteData.ReStart = false;
     }
 
     public void MonsterColorOrigin()
     {
+        Debug.Log("monsterCount" + monsterCount);
         Debug.Log("MonsterColorOrigin");
         monster.SetActive(true);
 
