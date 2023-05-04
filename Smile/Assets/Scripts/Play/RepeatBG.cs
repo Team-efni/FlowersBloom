@@ -12,29 +12,22 @@ public class RepeatBG : MonoBehaviour
     private float newPos;
 
     private bool gameClear;
+    private static Game_Timer timer;
 
     // Start is called before the first frame update
     void Start()
     {
+        //6초 전 과거 위치로 회기 (이동 전 애니메이션 2초 + 이동 4초)
+        timer = new Game_Timer(UniteData.Play_Scene_Time < 6f ? UniteData.Play_Scene_Time : UniteData.Play_Scene_Time - 6f);
+        //Debug.Log("Start Point: "+UniteData.Player_Location_Past);
         Initialized();
     }
 
     public void Initialized()
     {
+        startPos = transform.position;
         //Debug.Log("repeatBG_I : " + transform.position.x);
         //transform.position = GameObject.Find("OriginPos").transform.position;
-
-        if (UniteData.Player_Location_Past != Vector2.zero && this.gameObject.name == "Floor2") 
-        {
-            //Debug.Log("Floor2 접근됨");
-            startPos = UniteData.Player_Location_Past;
-        }
-        else
-        {
-            startPos = transform.position;
-        }
-
-        //Debug.Log("SP: "+startPos);
 
         gameClear = false;
         newPos = 0f;
@@ -43,16 +36,17 @@ public class RepeatBG : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("CLASS: "+timer.GetTime());
         if(!gameClear)
         {
             if(UniteData.Move_Progress)
             {
-                newPos = Mathf.Repeat(Time.time * speed, posValue);
+                newPos = Mathf.Repeat(timer.GetTime() * speed, posValue);
             }
             else
             {
-                //일단 저장해두고 컷씬 클리어하면 Floor2를 이 위치로 불러옴
-                UniteData.Player_Location_Past = startPos + Vector2.left * newPos - new Vector2(-9f * speed, 0);
+                //현재 시간 백업
+                UniteData.Play_Scene_Time = timer.GetTime();
             }
         }
         transform.position = (startPos + Vector2.left * newPos);

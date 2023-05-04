@@ -48,6 +48,7 @@ public class NoteController : MonoBehaviour
             Set_Note_Count(); // 만난 몬스터 확인
             NoteSetting();
             DoBgShow(true); // 상단 노트 UI 활성화
+
             meetMonster = true;
         }
     }

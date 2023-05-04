@@ -25,6 +25,7 @@ public class StartBtnTest : MonoBehaviour
         //SceneManager.LoadScene("Play");
 
         //게임 관련 전역변수 초기화
+        UniteData.Play_Scene_Time = 0f;
         UniteData.Player_Location_Past = Vector2.zero;
 
         //로드 불러오기

@@ -113,8 +113,8 @@ public class node : MonoBehaviour
     private IEnumerator D_Coroutine()
     {
         List<Vector2> vector = new List<Vector2>();
-        UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
-        yield return new WaitForSeconds(1.5f);
+        //UnityEngine.Debug.Log("좌표 설정 완료 잠시 대기...");
+        yield return new WaitForSeconds(0.8f);
 
         for (int i=0; i<node_location.Count; i++)
         {
@@ -129,7 +129,7 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UniteData.GameMode = "CutScene";
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
 
@@ -146,7 +146,7 @@ public class node : MonoBehaviour
             //데이터 초기화
             UniteData.Node_LifePoint = 2;
             UniteData.Node_Click_Counter = 0;
-
+            UniteData.GameMode = "Play";
             //클리어 애니메이션 실행
             SceneManager.LoadScene("Play");
         }
