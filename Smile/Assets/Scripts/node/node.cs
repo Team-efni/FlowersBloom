@@ -129,7 +129,6 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("현 목숨 포인트: " + UniteData.notePoint);
         //Play 씬을 ScenePass를 통해 비동기적으로 로드한다
         sceneLoader = GetComponent<IScenePass>();
         sceneLoader.LoadSceneAsync("Play");
