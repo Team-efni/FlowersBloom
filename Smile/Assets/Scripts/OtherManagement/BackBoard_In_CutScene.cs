@@ -39,7 +39,7 @@ public class BackBoard_In_CutScene : MonoBehaviour
             return 2;
         }
 
-        else if(name=="Kosmos")
+        else if(name=="Cosmos")
         {
             return 3;
         }

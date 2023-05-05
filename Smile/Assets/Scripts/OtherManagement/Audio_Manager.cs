@@ -41,5 +41,8 @@ public class Audio_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        AudioSource ass = gameObject.GetComponent<AudioSource>();
+        ass.volume = UniteData.BGM;
     }
 }
