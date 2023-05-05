@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,6 +10,7 @@ public class GameClear : MonoBehaviour
     public GameObject player;
 
     public GameObject[] canPlay_prefab;
+    public GameObject[] backgrounds;
 
     private float playerStartPositionX;
 
@@ -36,6 +38,30 @@ public class GameClear : MonoBehaviour
         else
         {
             Debug.LogError("GameClear.cs 파일에서 캐릭터 선택 오류가 발생했습니다 \n 아마도 UniteData.Selected_Character 지정 문제이거나 해당 스크립트의 조건문에서 오류를 수정하세요.");
+        }
+
+
+        // 처음에는 모든 배경 초기화
+        for(int i = 0; i < backgrounds.Length; i++)
+        {
+            backgrounds[i].SetActive(false);
+        }
+
+        // 배경 지정
+        switch (UniteData.Difficulty)
+        {
+            case 1:
+                backgrounds[0].SetActive(true);
+                break;
+            case 2:
+                backgrounds[1].SetActive(true);
+                break;
+            case 3:
+                //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
+                break;
+            default:
+                backgrounds[0].SetActive(true);
+                break;
         }
     }
     // Start is called before the first frame update

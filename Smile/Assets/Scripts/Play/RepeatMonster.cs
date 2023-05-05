@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RepeatMonster : MonoBehaviour
 {
-    public GameObject monster;
+    public GameObject[] monsters;
+    private GameObject monster;
     static public int monsterCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
 
     public GameClear s_gameclear;
@@ -29,18 +30,22 @@ public class RepeatMonster : MonoBehaviour
         {
             case 1 :
                 monsterCount = 6;
+                monster = monsters[0];
                 break;
 
             case 2 :
                 monsterCount = 7;
+                monster = monsters[1];
                 break;
 
             case 3 :
                 monsterCount = 10;
+                //monster = monsters[2];
                 break;
 
             default : 
                 monsterCount = 6;
+                monster = monsters[0];
                 break;
         }
         UniteData.ReStart = false;
