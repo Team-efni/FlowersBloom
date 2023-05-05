@@ -1,17 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 using UnityEngine.UI;
 
-/*public class MapLock : MonoBehaviour
+public class MapLock : MonoBehaviour
 {
+    [SerializeField] List<GameObject> StageList;
     private Button btn;
     void Start()
+    {
+  /*    StageList[0].GetComponent<Stage>().LockMap();
+        StageList[1].GetComponent<Stage>().LockMap();
+        StageList[2].GetComponent<Stage>().LockMap();
+  */
+        for (int i = 0; i < StageList.Count; i++)
         {
-        btn = item.transform.Find("Button").GetComponent<Button>();
-        btn.interactable = false; // 버튼 클릭을 비활성
-        btn.interactable = true; // 버튼 클릭을 
+            if (UniteData.GameClear[i])
+            {
+                StageList[i].GetComponent<Stage>().UnlockMap();
+            }
+            else
+            {
+                StageList[i].GetComponent<Stage>().LockMap();
+            }
         }
+    }
 }
-*/
