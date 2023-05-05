@@ -26,6 +26,7 @@ public class Select_Supervisor : MonoBehaviour
         etc6
     }
 
+    public GameObject Select_Icon;
     public GameObject[] Card;
 
     // Start is called before the first frame update
@@ -36,21 +37,37 @@ public class Select_Supervisor : MonoBehaviour
         {
             CheckList(gm);
         }
+    }
 
+    private void Update()
+    {
         //선택된 캐릭터 정보 체크 후 강조
-        foreach(GameObject Cname in Card)
+        foreach (GameObject Cname in Card)
         {
-            if(Cname.name == UniteData.Selected_Character)
+            if (Cname.name == UniteData.Selected_Character)
             {
-                Debug.Log(Cname.name + "을 강조합니다");
+                Select_Icon.transform.position = Cname.transform.position + new Vector3(0f, 140f, 0f);
             }
         }
-
     }
 
     private void CheckList(GameObject character_card)
     {
         Card_Status CS = character_card.GetComponent<Card_Status>();
+
+        //잠금 여부 결정
+        if (CS.isEasyClear == UniteData.GameClear[0] && CS.isEasyClear)
+        {
+            CS.unlocked = true;
+        }
+        else if (CS.isNormalClear == UniteData.GameClear[1] && CS.isNormalClear)
+        {
+            CS.unlocked = true;
+        }
+        else if (CS.isHardClear == UniteData.GameClear[2] && CS.isHardClear)
+        {
+            CS.unlocked = true;
+        }
 
         //잠금이 풀린 상황이면
         if (CS.unlocked)

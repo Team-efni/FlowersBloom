@@ -13,4 +13,8 @@ public class Card_Status : MonoBehaviour
     public bool unlocked=false; //false가 잠긴거임
 
     //잠금 조건 Check
+    [Header("아래는 잠금조건입니다.")]
+    public bool isEasyClear = false;
+    public bool isNormalClear = false;
+    public bool isHardClear = false;
 }
