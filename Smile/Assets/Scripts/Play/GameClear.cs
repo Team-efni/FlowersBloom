@@ -42,14 +42,12 @@ public class GameClear : MonoBehaviour
                 PlayerMove();
             }
 
-            // 화면 밖에 도착하면 페이드 아웃 애니메이션 후 씬 전환
-            else
+            if (player.transform.position.x > playerMaxMovePosX - 1500)
             {
                 Animator fadeAnimator = GameObject.Find("FadeOut_Clear").GetComponent<Animator>();
-                
+
                 fadeAnimator.SetBool("IsStartFade", true);
             }
-            
         }
     }
 
