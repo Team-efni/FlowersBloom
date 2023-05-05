@@ -12,8 +12,14 @@ EditorBuildSettings:
     path: Assets/Scenes/Character Menu.unity
     guid: 9ac57f69d43692e4caa170d5fa76726d
   - enabled: 1
-    path: Assets/Scenes/Map Menu.unity
+    path: Assets/Scenes/MapMenu/Map Menu.unity
     guid: 3bf16233f7df40846a9460a36dab1a99
+  - enabled: 1
+    path: Assets/Scenes/MapMenu/Easy Map.unity
+    guid: f9877f14ee9a375468f3504cedc8d6b8
+  - enabled: 1
+    path: Assets/Scenes/MapMenu/Nomal Map.unity
+    guid: 949f3534fff7e13498b966ed16384351
   - enabled: 1
     path: Assets/Scenes/InGame-RN.unity
     guid: 54ec77771f9e73041b9aaa8016005592
