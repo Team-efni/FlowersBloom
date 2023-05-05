@@ -145,7 +145,7 @@ public class node : MonoBehaviour
         //line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
         //만약 컷씬을 클리어 했을 때
-        if (UniteData.Node_LifePoint > 0 && UniteData.Node_Click_Counter == node_location.Count)
+        if (UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count)
         {
             //데이터 초기화
             UniteData.Node_LifePoint = 2;
