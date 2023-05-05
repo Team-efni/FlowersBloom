@@ -64,6 +64,11 @@ public class node_management : MonoBehaviour
 
     public void node_click_event(GameObject clickObject)
     {
+        //클릭 효과음을 부여합니다
+        AudioSource se = GameObject.Find("ClickEffect").GetComponent<AudioSource>();
+        se.volume = UniteData.Effect;
+        se.Play();
+
         node_click_timing();
         
         nd.delete_node_after_click();

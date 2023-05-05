@@ -150,6 +150,11 @@ public class node : MonoBehaviour
         //만약 컷씬을 클리어 했거나 / 기회포인트가 남아있는 상황에서 실패했을 때
         if ((UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count) || UnPassed)
         {
+            //쬐끔만 대기 [HACK]
+            for(int x=0; x<1000000000; x++)
+            {
+                //대기
+            }
             //데이터 초기화
             UniteData.Node_LifePoint = 2;
             UniteData.Node_Click_Counter = 0;
@@ -272,4 +277,6 @@ public class node : MonoBehaviour
         }
         return false;
     }
+
+
 }
