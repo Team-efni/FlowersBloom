@@ -1365,6 +1365,7 @@ GameObject:
   - component: {fileID: 1789137414}
   - component: {fileID: 1789137413}
   - component: {fileID: 1789137416}
+  - component: {fileID: 1789137417}
   m_Layer: 5
   m_Name: EasyBtn
   m_TagString: Untagged
@@ -1511,6 +1512,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &1789137417
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789137411}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 4235929ec9263fa42bbfa7b271974fb1, type: 2}
+  m_Animations:
+  - {fileID: 0}
+  - {fileID: 7400000, guid: 2b5a78aa32a9a0b47a2189d8272f0ff5, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 1
 --- !u!1 &1837326293
 GameObject:
   m_ObjectHideFlags: 0

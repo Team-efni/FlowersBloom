@@ -7,7 +7,6 @@ public enum BTNType
     GS,
     Char,
     Option,
-    Exit,
     Sound,
     Teammate,
     Back,

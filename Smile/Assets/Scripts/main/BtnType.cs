@@ -27,9 +27,6 @@ public class BtnType : MonoBehaviour
                 CanvasGroupOn(optionGroup);
                 CanvasGroupOff(mainGroup);
                 break;
-            case BTNType.Exit:
-                Debug.Log("종료");
-                break;
             case BTNType.Sound:
                 Debug.Log("사운드");
                 break;
