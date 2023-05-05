@@ -135,8 +135,9 @@ GameObject:
   - component: {fileID: 295244861}
   - component: {fileID: 295244860}
   - component: {fileID: 295244859}
+  - component: {fileID: 295244862}
   m_Layer: 5
-  m_Name: Char2LockBtn (1)
+  m_Name: etc1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,9 +158,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1557.509, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295244859
@@ -205,7 +206,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 295244860}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 295244857}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &295244860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +257,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295244857}
   m_CullTransparentMesh: 1
+--- !u!114 &295244862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295244857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &460846434
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,8 +282,9 @@ GameObject:
   - component: {fileID: 460846438}
   - component: {fileID: 460846437}
   - component: {fileID: 460846436}
+  - component: {fileID: 460846439}
   m_Layer: 5
-  m_Name: Char2LockBtn (3)
+  m_Name: etc3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,9 +305,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2810.018, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &460846436
@@ -326,7 +353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 460846437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 460846434}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &460846437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +404,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460846434}
   m_CullTransparentMesh: 1
+--- !u!114 &460846439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460846434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &612681419
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +466,9 @@ GameObject:
   - component: {fileID: 678232416}
   - component: {fileID: 678232415}
   - component: {fileID: 678232414}
+  - component: {fileID: 678232417}
   m_Layer: 5
-  m_Name: Char2LockBtn (4)
+  m_Name: etc4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,9 +489,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 3436.2725, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &678232414
@@ -484,7 +537,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 678232415}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 678232412}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &678232415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +588,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 678232412}
   m_CullTransparentMesh: 1
+--- !u!114 &678232417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678232412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &713343965
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,8 +613,9 @@ GameObject:
   - component: {fileID: 713343969}
   - component: {fileID: 713343968}
   - component: {fileID: 713343967}
+  - component: {fileID: 713343970}
   m_Layer: 5
-  m_Name: Char2LockBtn (2)
+  m_Name: etc2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -557,9 +636,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2183.7637, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &713343967
@@ -605,7 +684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 713343968}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 713343965}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &713343968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -644,6 +735,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 713343965}
   m_CullTransparentMesh: 1
+--- !u!114 &713343970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713343965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &1015080144
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,8 +760,9 @@ GameObject:
   - component: {fileID: 1015080148}
   - component: {fileID: 1015080147}
   - component: {fileID: 1015080146}
+  - component: {fileID: 1015080149}
   m_Layer: 5
-  m_Name: Char2LockBtn (5)
+  m_Name: etc5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -678,9 +783,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4062.5269, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1015080146
@@ -726,7 +831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1015080147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1015080144}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1015080147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,6 +882,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015080144}
   m_CullTransparentMesh: 1
+--- !u!114 &1015080149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015080144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &1015442957
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +907,7 @@ GameObject:
   - component: {fileID: 1015442960}
   - component: {fileID: 1015442959}
   - component: {fileID: 1015442958}
+  - component: {fileID: 1015442962}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -868,6 +999,27 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1015442962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015442957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d83515ca8619594299cff6b3b5ccd5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Card:
+  - {fileID: 1226403555}
+  - {fileID: 1726308112}
+  - {fileID: 295244857}
+  - {fileID: 713343965}
+  - {fileID: 460846434}
+  - {fileID: 678232412}
+  - {fileID: 1015080144}
+  - {fileID: 1266632614}
 --- !u!1 &1070900833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,8 +1176,9 @@ GameObject:
   - component: {fileID: 1226403559}
   - component: {fileID: 1226403558}
   - component: {fileID: 1226403557}
+  - component: {fileID: 1226403560}
   m_Layer: 5
-  m_Name: Char1Btn
+  m_Name: Dandelion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,9 +1199,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 305, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1226403557
@@ -1094,7 +1247,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1226403558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1226403555}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1226403558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,6 +1298,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226403555}
   m_CullTransparentMesh: 1
+--- !u!114 &1226403560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226403555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 1
 --- !u!1 &1266632614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,8 +1323,9 @@ GameObject:
   - component: {fileID: 1266632618}
   - component: {fileID: 1266632617}
   - component: {fileID: 1266632616}
+  - component: {fileID: 1266632619}
   m_Layer: 5
-  m_Name: Char2LockBtn (6)
+  m_Name: etc6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1167,9 +1346,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4688.7812, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266632616
@@ -1215,7 +1394,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1266632617}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1266632614}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1266632617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,6 +1445,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266632614}
   m_CullTransparentMesh: 1
+--- !u!114 &1266632619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266632614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &1363054775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1548,8 +1752,9 @@ GameObject:
   - component: {fileID: 1726308116}
   - component: {fileID: 1726308115}
   - component: {fileID: 1726308114}
+  - component: {fileID: 1726308117}
   m_Layer: 5
-  m_Name: Char2LockBtn
+  m_Name: Tulip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1570,9 +1775,9 @@ RectTransform:
   m_Father: {fileID: 1363054776}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 931.2545, y: -555}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 610, y: 1110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726308114
@@ -1618,7 +1823,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1726308115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1015442962}
+        m_TargetAssemblyTypeName: Select_Supervisor, Assembly-CSharp
+        m_MethodName: pressCharacterCard
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1726308112}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1726308115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,6 +1874,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726308112}
   m_CullTransparentMesh: 1
+--- !u!114 &1726308117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726308112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672caf2b78df0c04a83058e7682df3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!1 &1857498334
 GameObject:
   m_ObjectHideFlags: 0
