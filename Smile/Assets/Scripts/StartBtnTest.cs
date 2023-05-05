@@ -9,9 +9,12 @@ public class StartBtnTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
+         * 로딩창 사용을 위해 미리 로드는 없앴습니당!
         //Scene을 비동기적으로 연결해 미리 로드
         sceneLoader=GetComponent<IScenePass>();
         sceneLoader.LoadSceneAsync("Play");
+        */
     }
 
     // Update is called once per frame
@@ -31,6 +34,8 @@ public class StartBtnTest : MonoBehaviour
         UniteData.Player_Location_Past = Vector2.zero;
 
         //로드 불러오기
-        sceneLoader.SceneLoadStart("Play");
+        //sceneLoader.SceneLoadStart("Play");
+
+        LoadingSceneManager.LoadScene("Play");
     }
 }
