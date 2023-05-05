@@ -54,10 +54,20 @@ public class node_delete : MonoBehaviour
         //게임실패처리
         if (Node_Result.Miss_Node_Click())
         {
+            //만약 기회포인트가 있으면 감소 후 패스
+            if (UniteData.notePoint > 0)
+            {
+                node.UnPassed = true;
 
-            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-            // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
-            fadeAnimator.SetBool("IsStartFade", true);
+                //기회 포인트 감소
+                UniteData.notePoint--;
+            }
+            else
+            {
+                Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                fadeAnimator.SetBool("IsStartFade", true);
+            }
         }
 
         // 노드의 Prefab을 제거합니다.

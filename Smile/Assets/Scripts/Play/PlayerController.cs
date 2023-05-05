@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,12 +12,13 @@ public class PlayerController : MonoBehaviour
     public GameObject Cut_Scene_prefab;
     public NoteController s_noteController;
 
+    private Color del_color = new Color(0, 0, 0);
+    private Color show_color = new Color(1, 1, 1);
+
     // 기회 포인트 관련
-    //public int notePoint = 2; // 기회 포인트 -> Data/UniteData.cs로 이동
     public GameObject[] go_notePoints; // 기회 포인트 오브젝트
 
     // 목숨 포인트 관련
-    //public int lifePoint = 3; // 목숨 포인트 -> Data/UniteData.cs로 이동
     public GameObject[] go_lifePoints;
 
     // 플레이어 애니메이션
@@ -36,8 +38,6 @@ public class PlayerController : MonoBehaviour
     public void Initialized()
     {
         UniteData.Move_Progress = true;
-        UniteData.lifePoint = 3;
-        UniteData.notePoint = 2;
 
         playerAinm.SetBool("IsMoving", true);
 
@@ -48,6 +48,25 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < go_lifePoints.Length; i++)
         {
             go_lifePoints[i].gameObject.SetActive(true);
+        }
+
+        //목숨 개수 갱신하여 디스플레이
+        foreach (GameObject go in go_notePoints) 
+        { 
+            go.GetComponent<Image>().color = del_color;
+        }
+        for(int x=0; x<UniteData.notePoint; x++)
+        {
+            go_notePoints[x].GetComponent<Image>().color = show_color;
+        }
+
+        foreach (GameObject go in go_lifePoints) 
+        {
+            go.GetComponent<Image>().color = del_color;
+        }
+        for(int x=0; x<UniteData.lifePoint; x++)
+        {
+            go_lifePoints[x].GetComponent<Image>().color = show_color;
         }
     }
 
@@ -60,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!s_noteController.noteSuccess && collision.CompareTag("Monster"))
+        if (!s_noteController.noteSuccess && collision.CompareTag("Monster"))
         {
             // 몬스터에 닿으면 움직임을 멈춤
             UniteData.Move_Progress = false;
@@ -70,15 +89,9 @@ public class PlayerController : MonoBehaviour
 
             //moveSpeed = 0;
 
-            // 기회가 남아있다면 감소하고 씬 이동
+            // 기회가 남아있다면 씬 이동
             if (UniteData.notePoint > 0)
             {
-                UniteData.notePoint--;
-                go_notePoints[UniteData.notePoint].gameObject.SetActive(false);
-
-                //씬 바로 이동
-                //scenePass.SceneLoadStart();
-
                 //씬 애니메이션을 본 뒤 이동
                 StartCoroutine(LoadCutScene());
             }
@@ -90,7 +103,7 @@ public class PlayerController : MonoBehaviour
                 if(UniteData.lifePoint > 0)
                 {
                     UniteData.lifePoint--;
-                    go_lifePoints[UniteData.lifePoint].gameObject.SetActive(false);
+                    go_lifePoints[UniteData.lifePoint].GetComponent<Image>().color = del_color;
                 }
                 // 남아있지 않다면 게임 오버    
                 else if(UniteData.lifePoint == 0)
@@ -142,4 +155,5 @@ public class PlayerController : MonoBehaviour
 
         GameObject Cam = GameObject.Find("Main Camera");
     }
+
 }

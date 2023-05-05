@@ -62,6 +62,7 @@ public class node : MonoBehaviour
     public float radius_MAX = 1000f; //difault value 1000f
 
     private IScenePass sceneLoader;
+    public static bool UnPassed; //노트포인트를 임시 저장
 
     //public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
@@ -128,10 +129,12 @@ public class node : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("현 목숨 포인트: " + UniteData.notePoint);
         //Play 씬을 ScenePass를 통해 비동기적으로 로드한다
         sceneLoader = GetComponent<IScenePass>();
         sceneLoader.LoadSceneAsync("Play");
 
+        UnPassed = false;
 
         UniteData.GameMode = "CutScene";
         //노드의 초기 설정을 지정한다
@@ -144,12 +147,13 @@ public class node : MonoBehaviour
     {
         //line_renderer.positionCount = LineIndex; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
-        //만약 컷씬을 클리어 했을 때
-        if (UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count)
+        //만약 컷씬을 클리어 했거나 / 기회포인트가 남아있는 상황에서 실패했을 때
+        if ((UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count) || UnPassed)
         {
             //데이터 초기화
             UniteData.Node_LifePoint = 2;
             UniteData.Node_Click_Counter = 0;
+            UnPassed = false;
             UniteData.GameMode = "Play";
             //클리어 애니메이션 실행
             sceneLoader.SceneLoadStart("Play");
@@ -160,6 +164,7 @@ public class node : MonoBehaviour
 
     private void Initialize_node_setting()
     {
+
         switch (UniteData.Difficulty)
         {
             case 1: //easy

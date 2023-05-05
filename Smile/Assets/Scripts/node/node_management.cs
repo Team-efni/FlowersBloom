@@ -64,7 +64,6 @@ public class node_management : MonoBehaviour
 
     public void node_click_event(GameObject clickObject)
     {
-        //UnityEngine.Debug.Log("노드 클릭: " + clickObject.name);
         node_click_timing();
         
         nd.delete_node_after_click();
@@ -76,17 +75,25 @@ public class node_management : MonoBehaviour
         // 애니메이션 클립의 경과 시간을 얻습니다.
         float elapsedTime = call_animation_time();
 
-        //Debug.Log("클릭 시간: " + elapsedTime + "s");
-
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 빠를 때 [MISS]
         if (elapsedTime < ENTRANCE_UNSATISFACTORY_TOUCH)
         {
             UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
             {
-                Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-                // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
-                fadeAnimator.SetBool("IsStartFade", true);
+                //만약 기회포인트가 있으면 감소 후 패스
+                if (UniteData.notePoint > 0)
+                {
+                    node.UnPassed = true;
+                    //기회 포인트 감소
+                    UniteData.notePoint--;
+                }
+                else
+                {
+                    Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                    // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                    fadeAnimator.SetBool("IsStartFade", true);
+                }
             }
         }
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 느릴 때 [FAST]
@@ -110,9 +117,20 @@ public class node_management : MonoBehaviour
             UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
             {
-                Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-                // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
-                fadeAnimator.SetBool("IsStartFade", true);
+                //만약 기회포인트가 있으면 감소 후 패스
+                if (UniteData.notePoint > 0)
+                {
+                    node.UnPassed = true;
+
+                    //기회 포인트 감소
+                    UniteData.notePoint--;
+                }
+                else
+                {
+                    Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                    // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
+                    fadeAnimator.SetBool("IsStartFade", true);
+                }
             }
         }
     }
