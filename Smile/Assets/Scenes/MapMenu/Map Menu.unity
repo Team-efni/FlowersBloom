@@ -916,7 +916,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 793b239c052b90949bfe338ed0ab46d0, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1179,9 +1179,9 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1600, y: 719.69}
+  m_SizeDelta: {x: 3200, y: 1440.6251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1515926771
 MonoBehaviour:
@@ -1205,7 +1205,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 2b1b9bca7389ff841a9f65c486e28131, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1581,7 +1581,6 @@ GameObject:
   - component: {fileID: 1789137414}
   - component: {fileID: 1789137413}
   - component: {fileID: 1789137416}
-  - component: {fileID: 1789137417}
   m_Layer: 5
   m_Name: EasyBtn
   m_TagString: Untagged
@@ -1727,23 +1726,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &1789137417
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789137411}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 4235929ec9263fa42bbfa7b271974fb1, type: 2}
-  m_Animations:
-  - {fileID: 0}
-  - {fileID: 7400000, guid: 2b5a78aa32a9a0b47a2189d8272f0ff5, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1
 --- !u!1 &2041997726
 GameObject:
   m_ObjectHideFlags: 0
