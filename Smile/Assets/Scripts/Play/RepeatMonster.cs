@@ -81,7 +81,13 @@ public class RepeatMonster : MonoBehaviour
         monster.SetActive(true);
 
         // 몬스터 랜덤 배치
-        int ran_mon = Random.Range(0, 2);
+        int ran_mon = 0;
+
+        if(UniteData.Difficulty == 2)
+        {
+            // 노말 모드에서만 코스모스 나오게
+            ran_mon = Random.Range(0, 2);
+        }
 
         Debug.Log("ran_mon : " + ran_mon);
         if(monsterCount == 2 && UniteData.Difficulty == 2)
