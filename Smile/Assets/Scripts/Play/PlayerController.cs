@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         scenePass = GetComponent<IScenePass>();
         scenePass.LoadSceneAsync("InGame-RN");
         playerAinm = GetComponent<Animator>();
-        //UniteData.Move_Progress = true;
 
         Initialized();
     }
