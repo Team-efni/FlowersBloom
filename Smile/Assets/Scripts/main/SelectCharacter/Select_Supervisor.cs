@@ -11,21 +11,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Select_Supervisor : MonoBehaviour
 {
-    public enum Character
-    {
-        Dandelion,
-        Tulip,
-        etc1,
-        etc2,
-        etc3,
-        etc4,
-        etc5,
-        etc6
-    }
-
     public GameObject Select_Icon;
     public GameObject[] Card;
 
@@ -46,7 +35,7 @@ public class Select_Supervisor : MonoBehaviour
         {
             if (Cname.name == UniteData.Selected_Character)
             {
-                Select_Icon.transform.position = Cname.transform.position + new Vector3(0f, 140f, 0f);
+                Select_Icon.transform.position = Cname.transform.position;
             }
         }
     }
@@ -56,18 +45,7 @@ public class Select_Supervisor : MonoBehaviour
         Card_Status CS = character_card.GetComponent<Card_Status>();
 
         //잠금 여부 결정
-        if (CS.isEasyClear == UniteData.GameClear[0] && CS.isEasyClear)
-        {
-            CS.unlocked = true;
-        }
-        else if (CS.isNormalClear == UniteData.GameClear[1] && CS.isNormalClear)
-        {
-            CS.unlocked = true;
-        }
-        else if (CS.isHardClear == UniteData.GameClear[2] && CS.isHardClear)
-        {
-            CS.unlocked = true;
-        }
+        unlock_Tulip(CS, character_card);
 
         //잠금이 풀린 상황이면
         if (CS.unlocked)
@@ -91,6 +69,19 @@ public class Select_Supervisor : MonoBehaviour
         else
         {
             Debug.Log("응~ 아직 안돼~");
+        }
+    }
+
+    private void unlock_Tulip(Card_Status CS, GameObject Card)
+    {
+        //Easy 모드를 클리어 했을 때
+        if (CS.isEasyClear == UniteData.GameClear[0] && CS.isEasyClear)
+        {
+            //잠금 해제
+            CS.unlocked = true;
+
+            Image image = Card.GetComponent<Image>();
+            image.sprite = CS.Unlock_image;
         }
     }
 

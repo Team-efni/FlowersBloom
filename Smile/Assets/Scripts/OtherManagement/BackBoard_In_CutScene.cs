@@ -17,33 +17,53 @@ public class BackBoard_In_CutScene : MonoBehaviour
     public SpriteRenderer BackBoardRenderer_Top;
     public SpriteRenderer BackBoardRenderer_Bottom;
 
-    public void Start()
+    private enum Banner
+    {
+        Dandelion,
+        Tulip,
+        Rose,
+        Cosmos,
+        MorningGlory
+    }
+
+    private void Start()
+    {
+        Set_Image();
+    }
+
+    private void Update()
+    {
+        Set_Image();
+    }
+
+    private int Find_Index(string name)
+    {
+        Banner banner;
+        if (!System.Enum.TryParse(name, out banner))
+        {
+            Debug.LogWarning("해당 이름을 가진 이미지 파일이 적용되지 않았습니다.\nBackBoard 오브젝트에서 확인하세요!");
+            return -1;  // 인자로 전달된 문자열이 enum에 정의되어 있지 않은 경우 -1 반환
+        }
+
+        switch (banner)
+        {
+            case Banner.Dandelion:
+                return 0;
+            case Banner.Tulip:
+                return 1;
+            case Banner.Rose:
+                return 2;
+            case Banner.Cosmos:
+                return 3;
+            default:
+                Debug.LogWarning("해당 이름을 가진 이미지 파일이 적용되지 않았습니다.\nBackBoard 오브젝트에서 확인하세요!");
+                return -1;
+        }
+    }
+
+    private void Set_Image()
     {
         BackBoardRenderer_Top.sprite = BackBoard[Find_Index(UniteData.Closed_Monster)];
         BackBoardRenderer_Bottom.sprite = BackBoard[Find_Index(UniteData.Selected_Character)];
-    }
-
-    private int Find_Index(string name)// 너무 느낌 없이 작성했다... [HACK]
-    {
-        if(name== "Dandelion")
-        {
-            return 0;
-        }
-        else if(name== "Tulip")
-        {
-            return 1;
-        }
-
-        else if(name=="Rose")
-        {
-            return 2;
-        }
-
-        else if(name=="Cosmos")
-        {
-            return 3;
-        }
-
-        return 0;
     }
 }

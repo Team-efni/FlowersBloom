@@ -8,8 +8,10 @@
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
 */
 using UnityEngine;
+using UnityEngine.UI;
 public class Card_Status : MonoBehaviour
 {
+    public Sprite Unlock_image;
     public bool unlocked=false; //false가 잠긴거임
 
     //잠금 조건 Check
