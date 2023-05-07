@@ -17,6 +17,8 @@ public class Audio_Manager : MonoBehaviour
 {
     public static Audio_Manager instance = null;
 
+    public static bool play_Audio = true;
+
     public static Audio_Manager Instance
     {
         get { return instance; }
@@ -44,5 +46,14 @@ public class Audio_Manager : MonoBehaviour
 
         AudioSource ass = gameObject.GetComponent<AudioSource>();
         ass.volume = UniteData.BGM;
+
+        if(play_Audio)
+        {
+            ass.pitch = 1f;
+        }
+        else
+        {
+            ass.pitch = 0f;
+        }
     }
 }

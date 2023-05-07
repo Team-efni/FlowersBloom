@@ -34,6 +34,7 @@ public class BtnStop : MonoBehaviour
     {
         Time.timeScale = 0f;
         UniteData.Move_Progress = false; // 움직임 정지
+        Audio_Manager.play_Audio = false;
         ShowPanel();
     }
 
@@ -42,6 +43,7 @@ public class BtnStop : MonoBehaviour
         stopPanel.SetActive(false);
         Time.timeScale = 1.0f;
         UniteData.Move_Progress = true; // 움직임 재개
+        Audio_Manager.play_Audio = true;
     }
 
     public void GoMap()
@@ -50,5 +52,6 @@ public class BtnStop : MonoBehaviour
         Time.timeScale = 1.0f;
         UniteData.ReStart = true;
         UniteData.Move_Progress = true;
+        Audio_Manager.play_Audio = true;
     }
 }
