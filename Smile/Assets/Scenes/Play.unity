@@ -4312,7 +4312,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgGroup: {fileID: 841810794}
-  player: {fileID: 2138096375}
   canPlay_prefab:
   - {fileID: 2138096375}
   - {fileID: 857768457}
@@ -4320,6 +4319,10 @@ MonoBehaviour:
   - {fileID: 841810794}
   - {fileID: 1216296459}
   moveSpeed: 500
+  lifepoints:
+  - {fileID: 995975331}
+  - {fileID: 2049995662}
+  - {fileID: 2120075221}
 --- !u!114 &1305994538
 MonoBehaviour:
   m_ObjectHideFlags: 0

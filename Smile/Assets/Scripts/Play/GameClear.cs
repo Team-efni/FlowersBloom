@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class GameClear : MonoBehaviour
 {
     public GameObject bgGroup;
-    public GameObject player;
+    static private GameObject player;
 
     public GameObject[] canPlay_prefab;
     public GameObject[] backgrounds;
@@ -21,6 +21,8 @@ public class GameClear : MonoBehaviour
 
     [SerializeField] float moveSpeed; // Floor2의 RepeatBG Speed랑 똑같은 속도로 설정
 
+    public Sprite[] lifepoint_images; // 제공한 목숨 포인트 이미지
+    public GameObject[] lifepoints; // 목숨포인트 오브젝트
 
     private void Awake()
     {
@@ -29,11 +31,23 @@ public class GameClear : MonoBehaviour
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
             canPlay_prefab[0].SetActive(true);
+            player = canPlay_prefab[0];
+            for(int i = 0; i < lifepoints.Length; i++)
+            {
+                Image image = lifepoints[i].GetComponent<Image>();
+                image.sprite = lifepoint_images[0];
+            }
         }
         else if (UniteData.Selected_Character == "Tulip")
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
             canPlay_prefab[1].SetActive(true);
+            player = canPlay_prefab[1];
+            for (int i = 0; i < lifepoints.Length; i++)
+            {
+                Image img = lifepoints[i].GetComponent<Image>();
+                img.sprite = lifepoint_images[1];
+            }
         }
         else
         {
