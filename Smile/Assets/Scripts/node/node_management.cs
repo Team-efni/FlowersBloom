@@ -87,18 +87,20 @@ public class node_management : MonoBehaviour
             if (Node_Result.Miss_Node_Click())
             {
                 //만약 기회포인트가 있으면 감소 후 패스
-                if (UniteData.notePoint > 0)
-                {
-                    node.UnPassed = true;
-                    //기회 포인트 감소
-                    UniteData.notePoint--;
-                }
-                else
+                //if (UniteData.notePoint > 0)
+                //{
+                node.UnPassed = true;
+                UniteData.lifePoint--;
+
+                //기회 포인트 감소
+                //UniteData.notePoint--;
+                //}
+                /*else
                 {
                     Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
                     // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
                     fadeAnimator.SetBool("IsStartFade", true);
-                }
+                }*/
             }
         }
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 느릴 때 [FAST]
@@ -123,19 +125,20 @@ public class node_management : MonoBehaviour
             if (Node_Result.Miss_Node_Click())
             {
                 //만약 기회포인트가 있으면 감소 후 패스
-                if (UniteData.notePoint > 0)
-                {
-                    node.UnPassed = true;
+                //if (UniteData.notePoint > 0)
+                //{
+                node.UnPassed = true;
+                UniteData.lifePoint--;
 
-                    //기회 포인트 감소
-                    UniteData.notePoint--;
-                }
-                else
+                //기회 포인트 감소
+                //UniteData.notePoint--;
+                //}
+                /*else
                 {
                     Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
                     // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
                     fadeAnimator.SetBool("IsStartFade", true);
-                }
+                }*/
             }
         }
     }
