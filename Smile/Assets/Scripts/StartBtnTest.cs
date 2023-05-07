@@ -25,6 +25,9 @@ public class StartBtnTest : MonoBehaviour
         //SceneManager.LoadScene("Play");
 
         //게임 관련 전역변수 초기화
+        //UniteData.notePoint = 2; // 기회 포인트
+        //UniteData.lifePoint = 3; // 목숨 포인트
+        UniteData.Move_Progress = true;
         UniteData.lifePoint = 3;
         UniteData.notePoint = 2;
         UniteData.Play_Scene_Time = 0f;

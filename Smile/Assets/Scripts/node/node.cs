@@ -131,7 +131,11 @@ public class node : MonoBehaviour
         sceneLoader = GetComponent<IScenePass>();
         sceneLoader.LoadSceneAsync("Play");
 
+        //ÄÆ¾À ÃÊ±âÈ­
         UnPassed = false;
+        UniteData.Node_LifePoint = 2; //³ëµå ¸ñ¼û
+        UniteData.Node_Click_Counter = 0; //³ëµå Å¬¸¯ È½¼ö
+        LineIndex = 0;
         line_renderer.material.color = Color.white;
 
         UniteData.GameMode = "CutScene";
