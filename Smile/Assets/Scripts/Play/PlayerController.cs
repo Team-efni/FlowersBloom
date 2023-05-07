@@ -80,17 +80,20 @@ public class PlayerController : MonoBehaviour
     {
         if (!s_noteController.noteSuccess && collision.CompareTag("Monster"))
         {
-            // 몬스터에 닿으면 움직임을 멈춤
-            UniteData.Move_Progress = false;
-
-            // 플레이어 애니메이션 멈춤
-            playerAinm.SetBool("IsMoving", false);
-
             //moveSpeed = 0;
+            Debug.Log("UniteData.notePoint" + UniteData.notePoint);
 
             // 기회가 남아있다면 씬 이동
             if (UniteData.notePoint > 0)
             {
+                UniteData.notePoint--;
+
+                // 몬스터에 닿으면 움직임을 멈춤
+                UniteData.Move_Progress = false;
+
+                // 플레이어 애니메이션 멈춤
+                playerAinm.SetBool("IsMoving", false);
+
                 //씬 애니메이션을 본 뒤 이동
                 StartCoroutine(LoadCutScene());
             }
@@ -98,21 +101,24 @@ public class PlayerController : MonoBehaviour
             // 기회가 0이라면 목숨 포인트 감소
             else if (UniteData.notePoint == 0)
             {
+                Debug.Log("UniteData.lifePoint " + UniteData.lifePoint);
                 // 목숨 포인트가 남아있다면 감소
-                if(UniteData.lifePoint > 0)
+                //if(UniteData.lifePoint >= 0)
                 {
                     UniteData.lifePoint--;
                     go_lifePoints[UniteData.lifePoint].GetComponent<Image>().color = del_color;
-                }
-                // 남아있지 않다면 게임 오버    
-                else if(UniteData.lifePoint == 0)
-                {
-                    Make_Invisible_UI();
+                    
+                    // 0이 되면 게임 오버    
+                    if (UniteData.lifePoint == 0)
+                    {
+                        Make_Invisible_UI();
 
-                    Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-                    // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
-                    fadeAnimator.SetBool("IsStartFade", true);
+                        Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+                        // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
+                        fadeAnimator.SetBool("IsStartFade", true);
+                    }
                 }
+                
             }
         }
     }

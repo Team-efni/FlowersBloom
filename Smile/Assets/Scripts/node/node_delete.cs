@@ -51,23 +51,24 @@ public class node_delete : MonoBehaviour
         //목숨 감소
         UniteData.Node_LifePoint -= 1;
 
-        //게임실패처리
+        //게임실패처리 -> 기회 포인트1 감소(PlyaerController에서 처리했음) / 캐릭터 목숨 포인트 -1
         if (Node_Result.Miss_Node_Click())
         {
             //만약 기회포인트가 있으면 감소 후 패스
-            if (UniteData.notePoint > 0)
-            {
+            //if (UniteData.notePoint > 0)
+            //{
                 node.UnPassed = true;
+                UniteData.lifePoint--;
 
                 //기회 포인트 감소
-                UniteData.notePoint--;
-            }
-            else
+                //UniteData.notePoint--;
+            //}
+            /*else
             {
                 Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
                 // 페이드 아웃 애니메이션 이후 씬을 전환합니다.
                 fadeAnimator.SetBool("IsStartFade", true);
-            }
+            }*/
         }
 
         // 노드의 Prefab을 제거합니다.
