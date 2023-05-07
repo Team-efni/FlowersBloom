@@ -1666,7 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7fe88006d2f824cb57db22e3cd878f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 6
+  currentType: 5
   buttonScale: {fileID: 0}
   mainGroup: {fileID: 878297125}
   optionGroup: {fileID: 596045159}
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7fe88006d2f824cb57db22e3cd878f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 4
+  currentType: 3
   buttonScale: {fileID: 0}
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
@@ -2427,7 +2427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7fe88006d2f824cb57db22e3cd878f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentType: 5
+  currentType: 4
   buttonScale: {fileID: 0}
   mainGroup: {fileID: 0}
   optionGroup: {fileID: 0}
