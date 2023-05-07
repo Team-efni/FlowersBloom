@@ -9,19 +9,23 @@ public class MapLock : MonoBehaviour
     private Button btn;
     void Start()
     {
-  /*    StageList[0].GetComponent<Stage>().LockMap();
-        StageList[1].GetComponent<Stage>().LockMap();
-        StageList[2].GetComponent<Stage>().LockMap();
-  */
-        for (int i = 0; i < StageList.Count; i++)
+        /*    StageList[0].GetComponent<Stage>().LockMap();
+              StageList[1].GetComponent<Stage>().LockMap();
+              StageList[2].GetComponent<Stage>().LockMap();
+        */
+
+        // easy맵은 열려있게
+        StageList[0].GetComponent<Stage>().UnlockMap();
+
+        for (int i = 0; i < StageList.Count - 1; i++)
         {
             if (UniteData.GameClear[i])
             {
-                StageList[i].GetComponent<Stage>().UnlockMap();
+                StageList[i+1].GetComponent<Stage>().UnlockMap();
             }
             else
             {
-                StageList[i].GetComponent<Stage>().LockMap();
+                StageList[i+1].GetComponent<Stage>().LockMap();
             }
         }
     }
