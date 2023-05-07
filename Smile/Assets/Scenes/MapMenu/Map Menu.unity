@@ -1234,7 +1234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageList:
-  - {fileID: 1789137411}
+  - {fileID: 1679549076}
   - {fileID: 980065120}
   - {fileID: 313633706}
 --- !u!1 &1585688063
