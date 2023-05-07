@@ -4319,6 +4319,9 @@ MonoBehaviour:
   - {fileID: 841810794}
   - {fileID: 1216296459}
   moveSpeed: 500
+  lifepoint_images:
+  - {fileID: 21300000, guid: 8e8866bfbcb03c741b807fbb8e7db108, type: 3}
+  - {fileID: 21300000, guid: 0f8dc538617bc6a42a01fa1a1bef42c2, type: 3}
   lifepoints:
   - {fileID: 995975331}
   - {fileID: 2049995662}
