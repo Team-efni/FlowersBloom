@@ -116,7 +116,7 @@ public class GameClear : MonoBehaviour
     {
         bgStop();
         UniteData.Move_Progress = false;
-        UniteData.GameClear[UniteData.Difficulty-1] = true; //이거 index 0번부터 시작해서 -1 해뒀는데 문제 생기려나요?
+        UniteData.GameClear[UniteData.Difficulty] = true;
         b_playerMove = true;
     }
 
