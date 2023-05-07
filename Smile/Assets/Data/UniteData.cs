@@ -24,7 +24,7 @@ public class UniteData
     public static bool[] GameClear = { false, false, false}; // 난이도별 클리어 유무
 
     //설정 관련 데이터
-    public static float BGM = 0f; //배경음악 볼륨
+    public static float BGM = 1f; //배경음악 볼륨
     public static float Effect = 1f; //효과음 볼륨
 
     //게임 파일 관련 데이터
