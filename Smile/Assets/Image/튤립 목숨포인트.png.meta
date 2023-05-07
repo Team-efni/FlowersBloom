@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 0f8dc538617bc6a42a01fa1a1bef42c2
-=======
-guid: 6cf99da84717b244c8b6908f20c05d3f
->>>>>>> UITemp
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,21 +113,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> UITemp
   spriteSheet:
     serializedVersion: 2
     sprites: []
