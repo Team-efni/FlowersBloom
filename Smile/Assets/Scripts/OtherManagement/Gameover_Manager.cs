@@ -14,12 +14,14 @@ using UnityEngine.SceneManagement;
 
 public class Gameover_Manager : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    public void GotoMain()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            SceneManager.LoadScene("Map Menu");
-        }
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void RetryGame()
+    {
+        UniteData.ReStart = true;
+        SceneManager.LoadScene("Play");
     }
 }
