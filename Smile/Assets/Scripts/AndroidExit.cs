@@ -5,12 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class AndroidExit : MonoBehaviour
 {
-    [SerializeField] private string destination;
+    [SerializeField] private GameObject exitPanel;
+    //[SerializeField] private string destination;
+    private void Start()
+    {
+        exitPanel.SetActive(false);
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(destination);
+            exitPanel.SetActive(true);
+            //SceneManager.LoadScene(destination);
         }
           
         if (Application.platform == RuntimePlatform.Android)
