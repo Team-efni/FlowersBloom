@@ -28,4 +28,9 @@ public class AndroidExit : MonoBehaviour
             }
         }
     }
+
+    public void noBtn()
+    {
+        exitPanel.SetActive(false);
+    }
 }

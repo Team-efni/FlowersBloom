@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class BackScene : MonoBehaviour
 {
+    [SerializeField] private GameObject exitPanel;
     public void BackSceneBtn()
     {
-        SceneManager.LoadScene("Main Menu");  
+        //SceneManager.LoadScene("Main Menu");  
+        exitPanel.SetActive(false);
     }
 }

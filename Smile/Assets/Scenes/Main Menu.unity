@@ -793,7 +793,6 @@ GameObject:
   - component: {fileID: 325485854}
   - component: {fileID: 325485853}
   - component: {fileID: 325485852}
-  - component: {fileID: 325485851}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -821,18 +820,6 @@ RectTransform:
   m_AnchoredPosition: {x: 289, y: -115}
   m_SizeDelta: {x: 260.6809, y: 252.538}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &325485851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325485849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c32dfb172defb4ea0f22b58bb6672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &325485852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,9 +864,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 325485851}
-        m_TargetAssemblyTypeName: BackScene, Assembly-CSharp
-        m_MethodName: BackSceneBtn
+      - m_Target: {fileID: 1398570840}
+        m_TargetAssemblyTypeName: AndroidExit, Assembly-CSharp
+        m_MethodName: noBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
