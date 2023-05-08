@@ -6,12 +6,15 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource musicsource;
 
+    public void Start()
+    {
+        DontDestroyOnLoad(musicsource);
+    }
+
     public void SetMusicVolume(float volume)
     {
         musicsource.volume = volume;
- 
     }
-
 
     /* 
     public GameObject BackgroundMusic;

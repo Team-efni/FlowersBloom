@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MapChange : MonoBehaviour
 {
+    public SoundManager soundManager;
+
     /*
     public void ChangeSceneBtn()
     {
@@ -31,5 +33,10 @@ public class MapChange : MonoBehaviour
     {
         UniteData.Difficulty = 2;
         SceneManager.LoadScene("Nomal Map");
+    }
+
+    public void HardBtn()
+    {
+        UniteData.Difficulty = 3;
     }
 }
