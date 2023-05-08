@@ -8,7 +8,7 @@ public class SoundManager : MonoBehaviour
 
     public void Start()
     {
-        DontDestroyOnLoad(musicsource);
+        
     }
 
     public void SetMusicVolume(float volume)

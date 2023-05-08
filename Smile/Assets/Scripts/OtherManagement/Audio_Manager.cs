@@ -1,5 +1,5 @@
 /*
-*오디오를 통합적으로 제어하는 스크립트
+*BGM 관련 오디오를 통합적으로 제어하는 스크립트
 *
 *구현 목표
 *-싱글톤으로 구현하여 어디서든 접근 가능하게 만들기
@@ -17,15 +17,32 @@ public class Audio_Manager : MonoBehaviour
 {
     public static Audio_Manager instance = null;
 
+    public AudioClip[] audioList;
+    private AudioSource ass;
     public static bool play_Audio = true;
+
+    private int sceneGroup = -1;
+
 
     public static Audio_Manager Instance
     {
         get { return instance; }
     }
 
+    void 씬바뀌면딱한번만실행()
+    {
+        if(sceneGroup != getSceneGroup(SceneManager.GetActiveScene().name))
+        {
+            sceneGroup = getSceneGroup(SceneManager.GetActiveScene().name);
+            //Debug.Log("NAME: " + SceneManager.GetActiveScene().name+" GR: "+ getSceneGroup(SceneManager.GetActiveScene().name));
+            BGM_Change(sceneGroup);
+        }
+        return;
+    }
+
     void Awake()
     {
+        ass = gameObject.GetComponent<AudioSource>();
         if (instance == null)
         {
             instance = this;
@@ -39,12 +56,8 @@ public class Audio_Manager : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Play" && SceneManager.GetActiveScene().name != "InGame-RN")
-        {
-            Destroy(gameObject);
-        }
+        씬바뀌면딱한번만실행();
 
-        AudioSource ass = gameObject.GetComponent<AudioSource>();
         ass.volume = UniteData.BGM;
 
         if(play_Audio)
@@ -54,6 +67,35 @@ public class Audio_Manager : MonoBehaviour
         else
         {
             ass.pitch = 0f;
+        }
+    }
+
+    private void BGM_Change(int index)
+    {
+        ass.Stop();
+        ass.clip = audioList[index];
+        ass.Play();
+    }
+
+    private int getSceneGroup(string scenename)
+    {
+        //play / cut 씬에서의 BGM을 설정
+        if (scenename == "Play" || scenename == "InGame-RN")
+        {
+            return 1;
+        }
+        //메인화면 / 맵 선택 / 스테이지 돌입 전 BGM을 설정
+        else if (scenename == "Main Manu" ||
+                scenename == "Character Menu" ||
+                scenename == "MapManu/Map Menu" ||
+                scenename == "MapManu/Easy Map" ||
+                scenename == "MapManu/Nomal Map")
+        {
+            return 0;
+        }
+        else
+        {
+            return 0;
         }
     }
 }
