@@ -640,7 +640,6 @@ GameObject:
   - component: {fileID: 1074946633}
   - component: {fileID: 1074946632}
   - component: {fileID: 1074946631}
-  - component: {fileID: 1074946630}
   m_Layer: 5
   m_Name: NormalBtn
   m_TagString: Untagged
@@ -668,18 +667,6 @@ RectTransform:
   m_AnchoredPosition: {x: -179.65906, y: 82.86615}
   m_SizeDelta: {x: 454.2296, y: 347.1671}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1074946630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074946628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1074946631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,7 +723,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1074946630}
+      - m_Target: {fileID: 1515926774}
         m_TargetAssemblyTypeName: MapChange, Assembly-CSharp
         m_MethodName: NormalBtn
         m_Mode: 1
@@ -1152,6 +1139,7 @@ GameObject:
   - component: {fileID: 1515926772}
   - component: {fileID: 1515926771}
   - component: {fileID: 1515926773}
+  - component: {fileID: 1515926774}
   m_Layer: 5
   m_Name: MapOption
   m_TagString: Untagged
@@ -1237,6 +1225,19 @@ MonoBehaviour:
   - {fileID: 1679549076}
   - {fileID: 980065120}
   - {fileID: 313633706}
+--- !u!114 &1515926774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515926769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 1585688064}
 --- !u!1 &1585688063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,7 +1581,6 @@ GameObject:
   - component: {fileID: 1789137415}
   - component: {fileID: 1789137414}
   - component: {fileID: 1789137413}
-  - component: {fileID: 1789137416}
   m_Layer: 5
   m_Name: EasyBtn
   m_TagString: Untagged
@@ -1664,7 +1664,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1789137416}
+      - m_Target: {fileID: 1515926774}
         m_TargetAssemblyTypeName: MapChange, Assembly-CSharp
         m_MethodName: EasyBtn
         m_Mode: 1
@@ -1714,18 +1714,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789137411}
   m_CullTransparentMesh: 1
---- !u!114 &1789137416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789137411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2041997726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1738,7 +1726,6 @@ GameObject:
   - component: {fileID: 2041997731}
   - component: {fileID: 2041997730}
   - component: {fileID: 2041997729}
-  - component: {fileID: 2041997728}
   m_Layer: 5
   m_Name: HardBtn
   m_TagString: Untagged
@@ -1766,18 +1753,6 @@ RectTransform:
   m_AnchoredPosition: {x: 376.55225, y: 29.4904}
   m_SizeDelta: {x: 440.9773, y: 359.8897}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2041997728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041997726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6837c8adef92b114ca84d4aac633eaaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2041997729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,9 +1797,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2041997728}
+      - m_Target: {fileID: 1515926774}
         m_TargetAssemblyTypeName: MapChange, Assembly-CSharp
-        m_MethodName: ChangeSceneBtn
+        m_MethodName: HardBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
