@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     // 플레이어 애니메이션
     Animator playerAinm;
+
+    // 상단 노트 UI
+    [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,9 @@ public class PlayerController : MonoBehaviour
         {
             //moveSpeed = 0;
             Debug.Log("UniteData.notePoint" + UniteData.notePoint);
+
+            // 상단 노트 UI 가리기
+            Note_Bg.SetActive(false);
 
             // 기회가 남아있다면 씬 이동
             if (UniteData.notePoint > 0)

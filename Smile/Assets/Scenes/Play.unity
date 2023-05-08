@@ -2327,6 +2327,7 @@ MonoBehaviour:
   s_noteController: {fileID: 1693369088}
   go_notePoints: []
   go_lifePoints: []
+  Note_Bg: {fileID: 0}
 --- !u!50 &848280318
 Rigidbody2D:
   serializedVersion: 4
@@ -2459,6 +2460,7 @@ MonoBehaviour:
   - {fileID: 995975331}
   - {fileID: 2049995662}
   - {fileID: 2120075221}
+  Note_Bg: {fileID: 1136827836}
 --- !u!114 &857768459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4139,6 +4141,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d9a057aba293de647b5539d62dff5807, type: 3}
   - {fileID: 21300000, guid: 97372efc81ba6fd46b5cc3038a8f7585, type: 3}
   s_gameclear: {fileID: 1305994537}
+  noteControllers:
+  - {fileID: 1693369088}
+  - {fileID: 1511319234}
 --- !u!61 &1258250797
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4291,7 +4296,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305994535}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6766,6 +6771,7 @@ MonoBehaviour:
   - {fileID: 995975331}
   - {fileID: 2049995662}
   - {fileID: 2120075221}
+  Note_Bg: {fileID: 1136827836}
 --- !u!1 &2143283487
 GameObject:
   m_ObjectHideFlags: 0

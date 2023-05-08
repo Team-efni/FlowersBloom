@@ -146,7 +146,7 @@ public class NoteController : MonoBehaviour
         }
     }
 
-    private void DoBgShow(bool check)
+    public void DoBgShow(bool check)
     {
         Note_Bg.SetActive(check); // Note_Bg
     }
@@ -175,7 +175,7 @@ public class NoteController : MonoBehaviour
     }
 
     // 노트들 처음 상태로 되돌리기
-    void returnNote()
+    public void returnNote()
     {
         noteIndex = 0;
         NoteAbled();

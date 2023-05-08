@@ -16,6 +16,9 @@ public class RepeatMonster : MonoBehaviour
 
     public GameClear s_gameclear;
 
+    public NoteController[] noteControllers;
+    private NoteController noteController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,18 +29,22 @@ public class RepeatMonster : MonoBehaviour
         {
             case 1:
                 monster = monsters[0];
+                noteController = noteControllers[0];
                 break;
 
             case 2:
                 monster = monsters[1];
+                noteController = noteControllers[1];
                 break;
 
             case 3:
                 //monster = monsters[2];
+                //noteController = noteControllers[2];
                 break;
 
             default:
                 monster = monsters[0];
+                noteController = noteControllers[0];
                 break;
         }
 
@@ -79,6 +86,9 @@ public class RepeatMonster : MonoBehaviour
         Debug.Log("monsterCount" + monsterCount);
         Debug.Log("MonsterColorOrigin");
         monster.SetActive(true);
+
+        // 노트 초기화
+        noteController.returnNote();
 
         // 몬스터 랜덤 배치
         int ran_mon = 0;
