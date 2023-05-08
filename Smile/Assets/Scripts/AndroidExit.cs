@@ -7,6 +7,7 @@ public class AndroidExit : MonoBehaviour
 {
     [SerializeField] private GameObject exitPanel;
     //[SerializeField] private string destination;
+
     private void Start()
     {
         exitPanel.SetActive(false);

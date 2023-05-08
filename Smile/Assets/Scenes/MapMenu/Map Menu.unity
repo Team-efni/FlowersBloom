@@ -785,7 +785,6 @@ GameObject:
   - component: {fileID: 1206278208}
   - component: {fileID: 1206278207}
   - component: {fileID: 1206278206}
-  - component: {fileID: 1206278209}
   m_Layer: 5
   m_Name: BackBtn
   m_TagString: Untagged
@@ -857,9 +856,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1206278209}
-        m_TargetAssemblyTypeName: BackScene, Assembly-CSharp
-        m_MethodName: BackSceneBtn
+      - m_Target: {fileID: 1775451335}
+        m_TargetAssemblyTypeName: MapBackBtn, Assembly-CSharp
+        m_MethodName: BackBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -919,18 +918,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206278204}
   m_CullTransparentMesh: 1
---- !u!114 &1206278209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206278204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0c32dfb172defb4ea0f22b58bb6672b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1224684222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,6 +1483,7 @@ GameObject:
   - component: {fileID: 1775451334}
   - component: {fileID: 1775451333}
   - component: {fileID: 1775451332}
+  - component: {fileID: 1775451335}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1569,6 +1557,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1775451335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775451331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e17e6e7b912014c9843d6d926f102d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1789137411
 GameObject:
   m_ObjectHideFlags: 0
