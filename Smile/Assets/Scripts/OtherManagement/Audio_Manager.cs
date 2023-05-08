@@ -15,11 +15,19 @@ using UnityEngine.SceneManagement;
 
 public class Audio_Manager : MonoBehaviour
 {
+    private int MAIN_SONG = 0;
+    private int PLAY_EASY = 1;
+    private int PLAY_NORMAL = 2;
+    private int GAMEOVER = 3;
+    private int GAMECLEAR = 4;
+
     public static Audio_Manager instance = null;
 
     public AudioClip[] audioList;
     private AudioSource ass;
     public static bool play_Audio = true;
+
+    public bool doLoop = true;
 
     private int sceneGroup = -1;
 
@@ -36,6 +44,9 @@ public class Audio_Manager : MonoBehaviour
             sceneGroup = getSceneGroup(SceneManager.GetActiveScene().name);
             //Debug.Log("NAME: " + SceneManager.GetActiveScene().name+" GR: "+ getSceneGroup(SceneManager.GetActiveScene().name));
             BGM_Change(sceneGroup);
+
+            if(sceneGroup==GAMECLEAR || sceneGroup==GAMEOVER){ doLoop = false; }
+            else { doLoop = true; }
         }
         return;
     }
@@ -60,14 +71,11 @@ public class Audio_Manager : MonoBehaviour
 
         ass.volume = UniteData.BGM;
 
-        if(play_Audio)
-        {
-            ass.pitch = 1f;
-        }
-        else
-        {
-            ass.pitch = 0f;
-        }
+        if(play_Audio){ ass.pitch = 1f; }
+        else{ ass.pitch = 0f; }
+
+        if (doLoop) { ass.loop = true;}
+        else {  ass.loop = false; }
     }
 
     private void BGM_Change(int index)
@@ -80,9 +88,20 @@ public class Audio_Manager : MonoBehaviour
     private int getSceneGroup(string scenename)
     {
         //play / cut 씬에서의 BGM을 설정
-        if (scenename == "Play" || scenename == "InGame-RN")
-        {
-            return 1;
+        if (scenename == "Play" || 
+            scenename == "InGame-RN")
+        {     
+            switch(UniteData.Difficulty)
+            {
+                case 1:
+                    return PLAY_EASY;
+                case 2:
+                    return PLAY_NORMAL;
+                case 3:
+                    return PLAY_NORMAL;
+                default:
+                    return PLAY_EASY;
+            }
         }
         //메인화면 / 맵 선택 / 스테이지 돌입 전 BGM을 설정
         else if (scenename == "Main Manu" ||
@@ -91,11 +110,21 @@ public class Audio_Manager : MonoBehaviour
                 scenename == "MapManu/Easy Map" ||
                 scenename == "MapManu/Nomal Map")
         {
-            return 0;
+            return MAIN_SONG;
+        }
+        //게임오버 씬에서의 BGM을 설정
+        else if (scenename == "Gameover")
+        {
+            return GAMEOVER;
+        }
+        //게임클리어 씬에서의 BGM을 설정
+        else if (scenename == "Gameclear")
+        {
+            return GAMECLEAR;
         }
         else
         {
-            return 0;
+            return MAIN_SONG;
         }
     }
 }

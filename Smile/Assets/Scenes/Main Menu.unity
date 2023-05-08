@@ -3465,3 +3465,7 @@ MonoBehaviour:
   audioList:
   - {fileID: 8300000, guid: 335634647ba736249aafe91f342337a5, type: 3}
   - {fileID: 8300000, guid: a06dc69fab3df4648a4fdda79a8e522b, type: 3}
+  - {fileID: 8300000, guid: c4ddfa16d49d6004f8ac7fd395121a82, type: 3}
+  - {fileID: 8300000, guid: 98fd4fc6b81489b47ac9b2eb18c7c0f8, type: 3}
+  - {fileID: 8300000, guid: 2b8e1c9dd48f1e148a6b66fd8e9cece9, type: 3}
+  doLoop: 1
