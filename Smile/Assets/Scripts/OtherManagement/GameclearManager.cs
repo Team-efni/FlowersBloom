@@ -9,7 +9,9 @@ public class GameclearManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //전역변수 초기화
+        UniteData.notePoint = 2; // 기회 포인트
+        UniteData.lifePoint = 3; // 목숨 포인트    
     }
 
     // Update is called once per frame

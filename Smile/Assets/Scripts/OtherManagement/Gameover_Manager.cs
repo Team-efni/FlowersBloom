@@ -14,6 +14,12 @@ using UnityEngine.SceneManagement;
 
 public class Gameover_Manager : MonoBehaviour
 {
+    void Start()
+    {
+        //전역변수 초기화
+        UniteData.notePoint = 2; // 기회 포인트
+        UniteData.lifePoint = 3; // 목숨 포인트    
+    }
     public void GotoMain()
     {
         SceneManager.LoadScene("Main Menu");
