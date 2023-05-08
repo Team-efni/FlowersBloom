@@ -19,9 +19,13 @@ public class RepeatMonster : MonoBehaviour
     public NoteController[] noteControllers;
     private NoteController noteController;
 
+    // 몬스터 랜덤 배치
+    private static int ran_mon = 0;//HACK
+
     // Start is called before the first frame update
     void Start()
     {
+
         switch (UniteData.Difficulty)
         {
             case 1:
@@ -55,7 +59,9 @@ public class RepeatMonster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //HACK
+        monster_image.sprite = monster_images[ran_mon]; 
+        Debug.Log("monster_image" + monster_image.sprite);
     }
 
     public void Initialized()
@@ -92,8 +98,8 @@ public class RepeatMonster : MonoBehaviour
         // 노트 초기화
         noteController.returnNote();
 
-        // 몬스터 랜덤 배치
-        int ran_mon = 0;
+        /*// 몬스터 랜덤 배치
+        int ran_mon = 0;//HACK*/
 
         if(UniteData.Difficulty == 2)
         {
