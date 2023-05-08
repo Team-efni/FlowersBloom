@@ -22,9 +22,6 @@ public class RepeatMonster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (UniteData.ReStart)
-            Initialized();
-
         switch (UniteData.Difficulty)
         {
             case 1:
@@ -49,6 +46,10 @@ public class RepeatMonster : MonoBehaviour
         }
 
         monster_image = monster.GetComponent<SpriteRenderer>();
+
+        if (UniteData.ReStart)
+            Initialized();
+
     }
 
     // Update is called once per frame
@@ -78,6 +79,7 @@ public class RepeatMonster : MonoBehaviour
                 monsterCount = 6;
                 break;
         }
+        MonsterColorOrigin();
         UniteData.ReStart = false;
     }
 

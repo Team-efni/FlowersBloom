@@ -41,7 +41,7 @@ public class ReStartGame : MonoBehaviour
             s_pc.Initialized();
             s_bs.Initialized();
             s_rm.Initialized();
-
+            
             UniteData.ReStart = false;
         }
 

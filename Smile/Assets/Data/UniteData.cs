@@ -21,7 +21,7 @@ public class UniteData
     public static bool ReStart = true; // 유저가 재시작 혹은 나가기 버튼을 누른 경우
 
     //유저 관련 데이터
-    public static bool[] GameClear = { false, false, false}; // 난이도별 클리어 유무
+    public static bool[] GameClear = { true, false, false}; // 난이도별 클리어 유무
 
     //설정 관련 데이터
     public static float BGM = 1f; //배경음악 볼륨
