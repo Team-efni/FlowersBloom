@@ -54,14 +54,15 @@ public class RepeatMonster : MonoBehaviour
         if (UniteData.ReStart)
             Initialized();
 
+        monster_image.sprite = monster_images[ran_mon];
     }
 
     // Update is called once per frame
     void Update()
     {
         //HACK
-        monster_image.sprite = monster_images[ran_mon]; 
-        Debug.Log("monster_image" + monster_image.sprite);
+        //monster_image.sprite = monster_images[ran_mon]; 
+        //Debug.Log("monster_image" + monster_image.sprite);
     }
 
     public void Initialized()
