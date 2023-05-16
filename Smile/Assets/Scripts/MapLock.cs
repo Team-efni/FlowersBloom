@@ -19,7 +19,7 @@ public class MapLock : MonoBehaviour
 
         for (int i = 0; i < StageList.Count - 1; i++)
         {
-            if (UniteData.GameClear[i])
+            if (UniteData.GameClear[i]==1)
             {
                 StageList[i+1].GetComponent<Stage>().UnlockMap();
             }

@@ -117,7 +117,8 @@ public class GameClear : MonoBehaviour
         bgStop();
         UniteData.ReStart = true;
         UniteData.Move_Progress = false;
-        UniteData.GameClear[UniteData.Difficulty - 1] = true;
+        UniteData.GameClear[UniteData.Difficulty - 1] = 1;
+        UniteData.SaveUserData();
         b_playerMove = true;
     }
 

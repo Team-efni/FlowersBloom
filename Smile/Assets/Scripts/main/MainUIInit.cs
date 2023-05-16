@@ -10,7 +10,7 @@ public class MainUIInit : MonoBehaviour
     public Sprite 민들레_사진;
     public Sprite 튤립_사진;
 
-    private void Awake()
+    private void Update()
     {
         if (UniteData.Selected_Character == "Dandelion")
         {

@@ -70,12 +70,14 @@ public class Select_Supervisor : MonoBehaviour
         {
             Debug.Log("응~ 아직 안돼~");
         }
+
+        UniteData.SaveUserData();
     }
 
     private void unlock_Tulip(Card_Status CS, GameObject Card)
     {
         //Easy 모드를 클리어 했을 때
-        if (CS.isEasyClear == UniteData.GameClear[0] && CS.isEasyClear)
+        if (CS.isEasyClear == (UniteData.GameClear[0] == 1) && CS.isEasyClear) 
         {
             //잠금 해제
             CS.unlocked = true;

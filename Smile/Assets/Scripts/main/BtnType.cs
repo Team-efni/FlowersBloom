@@ -38,7 +38,9 @@ public class BtnType : MonoBehaviour
                 CanvasGroupOn(mainGroup);
                 CanvasGroupOff(optionGroup);
                 break;
-
+            case BTNType.Reset:
+                UniteData.ResetUserData();
+                break;
         }
     }
     public void CanvasGroupOn(CanvasGroup cg)
@@ -64,5 +66,6 @@ public class BtnType : MonoBehaviour
         UniteData.Effect = Effect.value;
 
         UnityEngine.Debug.Log(UniteData.BGM + " / " + UniteData.Effect);
+        UniteData.SaveUserData();
     }    
 }

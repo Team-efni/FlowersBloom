@@ -10,6 +10,7 @@ public enum BTNType
     Sound,
     Teammate,
     Back,
+    Reset,
 }
 public class MainUI : MonoBehaviour
 {

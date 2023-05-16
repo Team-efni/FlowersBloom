@@ -50,7 +50,8 @@ public class ScenePass : MonoBehaviour, IScenePass
 
     public void SceneLoadStart(string sceneName)
     {
-        if(enable)
+        UniteData.SaveUserData();
+        if (enable)
         {
             asyncLoad.allowSceneActivation = true;
         }
