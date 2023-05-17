@@ -17,6 +17,7 @@ using UnityEngine.SceneManagement;
 public class node_management : MonoBehaviour
 {
     public GameObject node_prefab;
+    public GameObject ring;
 
     public UnityEvent<GameObject> onClick;
     public Animator animator;
@@ -26,7 +27,7 @@ public class node_management : MonoBehaviour
     public static float NORMAL_FPS = 96f;
     public static float HARD_FPS = 78f;
 
-    [Header("EASY MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
+    /*[Header("EASY MODE의 노트 판정의 타이밍을 조절하는 섹터 \n(변수에 마우스 가져다 대보세요)")]
     [Tooltip("조금 미흡한 타이밍의 시작점 (sec 단위)")]
     public float ENTRANCE_UNSATISFACTORY_TOUCH_EASY = (EASY_FPS - 30f) / 60f;
     [Tooltip("성공적인 타이밍의 시작점 (sec 단위)")]
@@ -60,7 +61,7 @@ public class node_management : MonoBehaviour
     private float ENTRANCE_UNSATISFACTORY_TOUCH = (EASY_FPS - 30f) / 60f;
     private float ENTRANCE_SUCCESSFULL_TOUCH = (EASY_FPS - 20f) / 60f;
     private float EXIT_SUCCESSFULL_TOUCH = (EASY_FPS - 10f) / 60f;
-    private float EXIT_UNSATISFACTORY_TOUCH = (EASY_FPS - 5f) / 60f;
+    private float EXIT_UNSATISFACTORY_TOUCH = (EASY_FPS - 5f) / 60f;*/
 
     public void node_click_event(GameObject clickObject)
     {
@@ -81,7 +82,7 @@ public class node_management : MonoBehaviour
         float elapsedTime = call_animation_time();
 
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 빠를 때 [MISS]
-        if (elapsedTime < ENTRANCE_UNSATISFACTORY_TOUCH)
+        if (ring.transform.localScale.x>0.25f)//(elapsedTime < ENTRANCE_UNSATISFACTORY_TOUCH)
         {
             UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
@@ -104,22 +105,22 @@ public class node_management : MonoBehaviour
             }
         }
         // 클릭 시간이 조금 미흡한 타이밍의 시작점보다 느릴 때 [FAST]
-        else if (elapsedTime > ENTRANCE_UNSATISFACTORY_TOUCH && elapsedTime < ENTRANCE_SUCCESSFULL_TOUCH)
+        else if (ring.transform.localScale.x <= 0.25f && ring.transform.localScale.x > 0.21f)
         {
             Debug.Log("FAST");
         }
-        // 클릭 시간이 성공적인 타이밍의 시작점보다 빠를 때 [SUCCESS]
-        else if (elapsedTime > ENTRANCE_SUCCESSFULL_TOUCH && elapsedTime < EXIT_SUCCESSFULL_TOUCH)
+        // 클릭 시간이 성공적인 타이밍 [SUCCESS]
+        else if (ring.transform.localScale.x <= 0.21f && ring.transform.localScale.x > 0.16f)
         {
             Debug.Log("SUCCESS");
         }
         // 클릭 시간이 성공적인 타이밍의 종점보다 느릴 때 [SLOW]
-        else if (elapsedTime > EXIT_SUCCESSFULL_TOUCH && elapsedTime < EXIT_UNSATISFACTORY_TOUCH)
+        else if (ring.transform.localScale.x <= 0.16f && ring.transform.localScale.x > 0.14f)
         {
             Debug.Log("SLOW");
         }
         // 클릭 시간이 조금 미흡한 타이밍의 종점보다 느릴 때 [MISS]
-        else if (elapsedTime > EXIT_UNSATISFACTORY_TOUCH)
+        else if (ring.transform.localScale.x <= 0.14f)
         {
             UniteData.Node_LifePoint -= 1;
             if (Node_Result.Miss_Node_Click())
@@ -159,7 +160,7 @@ public class node_management : MonoBehaviour
 
     private void Start()
     {
-        switch(UniteData.Difficulty)
+        /*switch(UniteData.Difficulty)
         {
             case 1:
                 ENTRANCE_UNSATISFACTORY_TOUCH = ENTRANCE_UNSATISFACTORY_TOUCH_EASY;
@@ -191,7 +192,7 @@ public class node_management : MonoBehaviour
                 EXIT_SUCCESSFULL_TOUCH = EXIT_SUCCESSFULL_TOUCH_EASY;
                 EXIT_UNSATISFACTORY_TOUCH = EXIT_UNSATISFACTORY_TOUCH_EASY;
                 break;
-        }
+        }*/
     }
 
     void Update()

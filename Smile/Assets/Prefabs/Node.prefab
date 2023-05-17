@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   node_prefab: {fileID: 1520609354661972823}
+  ring: {fileID: 1998786350445979951}
   onClick:
     m_PersistentCalls:
       m_Calls:
