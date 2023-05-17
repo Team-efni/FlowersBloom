@@ -24,6 +24,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Node_data
 {
@@ -47,6 +48,7 @@ public class node : MonoBehaviour
     public GameObject nodes_prefab;
     public LineRenderer line_renderer;
     public GameObject Highlight_Node;
+    public GameObject[] backgrounds;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite Node_image_A;
@@ -138,6 +140,30 @@ public class node : MonoBehaviour
         UniteData.Node_Click_Counter = 0; //노드 클릭 횟수
         LineIndex = 0;
         line_renderer.material.color = Color.white;
+
+        //배경 세팅
+        // 처음에는 모든 배경 초기화
+        for (int i = 0; i < backgrounds.Length; i++)
+        {
+            backgrounds[i].SetActive(false);
+        }
+
+        // 배경 지정
+        switch (UniteData.Difficulty)
+        {
+            case 1:
+                backgrounds[0].SetActive(true);
+                break;
+            case 2:
+                backgrounds[1].SetActive(true);
+                break;
+            case 3:
+                //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
+                break;
+            default:
+                backgrounds[0].SetActive(true);
+                break;
+        }
 
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
