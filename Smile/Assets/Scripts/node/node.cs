@@ -132,13 +132,13 @@ public class node : MonoBehaviour
         sceneLoader.LoadSceneAsync("Play");
 
         //컷씬 초기화
+        UniteData.Move_Progress = true;
         UnPassed = false;
         UniteData.Node_LifePoint = 2; //노드 목숨
         UniteData.Node_Click_Counter = 0; //노드 클릭 횟수
         LineIndex = 0;
         line_renderer.material.color = Color.white;
 
-        UniteData.GameMode = "CutScene";
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
 

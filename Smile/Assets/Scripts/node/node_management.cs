@@ -197,8 +197,8 @@ public class node_management : MonoBehaviour
 
     void Update()
     {
-        // 마우스 왼쪽 버튼이 클릭되었을 때
-        if (Input.GetMouseButtonDown(0))
+        // 게임 진행 도중 마우스 왼쪽 버튼이 클릭되었을 때
+        if (Input.GetMouseButtonDown(0) && UniteData.Move_Progress==true)
         {
             // 마우스 위치를 화면 공간에서 월드 공간으로 변환합니다.
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
