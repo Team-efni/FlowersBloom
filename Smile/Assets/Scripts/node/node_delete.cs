@@ -16,13 +16,13 @@ using UnityEngine.SceneManagement;
 public class node_delete : MonoBehaviour
 {
     public GameObject node_prefab;
-    public node_management n_m;
+    public node_management_click n_m;
 
-    private float MAX_TIME_EASY = node_management.EASY_FPS / 60f;
-    private float MAX_TIME_NORMAL = node_management.NORMAL_FPS / 60f;
-    private float MAX_TIME_HARD = node_management.HARD_FPS / 60f;
+    private float MAX_TIME_EASY = node_management_click.EASY_FPS / 60f;
+    private float MAX_TIME_NORMAL = node_management_click.NORMAL_FPS / 60f;
+    private float MAX_TIME_HARD = node_management_click.HARD_FPS / 60f;
 
-    private float MAX_TIME = node_management.EASY_FPS / 60f;
+    private float MAX_TIME = node_management_click.EASY_FPS / 60f;
 
     public void delete_node_after_click()
     {
@@ -77,7 +77,7 @@ public class node_delete : MonoBehaviour
 
     private void Start()
     {
-        switch(UniteData.Difficulty)
+        /*switch(UniteData.Difficulty)
         {
             case 1:
                 MAX_TIME = MAX_TIME_EASY;
@@ -91,7 +91,7 @@ public class node_delete : MonoBehaviour
             default:
                 MAX_TIME = MAX_TIME_EASY;
                 break;
-        }
+        }*/
 
         StartCoroutine(delete_node_AFK_state());
     }
