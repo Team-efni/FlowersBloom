@@ -11,6 +11,7 @@ public class NoteController : MonoBehaviour
     private int[] noteNums;
     private bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
+    private bool noteTouch = false;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -86,8 +87,9 @@ public class NoteController : MonoBehaviour
     public void touchClickLeftUp()
     {
         Debug.Log("touchClickLeftUp");
-        if (meetMonster)
+        if (meetMonster && !noteTouch)
         {
+            noteTouch = true;
             if (noteNums[noteIndex] == 0)
                 NoteSuccess();
         }
@@ -97,8 +99,9 @@ public class NoteController : MonoBehaviour
     public void touchClickLeftDown()
     {
         Debug.Log("touchClickLeftDown");
-        if (meetMonster)
+        if (meetMonster && !noteTouch)
         {
+            noteTouch = true;
             if (noteNums[noteIndex] == 1)
                 NoteSuccess();
         }
@@ -108,8 +111,9 @@ public class NoteController : MonoBehaviour
     public void touchClickRightUp()
     {
         Debug.Log("touchClickRightUp");
-        if (meetMonster)
+        if (meetMonster && !noteTouch)
         {
+            noteTouch = true;
             if (noteNums[noteIndex] == 2)
                 NoteSuccess();
         }
@@ -119,8 +123,9 @@ public class NoteController : MonoBehaviour
     public void touchClickRightDown()
     {
         Debug.Log("touchClickRightDown");
-        if (meetMonster)
+        if (meetMonster && !noteTouch)
         {
+            noteTouch = true;
             if (noteNums[noteIndex] == 3)
                 NoteSuccess();
         }
@@ -131,6 +136,7 @@ public class NoteController : MonoBehaviour
         Debug.Log("Note Success");
         NoteDisabled();
         noteIndex++;
+        noteTouch = false;
 
         if (noteIndex == noteLength)
         {
