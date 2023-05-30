@@ -2324,7 +2324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cut_Scene_prefab: {fileID: 943078078}
-  s_noteController: {fileID: 1693369088}
   go_notePoints: []
   go_lifePoints: []
   Note_Bg: {fileID: 0}
@@ -2426,7 +2425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4342221883415108983, guid: 0fd147ef4a0888e459cefc92e95bfb9a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4342221883415108983, guid: 0fd147ef4a0888e459cefc92e95bfb9a, type: 3}
       propertyPath: m_TagString
@@ -2452,7 +2451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cut_Scene_prefab: {fileID: 943078078}
-  s_noteController: {fileID: 1693369088}
   go_notePoints:
   - {fileID: 610206677}
   - {fileID: 1472557600}
@@ -2486,7 +2484,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.11764592, y: 2.8}
+  m_Offset: {x: -0.30288327, y: 2.8}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2497,7 +2495,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.734692, y: 5.64}
+  m_Size: {x: 3.1525052, y: 5.64}
   m_EdgeRadius: 0
 --- !u!50 &857768461
 Rigidbody2D:
@@ -4911,7 +4909,6 @@ MonoBehaviour:
   - {fileID: 1617880530}
   target: {fileID: 592473495}
   Note_Bg: {fileID: 1136827836}
-  noteSuccess: 0
 --- !u!1 &1547773920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5231,7 +5228,6 @@ MonoBehaviour:
   - {fileID: 1617880530}
   target: {fileID: 1077886640}
   Note_Bg: {fileID: 1136827836}
-  noteSuccess: 0
 --- !u!61 &1693369089
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6613,6 +6609,14 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4007968061704460692, guid: 0a8faec100c401245950ae192a9a0cdd, type: 3}
+      propertyPath: m_Size.x
+      value: 3.1525102
+      objectReference: {fileID: 0}
+    - target: {fileID: 4007968061704460692, guid: 0a8faec100c401245950ae192a9a0cdd, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.7485695
+      objectReference: {fileID: 0}
     - target: {fileID: 4308415641355594123, guid: 0a8faec100c401245950ae192a9a0cdd, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.00000011920929
@@ -6763,7 +6767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cut_Scene_prefab: {fileID: 943078078}
-  s_noteController: {fileID: 1693369088}
   go_notePoints:
   - {fileID: 610206677}
   - {fileID: 1472557600}

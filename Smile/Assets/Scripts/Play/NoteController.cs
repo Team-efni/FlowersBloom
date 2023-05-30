@@ -15,8 +15,6 @@ public class NoteController : MonoBehaviour
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
-    public bool noteSuccess; // 노트 성공
-
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +33,7 @@ public class NoteController : MonoBehaviour
     {
         noteIndex = 0;
         meetMonster = false;
-        noteSuccess = false;
+        UniteData.NoteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
     }
 
@@ -55,7 +53,7 @@ public class NoteController : MonoBehaviour
 
     private void NoteSetting()
     {
-        noteSuccess = false;
+        UniteData.NoteSuccess = false;
         noteNums = new int[noteLength];
 
         // 랜덤으로 노트 생성
@@ -139,7 +137,7 @@ public class NoteController : MonoBehaviour
             // 모두 성공한 경우
             Debug.Log("All Success");
             meetMonster = false;
-            noteSuccess = true;
+            UniteData.NoteSuccess = true;
             MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
             returnNote();

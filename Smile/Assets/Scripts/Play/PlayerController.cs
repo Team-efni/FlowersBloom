@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public IScenePass scenePass;
     public GameObject Cut_Scene_prefab;
-    public NoteController s_noteController;
 
     private Color del_color = new Color(0, 0, 0);
     private Color show_color = new Color(1, 1, 1);
@@ -82,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!s_noteController.noteSuccess && collision.CompareTag("Monster"))
+        if (!UniteData.NoteSuccess && collision.CompareTag("Monster"))
         {
             //moveSpeed = 0;
             Debug.Log("UniteData.notePoint" + UniteData.notePoint);
