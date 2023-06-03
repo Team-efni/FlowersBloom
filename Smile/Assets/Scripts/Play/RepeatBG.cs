@@ -40,6 +40,7 @@ public class RepeatBG : MonoBehaviour
         {
             if(UniteData.Move_Progress)
             {
+                UniteData.Play_Scene_Time = timer.GetTime();
                 newPos = Mathf.Repeat(timer.GetTime() * speed, posValue);
             }
             else

@@ -114,6 +114,10 @@ public class RepeatMonster : MonoBehaviour
             ran_mon = 1;
         }
 
+#if false
+        ran_mon = 0;
+#endif
+
         UniteData.Closed_Monster = monster_name[ran_mon];
         monster_image.sprite = monster_images[ran_mon];
         Debug.Log("monster_image" + monster_image.sprite);

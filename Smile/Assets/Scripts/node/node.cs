@@ -28,6 +28,9 @@ using UnityEngine.UIElements;
 
 public class Node_data
 {
+    private static float SIDE_V = 500f;
+    private static float STR_V = 900f;
+
     public Vector2 vector2 = new Vector2();
     public Sprite procedure;
     public Sprite Ring_Color;
@@ -41,6 +44,99 @@ public class Node_data
         this.procedure = _procedure;
         this.Ring_Color = _ring_Color;
         this.mode = _mode;
+    }
+
+    static public Vector2 resettingShadowNode(Vector2 forwardVector, int direction)
+    {
+        if (direction == 0) //12시
+        {
+            Vector2 v = new Vector2(forwardVector.x, forwardVector.y + STR_V);
+            if (v.y>500f)
+            {
+                v.y = 500f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if(direction == 1) //1~2시
+        {
+            Vector2 v = new Vector2(forwardVector.x+ SIDE_V, forwardVector.y + SIDE_V);
+            if (forwardVector.y > 500f)
+            {
+                v.y = 500f;
+            }
+            if(forwardVector.x>1300f)
+            {
+                v.x = 1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if (direction == 2) //3시
+        {
+            Vector2 v = new Vector2(forwardVector.x + STR_V, forwardVector.y);
+            if (forwardVector.x > 1300f)
+            {
+                v.x = 1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if (direction == 3) //4~5시
+        {
+            Vector2 v = new Vector2(forwardVector.x + SIDE_V, forwardVector.y - SIDE_V);
+            if (forwardVector.y < -500f)
+            {
+                v.y = -500f;
+            }
+            if (forwardVector.x > 1300f)
+            {
+                v.x = 1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if(direction==4) //6시
+        {
+            Vector2 v = new Vector2(forwardVector.x, forwardVector.y - STR_V);
+            if (forwardVector.y < -500f)
+            {
+                v.y = -500f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if(direction==5) //7~8시
+        {
+            Vector2 v = new Vector2(forwardVector.x - SIDE_V, forwardVector.y - SIDE_V);
+            if (forwardVector.y < -500f)
+            {
+                v.y = -500f;
+            }
+            if (forwardVector.x < -1300f)
+            {
+                v.x = -1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if(direction==6) //9시
+        {
+            Vector2 v = new Vector2(forwardVector.x - STR_V, forwardVector.y);
+            if (forwardVector.x < -1300f)
+            {
+                v.x = -1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        else if(direction==7) //10~11시
+        {
+            Vector2 v = new Vector2(forwardVector.x - SIDE_V, forwardVector.y + SIDE_V);
+            if (forwardVector.y > 500f)
+            {
+                v.y = 500f;
+            }
+            if (forwardVector.x < -1300f)
+            {
+                v.x = -1300f;
+            }
+            return new Vector2(v.x, v.y);
+        }
+        return forwardVector;
     }
 }
 
@@ -153,7 +249,7 @@ public class node : MonoBehaviour
     private float[] easyTime_23 = { 0f, 1.8f, 2f, 2f, 2f };
     private float[] normalTime_01 = { 0f, 1.6f, 1.8f, 1.8f, 1.6f, 1.6f, 1.6f, 1.8f };
     private float[] normalTime_23 = { 0f , 1.8f , 1.8f , 1.6f , 1.6f , 1.8f , 1.6f , 1.6f };
-    private float[] hardTime = { 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f, 1.3f };
+    private float[] hardTime = { 0, 0f, 2.5f, 1.5f, 1.5f, 1.5f, 0f, 2.3f, 1.3f, 1.5f, 1.3f };
     private int cas;
 
     //노드를 생성하는 부분입니다. Coroutine으로 구현
@@ -161,7 +257,7 @@ public class node : MonoBehaviour
     {
         List<Vector2> vector = new List<Vector2>();
 
-#if false
+#if true
         for (int i=0; i<node_location.Count; i++)
         {
             vector.Add(node_location[i].vector2);
@@ -218,19 +314,24 @@ public class node : MonoBehaviour
             if (node_location[i].mode == 1)
             {
                 yield return new WaitForSeconds(non[i]);
+                node_placement(i);
+                Insert_Line(vector);
             }
             else if (node_location[i].mode == 2)
             {
                 yield return new WaitForSeconds(non[i]);
+                node_placement(i);
+                Insert_Line(vector);
+                i++;
+                vector.Add(node_location[i].vector2);
+                node_placement(i);
+                Insert_Line(vector);
             }
-            node_placement(i);
 
-            Insert_Line(vector);
-
-            if (node_location[i].mode == 3)
+            /*if (node_location[i].mode == 3)
             {
                 yield return new WaitForSeconds(2f);
-            }
+            }*/
         }
 #endif
     }
@@ -306,7 +407,11 @@ public class node : MonoBehaviour
 
     private void Initialize_node_setting()
     {
-        cas = call_random() % 4;
+#if true
+    cas = call_random() % 4;
+#else
+    cas = 1;
+#endif
         switch (UniteData.Difficulty)
         {
             case 1: //easy
@@ -409,6 +514,18 @@ public class node : MonoBehaviour
                     node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[0], 2));
                     node_location.Add(new Node_data(set_node_coordinate(), ping_locate_shadow, Ring[1], 3));
                     node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[2], 1));
+
+                    /*node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0], 2));
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count-1].vector2,5), ping_locate_shadow, Ring[1], 3));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[2], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[3], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[0], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[1], 2));
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2,2), ping_locate_shadow, Ring[3], 3));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[2], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[0], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[1], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[2], 1));*/
                 }
                 else if (cas == 2) {
                     node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[0], 1));

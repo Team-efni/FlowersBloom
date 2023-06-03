@@ -23,6 +23,8 @@ public class node_management_drag : MonoBehaviour
     public UnityEvent<GameObject> onClick;
     public Animator animator;
 
+    private float Drag_fast = 16f;
+
     private bool move_unlock = false;
 
     public void node_drag_event(GameObject clickObject)
@@ -199,7 +201,7 @@ public class node_management_drag : MonoBehaviour
         if(move_unlock)
         {
             //노드가 100frame 동안 node_prefab이 vector2 variation인 ping 변수로 이동 Like Linearity
-            Vector2 v2 = Vector2.MoveTowards(node_prefab.transform.position, ping, 8f);
+            Vector2 v2 = Vector2.MoveTowards(node_prefab.transform.position, ping, Drag_fast);
             node_prefab.transform.position = v2;
 
             if (node_prefab.transform.position.x == ping.x)
@@ -226,6 +228,6 @@ public class node_management_drag : MonoBehaviour
 
         node.LineIndex = node.LineIndex - 2; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
-        UniteData.Node_Click_Counter += 1;
+        UniteData.Node_Click_Counter += 2;
     }
 }
