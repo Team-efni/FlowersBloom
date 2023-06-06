@@ -17,7 +17,9 @@ public class node_management_drag : MonoBehaviour
 {
     public GameObject node_prefab;
     public GameObject ring;
+    public GameObject bright; 
     private GameObject shadow;
+
     public Vector2 ping;
 
     public UnityEvent<GameObject> onClick;
@@ -60,6 +62,8 @@ public class node_management_drag : MonoBehaviour
         {
             //ring 오브젝트 비활성화
             ring.SetActive(false);
+            //bright 활성화
+            bright.SetActive(true);
             move_unlock = true;
             Debug.Log("FAST");
         }
@@ -68,6 +72,8 @@ public class node_management_drag : MonoBehaviour
         {
             //ring 오브젝트 비활성화
             ring.SetActive(false);
+            //bright 활성화
+            bright.SetActive(true);
             move_unlock = true;
             Debug.Log("SUCCESS");
         }
@@ -76,6 +82,8 @@ public class node_management_drag : MonoBehaviour
         {
             //ring 오브젝트 비활성화
             ring.SetActive(false);
+            //bright 활성화
+            bright.SetActive(true);
             move_unlock = true;
             Debug.Log("SLOW");
         }
@@ -104,13 +112,16 @@ public class node_management_drag : MonoBehaviour
     private void Awake()
     {
         animator.SetInteger("Difficulty", UniteData.Difficulty);
+
+        //bright 비활성화
+        bright.SetActive(false);
     }
 
     private void Start()
     {
         //ping의 위치를 nodes_prefab의 위치에서 500거리만큼 떨어진 곳에 배치한다.
         //ping.transform.position = new Vector3(node_prefab.transform.position.x, node_prefab.transform.position.y + 500, node_prefab.transform.position.z);
-        Debug.Log(ping);
+        //Debug.Log(ping);
     }
 
     void Update()

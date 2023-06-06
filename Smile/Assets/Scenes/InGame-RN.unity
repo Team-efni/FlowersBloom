@@ -3020,6 +3020,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ce4e765be706e27438f043d254789bf0, type: 3}
   - {fileID: 21300000, guid: edf1f24e0c4c6d840bf218ea20008bc2, type: 3}
   - {fileID: 21300000, guid: 06bbf9f25c013664693b4a5c762ffd68, type: 3}
+  BR_Ring:
+  - {fileID: 21300000, guid: 26df1b5ac7bbd774b9d1eeaf6e124a18, type: 3}
+  - {fileID: 21300000, guid: 009cdc45ae022b043991eef3933234ff, type: 3}
+  - {fileID: 21300000, guid: 2424842e441f7714098f9c28084c3411, type: 3}
+  - {fileID: 21300000, guid: 9da2ea71f8bc4874a903fda94874f4be, type: 3}
+  BR_Big_Ring:
+  - {fileID: 21300000, guid: 408095f893b7147499faf955f6786203, type: 3}
+  - {fileID: 21300000, guid: 9fc9d0c93f70e234cbb54882480b194c, type: 3}
+  - {fileID: 21300000, guid: e1c74b0466ae22543b179cc6809ad3ef, type: 3}
+  - {fileID: 21300000, guid: 6857cd518ad2ddf479ab3c949e6bcb1d, type: 3}
   radius_MIN: 420
   radius_MAX: 1000
 --- !u!4 &1741721796
