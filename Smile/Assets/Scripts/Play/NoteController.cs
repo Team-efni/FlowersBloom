@@ -16,6 +16,8 @@ public class NoteController : MonoBehaviour
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
+    private List<Dictionary<string, object>> data;
+
     // Start is called before the first frame update
     void Start()
     {

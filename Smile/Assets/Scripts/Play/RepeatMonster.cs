@@ -22,9 +22,14 @@ public class RepeatMonster : MonoBehaviour
     // 몬스터 랜덤 배치
     private static int ran_mon = 0;//HACK
 
+    // 나중에 전역변수로 수정해야함
+    private List<Dictionary<string, object>> data;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        data = CSVReader.Read("World1_easy");
 
         switch (UniteData.Difficulty)
         {
@@ -86,8 +91,14 @@ public class RepeatMonster : MonoBehaviour
                 monsterCount = 6;
                 break;
         }
+
+        // CSV를 읽어서 나오는 마리수 설정
+        monsterCount = int.Parse(data[0]["num"].ToString());
+        Debug.Log("monsterCountNew : "+  monsterCount);
         MonsterColorOrigin();
         UniteData.ReStart = false;
+
+
     }
 
     public void MonsterColorOrigin()
