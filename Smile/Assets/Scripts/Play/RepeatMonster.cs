@@ -125,10 +125,7 @@ public class RepeatMonster : MonoBehaviour
             ran_mon = 1;
         }
 
-#if false
-        ran_mon = 0;
-#endif
-
+#if true
         UniteData.Closed_Monster = monster_name[ran_mon];
         monster_image.sprite = monster_images[ran_mon];
         Debug.Log("monster_image" + monster_image.sprite);
@@ -137,6 +134,7 @@ public class RepeatMonster : MonoBehaviour
         Color c = monster.GetComponent<SpriteRenderer>().color;
         c.a = 225f;
         monster.GetComponent<SpriteRenderer>().color = c;
+#endif
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

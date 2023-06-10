@@ -28,16 +28,16 @@ public class PlayGaugeManager : MonoBehaviour
         switch (UniteData.Difficulty)
         {
             case 1:
-                maxTime = 53f;
+                maxTime = 71f;
                 break;
             case 2:
-                maxTime = 79f;
+                maxTime = 90f;
                 break;
             case 3:
                 maxTime = 88f;
                 break;
             default:
-                maxTime = 53f;
+                maxTime = 71f;
                 break;
         }
     }
@@ -45,7 +45,7 @@ public class PlayGaugeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(UniteData.Play_Scene_Time);
+        Debug.Log(UniteData.Play_Scene_Time);
         slider.value = UniteData.Play_Scene_Time / maxTime;
     }
 }

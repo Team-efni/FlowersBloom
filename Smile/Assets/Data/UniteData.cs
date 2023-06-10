@@ -61,4 +61,6 @@ public class UniteData
         SaveUserData();
         Debug.Log("유저 데이터 초기화 완료");
     }
+
+    //디버깅용 데이터
 }

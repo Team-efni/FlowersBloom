@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+#if true //몬스터에 접근해도 멈추지 않도록 디버깅용 매크로
         if (!UniteData.NoteSuccess && collision.CompareTag("Monster"))
         {
             //moveSpeed = 0;
@@ -127,6 +128,7 @@ public class PlayerController : MonoBehaviour
                 
             }
         }
+#endif
     }
 
 
