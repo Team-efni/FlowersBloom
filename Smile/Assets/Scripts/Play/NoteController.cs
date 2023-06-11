@@ -11,7 +11,6 @@ public class NoteController : MonoBehaviour
     private int[] noteNums;
     private bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
-    private bool noteTouch = false;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -45,14 +44,14 @@ public class NoteController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-#if true
+//#if true
             Debug.Log("Player Meet");
-            Set_Note_Count(); // 만난 몬스터 확인
+            Set_Note_Count(); // 노트 개수 확인
             NoteSetting();
             DoBgShow(true); // 상단 노트 UI 활성화
 
             meetMonster = true;
-#endif
+//#endif
         }
     }
 
@@ -64,7 +63,10 @@ public class NoteController : MonoBehaviour
         // 랜덤으로 노트 생성
         for (int i = 0; i < noteLength; i++)
         {
-            noteNums[i] = Random.Range(0, 4);
+            //noteNums[i] = Random.Range(0, 4);
+            string columnName = $"noteNums{i}";
+            noteNums[i] = int.Parse(UniteData.data[UniteData.mon_num][columnName].ToString());
+            Debug.Log("noteNums["+i+"] : " + noteNums[i]);
             note[i].GetComponent<Image>().sprite = noteSprite[noteNums[i]];
         }
 
@@ -90,10 +92,10 @@ public class NoteController : MonoBehaviour
 
     public void touchClickLeftUp()
     {
-        Debug.Log("touchClickLeftUp");
-        if (meetMonster && !noteTouch)
+        Debug.Log("touchClickLeftUp : ");
+        if (Input.touchCount > 1) return; // 멀티 터치 안되게
+        if (meetMonster)
         {
-            noteTouch = true;
             if (noteNums[noteIndex] == 0)
                 NoteSuccess();
         }
@@ -103,9 +105,9 @@ public class NoteController : MonoBehaviour
     public void touchClickLeftDown()
     {
         Debug.Log("touchClickLeftDown");
-        if (meetMonster && !noteTouch)
+        if (Input.touchCount > 1) return; // 멀티 터치 안되게
+        if (meetMonster)
         {
-            noteTouch = true;
             if (noteNums[noteIndex] == 1)
                 NoteSuccess();
         }
@@ -115,9 +117,9 @@ public class NoteController : MonoBehaviour
     public void touchClickRightUp()
     {
         Debug.Log("touchClickRightUp");
-        if (meetMonster && !noteTouch)
+        if (Input.touchCount > 1) return; // 멀티 터치 안되게
+        if (meetMonster)
         {
-            noteTouch = true;
             if (noteNums[noteIndex] == 2)
                 NoteSuccess();
         }
@@ -127,9 +129,9 @@ public class NoteController : MonoBehaviour
     public void touchClickRightDown()
     {
         Debug.Log("touchClickRightDown");
-        if (meetMonster && !noteTouch)
+        if (Input.touchCount > 1) return; // 멀티 터치 안되게
+        if (meetMonster)
         {
-            noteTouch = true;
             if (noteNums[noteIndex] == 3)
                 NoteSuccess();
         }
@@ -140,7 +142,6 @@ public class NoteController : MonoBehaviour
         Debug.Log("Note Success");
         NoteDisabled();
         noteIndex++;
-        noteTouch = false;
 
         if (noteIndex == noteLength)
         {
@@ -191,6 +192,7 @@ public class NoteController : MonoBehaviour
 
     private void Set_Note_Count()
     {
+        /*
         switch(UniteData.Closed_Monster)
         {
             case "Rose":
@@ -206,6 +208,10 @@ public class NoteController : MonoBehaviour
                 noteLength = 3;
                 break;
         }
+        */
+
+        noteLength = int.Parse(UniteData.data[UniteData.mon_num]["noteLength"].ToString());
+
         Debug.Log("noteLength : " + noteLength);
     }
 
