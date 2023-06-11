@@ -22,7 +22,6 @@ public class RepeatMonster : MonoBehaviour
     // 몬스터 랜덤 배치
     //private static int ran_mon = 0;//HACK
     // 어떤 몬스터가 나올지 csv를 통해 읽어옴
-    private static int mon_num = 1;
     private static int choice_mon = 0;
 
     // Start is called before the first frame update
@@ -95,7 +94,7 @@ public class RepeatMonster : MonoBehaviour
 
         // CSV를 읽어서 나오는 마리수 설정
         monsterCount = int.Parse(UniteData.data[0]["num"].ToString());
-        mon_num = 1;
+        UniteData.mon_num = 1;
         Debug.Log("monsterCountNew : "+  monsterCount);
         MonsterColorOrigin();
         UniteData.ReStart = false;
@@ -127,10 +126,10 @@ public class RepeatMonster : MonoBehaviour
 #if true
         */
 
-        Debug.Log("mon_num : " + mon_num);
-        if (UniteData.data[mon_num]["Monster"].ToString().Equals("Rose"))
+        Debug.Log("mon_num : " + UniteData.mon_num);
+        if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Rose"))
             choice_mon = 0;
-        else if (UniteData.data[mon_num]["Monster"].ToString().Equals("Cosmos")) 
+        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Cosmos")) 
             choice_mon = 1;
 #if true
         UniteData.Closed_Monster = monster_name[choice_mon];
@@ -151,7 +150,7 @@ public class RepeatMonster : MonoBehaviour
             if (monsterCount > 1)
             {
                 monsterCount--;
-                mon_num++;
+                UniteData.mon_num++;
                 MonsterColorOrigin();
             }
             else if (monsterCount == 1)

@@ -24,6 +24,7 @@ public class UniteData
     public static bool NoteSuccess = false; // 몬스터 상단 노트 성공 유무
 
     public static List<Dictionary<string, object>> data;
+    public static int mon_num = 1; // 현재 나온 마리수
 
     //유저 관련 데이터
     public static int[] GameClear = { 
