@@ -25,9 +25,6 @@ public class RepeatMonster : MonoBehaviour
     private static int mon_num = 1;
     private static int choice_mon = 0;
 
-    // 나중에 전역변수로 수정해야함
-    private List<Dictionary<string, object>> data;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -36,25 +33,25 @@ public class RepeatMonster : MonoBehaviour
             case 1:
                 monster = monsters[0];
                 noteController = noteControllers[0];
-                data = CSVReader.Read("World1_easy");
+                UniteData.data = CSVReader.Read("World1_easy");
                 break;
 
             case 2:
                 monster = monsters[1];
                 noteController = noteControllers[1];
-                data = CSVReader.Read("World1_normal");
+                UniteData.data = CSVReader.Read("World1_normal");
                 break;
 
             case 3:
                 //monster = monsters[2];
                 //noteController = noteControllers[2];
-                //data = CSVReader.Read("World1_hard");
+                //UniteData.data = CSVReader.Read("World1_hard");
                 break;
 
             default:
                 monster = monsters[0];
                 noteController = noteControllers[0];
-                data = CSVReader.Read("World1_easy");
+                UniteData.data = CSVReader.Read("World1_easy");
                 break;
         }
 
@@ -97,7 +94,7 @@ public class RepeatMonster : MonoBehaviour
         }
 
         // CSV를 읽어서 나오는 마리수 설정
-        monsterCount = int.Parse(data[0]["num"].ToString());
+        monsterCount = int.Parse(UniteData.data[0]["num"].ToString());
         mon_num = 1;
         Debug.Log("monsterCountNew : "+  monsterCount);
         MonsterColorOrigin();
@@ -131,9 +128,9 @@ public class RepeatMonster : MonoBehaviour
         */
 
         Debug.Log("mon_num : " + mon_num);
-        if (data[mon_num]["Monster"].ToString().Equals("Rose"))
+        if (UniteData.data[mon_num]["Monster"].ToString().Equals("Rose"))
             choice_mon = 0;
-        else if (data[mon_num]["Monster"].ToString().Equals("Cosmos")) 
+        else if (UniteData.data[mon_num]["Monster"].ToString().Equals("Cosmos")) 
             choice_mon = 1;
 #if true
         UniteData.Closed_Monster = monster_name[choice_mon];

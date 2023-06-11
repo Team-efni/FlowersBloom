@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UniteData
@@ -21,6 +22,8 @@ public class UniteData
     public static bool ReStart = true; // 유저가 재시작 혹은 나가기 버튼을 누른 경우
 
     public static bool NoteSuccess = false; // 몬스터 상단 노트 성공 유무
+
+    public static List<Dictionary<string, object>> data;
 
     //유저 관련 데이터
     public static int[] GameClear = { 
