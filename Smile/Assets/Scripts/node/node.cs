@@ -30,8 +30,9 @@ public class Node_data
     public Sprite Ring_Color;
     public Sprite bright_Color;
     public int mode; //1: 클릭 / 2: 드래그(시작 포인트) / 3: 드래그 (끝 포인트)
+    public float time;
 
-    public Node_data(Vector2 _vector2, Sprite _procedure, Sprite _ring_Color, Sprite _bright_Color, int _mode)
+    public Node_data(Vector2 _vector2, Sprite _procedure, Sprite _ring_Color, Sprite _bright_Color, int _mode, float _time)
     {
         this.vector2 = _vector2;
 
@@ -40,6 +41,7 @@ public class Node_data
         this.Ring_Color = _ring_Color;
         this.bright_Color = _bright_Color;
         this.mode = _mode;
+        this.time = _time;
     }
 
     static public Vector2 resettingShadowNode(Vector2 forwardVector, int direction)
@@ -152,6 +154,8 @@ public class node : MonoBehaviour
     private const int C = 2;
     private const int D = 3;
 
+    private int cas;
+
     private List<Node_data> node_location = new List<Node_data>();
     public GameObject nodes_prefab;
     public GameObject nodedrag_prefab;
@@ -261,96 +265,20 @@ public class node : MonoBehaviour
         UnityEngine.Debug.Log("진행");
     }
 
-    private float[] easyTime_01 = { 0f, 2f, 1.8f, 1.8f, 2f };
-    private float[] easyTime_23 = { 0f, 1.8f, 2f, 2f, 2f };
-    private float[] normalTime_01 = { 0f, 1.6f, 1.8f, 1.8f, 1.6f, 1.6f, 1.6f, 1.8f };
-    private float[] normalTime_23 = { 0f , 1.8f , 1.8f , 1.6f , 1.6f , 1.8f , 1.6f , 1.6f };
-    private float[] hardTime_01 = { 0, 0f, 1.8f, 1.5f, 1.5f, 1.5f, 2.0f, 0f, 1.3f, 1.5f, 1.3f };
-    private float[] hardTime_23 = { 0, 0f, 1.9f, 1.3f, 1.5f, 1.4f, 1.3f, 1.5f, 0f, 1.8f, 1.3f };
-    private int cas;
-
     //노드를 생성하는 부분입니다. Coroutine으로 구현
     private IEnumerator D_Coroutine()
     {
         List<Vector2> vector = new List<Vector2>();
 
-#if false
         for (int i=0; i<node_location.Count; i++)
         {
             vector.Add(node_location[i].vector2);
-            if(node_location[i].mode == 1 )
-            {
-                yield return new WaitForSeconds(set_node_wait());
-            }
-            else if(node_location[i].mode == 2)
-            {
-                yield return new WaitForSeconds(1f);
-            }
+            yield return new WaitForSeconds(node_location[i].time);
+
             node_placement(i);
             
             Insert_Line(vector);
-
-            if(node_location[i].mode == 3)
-            {
-                yield return new WaitForSeconds(2f);
-            }
         }
-#else
-        float[] non;
-        if(cas-1<=0)
-        {
-            if (UniteData.Difficulty == 1)
-            {
-                non = easyTime_01;
-            }
-            else if (UniteData.Difficulty == 2)
-            {
-                non = normalTime_01;
-            }
-            else
-            {
-                non = hardTime_01;
-            }
-        }
-        else
-        {
-            if(UniteData.Difficulty==1)
-            {
-                non = easyTime_23;
-            }
-            else if(UniteData.Difficulty==2)
-            {
-                non = normalTime_23;
-            }
-            else { non = hardTime_23; }
-        }
-
-        for(int i = 0; i < node_location.Count; i++)
-        {
-            vector.Add(node_location[i].vector2);
-            if (node_location[i].mode == 1)
-            {
-                yield return new WaitForSeconds(non[i]);
-                node_placement(i);
-                Insert_Line(vector);
-            }
-            else if (node_location[i].mode == 2)
-            {
-                yield return new WaitForSeconds(non[i]);
-                node_placement(i);
-                Insert_Line(vector);
-                i++;
-                vector.Add(node_location[i].vector2);
-                node_placement(i);
-                Insert_Line(vector);
-            }
-
-            /*if (node_location[i].mode == 3)
-            {
-                yield return new WaitForSeconds(2f);
-            }*/
-        }
-#endif
     }
 
     // Start is called before the first frame update
@@ -424,88 +352,88 @@ public class node : MonoBehaviour
 
     private void Initialize_node_setting()
     {
-#if false
+#if true
     cas = call_random() % 2;
 #else
-    cas = 0;
+    cas = 1;
 #endif
         switch (UniteData.Difficulty)
         {
             case 1: //easy
                 if( cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 2f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
                 }
                 else if( cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 2f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 2f));
                 }
                 break;
 
             case 2: //normal
                 if (cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
                 }
                 else if(cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
                 }
                 break;
 
             case 3: //hard
                 if (cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 2));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOWEST), ping_locate_shadow, Ring[A], BR_Ring[A], 3));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, EAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 2, 0f));
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOWEST), ping_locate_shadow, Ring[A], BR_Ring[A], 3, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.5f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.5f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2, 2.0f));
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, EAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.3f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.3f));
                 }
                 else if (cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOEAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1)); //FIXME 동시출력 문제 발생
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 2)); //FIXME 동시출력 문제 발생
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOUTH), ping_locate_shadow, Ring[B], BR_Ring[B], 3));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2, 0f));
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOEAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.9f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.3f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.4f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.3f)); //FIXME 동시출력 문제 발생
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 2, 1.5f)); //FIXME 동시출력 문제 발생
+                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOUTH), ping_locate_shadow, Ring[B], BR_Ring[B], 3, 0f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.8f));
+                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.3f));
                 }
                 break;
 
             default: //default
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 2));
-                node_location.Add(new Node_data(set_node_coordinate(), ping_locate_shadow, Ring[C], BR_Ring[C], 3));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 2f));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
 
                 UniteData.Difficulty = 1;
                 break;
