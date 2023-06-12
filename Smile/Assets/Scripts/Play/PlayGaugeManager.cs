@@ -45,7 +45,7 @@ public class PlayGaugeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(UniteData.Play_Scene_Time);
+        //Debug.Log(UniteData.Play_Scene_Time);
         slider.value = UniteData.Play_Scene_Time / maxTime;
     }
 }
