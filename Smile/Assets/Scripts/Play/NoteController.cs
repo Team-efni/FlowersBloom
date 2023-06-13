@@ -12,10 +12,14 @@ public class NoteController : MonoBehaviour
     private bool meetMonster = false;
     private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
+    private float clickTime; // 클릭 중인 시간
+    public float minClickTime = 1; // 최소 클릭 시간
+    private bool isClick; // 클릭중인지 판단
+
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
-    private List<Dictionary<string, object>> data;
+    //private List<Dictionary<string, object>> data;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +32,16 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // 클릭 중이라면
+        if (isClick)
+        {
+            clickTime += Time.deltaTime;
+        }
+        // 아니라면
+        else
+        {
+            clickTime = 0;
+        }
     }
 
     public void Initialized()
@@ -90,6 +103,18 @@ public class NoteController : MonoBehaviour
         }
     }
 
+    public void touchClick(int i)
+    {
+        Debug.Log("touchClick : " + i);
+        if (Input.touchCount > 1) return; // 멀티 터치 안되게
+        if (meetMonster)
+        {
+            if (noteNums[noteIndex] == i)
+                NoteSuccess();
+        }
+    }
+
+    /*
     public void touchClickLeftUp()
     {
         Debug.Log("touchClickLeftUp : ");
@@ -135,7 +160,7 @@ public class NoteController : MonoBehaviour
             if (noteNums[noteIndex] == 3)
                 NoteSuccess();
         }
-    }
+    }*/
 
     private void NoteSuccess()
     {

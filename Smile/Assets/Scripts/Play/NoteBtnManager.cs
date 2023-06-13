@@ -33,14 +33,24 @@ public class NoteBtnManager : MonoBehaviour
         {
             Notes[i].gameObject.SetActive(true);
             Notes[i].onClick.RemoveAllListeners();
+            int index = i;
+            Notes[i].onClick.AddListener(() => OnTouchClick(index));
         }
 
+        /*
         Notes[0].onClick.AddListener(OntouchClickLeftUp);
         Notes[1].onClick.AddListener(OntouchClickLeftDown);
         Notes[2].onClick.AddListener(OntouchClickRightUp);
         Notes[3].onClick.AddListener(OntouchClickRightDown);
+        */
     }
 
+    private void OnTouchClick(int num)
+    {
+        noteManager.touchClick(num);
+    }
+
+    /*
     private void OntouchClickLeftUp()
     {
         noteManager.touchClickLeftUp();
@@ -57,5 +67,5 @@ public class NoteBtnManager : MonoBehaviour
     private void OntouchClickRightDown()
     {
         noteManager.touchClickRightDown();
-    }
+    }*/
 }
