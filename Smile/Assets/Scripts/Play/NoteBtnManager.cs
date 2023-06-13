@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class NoteBtnManager : MonoBehaviour
@@ -28,12 +29,25 @@ public class NoteBtnManager : MonoBehaviour
                 noteManager = noteManager_easy;
                 break;
         }
-
-        for(int i = 0; i<Notes.Length; i++)
+        
+        for (int i = 0; i<Notes.Length; i++)
         {
+            int index = i;
+
+            EventTrigger eventTrigger = Notes[i].gameObject.AddComponent<EventTrigger>();
+
+            EventTrigger.Entry pointerDownEntry = new EventTrigger.Entry();
+            pointerDownEntry.eventID = EventTriggerType.PointerDown;
+            pointerDownEntry.callback.AddListener((eventData) => { OnLongTouchDown(index); });
+            eventTrigger.triggers.Add(pointerDownEntry);
+
+            EventTrigger.Entry pointerUpEntry = new EventTrigger.Entry();
+            pointerUpEntry.eventID = EventTriggerType.PointerUp;
+            pointerUpEntry.callback.AddListener((eventData) => { OnLongTouchUp(index); });
+            eventTrigger.triggers.Add(pointerUpEntry);
+
             Notes[i].gameObject.SetActive(true);
             Notes[i].onClick.RemoveAllListeners();
-            int index = i;
             Notes[i].onClick.AddListener(() => OnTouchClick(index));
         }
 
@@ -50,6 +64,16 @@ public class NoteBtnManager : MonoBehaviour
         noteManager.touchClick(num);
     }
 
+    private void OnLongTouchDown(int num)
+    {
+        noteManager.LongTouchDown(num);
+    }
+
+    private void OnLongTouchUp(int num)
+    {
+        Debug.Log("123123");
+        noteManager.LongTouchUp(num);
+    }
     /*
     private void OntouchClickLeftUp()
     {

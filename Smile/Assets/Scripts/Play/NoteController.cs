@@ -14,7 +14,7 @@ public class NoteController : MonoBehaviour
 
     private float clickTime; // 클릭 중인 시간
     public float minClickTime = 1; // 최소 클릭 시간
-    private bool isClick; // 클릭중인지 판단
+    private bool[] isClick = {false, false, false, false}; // 클릭중인지 판단
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -32,16 +32,7 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 클릭 중이라면
-        if (isClick)
-        {
-            clickTime += Time.deltaTime;
-        }
-        // 아니라면
-        else
-        {
-            clickTime = 0;
-        }
+        MoveImage(noteIndex);
     }
 
     public void Initialized()
@@ -81,6 +72,7 @@ public class NoteController : MonoBehaviour
             noteNums[i] = int.Parse(UniteData.data[UniteData.mon_num][columnName].ToString());
             Debug.Log("noteNums["+i+"] : " + noteNums[i]);
             note[i].GetComponent<Image>().sprite = noteSprite[noteNums[i]];
+            isClick[i] = false;
         }
 
         Set_Note();
@@ -113,6 +105,31 @@ public class NoteController : MonoBehaviour
                 NoteSuccess();
         }
     }
+
+    
+    public void LongTouchDown(int i)
+    {
+        Debug.Log("TouchDown : ");
+        // 받는 변수는 입력되는 버튼
+        //if(noteNums[noteIndex] == i)
+        //isClick[i] = true;
+    }
+
+    public void LongTouchUp(int i)
+    {
+        Debug.Log("TouchUp");
+        isClick[i] = false;
+    }
+
+
+    private void MoveImage(int i)
+    {
+        if (isClick[i])
+        {
+            note[noteNums[noteIndex]].transform.Translate(Vector2.right * Time.deltaTime);
+        }
+    }
+    
 
     /*
     public void touchClickLeftUp()
