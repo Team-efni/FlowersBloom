@@ -12,7 +12,8 @@ public class RepeatMonster : MonoBehaviour
 
     private string[] monster_name = { "Rose", "Cosmos", "MorningGlory" };
 
-    static public int monsterCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
+    static public int monsterCount;
+    static private int monsterOriginCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
 
     public GameClear s_gameclear;
 
@@ -93,7 +94,8 @@ public class RepeatMonster : MonoBehaviour
         }
 
         // CSV를 읽어서 나오는 마리수 설정
-        monsterCount = int.Parse(UniteData.data[0]["num"].ToString());
+        monsterOriginCount = int.Parse(UniteData.data[0]["num"].ToString());
+        monsterCount = monsterOriginCount;
         UniteData.mon_num = 1;
         Debug.Log("monsterCountNew : "+  monsterCount);
         MonsterColorOrigin();
@@ -145,15 +147,18 @@ public class RepeatMonster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("NoteManager"))
+        if (collision.CompareTag("MonsterSpwan"))
         {
-            if (monsterCount > 1)
+            if (monsterCount > 0)
             {
+                if (monsterCount != monsterOriginCount)
+                {
+                    MonsterColorOrigin();
+                    UniteData.mon_num++;
+                }              
                 monsterCount--;
-                UniteData.mon_num++;
-                MonsterColorOrigin();
             }
-            else if (monsterCount == 1)
+            else if (monsterCount == 0)
             {
                 Debug.Log("Game Clear");
                 s_gameclear.ClearGame();

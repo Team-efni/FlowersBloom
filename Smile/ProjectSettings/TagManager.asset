@@ -9,6 +9,7 @@ TagManager:
   - NoteManager
   - PlayScene_UI
   - Background
+  - MonsterSpwan
   layers:
   - Default
   - TransparentFX
