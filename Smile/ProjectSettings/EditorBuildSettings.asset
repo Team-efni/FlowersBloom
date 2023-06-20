@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Character Menu.unity
     guid: 9ac57f69d43692e4caa170d5fa76726d
   - enabled: 1
-    path: Assets/Scenes/MapMenu/Map Menu.unity
+    path: Assets/Scenes/MapMenu/Map1 Menu.unity
     guid: 3bf16233f7df40846a9460a36dab1a99
+  - enabled: 1
+    path: Assets/Scenes/MapMenu/Map2 Menu.unity
+    guid: 1e40241d3ab1e5b4fb97f397308b605c
   - enabled: 1
     path: Assets/Scenes/MapMenu/Easy Map.unity
     guid: f9877f14ee9a375468f3504cedc8d6b8

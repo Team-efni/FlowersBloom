@@ -15,6 +15,12 @@ public class ChangeScene : MonoBehaviour
             case "CharBtn":
                 SceneManager.LoadScene("Character Menu");
                 break;
+            case "Map1Btn":
+                SceneManager.LoadScene("Map1 Menu");
+                break;
+            case "Map2Btn":
+                SceneManager.LoadScene("Map2 Menu");
+                break;
         }
     }  
 }
