@@ -26,6 +26,8 @@ public class UniteData
     public static List<Dictionary<string, object>> data;
     public static int mon_num = 1; // 현재 나온 마리수
 
+    public static int noteIndex = 0;  // 현재 눌러야할 노트의 자리
+
     //유저 관련 데이터
     public static int[] GameClear = { 
         PlayerPrefs.GetInt("GameClear-Easy", 0), //EASY

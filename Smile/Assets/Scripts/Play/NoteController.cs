@@ -10,7 +10,7 @@ public class NoteController : MonoBehaviour
     private int noteLength; // 난이도에 따른 노트 등장 개수
     private int[] noteNums;
     private bool meetMonster = false;
-    private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
+    //private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
     private float clickTime; // 클릭 중인 시간
     public float minClickTime = 1; // 최소 클릭 시간
@@ -32,12 +32,12 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveImage(noteIndex);
+        MoveImage(UniteData.noteIndex);
     }
 
     public void Initialized()
     {
-        noteIndex = 0;
+        UniteData.noteIndex = 0;
         meetMonster = false;
         UniteData.NoteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
@@ -81,7 +81,7 @@ public class NoteController : MonoBehaviour
     public void NoteDisabled()
     {
         // 노트 회색으로 만들기
-        Image image = note[noteIndex].GetComponent<Image>();
+        Image image = note[UniteData.noteIndex].GetComponent<Image>();
         image.color = new Color(128/ 255f, 128/ 255f, 128 / 255f, 255/ 255f);
     }
 
@@ -101,7 +101,7 @@ public class NoteController : MonoBehaviour
         if (Input.touchCount > 1) return; // 멀티 터치 안되게
         if (meetMonster)
         {
-            if (noteNums[noteIndex] == i)
+            if (noteNums[UniteData.noteIndex] == i)
                 NoteSuccess();
         }
     }
@@ -111,8 +111,8 @@ public class NoteController : MonoBehaviour
     {
         Debug.Log("TouchDown : ");
         // 받는 변수는 입력되는 버튼
-        //if(noteNums[noteIndex] == i)
-        //isClick[i] = true;
+        if(noteNums[UniteData.noteIndex] == i)
+            isClick[i] = true;
     }
 
     public void LongTouchUp(int i)
@@ -126,7 +126,7 @@ public class NoteController : MonoBehaviour
     {
         if (isClick[i])
         {
-            note[noteNums[noteIndex]].transform.Translate(Vector2.right * Time.deltaTime);
+            note[noteNums[UniteData.noteIndex]].transform.Translate(Vector2.right * Time.deltaTime);
         }
     }
     
@@ -183,9 +183,9 @@ public class NoteController : MonoBehaviour
     {
         Debug.Log("Note Success");
         NoteDisabled();
-        noteIndex++;
+        UniteData.noteIndex++;
 
-        if (noteIndex == noteLength)
+        if (UniteData.noteIndex == noteLength)
         {
             // 모두 성공한 경우
             Debug.Log("All Success");
@@ -228,7 +228,7 @@ public class NoteController : MonoBehaviour
     // 노트들 처음 상태로 되돌리기
     public void returnNote()
     {
-        noteIndex = 0;
+        UniteData.noteIndex = 0;
         NoteAbled();
     }
 
