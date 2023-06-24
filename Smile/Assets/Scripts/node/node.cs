@@ -10,6 +10,7 @@
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
 */
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,6 +20,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System.Text.RegularExpressions;
+
+using CSVFormat = System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, object>>;
+using CSVDict = System.Collections.Generic.Dictionary<string, object>;
 
 public class Node_data
 {
@@ -164,6 +169,7 @@ public class node : MonoBehaviour
     public GameObject[] backgrounds;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
+    public Sprite[] Node_image;
     public Sprite Node_image_A;
     public Sprite Node_image_B;
     public Sprite Node_image_C;
@@ -350,52 +356,52 @@ public class node : MonoBehaviour
 
     }
 
+
+
+    private int typeToInt(string type)
+    {
+        switch (type)
+        {
+            case "A":
+                return 0;
+            case "B":
+                return 1;
+            case "C":
+                return 2;
+            case "D":
+                return 3;
+            case "NON":
+                return 4;
+            default:
+                return 4;
+        }
+    }
+
     private void Initialize_node_setting()
     {
+        string fileName = "Cut_Easy_Type1";
 #if true
     cas = call_random() % 2;
 #else
-    cas = 1;
+    cas = 0;
 #endif
         switch (UniteData.Difficulty)
         {
             case 1: //easy
                 if( cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 2f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
+                    fileName = "Cut_Easy_Type1";
                 }
                 else if( cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 2f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 2f));
+                    fileName = "Cut_Easy_Type2";
                 }
                 break;
 
             case 2: //normal
                 if (cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
+                    fileName = "Cut_Normal_Type1";
                 }
                 else if(cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.6f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.6f));
+                    fileName = "Cut_Normal_Type2";
                 }
                 break;
 
@@ -429,14 +435,27 @@ public class node : MonoBehaviour
                 break;
 
             default: //default
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 0f));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 2f));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.8f));
-                node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 2f));
+                fileName = "Cut_Easy_Type1";
 
                 UniteData.Difficulty = 1;
                 break;
+        }
+
+        CSVFormat csvFormat = CSVReader.Read(fileName);
+
+        foreach (CSVDict dict in csvFormat)
+        {
+            string c_type = dict["Color_Type"].ToString();
+            int c_mode = Convert.ToInt32(dict["Mode"]);
+            float c_wait = Convert.ToSingle(dict["Waiting"]);
+
+            node_location.Add(new Node_data(
+                set_node_coordinate(),
+                Node_image[typeToInt(c_type)],
+                Ring[typeToInt(c_type)],
+                BR_Ring[typeToInt(c_type)],
+                c_mode,
+                c_wait));
         }
     }
 
