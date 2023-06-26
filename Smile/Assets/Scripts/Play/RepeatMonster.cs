@@ -73,6 +73,7 @@ public class RepeatMonster : MonoBehaviour
 
     public void Initialized()
     {
+        /*
         Debug.Log("몬스터 마리수 초기화");
         switch (UniteData.Difficulty)
         {
@@ -92,7 +93,7 @@ public class RepeatMonster : MonoBehaviour
                 monsterCount = 6;
                 break;
         }
-
+        */
         // CSV를 읽어서 나오는 마리수 설정
         monsterOriginCount = int.Parse(UniteData.data[0]["num"].ToString());
         monsterCount = monsterOriginCount;
@@ -151,10 +152,10 @@ public class RepeatMonster : MonoBehaviour
         {
             if (monsterCount > 0)
             {
-                if (monsterCount != monsterOriginCount)
+                if (monsterCount != monsterOriginCount) // 맨처음에는 안나오게
                 {
-                    MonsterColorOrigin();
                     UniteData.mon_num++;
+                    MonsterColorOrigin();   
                 }              
                 monsterCount--;
             }

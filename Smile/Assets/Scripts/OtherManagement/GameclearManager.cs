@@ -30,4 +30,19 @@ public class GameclearManager : MonoBehaviour
         UniteData.ReStart = true;
         SceneManager.LoadScene("Play");
     }
+
+    public void NextStage()
+    {
+        UniteData.Difficulty++;
+
+        UniteData.Move_Progress = true;
+        UniteData.lifePoint = 3;
+        UniteData.notePoint = 2;
+        UniteData.Play_Scene_Time = 0f;
+        UniteData.Player_Location_Past = Vector2.zero;
+        UniteData.ReStart = true;
+
+        SceneManager.LoadScene("Play");
+
+    }
 }
