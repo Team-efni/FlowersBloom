@@ -14,7 +14,7 @@ public class NoteController : MonoBehaviour
 
     private float clickTime; // 클릭 중인 시간
     public float minClickTime = 1; // 최소 클릭 시간
-    private bool[] isClick = {false, false, false, false}; // 클릭중인지 판단
+    private bool[] isClick = {false, false, false, false, false, false}; // 클릭중인지 판단
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -46,7 +46,7 @@ public class NoteController : MonoBehaviour
     // Show Note
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !UniteData.ReStart)
         {
 //#if true
             Debug.Log("Player Meet");
