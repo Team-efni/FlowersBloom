@@ -10,7 +10,7 @@ public class ChangeScene : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "GSBtn":
-                SceneManager.LoadScene("Map Menu");
+                SceneManager.LoadScene("Map1 Menu");
                 break;
             case "CharBtn":
                 SceneManager.LoadScene("Character Menu");
