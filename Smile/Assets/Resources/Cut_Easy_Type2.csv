@@ -1,6 +1,6 @@
-Color_Type,Mode,Waiting
-C,1,0
-C,1,1.8
-A,1,2
-D,1,2
-B,1,2
+Color_Type,Mode,Waiting,PosX,PosY
+A,1,0,-1098,143
+C,1,2,-614,-341
+B,1,1.8,1098,143
+B,1,1.8,614,-341
+D,1,2,0,143

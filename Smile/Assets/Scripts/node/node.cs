@@ -49,7 +49,7 @@ public class Node_data
         this.time = _time;
     }
 
-    static public Vector2 resettingShadowNode(Vector2 forwardVector, int direction)
+    /*static public Vector2 resettingShadowNode(Vector2 forwardVector, int direction)
     {
         if (direction == 0) //12시
         {
@@ -140,19 +140,19 @@ public class Node_data
             return new Vector2(v.x, v.y);
         }
         return forwardVector;
-    }
+    }*/
 }
 
 public class node : MonoBehaviour
 {
-    private const int NORTH = 0;
+    /*private const int NORTH = 0;
     private const int NOEAST = 1;
     private const int EAST  =2;
     private const int SOEAST  =3;
     private const int SOUTH  =4;
     private const int SOWEST  =5;
     private const int WEST  =6;
-    private const int NOWEST  =7;
+    private const int NOWEST  =7;*/
 
     private const int A = 0;
     private const int B = 1;
@@ -170,11 +170,6 @@ public class node : MonoBehaviour
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite[] Node_image;
-    public Sprite Node_image_A;
-    public Sprite Node_image_B;
-    public Sprite Node_image_C;
-    public Sprite Node_image_D;
-    public Sprite ping_locate_shadow;
 
     [Header("아래의 항목에다가 노트의 링을 넣으면 됩니다")]
     public Sprite[] Ring;
@@ -407,30 +402,10 @@ public class node : MonoBehaviour
 
             case 3: //hard
                 if (cas == 0) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 2, 0f));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOWEST), ping_locate_shadow, Ring[A], BR_Ring[A], 3, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.5f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.5f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2, 2.0f));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, EAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.3f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.3f));
+                    fileName = "Cut_Hard_Type1";
                 }
                 else if (cas == 1) {
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 2, 0f));
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOEAST), ping_locate_shadow, Ring[D], BR_Ring[D], 3, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.9f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.3f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.5f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_A, Ring[A], BR_Ring[A], 1, 1.4f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 1, 1.3f)); //FIXME 동시출력 문제 발생
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_B, Ring[B], BR_Ring[B], 2, 1.5f)); //FIXME 동시출력 문제 발생
-                    node_location.Add(new Node_data(Node_data.resettingShadowNode(node_location[node_location.Count - 1].vector2, SOUTH), ping_locate_shadow, Ring[B], BR_Ring[B], 3, 0f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_D, Ring[D], BR_Ring[D], 1, 1.8f));
-                    node_location.Add(new Node_data(set_node_coordinate(), Node_image_C, Ring[C], BR_Ring[C], 1, 1.3f));
+                    fileName = "Cut_Hard_Type2";
                 }
                 break;
 
@@ -448,9 +423,12 @@ public class node : MonoBehaviour
             string c_type = dict["Color_Type"].ToString();
             int c_mode = Convert.ToInt32(dict["Mode"]);
             float c_wait = Convert.ToSingle(dict["Waiting"]);
+            Vector2 c_pos = new Vector2(Convert.ToSingle(dict["PosX"]), Convert.ToSingle(dict["PosY"]));
 
+
+            Debug.Log(c_type + ": " + typeToInt(c_type));
             node_location.Add(new Node_data(
-                set_node_coordinate(),
+                c_pos,
                 Node_image[typeToInt(c_type)],
                 Ring[typeToInt(c_type)],
                 BR_Ring[typeToInt(c_type)],
