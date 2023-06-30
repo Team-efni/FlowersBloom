@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public Animator animator;
+
+    public void initAnim()
+    {
+        animator.GetInteger("LocalStage");
+        animator.SetInteger("LocalStage", 0);
+    }
+
     public void ChangeSceneBtn()
     {
         switch (this.gameObject.name)
@@ -16,10 +24,13 @@ public class ChangeScene : MonoBehaviour
                 SceneManager.LoadScene("Character Menu");
                 break;
             case "Map1Btn":
-                SceneManager.LoadScene("Map1 Menu");
+                Debug.Log("Map1Btn");
+                animator.SetInteger("LocalStage", 2);
+                //SceneManager.LoadScene("Map1 Menu");
                 break;
             case "Map2Btn":
-                SceneManager.LoadScene("Map2 Menu");
+                animator.SetInteger("LocalStage", 1);
+                //SceneManager.LoadScene("Map2 Menu");
                 break;
         }
     }  
