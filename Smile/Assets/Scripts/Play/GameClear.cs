@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameClear : MonoBehaviour
 {
-    public GameObject bgGroup;
+    //public GameObject bgGroup;
     static private GameObject player;
 
     public GameObject[] canPlay_prefab;
@@ -72,6 +72,9 @@ public class GameClear : MonoBehaviour
                 break;
             case 3:
                 //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
+                break;
+            case 4:
+                backgrounds[3].SetActive(true); // world2_easy
                 break;
             default:
                 backgrounds[0].SetActive(true);

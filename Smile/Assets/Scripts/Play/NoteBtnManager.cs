@@ -12,6 +12,7 @@ public class NoteBtnManager : MonoBehaviour
     public NoteController noteManager_easy;
     public NoteController noteManager_normal;
 
+    public NoteController noteManager_world2_easy;
     public Button[] Notes;
 
     // Start is called before the first frame update
@@ -24,6 +25,12 @@ public class NoteBtnManager : MonoBehaviour
                 break;
             case 2:
                 noteManager = noteManager_normal;
+                break;
+            case 3:
+                //noteManager = noteManager_normal;
+                break;
+            case 4:
+                noteManager = noteManager_world2_easy;
                 break;
             default:
                 noteManager = noteManager_easy;

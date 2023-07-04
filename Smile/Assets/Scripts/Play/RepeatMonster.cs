@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// MonsterSpawner에 들어있음
 public class RepeatMonster : MonoBehaviour
 {
     public GameObject[] monsters;
@@ -10,7 +11,7 @@ public class RepeatMonster : MonoBehaviour
     public Sprite[] monster_images;
     static private SpriteRenderer monster_image;
 
-    private string[] monster_name = { "Rose", "Cosmos", "MorningGlory" };
+    private string[] monster_name = { "Rose", "Cosmos", "MorningGlory", "Poppy" };
 
     static public int monsterCount;
     static private int monsterOriginCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
@@ -34,18 +35,27 @@ public class RepeatMonster : MonoBehaviour
                 monster = monsters[0];
                 noteController = noteControllers[0];
                 UniteData.data = CSVReader.Read("World1_easy");
+                choice_mon = 0;
                 break;
 
             case 2:
                 monster = monsters[1];
                 noteController = noteControllers[1];
                 UniteData.data = CSVReader.Read("World1_normal");
+                choice_mon = 1;
                 break;
 
             case 3:
                 //monster = monsters[2];
                 //noteController = noteControllers[2];
                 //UniteData.data = CSVReader.Read("World1_hard");
+                break;
+
+            case 4:
+                monster = monsters[3];
+                noteController = noteControllers[3];
+                UniteData.data = CSVReader.Read("World2_easy");
+                choice_mon = 3; // 양귀비
                 break;
 
             default:
@@ -134,6 +144,10 @@ public class RepeatMonster : MonoBehaviour
             choice_mon = 0;
         else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Cosmos")) 
             choice_mon = 1;
+        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("MorningGlory"))
+            choice_mon = 2;
+        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Poppy"))
+            choice_mon = 3;
 #if true
         UniteData.Closed_Monster = monster_name[choice_mon];
         monster_image.sprite = monster_images[choice_mon];
