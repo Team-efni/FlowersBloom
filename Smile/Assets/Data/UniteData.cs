@@ -5,7 +5,7 @@ public class UniteData
 {
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Pause]
-    public static int Difficulty = 4; //게임 난이도 easy = 1
+    public static int Difficulty = 1; //게임 난이도 easy = 1
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 
