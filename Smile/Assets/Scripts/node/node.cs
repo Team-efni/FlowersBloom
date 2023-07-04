@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 
 using CSVFormat = System.Collections.Generic.List<System.Collections.Generic.Dictionary<string, object>>;
 using CSVDict = System.Collections.Generic.Dictionary<string, object>;
+using UnityEditor.Rendering;
 
 public class Node_data
 {
@@ -187,6 +188,7 @@ public class node : MonoBehaviour
 
     public static int LineIndex = 0; //좀 느낌 없는데 급하니까 전역변수로 다른 소스코드에 접근 허용 [HACK]
 
+    private int initLayerValue = 25;
 
     //노드를 리스트의 순서에 따라 하나를 차례로 배치하는 함수
     void node_placement(int node_array)
@@ -204,7 +206,10 @@ public class node : MonoBehaviour
                 sr.sprite = node_location[node_array].procedure;
                 rn.sprite = node_location[node_array].Ring_Color;
 
-                Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
+                GameObject newObject = Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
+
+                SpriteRenderer spriteRenderer = newObject.GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = initLayerValue--; // 숫자가 작을수록 뒤에 그려집니다.
             }
             else if (node_location[node_array].mode == 2)
             {
@@ -219,6 +224,9 @@ public class node : MonoBehaviour
                 newNode.name = "nodedrag";
                 node_management_drag nmd=newNode.GetComponent<node_management_drag>();
                 nmd.ping = node_location[node_array + 1].vector2;
+
+                SpriteRenderer spriteRenderer = newNode.GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = initLayerValue--; // 숫자가 작을수록 뒤에 그려집니다.
             }
             else if (node_location[node_array].mode == 3)
             {
@@ -232,6 +240,9 @@ public class node : MonoBehaviour
 
                 GameObject sha=Instantiate(nodes_prefab, node_location[node_array].vector2, Quaternion.identity);
                 sha.name = "shadow";
+
+                SpriteRenderer spriteRenderer = sha.GetComponent<SpriteRenderer>();
+                spriteRenderer.sortingOrder = initLayerValue--; // 숫자가 작을수록 뒤에 그려집니다.
 
 
                 nodes_prefab.transform.Find("ring").gameObject.SetActive(true);
@@ -316,6 +327,8 @@ public class node : MonoBehaviour
             case 3:
                 //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
                 break;
+            case 4:
+                break;
             default:
                 backgrounds[0].SetActive(true);
                 break;
@@ -375,10 +388,10 @@ public class node : MonoBehaviour
     private void Initialize_node_setting()
     {
         string fileName = "Cut_Easy_Type1";
-#if true
+#if false
     cas = call_random() % 2;
 #else
-    cas = 0;
+    cas = 1;
 #endif
         switch (UniteData.Difficulty)
         {
@@ -405,6 +418,36 @@ public class node : MonoBehaviour
                     fileName = "Cut_Hard_Type1";
                 }
                 else if (cas == 1) {
+                    fileName = "Cut_Hard_Type2";
+                }
+                break;
+            case 4: //World2 easy
+                if (cas == 0)
+                {
+                    fileName = "Cut_Easy_Type1_W2";
+                }
+                else if (cas == 1)
+                {
+                    fileName = "Cut_Easy_Type2_W2";
+                }
+                break;
+            case 5: //World2 normal
+                if (cas == 0)
+                {
+                    fileName = "Cut_Hard_Type1";
+                }
+                else if (cas == 1)
+                {
+                    fileName = "Cut_Hard_Type2";
+                }
+                break;
+            case 6: //World2 hard
+                if (cas == 0)
+                {
+                    fileName = "Cut_Hard_Type1";
+                }
+                else if (cas == 1)
+                {
                     fileName = "Cut_Hard_Type2";
                 }
                 break;

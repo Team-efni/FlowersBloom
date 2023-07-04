@@ -113,6 +113,13 @@ public class node_management_drag : MonoBehaviour
     {
         animator.SetInteger("Difficulty", UniteData.Difficulty);
 
+        switch (UniteData.Difficulty)
+        {
+            case 4:
+                animator.SetInteger("Difficulty", 1);
+                break;
+        }
+
         //bright 비활성화
         bright.SetActive(false);
     }

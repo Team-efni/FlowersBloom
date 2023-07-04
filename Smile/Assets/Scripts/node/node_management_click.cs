@@ -93,6 +93,13 @@ public class node_management_click : MonoBehaviour
     private void Awake()
     {
         animator.SetInteger("Difficulty", UniteData.Difficulty);
+
+        switch (UniteData.Difficulty)
+        {
+            case 4:
+                animator.SetInteger("Difficulty", 1);
+                break;
+        }
     }
 
     private void Start()
