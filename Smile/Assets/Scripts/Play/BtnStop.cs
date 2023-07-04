@@ -48,7 +48,7 @@ public class BtnStop : MonoBehaviour
 
     public void GoMap()
     {
-        SceneManager.LoadScene("Map Menu");
+        SceneManager.LoadScene("Map1 Menu");
         Time.timeScale = 1.0f;
         UniteData.ReStart = true;
         UniteData.Move_Progress = true;
