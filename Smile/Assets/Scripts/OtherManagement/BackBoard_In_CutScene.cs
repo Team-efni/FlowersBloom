@@ -63,7 +63,7 @@ public class BackBoard_In_CutScene : MonoBehaviour
 
     private void Set_Image()
     {
-        BackBoardRenderer_Top.sprite = BackBoard[Find_Index(UniteData.Closed_Monster)];
+        //BackBoardRenderer_Top.sprite = BackBoard[Find_Index(UniteData.Closed_Monster)];
         BackBoardRenderer_Bottom.sprite = BackBoard[Find_Index(UniteData.Selected_Character)];
     }
 }
