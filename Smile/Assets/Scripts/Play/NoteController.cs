@@ -14,7 +14,7 @@ public class NoteController : MonoBehaviour
 
     private float clickTime; // 클릭 중인 시간
     public float minClickTime = 1; // 최소 클릭 시간
-    private bool[] isClick = {false, false, false, false, false, false}; // 클릭중인지 판단
+    private bool[] isClick = {false, false, false, false, false, false, false}; // 클릭중인지 판단
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -101,7 +101,7 @@ public class NoteController : MonoBehaviour
         if (Input.touchCount > 1) return; // 멀티 터치 안되게
         if (meetMonster)
         {
-            if (noteNums[UniteData.noteIndex] == i)
+            if (noteNums[UniteData.noteIndex] == i+1)
                 NoteSuccess();
         }
     }
@@ -109,10 +109,13 @@ public class NoteController : MonoBehaviour
     
     public void LongTouchDown(int i)
     {
-        Debug.Log("TouchDown : ");
+        Debug.Log("TouchDown : " + i);
         // 받는 변수는 입력되는 버튼
-        if(noteNums[UniteData.noteIndex] == i)
-            isClick[i] = true;
+        if (meetMonster)
+        {
+            if (noteNums[UniteData.noteIndex] == i+1)
+                isClick[i] = true;
+        }
     }
 
     public void LongTouchUp(int i)
