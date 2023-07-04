@@ -8,6 +8,6 @@ public class MapBack : MonoBehaviour
 {
     public void BackSceneBtn()
     {
-        SceneManager.LoadScene("Map Menu");  
+        SceneManager.LoadScene("Map1 Menu");  
     }
 }
