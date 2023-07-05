@@ -111,24 +111,28 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("UniteData.lifePoint " + UniteData.lifePoint);
                 // 목숨 포인트가 남아있다면 감소
                 //if(UniteData.lifePoint >= 0)
-                {
-                    UniteData.lifePoint--;
-                    go_lifePoints[UniteData.lifePoint].GetComponent<Image>().color = del_color;
-                    
-                    // 0이 되면 게임 오버    
-                    if (UniteData.lifePoint == 0)
-                    {
-                        Make_Invisible_UI();
-
-                        Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
-                        // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
-                        fadeAnimator.SetBool("IsStartFade", true);
-                    }
-                }
-                
+                MeetMonsterFail();
             }
+
+            
         }
 #endif
+    }
+
+    public void MeetMonsterFail()
+    {
+        UniteData.lifePoint--;
+        go_lifePoints[UniteData.lifePoint].GetComponent<Image>().color = del_color;
+
+        // 0이 되면 게임 오버    
+        if (UniteData.lifePoint == 0)
+        {
+            Make_Invisible_UI();
+
+            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+            // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
+            fadeAnimator.SetBool("IsStartFade", true);
+        }
     }
 
 

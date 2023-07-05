@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameClear : MonoBehaviour
 {
     //public GameObject bgGroup;
-    static private GameObject player;
+    static public GameObject player;
 
     public GameObject[] canPlay_prefab;
     public GameObject[] backgrounds;

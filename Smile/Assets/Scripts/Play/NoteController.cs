@@ -13,7 +13,8 @@ public class NoteController : MonoBehaviour
     //private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
     private float clickTime; // 클릭 중인 시간
-    public float minClickTime = 1; // 최소 클릭 시간
+    private float minClickTime = 0.28f; // 최소 클릭 시간
+    private float maxClickTime = 0.4f; // 최대 클릭 시간
     private bool[] isClick = {false, false, false, false, false, false, false}; // 클릭중인지 판단
 
     private int longNotePos = -1;
@@ -21,6 +22,9 @@ public class NoteController : MonoBehaviour
     public GameObject longclickImage;
     public GameObject movingNote;
 
+    [SerializeField] private float longClickSpeed;
+
+    private GameClear gc;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
@@ -40,7 +44,12 @@ public class NoteController : MonoBehaviour
     {
         if (isClick[UniteData.noteIndex])
         {
+            clickTime += Time.deltaTime;
             MoveImage();
+        }
+        else
+        {
+            clickTime = 0;
         }
 
 
@@ -174,16 +183,36 @@ public class NoteController : MonoBehaviour
         Debug.Log("TouchUp");
         isClick[UniteData.noteIndex] = false;
 
+        float clicktime = clickTime;
+       
         if (meetMonster && canlongClick)
         {
             longNotePos = 0;
             UniteData.noteIndex++;
             canlongClick = false;
 
+            Debug.Log("clicktime : " + clicktime + "");
+
             // 성공했다면 + 적절한 위치
-            //if (noteNums[UniteData.noteIndex] == 0 && 도달한 곳이 적절한 위치라면)
             if (noteNums[UniteData.noteIndex] == 0)
-                NoteSuccess();
+            {
+                if (clicktime >= minClickTime && clickTime <= maxClickTime)
+                    NoteSuccess();
+                else
+                {
+                    // 실패한 경우
+                    Image image = note[UniteData.noteIndex].GetComponent<Image>();
+                    image.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 255 / 255f);
+                   if(UniteData.noteIndex != noteLength - 1)
+                        UniteData.noteIndex++;
+                    else
+                    {
+                        NoteSuccess();
+                    }
+                    GameClear.player.GetComponent<PlayerController>().MeetMonsterFail();
+                }
+            }
+            
         }
     }
 
@@ -191,7 +220,7 @@ public class NoteController : MonoBehaviour
     private void MoveImage()
     {
             Debug.Log("롱클릭 움직임");
-            movingNote.transform.Translate(Vector2.right * 300f * Time.deltaTime);
+            movingNote.transform.Translate(Vector2.right * longClickSpeed * Time.deltaTime);
             //note[noteNums[UniteData.noteIndex]].transform.Translate(Vector2.right * Time.deltaTime);
     }
     
