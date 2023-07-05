@@ -34,8 +34,8 @@ public class UniteData
         PlayerPrefs.GetInt("GameClear-Normal", 0), //NORMAL
         PlayerPrefs.GetInt("GameClear-Hard", 0), //HARD
         PlayerPrefs.GetInt("GameClear-W2-Easy", 0), //W2E
-        PlayerPrefs.GetInt("GameClear-W2-Normal", 0), //W2E
-        PlayerPrefs.GetInt("GameClear-W2-Hard", 0) //W2E
+        PlayerPrefs.GetInt("GameClear-W2-Normal", 0), //W2N
+        PlayerPrefs.GetInt("GameClear-W2-Hard", 0) //W2H
 }; // 난이도별 클리어 유무 0: false, 1: true
 
     //설정 관련 데이터
