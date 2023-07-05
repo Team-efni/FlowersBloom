@@ -31,7 +31,7 @@ public class MapChange : MonoBehaviour
 
     public void EasyBtn2()
     {
-        UniteData.Difficulty = 1;
+        UniteData.Difficulty = 4;
         SceneManager.LoadScene("Easy Map2");
     }
 

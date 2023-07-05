@@ -553,7 +553,6 @@ GameObject:
   - component: {fileID: 255892306}
   - component: {fileID: 255892310}
   - component: {fileID: 255892309}
-  - component: {fileID: 255892308}
   - component: {fileID: 255892307}
   m_Layer: 5
   m_Name: MapOption_S2
@@ -599,22 +598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 0}
---- !u!114 &255892308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 255892305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f855c62f5b52a4688a70aa477e4312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StageList:
-  - {fileID: 112147515}
-  - {fileID: 1690185269}
-  - {fileID: 2019370167}
 --- !u!114 &255892309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2514,7 +2497,6 @@ GameObject:
   - component: {fileID: 1515926770}
   - component: {fileID: 1515926772}
   - component: {fileID: 1515926771}
-  - component: {fileID: 1515926773}
   - component: {fileID: 1515926774}
   m_Layer: 5
   m_Name: MapOption_S1
@@ -2585,22 +2567,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515926769}
   m_CullTransparentMesh: 1
---- !u!114 &1515926773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515926769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f855c62f5b52a4688a70aa477e4312, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StageList:
-  - {fileID: 1679549076}
-  - {fileID: 980065120}
-  - {fileID: 313633706}
 --- !u!114 &1515926774
 MonoBehaviour:
   m_ObjectHideFlags: 0
