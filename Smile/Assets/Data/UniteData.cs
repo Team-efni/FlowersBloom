@@ -32,7 +32,8 @@ public class UniteData
     public static int[] GameClear = { 
         PlayerPrefs.GetInt("GameClear-Easy", 0), //EASY
         PlayerPrefs.GetInt("GameClear-Normal", 0), //NORMAL
-        PlayerPrefs.GetInt("GameClear-Hard", 0) //HARD
+        PlayerPrefs.GetInt("GameClear-Hard", 0), //HARD
+            PlayerPrefs.GetInt("GameClear-W2-Easy", 0) //W2E
 }; // 난이도별 클리어 유무 0: false, 1: true
 
     //설정 관련 데이터
@@ -52,6 +53,7 @@ public class UniteData
         PlayerPrefs.SetInt("GameClear-Easy", GameClear[0]);
         PlayerPrefs.SetInt("GameClear-Normal", GameClear[1]);
         PlayerPrefs.SetInt("GameClear-Hard", GameClear[2]);
+        PlayerPrefs.SetInt("GameClear-W2-Easy", GameClear[3]);
         PlayerPrefs.SetString("Selected_Character", Selected_Character);
         PlayerPrefs.Save();
     }
@@ -62,7 +64,7 @@ public class UniteData
         PlayerPrefs.SetFloat("Effect", Effect);
 
         Selected_Character = "Dandelion";
-        GameClear = new int[] { 0, 0, 0 };
+        GameClear = new int[] { 0, 0, 0, 0 };
 
         SaveUserData();
         Debug.Log("유저 데이터 초기화 완료");
