@@ -5,7 +5,7 @@ public class UniteData
 {
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Pause]
-    public static int Difficulty = 4; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
+    public static int Difficulty = 1; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 
@@ -32,7 +32,8 @@ public class UniteData
     public static int[] GameClear = { 
         PlayerPrefs.GetInt("GameClear-Easy", 0), //EASY
         PlayerPrefs.GetInt("GameClear-Normal", 0), //NORMAL
-        PlayerPrefs.GetInt("GameClear-Hard", 0) //HARD
+        PlayerPrefs.GetInt("GameClear-Hard", 0), //HARD
+        PlayerPrefs.GetInt("GameClear-Easy_W2", 0), //W2 Easy
 }; // 난이도별 클리어 유무 0: false, 1: true
 
     //설정 관련 데이터
@@ -52,6 +53,7 @@ public class UniteData
         PlayerPrefs.SetInt("GameClear-Easy", GameClear[0]);
         PlayerPrefs.SetInt("GameClear-Normal", GameClear[1]);
         PlayerPrefs.SetInt("GameClear-Hard", GameClear[2]);
+        PlayerPrefs.SetInt("GameClear-Hard", GameClear[3]);
         PlayerPrefs.SetString("Selected_Character", Selected_Character);
         PlayerPrefs.Save();
     }
@@ -62,7 +64,7 @@ public class UniteData
         PlayerPrefs.SetFloat("Effect", Effect);
 
         Selected_Character = "Dandelion";
-        GameClear = new int[] { 0, 0, 0 };
+        GameClear = new int[] { 0, 0, 0, 0};
 
         SaveUserData();
         Debug.Log("유저 데이터 초기화 완료");
