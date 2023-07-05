@@ -325,9 +325,10 @@ public class node : MonoBehaviour
                 backgrounds[1].SetActive(true);
                 break;
             case 3:
-                //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
+                backgrounds[2].SetActive(true);
                 break;
             case 4:
+                backgrounds[3].SetActive(true);
                 break;
             default:
                 backgrounds[0].SetActive(true);
