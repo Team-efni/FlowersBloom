@@ -126,6 +126,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 7452c77fc82690147bd42287efe7b05a, type: 3}
   - {fileID: 21300000, guid: 9340a61fb3ff53b40ad8a5f7c06a1e5f, type: 3}
   - {fileID: 21300000, guid: 5650115c3295b8747ab3c5ee9531eee6, type: 3}
+  - {fileID: 21300000, guid: 41c57778c0011744ea7a8d7fc46a9608, type: 3}
+  - {fileID: 21300000, guid: 791a810cb0c75a94aadce260b8d5d92a, type: 3}
   BackBoardRenderer_Top: {fileID: 1185183942529719451}
   BackBoardRenderer_Bottom: {fileID: 1185183942701016683}
 --- !u!1 &1185183942529719449

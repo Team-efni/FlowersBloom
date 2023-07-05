@@ -136,10 +136,8 @@ public class RepeatMonster : MonoBehaviour
         {
             ran_mon = 1;
         }
-
-#if true
         */
-
+#if true
         Debug.Log("mon_num : " + UniteData.mon_num);
         if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Rose"))
             choice_mon = 0;
@@ -149,7 +147,7 @@ public class RepeatMonster : MonoBehaviour
             choice_mon = 2;
         else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Poppy"))
             choice_mon = 3;
-#if true
+
         UniteData.Closed_Monster = monster_name[choice_mon];
         monster_image.sprite = monster_images[choice_mon];
         Debug.Log("monster_image" + monster_image.sprite);

@@ -23,7 +23,8 @@ public class BackBoard_In_CutScene : MonoBehaviour
         Tulip,
         Rose,
         Cosmos,
-        MorningGlory
+        MorningGlory,
+        Poppy
     }
 
     private void Start()
@@ -55,6 +56,10 @@ public class BackBoard_In_CutScene : MonoBehaviour
                 return 2;
             case Banner.Cosmos:
                 return 3;
+            case Banner.MorningGlory:
+                return 4;
+            case Banner.Poppy:
+                return 5;
             default:
                 Debug.LogWarning("해당 이름을 가진 이미지 파일이 적용되지 않았습니다.\nBackBoard 오브젝트에서 확인하세요!");
                 return -1;

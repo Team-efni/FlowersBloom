@@ -28,16 +28,22 @@ public class PlayGaugeManager : MonoBehaviour
         switch (UniteData.Difficulty)
         {
             case 1:
-                maxTime = 71f;
+                maxTime = 52f;
                 break;
             case 2:
-                maxTime = 90f;
+                maxTime = 52f;
                 break;
             case 3:
-                maxTime = 88f;
+                maxTime = 52f;
+                break;
+            case 4:
+                maxTime = 52f;
+                break;
+            case 5:
+                maxTime = 52f;
                 break;
             default:
-                maxTime = 71f;
+                maxTime = 52f;
                 break;
         }
     }
