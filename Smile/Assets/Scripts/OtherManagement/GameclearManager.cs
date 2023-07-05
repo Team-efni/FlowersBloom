@@ -42,7 +42,8 @@ public class GameclearManager : MonoBehaviour
         UniteData.Player_Location_Past = Vector2.zero;
         UniteData.ReStart = true;
 
-        SceneManager.LoadScene("Play");
+        if(UniteData.Difficulty < 5) // world 2 easy 이후로는 없어서
+            SceneManager.LoadScene("Play");
 
     }
 }

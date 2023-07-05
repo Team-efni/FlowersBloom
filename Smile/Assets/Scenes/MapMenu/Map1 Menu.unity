@@ -1500,6 +1500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 887522709}
+  - component: {fileID: 887522710}
   m_Layer: 5
   m_Name: MapCombine
   m_TagString: Untagged
@@ -1529,6 +1530,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &887522710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887522708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45f855c62f5b52a4688a70aa477e4312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StageList:
+  - {fileID: 1679549076}
+  - {fileID: 980065120}
+  - {fileID: 313633706}
+  - {fileID: 112147515}
+  - {fileID: 1690185269}
+  - {fileID: 2019370167}
 --- !u!1 &903001256
 GameObject:
   m_ObjectHideFlags: 0
