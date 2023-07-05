@@ -92,6 +92,8 @@ public class NoteController : MonoBehaviour
         longNotePos = int.Parse(UniteData.data[UniteData.mon_num]["num"].ToString());
         canlongClick = false;
 
+        Set_Note();
+
         // (랜덤으로) 노트 생성
         for (int i = 0; i < noteLength; i++)
         {
@@ -129,7 +131,6 @@ public class NoteController : MonoBehaviour
             }
         }
 
-        Set_Note();
     }
 
     public void NoteDisabled()
