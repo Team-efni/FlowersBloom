@@ -35,20 +35,21 @@ public class RepeatMonster : MonoBehaviour
                 monster = monsters[0];
                 noteController = noteControllers[0];
                 UniteData.data = CSVReader.Read("World1_easy");
-                choice_mon = 0;
+                choice_mon = 0; // 장미
                 break;
 
             case 2:
                 monster = monsters[1];
                 noteController = noteControllers[1];
                 UniteData.data = CSVReader.Read("World1_normal");
-                choice_mon = 1;
+                choice_mon = 1; // 코스모스
                 break;
 
             case 3:
-                //monster = monsters[2];
-                //noteController = noteControllers[2];
-                //UniteData.data = CSVReader.Read("World1_hard");
+                monster = monsters[2];
+                noteController = noteControllers[2];
+                UniteData.data = CSVReader.Read("World1_hard");
+                choice_mon = 1; // 코스모스
                 break;
 
             case 4:

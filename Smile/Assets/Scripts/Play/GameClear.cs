@@ -65,13 +65,13 @@ public class GameClear : MonoBehaviour
         switch (UniteData.Difficulty)
         {
             case 1:
-                backgrounds[0].SetActive(true);
+                backgrounds[0].SetActive(true); // W1E
                 break;
             case 2:
-                backgrounds[1].SetActive(true);
+                backgrounds[1].SetActive(true); // W1N
                 break;
             case 3:
-                //backgrounds[2].SetActive(true); // 아직 hard 모드가 안나온 상태
+                backgrounds[2].SetActive(true); // W1H
                 break;
             case 4:
                 backgrounds[3].SetActive(true); // world2_easy
