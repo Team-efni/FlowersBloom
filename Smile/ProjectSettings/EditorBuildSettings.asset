@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapMenu/Easy Map2.unity
     guid: 5a8673f1ee4103d42b20d7e58e875c25
+  - enabled: 1
+    path: Assets/Scenes/MapMenu/Hard Map.unity
+    guid: 7a4341b4e4ec2fd4f860b7543d023a7e
   m_configObjects: {}
