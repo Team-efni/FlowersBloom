@@ -357,6 +357,8 @@ public class node : MonoBehaviour
             UniteData.Node_LifePoint = 2;
             UniteData.Node_Click_Counter = 0;
             UnPassed = false;
+
+            UniteData.mon_num--;
             UniteData.GameMode = "Play";
             //클리어 애니메이션 실행
             sceneLoader.SceneLoadStart("Play");

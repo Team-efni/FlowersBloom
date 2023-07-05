@@ -30,6 +30,8 @@ public class NoteController : MonoBehaviour
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
+    [SerializeField] private Transform[] NotePosition;
+
     //private List<Dictionary<string, object>> data;
 
     // Start is called before the first frame update
@@ -45,9 +47,14 @@ public class NoteController : MonoBehaviour
     {
         if (isClick[UniteData.noteIndex])
         {
+            clickTime += Time.deltaTime;
+            if (clickTime >= maxClickTime)
+            {
+                stopNote = true;
+            }
+
             if (!stopNote)
             {
-                clickTime += Time.deltaTime;
                 MoveImage();
             }
         }
@@ -82,6 +89,7 @@ public class NoteController : MonoBehaviour
 //#if true
             Debug.Log("Player Meet");
             Set_Note_Count(); // 노트 개수 확인
+            Set_Note();
             NoteSetting();
             DoBgShow(true); // 상단 노트 UI 활성화
 
@@ -119,24 +127,23 @@ public class NoteController : MonoBehaviour
                 
                 Image image_mn = movingNote.GetComponent<Image>();
                 image_mn.sprite = note[i].GetComponent<Image>().sprite;
-
-                if (UniteData.mon_num != 1) 
-                {
-                    RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
-                    Vector3 position = childTransform.position;
+                    //RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
+                    //Vector3 position = childTransform.position;
 
                     RectTransform trans_mn = movingNote.GetComponent<RectTransform>();
                     RectTransform trans_lc = longclickImage.GetComponent<RectTransform>();
-
-                    Debug.Log("pos : " + position);
                     //trans_mn.localPosition = position;
                     //trans_lc.localPosition = position;
-                    trans_mn.position = position;
-                    trans_lc.position = position;
-                }
+                    if (i < 5)
+                    {
+                        trans_mn.position = NotePosition[i + 1].position;
+                        trans_lc.position = NotePosition[i + 1].position;
+                    } 
+                    //trans_mn.position = position;
+                    //trans_lc.position = position;
             }
         }
-        Set_Note();
+
     }
 
     public void NoteDisabled()
@@ -179,11 +186,6 @@ public class NoteController : MonoBehaviour
             {
                 Debug.Log("TouchDown : " + i);
                 isClick[UniteData.noteIndex] = true;
-
-                if(clickTime == maxClickTime)
-                {
-                    stopNote = true;
-                }
             }
         }
     }
@@ -194,7 +196,8 @@ public class NoteController : MonoBehaviour
         isClick[UniteData.noteIndex] = false;
 
         float clicktime = clickTime;
-       
+        stopNote = false;
+
         if (meetMonster && canlongClick)
         {
             longNotePos = 0;
