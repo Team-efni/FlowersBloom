@@ -19,6 +19,7 @@ public class NoteController : MonoBehaviour
 
     private int longNotePos = -1;
     private bool canlongClick = false;
+    private bool stopNote = false;
     public GameObject longclickImage;
     public GameObject movingNote;
 
@@ -44,8 +45,11 @@ public class NoteController : MonoBehaviour
     {
         if (isClick[UniteData.noteIndex])
         {
-            clickTime += Time.deltaTime;
-            MoveImage();
+            if (!stopNote)
+            {
+                clickTime += Time.deltaTime;
+                MoveImage();
+            }
         }
         else
         {
@@ -66,6 +70,8 @@ public class NoteController : MonoBehaviour
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
         movingNote.SetActive(false);
         longclickImage.SetActive(false);
+        stopNote = false;
+        clickTime = 0;
     }
 
     // Show Note
@@ -92,8 +98,6 @@ public class NoteController : MonoBehaviour
         longNotePos = int.Parse(UniteData.data[UniteData.mon_num]["num"].ToString());
         canlongClick = false;
 
-        Set_Note();
-
         // (랜덤으로) 노트 생성
         for (int i = 0; i < noteLength; i++)
         {
@@ -112,25 +116,27 @@ public class NoteController : MonoBehaviour
 
                 Image image = note[i].GetComponent<Image>();
                 image.color = new Color(128 / 255f, 128 / 255f, 128 / 255f, 0 / 255f);
-
+                
                 Image image_mn = movingNote.GetComponent<Image>();
                 image_mn.sprite = note[i].GetComponent<Image>().sprite;
 
-                RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
-                Vector3 position = childTransform.position;
+                if (UniteData.mon_num != 1) 
+                {
+                    RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
+                    Vector3 position = childTransform.position;
 
-                Transform trans_mn = movingNote.GetComponent<Transform>();
-                Transform trans_lc = longclickImage.GetComponent<Transform>();
+                    RectTransform trans_mn = movingNote.GetComponent<RectTransform>();
+                    RectTransform trans_lc = longclickImage.GetComponent<RectTransform>();
 
-                Debug.Log("pos : " + position);
-                //trans_mn.localPosition = position;
-                //trans_lc.localPosition = position;
-                trans_mn.position = position;
-                trans_lc.position = position;
-                
+                    Debug.Log("pos : " + position);
+                    //trans_mn.localPosition = position;
+                    //trans_lc.localPosition = position;
+                    trans_mn.position = position;
+                    trans_lc.position = position;
+                }
             }
         }
-
+        Set_Note();
     }
 
     public void NoteDisabled()
@@ -138,8 +144,6 @@ public class NoteController : MonoBehaviour
         // 노트 회색으로 만들기
         Image image = note[UniteData.noteIndex].GetComponent<Image>();
         image.color = new Color(128/ 255f, 128/ 255f, 128 / 255f, 255/ 255f);
-
-        
     }
 
     public void NoteAbled()
@@ -175,6 +179,11 @@ public class NoteController : MonoBehaviour
             {
                 Debug.Log("TouchDown : " + i);
                 isClick[UniteData.noteIndex] = true;
+
+                if(clickTime == maxClickTime)
+                {
+                    stopNote = true;
+                }
             }
         }
     }
@@ -279,6 +288,7 @@ public class NoteController : MonoBehaviour
         Debug.Log("Note Success");
         NoteDisabled();
         UniteData.noteIndex++;
+        stopNote = false;
 
         if (UniteData.noteIndex == noteLength)
         {
