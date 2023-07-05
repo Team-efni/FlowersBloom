@@ -44,5 +44,6 @@ public class MapChange : MonoBehaviour
     public void HardBtn()
     {
         UniteData.Difficulty = 3;
+        SceneManager.LoadScene("Hard Map");
     }
 }
