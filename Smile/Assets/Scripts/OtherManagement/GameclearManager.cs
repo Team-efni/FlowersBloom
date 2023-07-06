@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameclearManager : MonoBehaviour
 {
     private ReStartGame s_rsg;
+    public Button btn_nextStage;
+
     // Start is called before the first frame update
     void Start()
     {
         //전역변수 초기화
         UniteData.notePoint = 2; // 기회 포인트
-        UniteData.lifePoint = 3; // 목숨 포인트    
+        UniteData.lifePoint = 3; // 목숨 포인트
+
+        if(UniteData.Difficulty >= 4)
+        {
+            btn_nextStage.interactable = false;
+        }
+
+        else btn_nextStage.interactable = true;
     }
 
     // Update is called once per frame
