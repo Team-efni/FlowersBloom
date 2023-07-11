@@ -4050,4 +4050,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c4ddfa16d49d6004f8ac7fd395121a82, type: 3}
   - {fileID: 8300000, guid: 98fd4fc6b81489b47ac9b2eb18c7c0f8, type: 3}
   - {fileID: 8300000, guid: 2b8e1c9dd48f1e148a6b66fd8e9cece9, type: 3}
+  - {fileID: 8300000, guid: 97a45b2c0c69529498c4e98573c5c9fa, type: 3}
+  - {fileID: 8300000, guid: 9b8a8d8c5cb93f44ca01d8ce73b5c5da, type: 3}
   doLoop: 1
