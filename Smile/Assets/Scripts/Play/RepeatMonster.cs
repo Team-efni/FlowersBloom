@@ -59,6 +59,13 @@ public class RepeatMonster : MonoBehaviour
                 choice_mon = 3; // ¾ç±Íºñ
                 break;
 
+            case 5:
+                monster = monsters[4];
+                noteController = noteControllers[4];
+                UniteData.data = CSVReader.Read("World2_normal");
+                choice_mon = 3; // ¾ç±Íºñ
+                break;
+
             default:
                 monster = monsters[0];
                 noteController = noteControllers[0];

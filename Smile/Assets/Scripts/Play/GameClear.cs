@@ -76,6 +76,9 @@ public class GameClear : MonoBehaviour
             case 4:
                 backgrounds[3].SetActive(true); // world2_easy
                 break;
+            case 5:
+                backgrounds[4].SetActive(true); // world_normal
+                break;
             default:
                 backgrounds[0].SetActive(true);
                 break;

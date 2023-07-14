@@ -26,9 +26,6 @@ public class NoteController : MonoBehaviour
 
     [SerializeField] private float longClickSpeed;
 
-    private GameClear gc;
-
-
     RectTransform trans_mn;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
@@ -170,20 +167,20 @@ public class NoteController : MonoBehaviour
 
     public void touchClick(int i)
     {
-        Debug.Log("touchClick : " + i);
+        if (isClick[UniteData.noteIndex]) return;
         if (Input.touchCount > 1) return; // 멀티 터치 안되게
         if (meetMonster && !canlongClick)
         {
             if (noteNums[UniteData.noteIndex] == i + 1)
                 NoteSuccess();
         }
-
+        Debug.Log("touchClick : " + i);
     }
 
 
     public void LongTouchDown(int i)
     {
-        //Debug.Log("TouchDown : " + i);
+
         // 받는 변수는 입력되는 버튼
         if (meetMonster && canlongClick)
         {
@@ -193,6 +190,7 @@ public class NoteController : MonoBehaviour
                 isClick[UniteData.noteIndex] = true;
             }
         }
+        Debug.Log("TouchDown : " + i);
     }
 
     public void LongTouchUp(int i)
@@ -202,14 +200,11 @@ public class NoteController : MonoBehaviour
 
         float clicktime = clickTime;
 
-
         if (meetMonster && canlongClick)
         {
             stopNote = false;
             longNotePos = 0;
             UniteData.noteIndex++;
-            canlongClick = false;
-
             Debug.Log("clicktime : " + clicktime + "");
 
             // 성공했다면 + 적절한 위치
@@ -218,23 +213,25 @@ public class NoteController : MonoBehaviour
                 trans_mn = movingNote.GetComponent<RectTransform>();
                 Debug.Log("noteIndex : " + UniteData.noteIndex);
                 if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 1].position.x - 10 && trans_mn.position.x <= NotePosition[UniteData.noteIndex + 1].position.x + 10)
-
+                {
                     NoteSuccess();
+                }
                 else
                 {
                     // 실패한 경우
                     Image image = note[UniteData.noteIndex].GetComponent<Image>();
                     image.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 255 / 255f);
                     if (UniteData.noteIndex != noteLength - 1)
-                        UniteData.noteIndex++;
+                    {
+                        UniteData.noteIndex++; // 다음 인덱스 노트 하러감
+                    }
                     else
                     {
-                        NoteSuccess();
+                        NoteSuccess(); // 모두 성공한 경우로 취급(몬스터 없어지고 초기화)
                     }
-                    GameClear.player.GetComponent<PlayerController>().MeetMonsterFail();
+                    GameClear.player.GetComponent<PlayerController>().MeetMonsterFail(); // 목숨 줄어듬
                 }
             }
-
         }
     }
 
@@ -302,6 +299,7 @@ public class NoteController : MonoBehaviour
         UniteData.noteIndex++;
         stopNote = false;
 
+        Debug.Log("noteindex : " + UniteData.noteIndex);
         if (UniteData.noteIndex == noteLength)
         {
             // 모두 성공한 경우
