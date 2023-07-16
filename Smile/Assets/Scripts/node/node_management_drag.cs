@@ -19,6 +19,7 @@ public class node_management_drag : MonoBehaviour
     public GameObject ring;
     public GameObject bright; 
     private GameObject shadow;
+    private CircleCollider2D collider;
 
     public Vector2 ping;
 
@@ -129,6 +130,8 @@ public class node_management_drag : MonoBehaviour
         //ping의 위치를 nodes_prefab의 위치에서 500거리만큼 떨어진 곳에 배치한다.
         //ping.transform.position = new Vector3(node_prefab.transform.position.x, node_prefab.transform.position.y + 500, node_prefab.transform.position.z);
         //Debug.Log(ping);
+
+        collider= node_prefab.GetComponent<CircleCollider2D>();
     }
 
     void Update()
@@ -149,6 +152,7 @@ public class node_management_drag : MonoBehaviour
                 // 노드가 클릭되었을 때
                 if (hit.collider != null && hit.collider.gameObject == gameObject)
                 {
+                    collider.radius = 2.0f;
                     // 노드 클릭 이벤트 실행
                     onClick.Invoke(gameObject);
                 }
