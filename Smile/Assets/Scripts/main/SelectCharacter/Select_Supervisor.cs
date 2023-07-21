@@ -43,6 +43,7 @@ public class Select_Supervisor : MonoBehaviour
     private void CheckList(GameObject character_card)
     {
         Card_Status CS = character_card.GetComponent<Card_Status>();
+        GameObject unlockText = character_card.transform.GetChild(0).gameObject;
 
         //잠금 여부 결정
         unlock_Tulip(CS, character_card);
@@ -51,6 +52,7 @@ public class Select_Supervisor : MonoBehaviour
         if (CS.unlocked)
         {
             Debug.Log(character_card.name + " 활성화");
+            unlockText.SetActive(false);
         }
     }
 
