@@ -214,7 +214,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 297343647}
+        m_TargetAssemblyTypeName: SoundEffectManager, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &17048472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297343646}
   - component: {fileID: 297343645}
+  - component: {fileID: 297343647}
   m_Layer: 0
   m_Name: SoundEffectManager
   m_TagString: Untagged
@@ -728,6 +741,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &297343647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297343644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9742c0d219a38449c6ac41cdce4b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: da2d6ca0a7a35ea4b838100c3781c1a2, type: 2}
 --- !u!1 &325485849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1333,7 @@ AudioSource:
   m_GameObject: {fileID: 652602977}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: da2d6ca0a7a35ea4b838100c3781c1a2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 73aebf267060e0343871954883fe523d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
