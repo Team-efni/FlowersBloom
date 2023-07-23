@@ -28,9 +28,6 @@ using UnityEditor.Rendering;
 
 public class Node_data
 {
-    private static float SIDE_V = 500f;
-    private static float STR_V = 700f;
-
     public Vector2 vector2 = new Vector2();
     public Sprite procedure;
     public Sprite Ring_Color;

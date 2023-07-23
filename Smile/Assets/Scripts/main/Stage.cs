@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Stage : MonoBehaviour
 {
     [SerializeField] GameObject Button;
+    [SerializeField] GameObject errorButton;
     [SerializeField] GameObject Title;
     [SerializeField] GameObject Ping;
 
@@ -19,7 +20,8 @@ public class Stage : MonoBehaviour
     public void LockMap()
     {
         Button.GetComponent<Button>().interactable = false;
-       
+        errorButton.SetActive(true);
+
         Button.GetComponent<Image>().color = off_color_Btn;
         Title.GetComponent<Image>().color = off_color;
         Ping.GetComponent<Image>().color = off_color;
@@ -31,6 +33,7 @@ public class Stage : MonoBehaviour
     public void UnlockMap()
     {
         Button.GetComponent<Button>().interactable = true;
+        errorButton.SetActive(false);
 
         Button.GetComponent<Image>().color = on_color_Btn;
         Title.GetComponent<Image>().color = on_color;

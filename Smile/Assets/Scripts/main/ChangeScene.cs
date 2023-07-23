@@ -6,11 +6,30 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     public Animator animator;
+    public GameObject targetObject;
 
-    public void initAnim()
+    private static int localStageCount;
+
+    private void Start()
     {
-        animator.GetInteger("LocalStage");
-        animator.SetInteger("LocalStage", 0);
+        try
+        {
+            RectTransform _transform;
+            _transform = targetObject.GetComponent<RectTransform>();
+            if (localStageCount == 1)
+            {
+                _transform.anchoredPosition = new Vector2(-3200, 0);
+                Debug.Log("localStageCount 1");
+            }
+            else if (localStageCount == 2)
+            {
+                _transform.anchoredPosition = new Vector2(0, 0);
+            }
+        }
+        catch
+        {
+
+        }
     }
 
     public void ChangeSceneBtn()
@@ -25,11 +44,13 @@ public class ChangeScene : MonoBehaviour
                 break;
             case "Map1Btn":
                 Debug.Log("Map1Btn");
-                animator.SetInteger("LocalStage", 2);
+                localStageCount = 2;
+                animator.SetInteger("LocalStage", localStageCount);
                 //SceneManager.LoadScene("Map1 Menu");
                 break;
             case "Map2Btn":
-                animator.SetInteger("LocalStage", 1);
+                localStageCount = 1;
+                animator.SetInteger("LocalStage", localStageCount);
                 //SceneManager.LoadScene("Map2 Menu");
                 break;
         }
