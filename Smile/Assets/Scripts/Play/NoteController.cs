@@ -311,6 +311,14 @@ public class NoteController : MonoBehaviour
             returnNote();
             movingNote.SetActive(false);
             longclickImage.SetActive(false);
+
+            target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        }
+
+        else
+        {
+            // ¸ó½ºÅÍ ±ôºýÀÓ
+            StartCoroutine(MonsterBlink());
         }
     }
 
@@ -318,6 +326,24 @@ public class NoteController : MonoBehaviour
     {
         Note_Bg.SetActive(check); // Note_Bg
     }
+
+    IEnumerator MonsterBlink()
+    {
+        int i = 0;
+        while (i < 4) // ÃÑ ¸ó½ºÅÍ ±ôºýÀÌ´Â È½¼ö * 2
+        {
+            if (i % 2 == 0)
+                target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 120);
+            else target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+
+            yield return new WaitForSeconds(0.1f); // ±ôºýÀÌ´Â ÁÖ±â
+            i++;
+        }
+        target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        yield return null;
+
+    }
+
 
     // ¸ó½ºÅÍ Á×±â
     private void MonsterDie()
