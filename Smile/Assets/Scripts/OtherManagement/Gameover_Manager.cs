@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Gameover_Manager : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Gameover_Manager : MonoBehaviour
     {
         //전역변수 초기화
         UniteData.notePoint = 2; // 기회 포인트
-        UniteData.lifePoint = 3; // 목숨 포인트    
+        UniteData.lifePoint = 3; // 목숨 포인트
     }
     public void GotoMain()
     {

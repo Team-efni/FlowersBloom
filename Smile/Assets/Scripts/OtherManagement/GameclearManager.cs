@@ -16,7 +16,7 @@ public class GameclearManager : MonoBehaviour
         UniteData.notePoint = 2; // 기회 포인트
         UniteData.lifePoint = 3; // 목숨 포인트
 
-        if(UniteData.Difficulty >= 4)
+        if(UniteData.Difficulty >= 5)
         {
             btn_nextStage.interactable = false;
         }
@@ -52,7 +52,7 @@ public class GameclearManager : MonoBehaviour
         UniteData.Player_Location_Past = Vector2.zero;
         UniteData.ReStart = true;
 
-        if(UniteData.Difficulty < 5) // world 2 easy 이후로는 없어서
+        //if(UniteData.Difficulty <= 4) // world 2 normal 이후로는 없어서
             SceneManager.LoadScene("Play");
 
     }
