@@ -10,6 +10,7 @@ TagManager:
   - PlayScene_UI
   - Background
   - MonsterSpwan
+  - PlayerSprite
   layers:
   - Default
   - TransparentFX

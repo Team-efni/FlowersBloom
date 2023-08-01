@@ -76,6 +76,7 @@ public class NoteController : MonoBehaviour
         UniteData.noteIndex = 0;
         meetMonster = false;
         UniteData.NoteSuccess = false;
+        UniteData.oneNoteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
         movingNote.SetActive(false);
         longclickImage.SetActive(false);
@@ -107,6 +108,7 @@ public class NoteController : MonoBehaviour
         noteNums = new int[noteLength];
         longNotePos = int.Parse(UniteData.data[UniteData.mon_num]["num"].ToString());
         canlongClick = false;
+        UniteData.oneNoteSuccess = false;
 
         // (랜덤으로) 노트 생성
         for (int i = 0; i < noteLength; i++)
@@ -298,8 +300,9 @@ public class NoteController : MonoBehaviour
         NoteDisabled();
         UniteData.noteIndex++;
         stopNote = false;
-
+        UniteData.oneNoteSuccess = true;
         Debug.Log("noteindex : " + UniteData.noteIndex);
+
         if (UniteData.noteIndex == noteLength)
         {
             // 모두 성공한 경우
