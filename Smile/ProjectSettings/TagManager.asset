@@ -48,6 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TouchEffect
+    uniqueID: 1275064809
+    locked: 0
   - name: Background
     uniqueID: 3384049489
     locked: 0
