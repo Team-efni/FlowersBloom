@@ -17,12 +17,15 @@ public class InGameCommentManager : MonoBehaviour
     public GameObject textGroup;
     public Image speaker;
     public Text text;
+    public Text speakerText;
 
     public GameObject selectGroup;
     public GameObject[] buttonInSelectGroup;
 
     public Sprite[] speakerSprites;
     public Sprite[] branchSprites;
+
+    public GameObject[] UI_system;
 
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
     private void Awake()
@@ -49,14 +52,47 @@ public class InGameCommentManager : MonoBehaviour
     private bool printAll = false;
 
 
-    private string tsv_W1ES="Assets\\Resources\\comment\\NewW01_Easy_Story.tsv";
+    private string[] tsv_file = { 
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
+        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv"
+    };
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
+        //스토리 시작
+        Time.timeScale = 0f;
+        foreach (GameObject obj in UI_system)
+        {
+            obj.SetActive(false);
+        }
+
         uiComment = GetComponent<UI_Comment>();
-        tsv=new TSV(tsv_W1ES);
-        dataRowCollection = startScripting("Finish");
+        tsv = new TSV(tsv_file[UniteData.Difficulty - 1]);
+
+        if (UniteData.StoryClear[UniteData.Difficulty - 1] == 0 && !UniteData.finishGame)
+        {
+            dataRowCollection = startScripting("Prestart");
+        }
+        else if (UniteData.StoryClear[UniteData.Difficulty - 1] == 1 && UniteData.finishGame)
+        {
+            dataRowCollection = startScripting("Finish");
+        }
+        else
+        {
+            //스토리 끝
+            Time.timeScale = 1f;
+            foreach (GameObject obj in UI_system)
+            {
+                obj.SetActive(true);
+            }
+
+            textGroup.SetActive(false);
+            return;
+        }
 
         handleSelectGroup(3, false);
         clickTemp = true;
@@ -113,7 +149,16 @@ public class InGameCommentManager : MonoBehaviour
     {
         if (rowX + 1 >= dataRowCollection.Count)
         {
-            Destroy(textGroup);
+            textGroup.SetActive(false);
+            //스토리 끝
+            Time.timeScale = 1f;
+            foreach (GameObject obj in UI_system)
+            {
+                obj.SetActive(true);
+            }
+
+            UniteData.StoryClear[UniteData.Difficulty - 1] += 1;
+            UniteData.SaveUserData();
             return;
         }
         DataRow row = dataRowCollection[rowX];
@@ -145,6 +190,7 @@ public class InGameCommentManager : MonoBehaviour
         //text.text = row[COMMENT].ToString();
         pageEnd = uiComment.printTextToUI(text, row[COMMENT].ToString(), frameTime, FPP, isPrintingImmadiately);
         speaker.sprite = bannerImage(row[CHARACTER].ToString());
+        speakerText.text = row[CHARACTER].ToString();
     }
 
     //분기 구현

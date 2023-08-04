@@ -78,7 +78,6 @@ public class PlayerController : MonoBehaviour
         //transform.position = transform.position + (transform.right * moveSpeed * Time.deltaTime);
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
 #if true //몬스터에 접근해도 멈추지 않도록 디버깅용 매크로

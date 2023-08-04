@@ -14,8 +14,8 @@ public class NoteController : MonoBehaviour
     //private int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
     private float clickTime; // 클릭 중인 시간
-    private float minClickTime = 0.28f; // 최소 클릭 시간
-    private float maxClickTime = 0.4f; // 최대 클릭 시간
+    /*private float minClickTime = 0.28f; // 최소 클릭 시간
+    private float maxClickTime = 0.4f; // 최대 클릭 시간*/
     private bool[] isClick = { false, false, false, false, false, false, false }; // 클릭중인지 판단
 
     private int longNotePos = -1;

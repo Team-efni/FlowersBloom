@@ -9,6 +9,8 @@ public class GameClear : MonoBehaviour
     //public GameObject bgGroup;
     static public GameObject player;
 
+    public GameObject storyScriptGroup;
+
     public GameObject[] canPlay_prefab;
     public GameObject[] backgrounds;
 
@@ -26,8 +28,9 @@ public class GameClear : MonoBehaviour
 
     private void Awake()
     {
+        UniteData.finishGame = false;
         //캐릭터 지정
-        if(UniteData.Selected_Character== "Dandelion")
+        if (UniteData.Selected_Character== "Dandelion")
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
             canPlay_prefab[0].SetActive(true);
@@ -92,6 +95,10 @@ public class GameClear : MonoBehaviour
         xScreenSize = Camera.main.orthographicSize * Camera.main.aspect * 2;
         playerStartPositionX = player.transform.position.x;
         playerMaxMovePosX = playerStartPositionX + xScreenSize;
+
+
+        //스토리 스크립트 시작
+        storyScriptGroup.SetActive(true);
     }
 
     public void Initialized()
@@ -120,7 +127,14 @@ public class GameClear : MonoBehaviour
 
     public void ClearGame()
     {
+        UniteData.finishGame = true;
         bgStop();
+
+        Debug.Log("게임을 이김게임을 이김게임을 이김게임을 이김게임을 이김");
+
+        //스토리 스크립트 종료
+        storyScriptGroup.SetActive(true);
+
         UniteData.ReStart = true;
         UniteData.Move_Progress = false;
         UniteData.GameClear[UniteData.Difficulty - 1] = 1;

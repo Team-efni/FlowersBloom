@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class UniteData
 {
+    //디버깅용 데이터
+
+
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Pause]
-    public static int Difficulty = 5; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
+    public static int Difficulty = 1; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 
@@ -24,6 +27,8 @@ public class UniteData
     public static bool NoteSuccess = false; // 몬스터 상단 노트 성공 유무
     public static bool oneNoteSuccess = false;
 
+    public static bool finishGame = false; //게임 끝남 유무
+
     public static List<Dictionary<string, object>> data;
     public static int mon_num = 1; // 현재 나온 마리수
 
@@ -39,8 +44,24 @@ public class UniteData
         PlayerPrefs.GetInt("GameClear-W2-Hard", 0) //W2H
 }; // 난이도별 클리어 유무 0: false, 1: true
 
-    //설정 관련 데이터
-    public static float BGM = PlayerPrefs.GetFloat("BGM", 1f); //배경음악 볼륨
+
+    //스토리 시현 관련 데이터
+#if true
+    public static int[] StoryClear = {
+        PlayerPrefs.GetInt("story-Easy", 0), //EASY
+        PlayerPrefs.GetInt("story-Normal", 0), //NORMAL
+        PlayerPrefs.GetInt("story-Hard", 0), //HARD
+        PlayerPrefs.GetInt("story-W2-Easy", 0), //W2E
+        PlayerPrefs.GetInt("story-W2-Normal", 0), //W2N
+        PlayerPrefs.GetInt("story-W2-Hard", 0) //W2H
+}; // 스크립트 실행 여부 0: 미 / 1: Prestart만 / 2: Finish까지
+#else
+
+    public static int[] StoryClear = new int[] { 0, 0, 0, 0, 0, 0 };
+#endif
+
+//설정 관련 데이터
+public static float BGM = PlayerPrefs.GetFloat("BGM", 1f); //배경음악 볼륨
     public static float Effect = PlayerPrefs.GetFloat("Effect", 1f); //효과음 볼륨
 
     //보안 관련 데이터
@@ -59,6 +80,14 @@ public class UniteData
         PlayerPrefs.SetInt("GameClear-W2-Easy", GameClear[3]);
         PlayerPrefs.SetInt("GameClear-W2-Normal", GameClear[4]);
         PlayerPrefs.SetInt("GameClear-W2-Hard", GameClear[5]);
+
+        PlayerPrefs.SetInt("story-Easy", StoryClear[0]);
+        PlayerPrefs.SetInt("story-Normal", StoryClear[1]);
+        PlayerPrefs.SetInt("story-Hard", StoryClear[2]);
+        PlayerPrefs.SetInt("story-W2-Easy", StoryClear[3]);
+        PlayerPrefs.SetInt("story-W2-Normal", StoryClear[4]);
+        PlayerPrefs.SetInt("story-W2-Hard", StoryClear[5]);
+
         PlayerPrefs.SetString("Selected_Character", Selected_Character);
         PlayerPrefs.Save();
     }
@@ -70,10 +99,9 @@ public class UniteData
 
         Selected_Character = "Dandelion";
         GameClear = new int[] { 0, 0, 0, 0, 0, 0 };
+        StoryClear = new int[] { 0, 0, 0, 0, 0, 0 };
 
         SaveUserData();
         Debug.Log("유저 데이터 초기화 완료");
     }
-
-    //디버깅용 데이터
 }
