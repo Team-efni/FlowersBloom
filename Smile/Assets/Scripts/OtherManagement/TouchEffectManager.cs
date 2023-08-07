@@ -42,6 +42,7 @@ public class TouchEffectManager : MonoBehaviour
         switch (canvas.renderMode)
         {
             case RenderMode.ScreenSpaceOverlay:
+                touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
                 break;
             case RenderMode.ScreenSpaceCamera:
                 touchPosition = canvas.worldCamera.ScreenToWorldPoint(touchPosition);
@@ -50,12 +51,12 @@ public class TouchEffectManager : MonoBehaviour
                 touchPosition = canvas.transform.InverseTransformPoint(touchPosition);
                 break;
         }
-        if(SceneManager.GetActiveScene().name == "Play")
-        {
-            Debug.Log("play");
-            touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-        }
-        Debug.Log(touchPosition);
+        //if(SceneManager.GetActiveScene().name == "Play")
+        //{
+        //    Debug.Log("play");
+        //    touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+        //}
+        //Debug.Log(touchPosition);
         return touchPosition;
     }
 }
