@@ -327,6 +327,12 @@ public class node : MonoBehaviour
             case 4:
                 backgrounds[3].SetActive(true);
                 break;
+            case 5:
+                backgrounds[3].SetActive(true);
+                break;
+            case 6:
+                backgrounds[3].SetActive(true);
+                break;
             default:
                 backgrounds[0].SetActive(true);
                 break;
