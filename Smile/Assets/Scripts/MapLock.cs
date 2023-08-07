@@ -28,7 +28,7 @@ public class MapLock : MonoBehaviour
                 StageList[i+1].GetComponent<Stage>().LockMap();
             }
         }
-        StageList[4].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
-        StageList[5].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
+        //StageList[4].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
+        //StageList[5].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
     }
 }
