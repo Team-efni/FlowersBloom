@@ -49,7 +49,7 @@ public class NoteController : MonoBehaviour
         if (isClick[UniteData.noteIndex])
         {
             clickTime += Time.deltaTime;
-            if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 2].position.x + 10)
+            if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 2].position.x + 15)
             {
                 //Debug.Log("noteIndex : " + UniteData.noteIndex);
                 stopNote = true;
@@ -214,7 +214,7 @@ public class NoteController : MonoBehaviour
             {
                 trans_mn = movingNote.GetComponent<RectTransform>();
                 Debug.Log("noteIndex : " + UniteData.noteIndex);
-                if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 1].position.x - 10 && trans_mn.position.x <= NotePosition[UniteData.noteIndex + 1].position.x + 10)
+                if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 1].position.x - 10 && trans_mn.position.x <= NotePosition[UniteData.noteIndex + 1].position.x + 13)
                 {
                     NoteSuccess();
                 }
