@@ -148,7 +148,8 @@ public class NoteController : MonoBehaviour
                 //trans_lc.position = position;
             }
         }
-
+        UniteData.noteNums = noteNums;
+        UniteData.NoteSet = true;
     }
 
     public void NoteDisabled()
@@ -304,9 +305,11 @@ public class NoteController : MonoBehaviour
     {
         Debug.Log("Note Success");
         NoteDisabled();
+        UniteData.oneNoteSuccess = true;
+        UniteData.lastNoteIndex = UniteData.noteIndex;
         UniteData.noteIndex++;
         stopNote = false;
-        UniteData.oneNoteSuccess = true;
+        
         Debug.Log("noteindex : " + UniteData.noteIndex);
 
         if (UniteData.noteIndex == noteLength)

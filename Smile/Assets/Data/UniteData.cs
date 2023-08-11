@@ -26,6 +26,9 @@ public class UniteData
 
     public static bool NoteSuccess = false; // 몬스터 상단 노트 성공 유무
     public static bool oneNoteSuccess = false;
+    public static bool NoteSet = false;
+    public static int lastNoteIndex = -1; // 이전 인덱스 저장(안쓰고싶은데;-;)
+    public static int[] noteNums;
 
     public static bool finishGame = false; //게임 끝남 유무
 

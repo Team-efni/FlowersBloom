@@ -15,6 +15,8 @@ public class PlayerImageChange : MonoBehaviour
     private SpriteRenderer[] spriteRenderers;
     private SpriteRenderer sr_changePlayer;
 
+    private int[] noteNums;
+
     private void Awake()
     {
         //캐릭터 지정
@@ -47,11 +49,28 @@ public class PlayerImageChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 상단 노트 세팅 됐으면
+        if(UniteData.NoteSet)
+        {
+            setNoteNum();
+        }
+
         // 노트 성공했으면
         if (UniteData.oneNoteSuccess)
         {
             StartCoroutine(CharacterImageChange());
         }
+    }
+
+    private void setNoteNum()
+    {
+        UniteData.NoteSet = false;
+        noteNums = UniteData.noteNums;
+
+        //for(int i = 0; i<noteNums.Length; i++)
+        //{
+        //    Debug.Log("ImageChange NoteNums[" + i + "] = " + noteNums[i]);
+        //}
     }
 
     IEnumerator CharacterImageChange()
@@ -61,9 +80,16 @@ public class PlayerImageChange : MonoBehaviour
         Color color_changePlayer = sr_changePlayer.color;
         color_changePlayer.a = 255f;
         sr_changePlayer.color = color_changePlayer;
-
-        sr_changePlayer.sprite = changePlayerImg[UniteData.noteIndex];
-
+        if (noteNums[UniteData.lastNoteIndex] == 0)
+        {
+            sr_changePlayer.sprite = changePlayerImg[noteNums[UniteData.lastNoteIndex - 1] - 1];
+            Debug.Log("noteIndex : " + (UniteData.lastNoteIndex - 1) + ", noteNums : " + (noteNums[UniteData.lastNoteIndex - 1] - 1));
+        }
+        else
+        {
+            sr_changePlayer.sprite = changePlayerImg[noteNums[UniteData.lastNoteIndex] - 1];
+            Debug.Log("noteIndex : " + (UniteData.lastNoteIndex) + ", noteNums : " + (noteNums[UniteData.lastNoteIndex] - 1));
+        }
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
             Color color = spriteRenderer.color;
