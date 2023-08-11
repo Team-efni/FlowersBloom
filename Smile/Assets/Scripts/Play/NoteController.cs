@@ -216,6 +216,7 @@ public class NoteController : MonoBehaviour
                 Debug.Log("noteIndex : " + UniteData.noteIndex);
                 if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 1].position.x - 10 && trans_mn.position.x <= NotePosition[UniteData.noteIndex + 1].position.x + 13)
                 {
+                    trans_mn.position = new Vector2(NotePosition[UniteData.noteIndex + 1].position.x, trans_mn.position.y);
                     NoteSuccess();
                 }
                 else
