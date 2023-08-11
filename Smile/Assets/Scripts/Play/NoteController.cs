@@ -131,6 +131,7 @@ public class NoteController : MonoBehaviour
 
                 Image image_mn = movingNote.GetComponent<Image>();
                 image_mn.sprite = note[i].GetComponent<Image>().sprite;
+                image_mn.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
                 //RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
                 //Vector3 position = childTransform.position;
 
@@ -224,6 +225,10 @@ public class NoteController : MonoBehaviour
                     // 실패한 경우
                     Image image = note[UniteData.noteIndex].GetComponent<Image>();
                     image.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 255 / 255f);
+
+                    Image image_mn = movingNote.GetComponent<Image>();
+                    image_mn.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 0 / 255f);
+
                     if (UniteData.noteIndex != noteLength - 1)
                     {
                         UniteData.noteIndex++; // 다음 인덱스 노트 하러감
