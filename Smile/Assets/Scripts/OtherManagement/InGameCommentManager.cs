@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEditor.Progress;
@@ -13,9 +14,11 @@ public class InGameCommentManager : MonoBehaviour
     DataTable dataTable;
     DataRowCollection dataRowCollection;
     UI_Comment uiComment;
+    Animator animator;
 
     public GameObject textGroup;
-    public Image speaker;
+    public GameObject blind;
+    public GameObject speaker;
     public Text text;
     public Text speakerText;
 
@@ -30,10 +33,13 @@ public class InGameCommentManager : MonoBehaviour
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
     private void Awake()
     {
-        characterSprites.Add("", speakerSprites[0]);
-        characterSprites.Add("???", speakerSprites[1]);
-        characterSprites.Add("민들레", speakerSprites[2]);
-        characterSprites.Add("튤립", speakerSprites[3]);
+        characterSprites.Add("민들레", speakerSprites[0]);
+        characterSprites.Add("튤립", speakerSprites[1]);
+        characterSprites.Add("물망초", speakerSprites[2]);
+
+
+        animator = blind.GetComponent<Animator>();
+        UniteData.GameMode = "Scripting";
     }
 
     private const int COMMAND   = 0;
@@ -64,7 +70,7 @@ public class InGameCommentManager : MonoBehaviour
     private void OnEnable()
     {
         //스토리 시작
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
         foreach (GameObject obj in UI_system)
         {
             obj.SetActive(false);
@@ -85,6 +91,7 @@ public class InGameCommentManager : MonoBehaviour
         {
             //스토리 끝
             Time.timeScale = 1f;
+            UniteData.GameMode = "Play";
             foreach (GameObject obj in UI_system)
             {
                 obj.SetActive(true);
@@ -163,6 +170,16 @@ public class InGameCommentManager : MonoBehaviour
         }
         DataRow row = dataRowCollection[rowX];
 
+        if (dataRowCollection[rowX][CHARACTER].ToString() == "System") 
+        {
+            if(dataRowCollection[rowX][COMMENT].ToString()=="Blind")
+            {
+                //블라인드 작업 지시
+                Debug.Log("Blind");
+            }
+            return;
+        }
+
         handleSelectGroup(3, false);
         //분기 시작
         if (row[BRANCH].ToString()=="preselect")
@@ -187,18 +204,29 @@ public class InGameCommentManager : MonoBehaviour
             }
         }
 
-        //text.text = row[COMMENT].ToString();
         pageEnd = uiComment.printTextToUI(text, row[COMMENT].ToString(), frameTime, FPP, isPrintingImmadiately);
-        speaker.sprite = bannerImage(row[CHARACTER].ToString());
+
+        Image speakerImage = speaker.GetComponent<Image>();
+        speakerImage.sprite = speakersBannerImage(row[CHARACTER].ToString());
+        if (speakerImage.sprite == null)
+            speaker.SetActive(false);
+        else
+            speaker.SetActive(true);
+        if (row[CHARACTER].ToString()=="튤립")
+            speaker.transform.localPosition = new Vector2(1200f, -90f);
+        else
+            speaker.transform.localPosition = new Vector2(-1200f, -90f);
+
         speakerText.text = row[CHARACTER].ToString();
     }
 
     //분기 구현
 
-    private Sprite bannerImage(string character)
+    private Sprite speakersBannerImage(string character)
     {
         if (characterSprites.TryGetValue(character, out Sprite sprite))
         {
+            Debug.Log(character);
             return sprite;
         }
         else

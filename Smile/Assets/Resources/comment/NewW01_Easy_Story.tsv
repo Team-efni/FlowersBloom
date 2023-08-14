@@ -1,5 +1,5 @@
 Command	Numbering	Goto	Branch	Character	Comment
-Prestart	0	1		민들레	이쪽이야!
+Prestart	0	2		민들레	이쪽이야!
 Prestart	1	2		System	Blind
 Prestart	2	3		민들레	이쪽 길목만 지나면, 이 섬에서 나갈 수 있어. 할 수 있지?
 Prestart	3	4		민들레	가자!
@@ -48,7 +48,7 @@ Finish	41	42		민들레	자, 분위기도 풀렸고, 이제 출발하자고!
 Finish	42	43		민들레	준비됐어 튤?
 Finish	43	44		튤립	준비됐어 민!!
 Finish	44	45	preselect	민들레	예에!
-Finish	45	46	select		...에, 예에...!
+Finish	45	47	select		...에, 예에...!
 Finish	46	47		System	Blind
 Finish	47	48		튤립	근데 민들레라고 했지?
 Finish	48	49		민들레	응? 응 맞아!

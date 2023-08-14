@@ -41,7 +41,8 @@ public class BtnStop : MonoBehaviour
     public void ResumePlay()
     {
         stopPanel.SetActive(false);
-        Time.timeScale = 1.0f;
+        if(UniteData.GameMode!= "Scripting")
+            Time.timeScale = 1.0f;
         UniteData.Move_Progress = true; // 움직임 재개
         Audio_Manager.play_Audio = true;
     }
