@@ -14,8 +14,8 @@ public class MapLock : MonoBehaviour
               StageList[2].GetComponent<Stage>().LockMap();
         */
 
-        // easy맵은 열려있게
-        StageList[0].GetComponent<Stage>().UnlockMap();
+/*        // easy맵은 열려있게
+        StageList[0].GetComponent<Stage>().UnlockMap();*/
 
         for (int i = 0; i < StageList.Count - 1; i++)
         {
@@ -28,6 +28,8 @@ public class MapLock : MonoBehaviour
                 StageList[i+1].GetComponent<Stage>().LockMap();
             }
         }
+        // easy맵은 열려있게
+        StageList[0].GetComponent<Stage>().UnlockMap();
         //StageList[4].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
         //StageList[5].GetComponent<Stage>().LockMap(); // 개발전이라 아직 안열리게
     }
