@@ -4,9 +4,6 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.Progress;
-using static UnityEngine.Rendering.DebugUI.Table;
 
 public class InGameCommentManager : MonoBehaviour
 {
