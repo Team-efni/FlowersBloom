@@ -7,6 +7,9 @@
 *위 스크립트의 초기 버전은 김시훈이 작성하였음
 *문의사항은 gkfldys1276@yandex.com으로 연락 바랍니다 (카톡도 가능).
 */
+//디버깅용 데이터
+#define RELEASE
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

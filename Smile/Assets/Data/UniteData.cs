@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class UniteData
 {
-    //디버깅용 데이터
-
 
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Scripting]
