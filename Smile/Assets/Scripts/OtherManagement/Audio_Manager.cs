@@ -22,6 +22,7 @@ public class Audio_Manager : MonoBehaviour
     private int GAMECLEAR = 4;
     private int PLAY_HARD = 5;
     private int PLAY2_EASY = 6;
+    private int PLAY2_NORMAL = 7;
 
     public static Audio_Manager instance = null;
 
@@ -103,6 +104,8 @@ public class Audio_Manager : MonoBehaviour
                     return PLAY_HARD;
                 case 4:
                     return PLAY2_EASY;
+                case 5:
+                    return PLAY2_NORMAL;
                 default:
                     return PLAY_EASY;
             }
