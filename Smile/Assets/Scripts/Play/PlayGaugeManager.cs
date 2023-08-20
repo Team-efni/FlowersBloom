@@ -37,7 +37,7 @@ public class PlayGaugeManager : MonoBehaviour
                 maxTime = 52f;
                 break;
             case 3:
-                maxTime = 52f;
+                maxTime = 64f;
                 break;
             case 4:
                 maxTime = 52f;

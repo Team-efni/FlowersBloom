@@ -1,3 +1,4 @@
+#define RELEASE_D
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ public class UniteData
 
 
     //스토리 시현 관련 데이터
-#if true
+#if RELEASE_D
     public static int[] StoryClear = {
         PlayerPrefs.GetInt("story-Easy", 0), //EASY
         PlayerPrefs.GetInt("story-Normal", 0), //NORMAL

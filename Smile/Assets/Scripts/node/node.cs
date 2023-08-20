@@ -50,112 +50,10 @@ public class Node_data
         this.mode = _mode;
         this.time = _time;
     }
-
-    /*static public Vector2 resettingShadowNode(Vector2 forwardVector, int direction)
-    {
-        if (direction == 0) //12시
-        {
-            Vector2 v = new Vector2(forwardVector.x, forwardVector.y + STR_V);
-            if (v.y>500f)
-            {
-                v.y = 500f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if(direction == 1) //1~2시
-        {
-            Vector2 v = new Vector2(forwardVector.x+ SIDE_V, forwardVector.y + SIDE_V);
-            if (v.y > 500f)
-            {
-                v.y = 500f;
-            }
-            if(v.x>1300f)
-            {
-                v.x = 1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if (direction == 2) //3시
-        {
-            Vector2 v = new Vector2(forwardVector.x + STR_V, forwardVector.y);
-            if (v.x > 1300f)
-            {
-                v.x = 1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if (direction == 3) //4~5시
-        {
-            Vector2 v = new Vector2(forwardVector.x + SIDE_V, forwardVector.y - SIDE_V);
-            if (v.y < -500f)
-            {
-                v.y = -500f;
-            }
-            if (v.x > 1300f)
-            {
-                v.x = 1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if(direction==4) //6시
-        {
-            Vector2 v = new Vector2(forwardVector.x, forwardVector.y - STR_V);
-            if (v.y < -500f)
-            {
-                v.y = -500f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if(direction==5) //7~8시
-        {
-            Vector2 v = new Vector2(forwardVector.x - SIDE_V, forwardVector.y - SIDE_V);
-            if (v.y < -500f)
-            {
-                v.y = -500f;
-            }
-            if (v.x < -1300f)
-            {
-                v.x = -1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if(direction==6) //9시
-        {
-            Vector2 v = new Vector2(forwardVector.x - STR_V, forwardVector.y);
-            if (v.x < -1300f)
-            {
-                v.x = -1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        else if(direction==7) //10~11시
-        {
-            Vector2 v = new Vector2(forwardVector.x - SIDE_V, forwardVector.y + SIDE_V);
-            if (v.y > 500f)
-            {
-                v.y = 500f;
-            }
-            if (v.x < -1300f)
-            {
-                v.x = -1300f;
-            }
-            return new Vector2(v.x, v.y);
-        }
-        return forwardVector;
-    }*/
 }
 
 public class node : MonoBehaviour
 {
-    /*private const int NORTH = 0;
-    private const int NOEAST = 1;
-    private const int EAST  =2;
-    private const int SOEAST  =3;
-    private const int SOUTH  =4;
-    private const int SOWEST  =5;
-    private const int WEST  =6;
-    private const int NOWEST  =7;*/
-
     private const int A = 0;
     private const int B = 1;
     private const int C = 2;
@@ -403,6 +301,8 @@ public class node : MonoBehaviour
 #else
     cas = 1;
 #endif
+        //Debug.Log("cas : " + cas+" |LEVEL: "+ UniteData.Difficulty);
+
         switch (UniteData.Difficulty)
         {
             case 1: //easy
@@ -495,7 +395,7 @@ public class node : MonoBehaviour
     private int call_random()
     {
         System.Random r = new System.Random();
-        return r.Next(-210000000, 210000000);
+        return r.Next(0, 21000) + 1;
     }
 
     private Vector2 set_node_coordinate()
