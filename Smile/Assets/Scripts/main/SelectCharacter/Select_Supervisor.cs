@@ -43,7 +43,6 @@ public class Select_Supervisor : MonoBehaviour
     private void CheckList(GameObject character_card)
     {
         Card_Status CS = character_card.GetComponent<Card_Status>();
-        GameObject unlockText = character_card.transform.GetChild(0).gameObject;
 
         //잠금 여부 결정
         unlock_Tulip(CS, character_card);
@@ -52,7 +51,6 @@ public class Select_Supervisor : MonoBehaviour
         if (CS.unlocked)
         {
             Debug.Log(character_card.name + " 활성화");
-            unlockText.SetActive(false);
         }
     }
 
@@ -62,7 +60,7 @@ public class Select_Supervisor : MonoBehaviour
         Card_Status CS=character_card.GetComponent<Card_Status>();
 
         //잠금이 풀린 상황이면
-        if(CS.unlocked)
+        if(CS.unlocked && character_card.name != "ForgetMeNot") // 물망초카드 클릭 방지 (임시)
         {
             //선택가능하게 한다
             UniteData.Selected_Character = character_card.name;
