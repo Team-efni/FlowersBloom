@@ -9,6 +9,7 @@ public class ChangeScene : MonoBehaviour
     public GameObject targetObject;
 
     private static int localStageCount;
+    private string targetSceneName;
 
     private void Start()
     {
@@ -37,10 +38,12 @@ public class ChangeScene : MonoBehaviour
         switch (this.gameObject.name)
         {
             case "GSBtn":
-                SceneManager.LoadScene("Map1 Menu");
+                targetSceneName = "Map1 Menu";
+                Invoke("LoadSceneDelayed", 0.15f);
                 break;
             case "CharBtn":
-                SceneManager.LoadScene("Character Menu");
+                targetSceneName = "Character Menu";
+                Invoke("LoadSceneDelayed", 0.15f);
                 break;
             case "Map1Btn":
                 Debug.Log("Map1Btn");
@@ -54,5 +57,10 @@ public class ChangeScene : MonoBehaviour
                 //SceneManager.LoadScene("Map2 Menu");
                 break;
         }
-    }  
+    }
+
+    public void LoadSceneDelayed()
+    {
+        SceneManager.LoadScene(targetSceneName);
+    }
 }

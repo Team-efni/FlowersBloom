@@ -32,7 +32,6 @@ public class TouchEffectManager : MonoBehaviour
 
     void FindCanvas()
     {
-        Debug.Log("find");
         canvas = GameObject.Find(canvasName).GetComponent<Canvas>();
     }
 
