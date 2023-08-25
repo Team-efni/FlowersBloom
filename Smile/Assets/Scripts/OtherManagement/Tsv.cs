@@ -3,13 +3,19 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public class TSV
 {
     private string[] buff;
+    private string ppat;
     public TSV(string filePath)
     {
-        buff = File.ReadAllLines(filePath, Encoding.UTF8);
+        ppat = Path.Combine(Application.streamingAssetsPath, filePath);
+
+        WWW reader = new WWW(ppat);
+        while (!reader.isDone) { }
+        buff = reader.text.Split('\n');
     }
     private DataTable LoadAllTSV(string lineName)
     {

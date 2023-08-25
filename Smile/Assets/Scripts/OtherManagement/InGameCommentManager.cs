@@ -50,24 +50,25 @@ public class InGameCommentManager : MonoBehaviour
     private int pageEnd = 0; //1:End
 
     private int frameTime = 0;
-    private int FPP = 8;
+    private int FPP = 4;
     private bool clickTemp = false;
     private bool printAll = false;
 
 
-    private string[] tsv_file = { 
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv",
-        "Assets\\Resources\\comment\\NewW01_Easy_Story.tsv"
+    private string[] tsv_file = {
+        "NewW01_Easy_Story.tsv",
+        "NewW01_Easy_Story.tsv",
+        "NewW01_Easy_Story.tsv",
+        "NewW01_Easy_Story.tsv",
+        "NewW01_Easy_Story.tsv",
+        "NewW01_Easy_Story.tsv"
     };
 
     private void OnEnable()
     {
         //스토리 시작
         Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
+        Application.targetFrameRate = 60;
         foreach (GameObject obj in UI_system)
         {
             obj.SetActive(false);
@@ -131,8 +132,7 @@ public class InGameCommentManager : MonoBehaviour
         }
 
         outputScript(page, printAll);
-
-        frameTime++;
+        frameTime ++;
     }
 
     private void initAboutTextValues()
@@ -223,7 +223,6 @@ public class InGameCommentManager : MonoBehaviour
     {
         if (characterSprites.TryGetValue(character, out Sprite sprite))
         {
-            Debug.Log(character);
             return sprite;
         }
         else
