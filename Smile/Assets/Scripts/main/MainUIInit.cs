@@ -9,6 +9,7 @@ public class MainUIInit : MonoBehaviour
 
     public Sprite 민들레_사진;
     public Sprite 튤립_사진;
+    public Sprite 물망초_사진;
 
     private void Update()
     {
@@ -19,6 +20,10 @@ public class MainUIInit : MonoBehaviour
         else if (UniteData.Selected_Character == "Tulip")
         {
             UI_Character.GetComponent<Image>().sprite = 튤립_사진;
+        }
+        else if (UniteData.Selected_Character == "ForgetMeNot")
+        {
+            UI_Character.GetComponent<Image>().sprite = 물망초_사진;
         }
     }
 }

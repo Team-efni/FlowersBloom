@@ -60,7 +60,7 @@ public class Select_Supervisor : MonoBehaviour
         Card_Status CS=character_card.GetComponent<Card_Status>();
 
         //잠금이 풀린 상황이면
-        if(CS.unlocked && character_card.name != "ForgetMeNot") // 물망초카드 클릭 방지 (임시)
+        if(CS.unlocked)
         {
             //선택가능하게 한다
             UniteData.Selected_Character = character_card.name;

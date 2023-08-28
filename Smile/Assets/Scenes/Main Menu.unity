@@ -696,6 +696,7 @@ MonoBehaviour:
   UI_Character: {fileID: 1982071168}
   "\uBBFC\uB4E4\uB808_\uC0AC\uC9C4": {fileID: 21300000, guid: 014cdaf9d8081fa4693353782a968629, type: 3}
   "\uD2A4\uB9BD_\uC0AC\uC9C4": {fileID: 21300000, guid: b7f39fe205e3f8941bd8a11650a8af25, type: 3}
+  "\uBB3C\uB9DD\uCD08_\uC0AC\uC9C4": {fileID: 21300000, guid: ad83f6503002fc745bd42f98d8bc2505, type: 3}
 --- !u!1 &297343644
 GameObject:
   m_ObjectHideFlags: 0
