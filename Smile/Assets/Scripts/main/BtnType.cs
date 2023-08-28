@@ -40,6 +40,13 @@ public class BtnType : MonoBehaviour
                 break;
             case BTNType.Reset:
                 UniteData.ResetUserData();
+                Slider BGM = GameObject.Find("MusicSlider").GetComponent<Slider>();
+                UniteData.BGM = 0.7f;
+                BGM.value = 0.7f;
+                Slider Effect = GameObject.Find("SoundEffectSlider").GetComponent<Slider>();
+                UniteData.Effect = 0.7f;
+                Effect.value = 0.7f;
+                UniteData.SaveUserData();
                 break;
         }
     }

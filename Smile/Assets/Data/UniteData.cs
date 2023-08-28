@@ -63,8 +63,8 @@ public class UniteData
 #endif
 
 //설정 관련 데이터
-public static float BGM = PlayerPrefs.GetFloat("BGM", 1f); //배경음악 볼륨
-    public static float Effect = PlayerPrefs.GetFloat("Effect", 1f); //효과음 볼륨
+public static float BGM = PlayerPrefs.GetFloat("BGM", 0.7f); //배경음악 볼륨
+    public static float Effect = PlayerPrefs.GetFloat("Effect", 0.7f); //효과음 볼륨
 
     //보안 관련 데이터
     //private static byte[] KEY= System.Text.Encoding.UTF8.GetBytes("68656c6c6f2045666e6920426573746f6d706174657221"); //암호화 키
