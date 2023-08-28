@@ -36,7 +36,6 @@ public class InGameCommentManager : MonoBehaviour
 
 
         animator = blind.GetComponent<Animator>();
-        UniteData.GameMode = "Scripting";
     }
 
     private const int COMMAND   = 0;
@@ -66,6 +65,9 @@ public class InGameCommentManager : MonoBehaviour
 
     private void OnEnable()
     {
+        UniteData.GameMode = "Scripting";
+        Debug.Log(UniteData.GameMode);
+
         //스토리 시작
         Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
         Application.targetFrameRate = 60;
@@ -161,6 +163,7 @@ public class InGameCommentManager : MonoBehaviour
                 obj.SetActive(true);
             }
 
+            UniteData.GameMode = "Play";
             UniteData.StoryClear[UniteData.Difficulty - 1] += 1;
             UniteData.SaveUserData();
             return;
