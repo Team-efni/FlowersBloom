@@ -99,12 +99,6 @@ public class node_management_click : MonoBehaviour
             case 4:
                 animator.SetInteger("Difficulty", 1);
                 break;
-            case 5:
-                animator.SetInteger("Difficulty", 2);
-                break;
-            case 6:
-                animator.SetInteger("Difficulty", 3);
-                break;
         }
     }
 

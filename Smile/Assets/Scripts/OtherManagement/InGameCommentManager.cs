@@ -22,7 +22,6 @@ public class InGameCommentManager : MonoBehaviour
     public GameObject speaker;
     public Text text;
     public Text speakerText;
-    public GameObject stopPanel;
 
     public GameObject selectGroup;
     public GameObject[] buttonInSelectGroup;
@@ -155,7 +154,7 @@ public class InGameCommentManager : MonoBehaviour
                     }
                 }
 
-                if(!checkingBackBtn && !stopPanel.activeSelf) 
+                if(!checkingBackBtn) 
                 {
                     if (pageEnd == 1)
                     {
@@ -268,9 +267,9 @@ public class InGameCommentManager : MonoBehaviour
         else
             speaker.SetActive(true);
         if (row[CHARACTER].ToString()=="Æ«¸³")
-            speaker.transform.localPosition = new Vector2(1200f, -90f);
+            speaker.transform.localPosition = new Vector2(1200f, 21.95f);
         else
-            speaker.transform.localPosition = new Vector2(-1200f, -90f);
+            speaker.transform.localPosition = new Vector2(-1200f, 21.95f);
 
         speakerText.text = row[CHARACTER].ToString();
     }
