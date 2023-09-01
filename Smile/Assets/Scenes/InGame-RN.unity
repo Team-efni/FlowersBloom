@@ -1751,6 +1751,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 41c57778c0011744ea7a8d7fc46a9608, type: 3}
   - {fileID: 21300000, guid: 791a810cb0c75a94aadce260b8d5d92a, type: 3}
   - {fileID: 21300000, guid: f760047deac69914896da454a9eecbdd, type: 3}
+  - {fileID: 21300000, guid: 03ca999225f134c4998230a365804fc6, type: 3}
   BackBoardRenderer_Top: {fileID: 223995235}
   BackBoardRenderer_Bottom: {fileID: 412229523}
 --- !u!1 &1013514944
