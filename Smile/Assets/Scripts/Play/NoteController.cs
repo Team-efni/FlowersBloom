@@ -44,8 +44,6 @@ public class NoteController : MonoBehaviour
     void Start()
     {
         Initialized();
-        //현재 게임모드 지정
-        UniteData.GameMode = "Play";
     }
 
     // Update is called once per frame

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ public class InGameCommentManager : MonoBehaviour
     DataRowCollection dataRowCollection;
     UI_Comment uiComment;
     Animator animator;
+
+    public GraphicRaycaster graphicRaycaster;
+    public EventSystem eventSystem;
 
     public GameObject textGroup;
     public GameObject blind;
@@ -26,7 +30,9 @@ public class InGameCommentManager : MonoBehaviour
     public Sprite[] branchSprites;
 
     public GameObject[] UI_system;
+    public GameObject[] gameCharacters;
 
+    private Dictionary<string, GameObject> inGame_characters = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
     private void Awake()
     {
@@ -34,9 +40,13 @@ public class InGameCommentManager : MonoBehaviour
         characterSprites.Add("튤립", speakerSprites[1]);
         characterSprites.Add("물망초", speakerSprites[2]);
 
+        inGame_characters.Add("Dandelion", gameCharacters[0]);
+        inGame_characters.Add("Tulip", gameCharacters[1]);
+        //inGame_characters.Add("물망초", gameCharacters[2]);
+
+        Debug.LogWarning("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
 
         animator = blind.GetComponent<Animator>();
-        UniteData.GameMode = "Scripting";
     }
 
     private const int COMMAND   = 0;
@@ -66,11 +76,19 @@ public class InGameCommentManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //스토리 시작
+        UniteData.GameMode = "Scripting";
+        Debug.Log(UniteData.GameMode);
+
+        //스토리 시작 전 오브젝트 비활성화
         Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
         Application.targetFrameRate = 60;
         foreach (GameObject obj in UI_system)
         {
+            obj.SetActive(false);
+        }
+        foreach(GameObject obj in gameCharacters)
+        {
+            Debug.Log(obj.name);
             obj.SetActive(false);
         }
 
@@ -94,6 +112,14 @@ public class InGameCommentManager : MonoBehaviour
             {
                 obj.SetActive(true);
             }
+            foreach (var entry in inGame_characters)
+            {
+                if(entry.Key == UniteData.Selected_Character)
+                {
+                    entry.Value.SetActive(true);
+                    break;
+                }
+            }
 
             textGroup.SetActive(false);
             return;
@@ -106,28 +132,50 @@ public class InGameCommentManager : MonoBehaviour
 
     private void Update()
     {
-        //1차 클릭(다음 텍스트 출력) 
-        //2차 클릭(즉시 텍스트 출력)
         if (Input.GetMouseButtonDown(0))
         {
-            if(pageEnd==1)
-            {
-                clickTemp = false;
-            }
+            // 마우스 클릭 위치에서 레이캐스트 수행
+            PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = Input.mousePosition;
+            List<RaycastResult> results = new List<RaycastResult>();
+            graphicRaycaster.Raycast(pointerEventData, results);
 
-            if(!clickTemp) //printing next text
+            // 레이캐스트가 특정 UI 오브젝트와 충돌하면
+            if (results.Count > 0)
             {
-                if(dataRowCollection[page][BRANCH].ToString()!="preselect")
+                bool checkingBackBtn = false;
+                foreach(var selectedResult in results)
                 {
-                    initAboutTextValues();
-                    page = int.Parse(dataRowCollection[page][GOTO].ToString());
-                    clickTemp = true;
+                    GameObject selectedObject= selectedResult.gameObject;
+                    if (selectedObject.name == "BtnStop" || selectedObject.name == "No")
+                    {
+                        checkingBackBtn = true;
+                        break;
+                    }
                 }
-            }
-            else //printing immediately
-            {
-                printAll = true;
-                clickTemp =false;
+
+                if(!checkingBackBtn) 
+                {
+                    if (pageEnd == 1)
+                    {
+                        clickTemp = false;
+                    }
+
+                    if (!clickTemp) //printing next text
+                    {
+                        if (dataRowCollection[page][BRANCH].ToString() != "preselect")
+                        {
+                            initAboutTextValues();
+                            page = int.Parse(dataRowCollection[page][GOTO].ToString());
+                            clickTemp = true;
+                        }
+                    }
+                    else //printing immediately
+                    {
+                        printAll = true;
+                        clickTemp = false;
+                    }
+                }
             }
         }
 
@@ -160,7 +208,16 @@ public class InGameCommentManager : MonoBehaviour
             {
                 obj.SetActive(true);
             }
+            foreach (var entry in inGame_characters)
+            {
+                if (entry.Key == UniteData.Selected_Character)
+                {
+                    entry.Value.SetActive(true);
+                    break;
+                }
+            }
 
+            UniteData.GameMode = "Play";
             UniteData.StoryClear[UniteData.Difficulty - 1] += 1;
             UniteData.SaveUserData();
             return;
@@ -210,9 +267,9 @@ public class InGameCommentManager : MonoBehaviour
         else
             speaker.SetActive(true);
         if (row[CHARACTER].ToString()=="튤립")
-            speaker.transform.localPosition = new Vector2(1200f, -90f);
+            speaker.transform.localPosition = new Vector2(1200f, 21.95f);
         else
-            speaker.transform.localPosition = new Vector2(-1200f, -90f);
+            speaker.transform.localPosition = new Vector2(-1200f, 21.95f);
 
         speakerText.text = row[CHARACTER].ToString();
     }

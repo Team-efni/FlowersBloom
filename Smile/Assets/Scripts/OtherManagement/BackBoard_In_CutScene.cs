@@ -1,11 +1,11 @@
 /*
-*CutScene µ¹ÀÔ ½Ã ¹éº¸µå(¹é±×¶ó¿îµå)ÀÇ ÀÌ¹ÌÁö¸¦ ÁöÁ¤ÇÏ´Â ½ºÅ©¸³Æ®
+*CutScene ëŒì… ì‹œ ë°±ë³´ë“œ(ë°±ê·¸ë¼ìš´ë“œ)ì˜ ì´ë¯¸ì§€ë¥¼ ì§€ì •í•˜ëŠ” ìŠ¤í¬ë¦½íŠ¸
 *
-*±¸Çö ¸ñÇ¥
-*-¾À µ¹ÀÔ ½Ã »óÈ²¿¡ µû¶ó ÀÌ¹ÌÁö º¯°æÀ» °¡º¯ÀûÀ¸·Î ½ÃÇà
+*êµ¬í˜„ ëª©í‘œ
+*-ì”¬ ëŒì… ì‹œ ìƒí™©ì— ë”°ë¼ ì´ë¯¸ì§€ ë³€ê²½ì„ ê°€ë³€ì ìœ¼ë¡œ ì‹œí–‰
 *
-*À§ ½ºÅ©¸³Æ®ÀÇ ÃÊ±â ¹öÀüÀº ±è½ÃÈÆÀÌ ÀÛ¼ºÇÏ¿´À½
-*¹®ÀÇ»çÇ×Àº gkfldys1276@yandex.comÀ¸·Î ¿¬¶ô ¹Ù¶ø´Ï´Ù (Ä«Ååµµ °¡´É).
+*ìœ„ ìŠ¤í¬ë¦½íŠ¸ì˜ ì´ˆê¸° ë²„ì „ì€ ê¹€ì‹œí›ˆì´ ì‘ì„±í•˜ì˜€ìŒ
+*ë¬¸ì˜ì‚¬í•­ì€ gkfldys1276@yandex.comìœ¼ë¡œ ì—°ë½ ë°”ëë‹ˆë‹¤ (ì¹´í†¡ë„ ê°€ëŠ¥).
 */
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +25,9 @@ public class BackBoard_In_CutScene : MonoBehaviour
         Cosmos,
         MorningGlory,
         Poppy,
-        Pasque
+
+        ForgetMeNot
+
     }
 
     private void Start()
@@ -43,8 +45,8 @@ public class BackBoard_In_CutScene : MonoBehaviour
         Banner banner;
         if (!System.Enum.TryParse(name, out banner))
         {
-            Debug.LogWarning("ÇØ´ç ÀÌ¸§À» °¡Áø ÀÌ¹ÌÁö ÆÄÀÏÀÌ Àû¿ëµÇÁö ¾Ê¾Ò½À´Ï´Ù.\nBackBoard ¿ÀºêÁ§Æ®¿¡¼­ È®ÀÎÇÏ¼¼¿ä!");
-            return -1;  // ÀÎÀÚ·Î Àü´ŞµÈ ¹®ÀÚ¿­ÀÌ enum¿¡ Á¤ÀÇµÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì -1 ¹İÈ¯
+            Debug.LogWarning("í•´ë‹¹ ì´ë¦„ì„ ê°€ì§„ ì´ë¯¸ì§€ íŒŒì¼ì´ ì ìš©ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\nBackBoard ì˜¤ë¸Œì íŠ¸ì—ì„œ í™•ì¸í•˜ì„¸ìš”!");
+            return -1;  // ì¸ìë¡œ ì „ë‹¬ëœ ë¬¸ìì—´ì´ enumì— ì •ì˜ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° -1 ë°˜í™˜
         }
 
         switch (banner)
@@ -61,10 +63,11 @@ public class BackBoard_In_CutScene : MonoBehaviour
                 return 4;
             case Banner.Poppy:
                 return 5;
-            case Banner.Pasque:
-                return 5;
+            case Banner.ForgetMeNot:
+                return 6;
+
             default:
-                Debug.LogWarning("ÇØ´ç ÀÌ¸§À» °¡Áø ÀÌ¹ÌÁö ÆÄÀÏÀÌ Àû¿ëµÇÁö ¾Ê¾Ò½À´Ï´Ù.\nBackBoard ¿ÀºêÁ§Æ®¿¡¼­ È®ÀÎÇÏ¼¼¿ä!");
+                Debug.LogWarning("í•´ë‹¹ ì´ë¦„ì„ ê°€ì§„ ì´ë¯¸ì§€ íŒŒì¼ì´ ì ìš©ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.\nBackBoard ì˜¤ë¸Œì íŠ¸ì—ì„œ í™•ì¸í•˜ì„¸ìš”!");
                 return -1;
         }
     }
