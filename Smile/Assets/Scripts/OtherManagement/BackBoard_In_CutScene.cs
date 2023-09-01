@@ -25,9 +25,8 @@ public class BackBoard_In_CutScene : MonoBehaviour
         Cosmos,
         MorningGlory,
         Poppy,
-
-        ForgetMeNot
-
+        ForgetMeNot,
+        Pasque
     }
 
     private void Start()
@@ -65,7 +64,8 @@ public class BackBoard_In_CutScene : MonoBehaviour
                 return 5;
             case Banner.ForgetMeNot:
                 return 6;
-
+            case Banner.Pasque:
+                return 7;
             default:
                 Debug.LogWarning("해당 이름을 가진 이미지 파일이 적용되지 않았습니다.\nBackBoard 오브젝트에서 확인하세요!");
                 return -1;
