@@ -4,54 +4,43 @@ using UnityEngine;
 
 public class MapDrag : MonoBehaviour
 {
-    private int map = 0; // 1:map1, 2:map2
-    private bool chk = false;
-    private Vector2 mousePos1, mousePos2;
+    private Vector2 mousePosDown;
+    private float cameraXPosDown;
     private Camera Camera;
-    public GameObject MapCombine;
-    public Animator animator;
+    public AudioSource audio;
     void Start()
     {
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        MapCombine.GetComponent<RectTransform>().localPosition = Vector3.zero;
-        if (MapCombine.GetComponent<RectTransform>().anchoredPosition.x == 0) map = 1;
-        else if (MapCombine.GetComponent<RectTransform>().anchoredPosition.x == -3200) map = 2;
-        else Debug.Log("MapCombine Pos Error");
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            mousePos1 = Input.mousePosition;
-            mousePos1 = Camera.ScreenToWorldPoint(mousePos1);
-            chk = true;
+            mousePosDown = Input.mousePosition;
+            mousePosDown = Camera.ScreenToWorldPoint(mousePosDown);
+            cameraXPosDown = Camera.transform.position.x;
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector2 mousePos = Input.mousePosition;
+            mousePos = Camera.ScreenToWorldPoint(mousePos);
+
+            Vector3 cameraPos = Camera.transform.position;
+            float newXPos = cameraPos.x + mousePosDown.x - mousePos.x;
+            newXPos = Mathf.Clamp(newXPos, 0f, 3200f);
+            Camera.transform.position = new Vector3(newXPos, cameraPos.y, cameraPos.z);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            chk = false;
-            mousePos2 = Input.mousePosition;
-            mousePos2 = Camera.ScreenToWorldPoint(mousePos2);
+            Vector3 cameraPos = Camera.transform.position;
+            if (cameraPos.x < 1600) Camera.transform.position = new Vector3(0, cameraPos.y, cameraPos.z);
+            else Camera.transform.position = new Vector3(3200, cameraPos.y, cameraPos.z);
+
+            if (Camera.transform.position.x != cameraXPosDown) audio.Play();
         }
 
-        if (!chk)
-        {
-            //Debug.Log("mouse1 : " + mousePos1.x + ", mouse2 : " + mousePos2.x);
-            if(map == 1 && mousePos1.x > mousePos2.x + 500)
-            {
-                animator.SetInteger("LocalStage", 1);
-                map = 2;
-            }
-
-            else if(map == 2 && mousePos1.x < mousePos2.x + 500)
-            {
-                animator.SetInteger("LocalStage", 2);
-                map = 1;
-            }
-            mousePos1 = new Vector2();
-            mousePos2 = new Vector2();
-            chk = true;
-        }
     }
 }

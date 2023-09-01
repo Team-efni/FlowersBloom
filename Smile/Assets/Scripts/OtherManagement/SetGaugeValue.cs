@@ -56,7 +56,6 @@ public class SetGaugeValue : MonoBehaviour
         switch(type)
         {
             case GaugeType.BGM:
-                Debug.Log("bgm : " + UniteData.BGM);
                 return UniteData.BGM;
             case GaugeType.Effect:
                 return UniteData.Effect;

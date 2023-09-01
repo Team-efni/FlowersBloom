@@ -50,11 +50,10 @@ public class TouchEffectManager : MonoBehaviour
                 touchPosition = canvas.transform.InverseTransformPoint(touchPosition);
                 break;
         }
-        //if(SceneManager.GetActiveScene().name == "Play")
-        //{
-        //    Debug.Log("play");
-        //    touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-        //}
+        if(SceneManager.GetActiveScene().name == "Map1 Menu")
+        {
+            touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+        }
         //Debug.Log(touchPosition);
         return touchPosition;
     }
