@@ -21,7 +21,7 @@ public class TouchEffectManager : MonoBehaviour
     void Update()
     {
         if (canvas == null) FindCanvas();
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && UniteData.GameMode!= "Scripting")
         {
             Vector2 touchPosition = GetTouchPosition();
             ParticleSystem newParticle = Instantiate(particlePrefab, touchPosition, Quaternion.identity);
