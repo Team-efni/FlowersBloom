@@ -7,7 +7,6 @@ public class MapChange : MonoBehaviour
 {
     public SoundManager soundManager;
     public GameObject[] map = new GameObject[6];
-    private Vector3[] pos = new Vector3[6];
 
     /*
     public void ChangeSceneBtn()
@@ -25,16 +24,6 @@ public class MapChange : MonoBehaviour
         }
     }
     */
-
-    private void Start()
-    {
-        pos[0] = new Vector3(-50f, 20f, 0f);
-        pos[1] = new Vector3(-10f, 0f, 0f);
-        pos[2] = new Vector3(50f, 10f, 0f);
-        pos[3] = new Vector3(-50f, 5f, 0f);
-        pos[4] = new Vector3(-10f, 5f, 0f);
-        pos[5] = new Vector3(50f, 10f, 0f);
-    }
 
     public void EasyBtn()
     {
@@ -65,15 +54,21 @@ public class MapChange : MonoBehaviour
         float duration = 0.1f;
         float timer = 0f;
         Vector3 initialScale = new Vector3(1.0f, 1.0f, 1.0f);
-        Vector3 initialPosition = map[idx].transform.position;
-        Vector3 targetPosition = initialPosition + pos[idx];
+        GameObject ping = map[idx].transform.GetChild(0).gameObject;
+        GameObject title = map[idx].transform.GetChild(1).gameObject;
+        Vector3 initialPingPosition = ping.transform.position;
+        Vector3 targetPingPosition = initialPingPosition + new Vector3(0, -10, 0);
+        Vector3 initialTitlePosition = title.transform.position;
+        Vector3 targetTitlePosition = initialTitlePosition + new Vector3(0, 10, 0);
 
         while (timer < duration)
         {
             float scaleFactor = Mathf.Lerp(1f, 0.9f, timer / duration);
             float moveFactor = Mathf.Lerp(0f, 1f, timer / duration);
-            map[idx].transform.localScale = initialScale * scaleFactor;
-            map[idx].transform.position = Vector3.Lerp(initialPosition, targetPosition, moveFactor);
+            ping.transform.localScale = initialScale * scaleFactor;
+            title.transform.localScale = initialScale * scaleFactor;
+            ping.transform.position = Vector3.Lerp(initialPingPosition, targetPingPosition, moveFactor);
+            title.transform.position = Vector3.Lerp(initialTitlePosition, targetTitlePosition, moveFactor);
 
             timer += Time.deltaTime;
             yield return null;
@@ -86,15 +81,21 @@ public class MapChange : MonoBehaviour
         float duration = 0.1f;
         float timer = 0f;
         Vector3 initialScale = new Vector3(1.0f, 1.0f, 1.0f);
-        Vector3 initialPosition = map[idx].transform.position;
-        Vector3 targetPosition = initialPosition - pos[idx];
+        GameObject ping = map[idx].transform.GetChild(0).gameObject;
+        GameObject title = map[idx].transform.GetChild(1).gameObject;
+        Vector3 initialPingPosition = ping.transform.position;
+        Vector3 targetPingPosition = initialPingPosition + new Vector3(0, 10, 0);
+        Vector3 initialTitlePosition = title.transform.position;
+        Vector3 targetTitlePosition = initialTitlePosition + new Vector3(0, -10, 0);
 
         while (timer < duration)
         {
             float scaleFactor = Mathf.Lerp(0.9f, 1f, timer / duration);
             float moveFactor = Mathf.Lerp(1f, 0f, timer / duration);
-            map[idx].transform.localScale = initialScale * scaleFactor;
-            map[idx].transform.position = Vector3.Lerp(targetPosition, initialPosition, moveFactor);
+            ping.transform.localScale = initialScale * scaleFactor;
+            title.transform.localScale = initialScale * scaleFactor;
+            ping.transform.position = Vector3.Lerp(targetPingPosition, initialPingPosition, moveFactor);
+            title.transform.position = Vector3.Lerp(targetTitlePosition, initialTitlePosition, moveFactor);
 
             timer += Time.deltaTime;
             yield return null;

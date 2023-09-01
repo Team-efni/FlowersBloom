@@ -908,12 +908,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundManager: {fileID: 1585688064}
   map:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1679549076}
+  - {fileID: 980065120}
+  - {fileID: 313633706}
+  - {fileID: 112147515}
+  - {fileID: 1690185269}
+  - {fileID: 2019370167}
 --- !u!1 &281909954
 GameObject:
   m_ObjectHideFlags: 0
