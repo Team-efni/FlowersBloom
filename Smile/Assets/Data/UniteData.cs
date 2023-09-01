@@ -7,7 +7,7 @@ public class UniteData
 
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Scripting]
-    public static int Difficulty = 6; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
+    public static int Difficulty = 1; //게임 난이도 easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 ...
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 
@@ -19,7 +19,7 @@ public class UniteData
     public static float Play_Scene_Time = 0f; //플레이 씬에서의 흐른 시간
 
     public static string Selected_Character = PlayerPrefs.GetString("Selected_Character", "Dandelion"); //유저가 선택한 캐릭터 ["Dandelion", "Tulip", "ForgetMeNot"]
-    public static string Closed_Monster = "Rose"; //최근접 몬스터 ["Rose", "Cosmos", "MorningGlory", "Poppy", "Pasque"]
+    public static string Closed_Monster = "Rose"; //최근접 몬스터 ["Rose", "Cosmos", "MorningGlory", "Poppy"]
 
     public static bool ReStart = true; // 유저가 재시작 혹은 나가기 버튼을 누른 경우
 

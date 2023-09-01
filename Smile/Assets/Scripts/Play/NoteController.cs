@@ -16,28 +16,23 @@ public class NoteController : MonoBehaviour
     private float clickTime; // 클릭 중인 시간
     /*private float minClickTime = 0.28f; // 최소 클릭 시간
     private float maxClickTime = 0.4f; // 최대 클릭 시간*/
-    private bool[] isClick = { false, false, false, false, false, false, false, false }; // 클릭중인지 판단
+    private bool[] isClick = { false, false, false, false, false, false, false }; // 클릭중인지 판단
 
-    private int[] longNotePos = { -1, -1 };
+    private int longNotePos = -1;
     private bool canlongClick = false;
     private bool stopNote = false;
-
-    public GameObject[] longclickImage;
-    public GameObject[] movingNote;
-    private int index_LongClick = 0;
+    public GameObject longclickImage;
+    public GameObject movingNote;
 
     [SerializeField] private float longClickSpeed;
 
-    RectTransform[] trans_mn;
+    RectTransform trans_mn;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
-    private Transform[] NotePosition;
-    [SerializeField] private GameObject[] NotePosGroup;
+    [SerializeField] private Transform[] NotePosition;
 
-    int updateUseindex_checkStop = 0;
-    int checkNotePosCorrectIndex = 0;
     //private List<Dictionary<string, object>> data;
 
     // Start is called before the first frame update
@@ -51,27 +46,16 @@ public class NoteController : MonoBehaviour
     {
         if (isClick[UniteData.noteIndex])
         {
-            if (index_LongClick < 2)
+            clickTime += Time.deltaTime;
+            if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 2].position.x + 15)
             {
-                clickTime += Time.deltaTime;
+                //Debug.Log("noteIndex : " + UniteData.noteIndex);
+                stopNote = true;
+            }
 
-
-                if (noteLength != 6 && noteLength != 7)
-                    updateUseindex_checkStop = UniteData.noteIndex + 2;
-                else
-                    updateUseindex_checkStop = UniteData.noteIndex + 1;
-
-                Debug.Log("updateUseindex_checkStop : " + updateUseindex_checkStop);
-                if (trans_mn[index_LongClick].position.x >= NotePosition[updateUseindex_checkStop].position.x + 15)
-                {
-                    //Debug.Log("updateUseindex_checkStop : " + updateUseindex_checkStop);
-                    stopNote = true;
-                }
-
-                if (!stopNote)
-                {
-                    MoveImage();
-                }
+            if (!stopNote)
+            {
+                MoveImage();
             }
         }
         else
@@ -79,9 +63,10 @@ public class NoteController : MonoBehaviour
             clickTime = 0;
         }
 
-        if (index_LongClick < 2 && longNotePos[index_LongClick] == UniteData.noteIndex + 1)
+
+        if (longNotePos == UniteData.noteIndex + 1)
             canlongClick = true;
-       else canlongClick = false;
+        else canlongClick = false;
     }
 
     public void Initialized()
@@ -91,13 +76,8 @@ public class NoteController : MonoBehaviour
         UniteData.NoteSuccess = false;
         UniteData.oneNoteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
-        index_LongClick = 0;
-
-        for (int i = 0; i < 2; i++)
-        {
-            movingNote[i].SetActive(false);
-            longclickImage[i].SetActive(false);
-        }
+        movingNote.SetActive(false);
+        longclickImage.SetActive(false);
         stopNote = false;
         clickTime = 0;
     }
@@ -122,18 +102,11 @@ public class NoteController : MonoBehaviour
 
     private void NoteSetting()
     {
-        int set_index = 0;
         UniteData.NoteSuccess = false;
         noteNums = new int[noteLength];
-        longNotePos[0] = int.Parse(UniteData.data[UniteData.mon_num]["num"].ToString());
-        if(UniteData.Difficulty  > 5)
-            longNotePos[1] = int.Parse(UniteData.data[UniteData.mon_num]["num2"].ToString());
-
+        longNotePos = int.Parse(UniteData.data[UniteData.mon_num]["num"].ToString());
         canlongClick = false;
         UniteData.oneNoteSuccess = false;
-        index_LongClick = 0;
-
-        trans_mn = new RectTransform[2];
 
         // (랜덤으로) 노트 생성
         for (int i = 0; i < noteLength; i++)
@@ -146,38 +119,31 @@ public class NoteController : MonoBehaviour
             isClick[i] = false;
 
             // 롱클릭인 노트인 경우
-            if (set_index < 2 && i == longNotePos[set_index] - 1)
+            if (i == longNotePos - 1)
             {
-                movingNote[set_index].SetActive(true);
-                longclickImage[set_index].SetActive(true);
+                movingNote.SetActive(true);
+                longclickImage.SetActive(true);
 
                 Image image = note[i].GetComponent<Image>();
                 image.color = new Color(128 / 255f, 128 / 255f, 128 / 255f, 0 / 255f);
 
-                Image image_mn = movingNote[set_index].GetComponent<Image>();
+                Image image_mn = movingNote.GetComponent<Image>();
                 image_mn.sprite = note[i].GetComponent<Image>().sprite;
                 image_mn.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 255 / 255f);
                 //RectTransform childTransform = Note_Bg.transform.GetChild(i) as RectTransform;
                 //Vector3 position = childTransform.position;
 
-                trans_mn[set_index] = movingNote[set_index].GetComponent<RectTransform>();
-                RectTransform trans_lc = longclickImage[set_index].GetComponent<RectTransform>();
+                trans_mn = movingNote.GetComponent<RectTransform>();
+                RectTransform trans_lc = longclickImage.GetComponent<RectTransform>();
                 //trans_mn.localPosition = position;
                 //trans_lc.localPosition = position;
-                if (i < 6)
+                if (i < 5)
                 {
-                    int num = i;
-                    // 노트 길이가 최대면
-                    if(noteLength != 6 && noteLength != 7)
-                    {
-                        num = num + 1;
-                    }
-                    trans_mn[set_index].position = NotePosition[num].position;
-                    trans_lc.position = NotePosition[num].position;
+                    trans_mn.position = NotePosition[i + 1].position;
+                    trans_lc.position = NotePosition[i + 1].position;
                 }
                 //trans_mn.position = position;
                 //trans_lc.position = position;
-                set_index++;
             }
         }
         UniteData.noteNums = noteNums;
@@ -216,6 +182,7 @@ public class NoteController : MonoBehaviour
 
     public void LongTouchDown(int i)
     {
+
         // 받는 변수는 입력되는 버튼
         if (meetMonster && canlongClick)
         {
@@ -238,25 +205,18 @@ public class NoteController : MonoBehaviour
         if (meetMonster && canlongClick)
         {
             stopNote = false;
-            //longNotePos[index_LongClick] = 0;
+            longNotePos = 0;
             UniteData.noteIndex++;
-            index_LongClick++;
-            Debug.Log("index_LongClick" + (index_LongClick-1));
             Debug.Log("clicktime : " + clicktime + "");
 
             // 성공했다면 + 적절한 위치
             if (noteNums[UniteData.noteIndex] == 0)
             {
-                if (noteLength != 6 && noteLength != 7)
-                    checkNotePosCorrectIndex = UniteData.noteIndex + 1;
-                else
-                    checkNotePosCorrectIndex = UniteData.noteIndex;
-
-                trans_mn[index_LongClick-1] = movingNote[index_LongClick-1].GetComponent<RectTransform>();
+                trans_mn = movingNote.GetComponent<RectTransform>();
                 Debug.Log("noteIndex : " + UniteData.noteIndex);
-                if (trans_mn[index_LongClick - 1].position.x >= NotePosition[checkNotePosCorrectIndex].position.x - 10 && trans_mn[index_LongClick-1].position.x <= NotePosition[checkNotePosCorrectIndex].position.x + 13)
+                if (trans_mn.position.x >= NotePosition[UniteData.noteIndex + 1].position.x - 10 && trans_mn.position.x <= NotePosition[UniteData.noteIndex + 1].position.x + 13)
                 {
-                    trans_mn[index_LongClick - 1].position = new Vector2(NotePosition[checkNotePosCorrectIndex].position.x, trans_mn[index_LongClick - 1].position.y);
+                    trans_mn.position = new Vector2(NotePosition[UniteData.noteIndex + 1].position.x, trans_mn.position.y);
                     NoteSuccess();
                 }
                 else
@@ -265,7 +225,7 @@ public class NoteController : MonoBehaviour
                     Image image = note[UniteData.noteIndex].GetComponent<Image>();
                     image.color = new Color(100 / 255f, 100 / 255f, 100 / 255f, 255 / 255f);
 
-                    Image image_mn = movingNote[index_LongClick-1].GetComponent<Image>();
+                    Image image_mn = movingNote.GetComponent<Image>();
                     image_mn.color = new Color(255 / 255f, 255 / 255f, 255 / 255f, 0 / 255f);
 
                     if (UniteData.noteIndex != noteLength - 1)
@@ -278,7 +238,6 @@ public class NoteController : MonoBehaviour
                     }
                     GameClear.player.GetComponent<PlayerController>().MeetMonsterFail(); // 목숨 줄어듬
                 }
-
             }
         }
     }
@@ -287,7 +246,7 @@ public class NoteController : MonoBehaviour
     private void MoveImage()
     {
         Debug.Log("롱클릭 움직임");
-        movingNote[index_LongClick].transform.Translate(Vector2.right * longClickSpeed * Time.deltaTime);
+        movingNote.transform.Translate(Vector2.right * longClickSpeed * Time.deltaTime);
         //note[noteNums[UniteData.noteIndex]].transform.Translate(Vector2.right * Time.deltaTime);
     }
 
@@ -350,6 +309,7 @@ public class NoteController : MonoBehaviour
         stopNote = false;
         
         Debug.Log("noteindex : " + UniteData.noteIndex);
+
         if (UniteData.noteIndex == noteLength)
         {
             // 모두 성공한 경우
@@ -359,11 +319,8 @@ public class NoteController : MonoBehaviour
             MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
             returnNote();
-            for (int i = 0; i < 2; i++)
-            {
-                movingNote[i].SetActive(false);
-                longclickImage[i].SetActive(false);
-            }
+            movingNote.SetActive(false);
+            longclickImage.SetActive(false);
 
             target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
         }
@@ -450,20 +407,13 @@ public class NoteController : MonoBehaviour
 
         noteLength = int.Parse(UniteData.data[UniteData.mon_num]["noteLength"].ToString());
 
-        int num = noteLength % 2;
-        NotePosition = new Transform[NotePosGroup[num].transform.childCount];
-       for (int i = 0; i< NotePosGroup[num].transform.childCount; i++)
-       {
-            Debug.Log("num " + num);
-            NotePosition[i] = NotePosGroup[num].transform.GetChild(i).gameObject.transform;
-       }
         Debug.Log("noteLength : " + noteLength);
     }
 
     private void Set_Note()
     {
         // 자식 노트들 모두 비활성화
-        for (int i = 0; i < Note_Bg.transform.childCount; i++)
+        for (int i = 0; i < 6; i++)
         {
             Note_Bg.transform.GetChild(i).gameObject.SetActive(false);
         }

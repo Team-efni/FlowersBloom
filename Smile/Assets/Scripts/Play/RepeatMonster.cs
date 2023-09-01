@@ -11,7 +11,7 @@ public class RepeatMonster : MonoBehaviour
     public Sprite[] monster_images;
     static private SpriteRenderer monster_image;
 
-    private string[] monster_name = { "Rose", "Cosmos", "MorningGlory", "Poppy", "Pasque" };
+    private string[] monster_name = { "Rose", "Cosmos", "MorningGlory", "Poppy" };
 
     static public int monsterCount;
     static private int monsterOriginCount; // 몬스터 등장 횟수 (난이도에 따라 설정)
@@ -64,13 +64,6 @@ public class RepeatMonster : MonoBehaviour
                 noteController = noteControllers[4];
                 UniteData.data = CSVReader.Read("World2_normal");
                 choice_mon = 3; // 양귀비
-                break;
-
-            case 6:
-                monster = monsters[5];
-                noteController = noteControllers[5];
-                UniteData.data = CSVReader.Read("World2_hard");
-                choice_mon = 2; // 나팔꽃
                 break;
 
             default:
@@ -161,8 +154,6 @@ public class RepeatMonster : MonoBehaviour
             choice_mon = 2;
         else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Poppy"))
             choice_mon = 3;
-        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Pasque"))
-            choice_mon = 4;
 
         UniteData.Closed_Monster = monster_name[choice_mon];
         monster_image.sprite = monster_images[choice_mon];
