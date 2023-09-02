@@ -288,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4071268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1887,7 +1887,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -228.99951, y: 418}
+  m_AnchoredPosition: {x: -228.99948, y: 418}
   m_SizeDelta: {x: -2810.547, y: -1337.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361787510
@@ -2316,7 +2316,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419751647}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &419751649
 Camera:
   m_ObjectHideFlags: 0
