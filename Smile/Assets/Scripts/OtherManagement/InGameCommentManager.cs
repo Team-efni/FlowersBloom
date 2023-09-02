@@ -43,7 +43,7 @@ public class InGameCommentManager : MonoBehaviour
 
         inGame_characters.Add("Dandelion", gameCharacters[0]);
         inGame_characters.Add("Tulip", gameCharacters[1]);
-        //inGame_characters.Add("물망초", gameCharacters[2]);
+        inGame_characters.Add("ForgetMeNot", gameCharacters[2]);
 
         Debug.LogWarning("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
 

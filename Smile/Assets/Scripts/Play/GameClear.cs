@@ -33,6 +33,7 @@ public class GameClear : MonoBehaviour
         if (UniteData.Selected_Character== "Dandelion")
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
+            Debug.Log("Player : Dandelion");
             canPlay_prefab[0].SetActive(true);
             player = canPlay_prefab[0];
             for(int i = 0; i < lifepoints.Length; i++)
@@ -44,12 +45,25 @@ public class GameClear : MonoBehaviour
         else if (UniteData.Selected_Character == "Tulip")
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
+            Debug.Log("Player : Tulip");
             canPlay_prefab[1].SetActive(true);
             player = canPlay_prefab[1];
             for (int i = 0; i < lifepoints.Length; i++)
             {
                 Image img = lifepoints[i].GetComponent<Image>();
                 img.sprite = lifepoint_images[1];
+            }
+        }
+        else if (UniteData.Selected_Character == "ForgetMeNot")
+        {
+            //해당 캐릭터를 플레이어로 지정 후 활성화
+            Debug.Log("Player : ForgetMeNot");
+            canPlay_prefab[2].SetActive(true);
+            player = canPlay_prefab[2];
+            for (int i = 0; i < lifepoints.Length; i++)
+            {
+                Image img = lifepoints[i].GetComponent<Image>();
+                img.sprite = lifepoint_images[2];
             }
         }
         else
@@ -80,10 +94,10 @@ public class GameClear : MonoBehaviour
                 backgrounds[3].SetActive(true); // world2_easy
                 break;
             case 5:
-                backgrounds[4].SetActive(true); // world_normal
+                backgrounds[4].SetActive(true); // world2_normal
                 break;
             case 6:
-                backgrounds[5].SetActive(true); // world_hard
+                backgrounds[5].SetActive(true); // world2_hard
                 break;
             default:
                 backgrounds[0].SetActive(true);
