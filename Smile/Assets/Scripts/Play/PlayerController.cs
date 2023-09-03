@@ -34,6 +34,15 @@ public class PlayerController : MonoBehaviour
         scenePass.LoadSceneAsync("InGame-RN");
         playerAinm = GetComponent<Animator>();
 
+        if (UniteData.lifePoint == 0)
+        {
+            Make_Invisible_UI();
+
+            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+            // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
+            fadeAnimator.SetBool("IsStartFade", true);
+        }
+
         Initialized();
     }
 
