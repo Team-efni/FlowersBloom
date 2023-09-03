@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 public class InGameCommentManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class InGameCommentManager : MonoBehaviour
 
     public GameObject textGroup;
     public GameObject blind;
-    public GameObject speaker;
+    public GameObject[] speakerPosition;
     public Text text;
     public Text speakerText;
     public GameObject stopPanel;
@@ -45,57 +46,108 @@ public class InGameCommentManager : MonoBehaviour
         inGame_characters.Add("Tulip", gameCharacters[1]);
         inGame_characters.Add("ForgetMeNot", gameCharacters[2]);
 
-        Debug.LogWarning("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
+        Debug.LogError("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
 
         animator = blind.GetComponent<Animator>();
     }
+
 
     private const int COMMAND   = 0;
     private const int NUMBERING = 1;
     private const int GOTO      = 2;
     private const int BRANCH    = 3;
-    private const int CHARACTER = 4;
-    private const int COMMENT   = 5;
+    private const int IMAGEPOSITION =4;
+    private const int IMAGETYPE=5;
+    private const int CHARACTER = 6;
+    private const int COMMENT   = 7;
+
+    private const int LEFT = 0;
+    private const int CENTER = 1;
+    private const int RIGHT = 2;
+
+    private Vector2[] characterImagePosition = { 
+        new Vector2(-1200f, -90f), 
+        new Vector2(0f, -90f), 
+        new Vector2(1200f, -90f) 
+    };
+
+    private Color whoIs= new Color(0f, 0f, 0f, 1f);
+    private Color ohItsYou = new Color(1f, 1f, 1f, 1f);
+    private Color noOneIsHere = new Color(0f, 0f, 0f, 0f);
+    private Color iWillListen = new Color(0.7f,0.7f, 0.7f, 1f);
 
     private int page = 0;
     private int pageEnd = 0; //1:End
 
     private int frameTime = 0;
-    private int FPP = 4;
+    private const int FPP = 4;
     private bool clickTemp = false;
     private bool printAll = false;
 
+    private void dataResetBeforeStartScripting()
+    {
+        page = 0;
+        pageEnd = 0;
+        frameTime = 0;
+        clickTemp = false;
+        printAll = false;
+    }
 
     private string[] tsv_file = {
-        "NewW01_Easy_Story.tsv",
-        "NewW01_Easy_Story.tsv",
-        "NewW01_Easy_Story.tsv",
-        "NewW01_Easy_Story.tsv",
-        "NewW01_Easy_Story.tsv",
-        "NewW01_Easy_Story.tsv"
+        "newType_W1E.tsv",
+        "newType_W1E.tsv",
+        "newType_W1E.tsv",
+        "newType_W1E.tsv",
+        "newType_W1E.tsv",
+        "newType_W1E.tsv"
     };
 
-    private void OnEnable()
+    private void do_ThrowOutObject()
     {
-        UniteData.GameMode = "Scripting";
-        Debug.Log(UniteData.GameMode);
-
-        //스토리 시작 전 오브젝트 비활성화
         Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
         Application.targetFrameRate = 60;
         foreach (GameObject obj in UI_system)
         {
             obj.SetActive(false);
         }
-        foreach(GameObject obj in gameCharacters)
+        foreach (GameObject obj in gameCharacters)
         {
-            Debug.Log(obj.name);
             obj.SetActive(false);
         }
+    }
+    private void do_BringInObject()
+    {
+        Time.timeScale = 1f;
+        UniteData.GameMode = "Play";
+        foreach (GameObject obj in UI_system)
+        {
+            obj.SetActive(true);
+        }
+        foreach (var entry in inGame_characters)
+        {
+            if (entry.Key == UniteData.Selected_Character)
+            {
+                entry.Value.SetActive(true);
+                break;
+            }
+        }
+        textGroup.SetActive(false);
+    }
 
+    private void OnEnable()
+    {
+        UniteData.GameMode = "Scripting";
+
+        dataResetBeforeStartScripting();
+        ////스토리 시작 전 오브젝트 비활성화
+        do_ThrowOutObject();
+
+        ////파일 지정
         uiComment = GetComponent<UI_Comment>();
         tsv = new TSV(tsv_file[UniteData.Difficulty - 1]);
 
+
+        ////스토리 파일 내에 구간에 따라 텍스트를 미리 로드한다. [함수로 분할]
         if (UniteData.StoryClear[UniteData.Difficulty - 1] == 0 && !UniteData.finishGame)
         {
             dataRowCollection = startScripting("Prestart");
@@ -104,25 +156,11 @@ public class InGameCommentManager : MonoBehaviour
         {
             dataRowCollection = startScripting("Finish");
         }
-        else
+        else //에러 처리
         {
-            //스토리 끝
-            Time.timeScale = 1f;
-            UniteData.GameMode = "Play";
-            foreach (GameObject obj in UI_system)
-            {
-                obj.SetActive(true);
-            }
-            foreach (var entry in inGame_characters)
-            {
-                if(entry.Key == UniteData.Selected_Character)
-                {
-                    entry.Value.SetActive(true);
-                    break;
-                }
-            }
-
-            textGroup.SetActive(false);
+            //스토리 끝 [함수로 분할]
+            do_BringInObject();
+            Debug.LogError("스토리 파일에 해당 Command가 없습니다.");
             return;
         }
 
@@ -155,17 +193,19 @@ public class InGameCommentManager : MonoBehaviour
                     }
                 }
 
+
                 if(!checkingBackBtn && !stopPanel.activeSelf) 
                 {
-                    if (pageEnd == 1)
+                    if (pageEnd == 1)  //하나의 스크립트가 모두 출력이 완료했을 때.
                     {
                         clickTemp = false;
                     }
 
-                    if (!clickTemp) //printing next text
+                    if (!clickTemp) //다음 스크립트로 넘어간다.
                     {
-                        if (dataRowCollection[page][BRANCH].ToString() != "preselect")
+                        if (dataRowCollection[page+1][BRANCH].ToString() != "select")//만약 다음이 분기가 아니라면!
                         {
+                            //다음 스크립트로 진행한다.
                             initAboutTextValues();
                             page = int.Parse(dataRowCollection[page][GOTO].ToString());
                             clickTemp = true;
@@ -198,27 +238,96 @@ public class InGameCommentManager : MonoBehaviour
     }
 
 
-    private void outputScript(int rowX, bool isPrintingImmadiately)
+    private void do_Branching(int rowX, DataRow nextRow)
     {
-        if (rowX + 1 >= dataRowCollection.Count)
+        handleSelectGroup(3, false); //초기 분기 선택 버튼 비활성화
+
+        //분기 시작
+        if (nextRow[BRANCH].ToString() == "select")
         {
-            textGroup.SetActive(false);
-            //스토리 끝
-            Time.timeScale = 1f;
-            foreach (GameObject obj in UI_system)
+            List<DataRow> selRow = new List<DataRow>();
+            for (int x = 0; ; x++) //리스트에 분기 항목 넣기
             {
-                obj.SetActive(true);
-            }
-            foreach (var entry in inGame_characters)
-            {
-                if (entry.Key == UniteData.Selected_Character)
+                if (dataRowCollection[rowX + x][BRANCH].ToString() == "select")
                 {
-                    entry.Value.SetActive(true);
+                    selRow.Add(dataRowCollection[rowX + x]);
+                }
+                else
+                {
                     break;
                 }
             }
 
-            UniteData.GameMode = "Play";
+            for (int x = 0; x < selRow.Count; x++) //버튼에 분기 항목 넣고 활성화
+            {
+                handleSelectGroup(x + 1, true);
+                buttonInSelectGroup[x].GetComponentInChildren<Text>().text = selRow[x][COMMENT].ToString();
+            }
+
+            //여기서 분기의 개수에 따라 분기 선택 버튼의 위치를 중앙으로 변경한다.
+        }
+    }
+
+
+    private void do_ImageSetting(DataRow row, int loc)
+    {
+        if (row[IMAGETYPE].ToString() == row[CHARACTER].ToString())
+        {
+            speakerPosition[loc].GetComponent<Image>().color = ohItsYou;
+            speakerPosition[loc].GetComponent<Image>().sprite = speakersBannerImage(row[IMAGETYPE].ToString());
+            if (speakerPosition[loc].GetComponent<Image>().sprite == null)
+            {
+                speakerPosition[loc].GetComponent<Image>().color = noOneIsHere;
+                return;
+            }
+        }
+        else if (row[CHARACTER].ToString() == "???")
+        {
+            speakerPosition[loc].GetComponent<Image>().color = whoIs;
+            speakerPosition[loc].GetComponent<Image>().sprite = speakersBannerImage(row[IMAGETYPE].ToString());
+        }
+    }
+
+    private void attach_CharacterImage(DataRow row)
+    {
+        if (row[IMAGEPOSITION].ToString()=="CenterAlong")
+        {
+            speakerPosition[LEFT].GetComponent<Image>().color = noOneIsHere;
+            speakerPosition[RIGHT].GetComponent<Image>().color = noOneIsHere;
+
+            do_ImageSetting(row, CENTER);
+        }
+        else if(row[IMAGEPOSITION].ToString() == "RightTogether")
+        {
+            speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
+
+            do_ImageSetting(row, RIGHT);
+
+            //Right 하이라이트
+        }
+        else if (row[IMAGEPOSITION].ToString() == "LeftTogether")
+        {
+            speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
+
+            do_ImageSetting(row, LEFT);
+
+            //Left 하이라이트
+        }
+        else
+        {
+            return;
+        }
+
+        speakerText.text = row[CHARACTER].ToString();
+    }
+        
+    private void outputScript(int rowX, bool isPrintingImmadiately)
+    {
+        if (rowX + 1 >= dataRowCollection.Count)//더 이상 출력할 것이 없다면
+        {
+            ////스토리 끝. 오브젝트 회기
+            do_BringInObject();
+
             UniteData.StoryClear[UniteData.Difficulty - 1] += 1;
             UniteData.SaveUserData();
             return;
@@ -235,44 +344,13 @@ public class InGameCommentManager : MonoBehaviour
             return;
         }
 
-        handleSelectGroup(3, false);
-        //분기 시작
-        if (row[BRANCH].ToString()=="preselect")
-        {
-            List<DataRow> selRow=new List<DataRow>();
-            for(int x=1; ; x++) 
-            {
-                if (dataRowCollection[rowX+x][BRANCH].ToString()=="select")
-                {
-                    selRow.Add(dataRowCollection[rowX + x]);
-                }
-                else
-                {
-                    break;
-                }
-            }
+        handleSelectGroup(3, false); //초기 분기 선택 버튼 비활성화
 
-            for(int x=0; x<selRow.Count; x++)
-            {
-                handleSelectGroup(x + 1, true);
-                buttonInSelectGroup[x].GetComponentInChildren<Text>().text = selRow[x][COMMENT].ToString();
-            }
-        }
+        do_Branching(rowX + 1, dataRowCollection[rowX + 1]);
 
-        pageEnd = uiComment.printTextToUI(text, row[COMMENT].ToString(), frameTime, FPP, isPrintingImmadiately);
+        pageEnd = uiComment.printTextToUI(text, row[COMMENT].ToString(), frameTime, FPP, isPrintingImmadiately); //텍스트 출력
 
-        Image speakerImage = speaker.GetComponent<Image>();
-        speakerImage.sprite = speakersBannerImage(row[CHARACTER].ToString());
-        if (speakerImage.sprite == null)
-            speaker.SetActive(false);
-        else
-            speaker.SetActive(true);
-        if (row[CHARACTER].ToString()=="튤립")
-            speaker.transform.localPosition = new Vector2(1200f, -90f);
-        else
-            speaker.transform.localPosition = new Vector2(-1200f, -90f);
-
-        speakerText.text = row[CHARACTER].ToString();
+        attach_CharacterImage(row);
     }
 
     //분기 구현
@@ -307,4 +385,7 @@ public class InGameCommentManager : MonoBehaviour
         handleSelectGroup(3, false);
         page = int.Parse(dataRowCollection[page+buttonCode][GOTO].ToString());
     }
+
+
+    //
 }

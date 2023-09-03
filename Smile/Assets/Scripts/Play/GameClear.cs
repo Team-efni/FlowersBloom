@@ -147,8 +147,6 @@ public class GameClear : MonoBehaviour
         UniteData.finishGame = true;
         bgStop();
 
-        Debug.Log("게임을 이김게임을 이김게임을 이김게임을 이김게임을 이김");
-
         //스토리 스크립트 종료
         storyScriptGroup.SetActive(true);
 
