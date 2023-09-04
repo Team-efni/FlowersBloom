@@ -29,6 +29,7 @@ public class InGameCommentManager : MonoBehaviour
     public GameObject[] buttonInSelectGroup;
 
     public Sprite[] speakerSprites;
+    public Sprite[] speakerBlindSprites;
     public Sprite[] branchSprites;
 
     public GameObject[] UI_system;
@@ -36,11 +37,15 @@ public class InGameCommentManager : MonoBehaviour
 
     private Dictionary<string, GameObject> inGame_characters = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
+    private Dictionary<string, Sprite> characterBlindSprites = new Dictionary<string, Sprite>();
     private void Awake()
     {
         characterSprites.Add("πŒµÈ∑π", speakerSprites[0]);
         characterSprites.Add("∆´∏≥", speakerSprites[1]);
         characterSprites.Add("π∞∏¡√ ", speakerSprites[2]);
+
+        characterBlindSprites.Add("∆´∏≥", speakerBlindSprites[0]);
+        characterBlindSprites.Add("π∞∏¡√ ", speakerBlindSprites[1]);
 
         inGame_characters.Add("Dandelion", gameCharacters[0]);
         inGame_characters.Add("Tulip", gameCharacters[1]);
@@ -74,13 +79,13 @@ public class InGameCommentManager : MonoBehaviour
     private Color whoIs= new Color(0f, 0f, 0f, 1f);
     private Color ohItsYou = new Color(1f, 1f, 1f, 1f);
     private Color noOneIsHere = new Color(0f, 0f, 0f, 0f);
-    private Color iWillListen = new Color(0.7f,0.7f, 0.7f, 1f);
+    private Color iWillListen = new Color(0.2f,0.2f, 0.2f, 1f);
 
     private int page = 0;
     private int pageEnd = 0; //1:End
 
     private int frameTime = 0;
-    private const int FPP = 4;
+    private const int FPP = 3;
     private bool clickTemp = false;
     private bool printAll = false;
 
@@ -284,7 +289,7 @@ public class InGameCommentManager : MonoBehaviour
         else if (row[CHARACTER].ToString() == "???")
         {
             speakerPosition[loc].GetComponent<Image>().color = whoIs;
-            speakerPosition[loc].GetComponent<Image>().sprite = speakersBannerImage(row[IMAGETYPE].ToString());
+            speakerPosition[loc].GetComponent<Image>().sprite = speakersBlindBannerImage(row[IMAGETYPE].ToString());
         }
     }
 
@@ -303,7 +308,10 @@ public class InGameCommentManager : MonoBehaviour
 
             do_ImageSetting(row, RIGHT);
 
-            //Right «œ¿Ã∂Û¿Ã∆Æ
+            if (speakerPosition[LEFT].GetComponent <Image>().sprite!=null)
+            {
+                speakerPosition[LEFT].GetComponent<Image>().color = iWillListen;
+            }
         }
         else if (row[IMAGEPOSITION].ToString() == "LeftTogether")
         {
@@ -311,7 +319,24 @@ public class InGameCommentManager : MonoBehaviour
 
             do_ImageSetting(row, LEFT);
 
-            //Left «œ¿Ã∂Û¿Ã∆Æ
+            if (speakerPosition[RIGHT].GetComponent<Image>().sprite != null)
+            {
+                speakerPosition[RIGHT].GetComponent<Image>().color = iWillListen;
+            }
+        }
+        else if (row[IMAGEPOSITION].ToString() == "RightAlong")
+        {
+            speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
+            speakerPosition[LEFT].GetComponent<Image>().color = noOneIsHere;
+
+            do_ImageSetting(row, RIGHT);
+        }
+        else if (row[IMAGEPOSITION].ToString() == "LeftAlong")
+        {
+            speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
+            speakerPosition[RIGHT].GetComponent<Image>().color = noOneIsHere;
+
+            do_ImageSetting(row, LEFT);
         }
         else
         {
@@ -358,6 +383,18 @@ public class InGameCommentManager : MonoBehaviour
     private Sprite speakersBannerImage(string character)
     {
         if (characterSprites.TryGetValue(character, out Sprite sprite))
+        {
+            return sprite;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private Sprite speakersBlindBannerImage(string character)
+    {
+        if (characterBlindSprites.TryGetValue(character, out Sprite sprite))
         {
             return sprite;
         }

@@ -347,6 +347,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d21f08e08f31c9e43820a832ae60b26d, type: 3}
   - {fileID: 21300000, guid: 08431b61355d97040a67c96532c52b83, type: 3}
   - {fileID: 21300000, guid: 0b69106c250410c458bc52eaa6da261f, type: 3}
+  speakerBlindSprites:
+  - {fileID: 21300000, guid: ecb4764114a647b4fada8eb78c3115b0, type: 3}
+  - {fileID: 21300000, guid: ecb4764114a647b4fada8eb78c3115b0, type: 3}
   branchSprites:
   - {fileID: 21300000, guid: be8b3fb118723be4e9c99161e92cb3cf, type: 3}
   - {fileID: 21300000, guid: ad1387a0f7415fe419e376feb70655e7, type: 3}
@@ -2051,7 +2054,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -228.99948, y: 418}
+  m_AnchoredPosition: {x: -228.99951, y: 418}
   m_SizeDelta: {x: -2810.547, y: -1337.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361787510
@@ -6974,7 +6977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9d7a77cd5bf7c884ebbfc88778889bc5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
