@@ -25,7 +25,7 @@ public class BtnType : MonoBehaviour
                 break;
             case BTNType.Option:
                 CanvasGroupOn(optionGroup);
-                CanvasGroupOff(mainGroup);
+                MainCanvasGroupOff(mainGroup);
                 break;
             case BTNType.Sound:
                 Debug.Log("»ç¿îµå");
@@ -59,6 +59,13 @@ public class BtnType : MonoBehaviour
     public void CanvasGroupOff(CanvasGroup cg)
     {
         cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+    }
+
+    public void MainCanvasGroupOff(CanvasGroup cg)
+    {
+        cg.alpha = 0.5f;
         cg.interactable = false;
         cg.blocksRaycasts = false;
     }
