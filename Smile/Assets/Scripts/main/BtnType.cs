@@ -11,7 +11,7 @@ public class BtnType : MonoBehaviour
     Vector3 defualtScale;
     public CanvasGroup mainGroup;
     public CanvasGroup optionGroup;
-
+    private bool isOptionPanel;
    
     public void OnBtnClick()
     {
@@ -24,6 +24,7 @@ public class BtnType : MonoBehaviour
                 Debug.Log("Ä³¸¯ÅÍ");
                 break;
             case BTNType.Option:
+                isOptionPanel = true;
                 CanvasGroupOn(optionGroup);
                 MainCanvasGroupOff(mainGroup);
                 break;
@@ -81,5 +82,26 @@ public class BtnType : MonoBehaviour
 
         UnityEngine.Debug.Log(UniteData.BGM + " / " + UniteData.Effect);
         UniteData.SaveUserData();
-    }    
+    }
+
+    void Update()
+    {
+        if (isOptionPanel)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                PointerEventData eventData = new PointerEventData(EventSystem.current);
+                eventData.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventData, results);
+
+                if (results.Count == 0)
+                {
+                    SaveSettingData();
+                    CanvasGroupOn(mainGroup);
+                    CanvasGroupOff(optionGroup);
+                }
+            }
+        }
+    }
 }
