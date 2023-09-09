@@ -38,6 +38,8 @@ public class InGameCommentManager : MonoBehaviour
     private Dictionary<string, GameObject> inGame_characters = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
     private Dictionary<string, Sprite> characterBlindSprites = new Dictionary<string, Sprite>();
+
+    private Dictionary<int, List<Vector2>> buttonCoordinatePosition= new Dictionary<int, List<Vector2>>();
     private void Awake()
     {
         characterSprites.Add("민들레", speakerSprites[0]);
@@ -50,6 +52,10 @@ public class InGameCommentManager : MonoBehaviour
         inGame_characters.Add("Dandelion", gameCharacters[0]);
         inGame_characters.Add("Tulip", gameCharacters[1]);
         inGame_characters.Add("ForgetMeNot", gameCharacters[2]);
+
+        buttonCoordinatePosition.Add(1, new List<Vector2> { new Vector2(0f, 190f) });
+        buttonCoordinatePosition.Add(2, new List<Vector2> { new Vector2(0f, 270f), new Vector2(0f, 70f) });
+        buttonCoordinatePosition.Add(3, new List<Vector2> { new Vector2(0f, 397f), new Vector2(0f, 189f), new Vector2(0f, -22f) });
 
         Debug.LogError("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
 
@@ -267,9 +273,11 @@ public class InGameCommentManager : MonoBehaviour
             {
                 handleSelectGroup(x + 1, true);
                 buttonInSelectGroup[x].GetComponentInChildren<Text>().text = selRow[x][COMMENT].ToString();
-            }
 
-            //여기서 분기의 개수에 따라 분기 선택 버튼의 위치를 중앙으로 변경한다.
+                //여기서 분기의 개수에 따라 분기 선택 버튼의 위치를 중앙으로 변경한다.
+                buttonCoordinatePosition.TryGetValue(selRow.Count, out List<Vector2> posList);
+                buttonInSelectGroup[x].GetComponent<RectTransform>().anchoredPosition = posList[x];
+            }
         }
     }
 
