@@ -1838,6 +1838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorMessage_copy: {fileID: 33760844}
+  back: {fileID: 1206278204}
   audio: {fileID: 1356040388}
 --- !u!1 &560762261
 GameObject:
@@ -3252,8 +3253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1447, y: 600.3988}
-  m_SizeDelta: {x: -3014.4458, y: -1272.5712}
+  m_AnchoredPosition: {x: 1447, y: 601}
+  m_SizeDelta: {x: -3014, y: -1272}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1206278206
 MonoBehaviour:

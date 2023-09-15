@@ -7,7 +7,7 @@ public class MapDrag : MonoBehaviour
     private Vector2 mousePosDown;
     private float cameraXPosDown;
     private Camera Camera;
-    public GameObject errorMessage_copy;
+    public GameObject errorMessage_copy, back;
     public AudioSource audio;
     void Start()
     {
@@ -32,24 +32,26 @@ public class MapDrag : MonoBehaviour
             float newXPos = cameraPos.x + mousePosDown.x - mousePos.x;
             newXPos = Mathf.Clamp(newXPos, 0f, 3200f);
             Camera.transform.position = new Vector3(newXPos, cameraPos.y, cameraPos.z);
+            back.transform.position = new Vector3(newXPos + 1447, 601, 0);
+            errorMessage_copy.transform.position = new Vector3(newXPos, 0, 0);
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            Vector3 cameraPos = Camera.transform.position;
-            if (cameraPos.x < 1600)
-            {
-                Camera.transform.position = new Vector3(0, cameraPos.y, cameraPos.z);
-                errorMessage_copy.transform.position = new Vector3(0, 0, 0);
-            }
-            else
-            {
-                Camera.transform.position = new Vector3(3200, cameraPos.y, cameraPos.z);
-                errorMessage_copy.transform.position = new Vector3(3200, 0, 0);
-            }
-
-            if (Camera.transform.position.x != cameraXPosDown) audio.Play();
-        }
+        //if (Input.GetMouseButtonUp(0))
+        //{
+        //    Vector3 cameraPos = Camera.transform.position;
+        //    if (cameraPos.x < 1600)
+        //    {
+        //        Camera.transform.position = new Vector3(0, cameraPos.y, cameraPos.z);
+        //        errorMessage_copy.transform.position = new Vector3(0, 0, 0);
+        //    }
+        //    else
+        //    {
+        //        Camera.transform.position = new Vector3(3200, cameraPos.y, cameraPos.z);
+        //        errorMessage_copy.transform.position = new Vector3(3200, 0, 0);
+        //    }
+        //
+        //    if (Camera.transform.position.x != cameraXPosDown) audio.Play();
+        //}
 
     }
 }
