@@ -45,7 +45,8 @@ public class Select_Supervisor : MonoBehaviour
         Card_Status CS = character_card.GetComponent<Card_Status>();
 
         //잠금 여부 결정
-        unlock_Tulip(CS, character_card);
+        if(character_card.name == "Tulip") unlock_Tulip(CS, character_card);
+        if(character_card.name == "ForgetMeNot") unlock_ForgetMeNot(CS, character_card);
 
         //잠금이 풀린 상황이면
         if (CS.unlocked)
@@ -78,6 +79,19 @@ public class Select_Supervisor : MonoBehaviour
     {
         //Easy 모드를 클리어 했을 때
         if (CS.isEasyClear == (UniteData.GameClear[0] == 1) && CS.isEasyClear) 
+        {
+            //잠금 해제
+            CS.unlocked = true;
+
+            Image image = Card.GetComponent<Image>();
+            image.sprite = CS.Unlock_image;
+        }
+    }
+
+    private void unlock_ForgetMeNot(Card_Status CS, GameObject Card)
+    {
+        //Normal 모드를 클리어 했을 때
+        if (CS.isNormalClear == (UniteData.GameClear[1] == 1) && CS.isNormalClear)
         {
             //잠금 해제
             CS.unlocked = true;
