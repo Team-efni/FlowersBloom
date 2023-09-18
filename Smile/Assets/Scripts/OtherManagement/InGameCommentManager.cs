@@ -106,7 +106,7 @@ public class InGameCommentManager : MonoBehaviour
 
     private string[] tsv_file = {
         "newType_W1E.tsv",
-        "newType_W1E.tsv",
+        "W01. Normal.tsv",
         "newType_W1E.tsv",
         "newType_W1E.tsv",
         "newType_W1E.tsv",
