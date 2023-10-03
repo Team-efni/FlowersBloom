@@ -4,7 +4,7 @@ Prestart	1	2	select				너 늦잠잤잖아.
 Prestart	2	3		LeftTogether	민들레	민들레	아침이 되어서야 따듯해지니까! 잠이.. 잘.. 온거지.. 아침엔 딱 좋았어…
 Prestart	3	4		LeftTogether	민들레	민들레	좀 더 자고 싶을 만큼.. 하아암…
 Prestart	4	5		RightTogether	튤립	튤립	어서 가야지. 민들레.
-Prestart	5	6		LeftTogether	민들레	민들레	으, 응! 물론이지!
+Prestart	5	7		LeftTogether	민들레	민들레	으, 응! 물론이지!
 Prestart	6	7				System	Blind
 Prestart	7	8		LeftTogether	민들레	민들레	바닥이 딱딱해!
 Prestart	8	9		RightTogether	튤립	튤립	인간들이 살던 곳이야.
@@ -13,7 +13,7 @@ Prestart	10	11		RightTogether	튤립	튤립	우리도 가끔 돌길을 지나다
 Prestart	11	12		LeftTogether	민들레	민들레	그건 그렇지만..
 Prestart	12	13	select				그러게 평소에 좀 돌아다니고 했어야지
 Prestart	13	14		LeftTogether	민들레	민들레	야! 너가 뭘 안다고 그래!
-Prestart	14	15		RightTogether	물망초	???	..마…!
+Prestart	14	15		CenterAlong	물망초	???	..마…!
 Prestart	15	16		LeftTogether	민들레	민들레	응? 방금 들었어?
 Prestart	16	17		RightTogether	튤립	튤립	들었어. 누구지? 어서 가보자!
 Finish	0	1		CenterAlong	물망초	???	꺄악!

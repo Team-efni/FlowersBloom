@@ -29,7 +29,6 @@ public class InGameCommentManager : MonoBehaviour
     public GameObject[] buttonInSelectGroup;
 
     public Sprite[] speakerSprites;
-    public Sprite[] speakerBlindSprites;
     public Sprite[] branchSprites;
 
     public GameObject[] UI_system;
@@ -45,9 +44,6 @@ public class InGameCommentManager : MonoBehaviour
         characterSprites.Add("¹Îµé·¹", speakerSprites[0]);
         characterSprites.Add("Æ«¸³", speakerSprites[1]);
         characterSprites.Add("¹°¸ÁÃÊ", speakerSprites[2]);
-
-        characterBlindSprites.Add("Æ«¸³", speakerBlindSprites[0]);
-        characterBlindSprites.Add("¹°¸ÁÃÊ", speakerBlindSprites[1]);
 
         inGame_characters.Add("Dandelion", gameCharacters[0]);
         inGame_characters.Add("Tulip", gameCharacters[1]);
@@ -297,7 +293,7 @@ public class InGameCommentManager : MonoBehaviour
         else if (row[CHARACTER].ToString() == "???")
         {
             speakerPosition[loc].GetComponent<Image>().color = whoIs;
-            speakerPosition[loc].GetComponent<Image>().sprite = speakersBlindBannerImage(row[IMAGETYPE].ToString());
+            speakerPosition[loc].GetComponent<Image>().sprite = speakersBannerImage(row[IMAGETYPE].ToString());
         }
     }
 
@@ -308,12 +304,15 @@ public class InGameCommentManager : MonoBehaviour
             speakerPosition[LEFT].GetComponent<Image>().color = noOneIsHere;
             speakerPosition[RIGHT].GetComponent<Image>().color = noOneIsHere;
 
+            imageWatchDirect(ref speakerPosition[CENTER], false);
+
             do_ImageSetting(row, CENTER);
         }
         else if(row[IMAGEPOSITION].ToString() == "RightTogether")
         {
             speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
 
+            imageWatchDirect(ref speakerPosition[RIGHT], true);
             do_ImageSetting(row, RIGHT);
 
             if (speakerPosition[LEFT].GetComponent <Image>().sprite!=null)
@@ -325,6 +324,7 @@ public class InGameCommentManager : MonoBehaviour
         {
             speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
 
+            imageWatchDirect(ref speakerPosition[LEFT], false);
             do_ImageSetting(row, LEFT);
 
             if (speakerPosition[RIGHT].GetComponent<Image>().sprite != null)
@@ -337,6 +337,7 @@ public class InGameCommentManager : MonoBehaviour
             speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
             speakerPosition[LEFT].GetComponent<Image>().color = noOneIsHere;
 
+            imageWatchDirect(ref speakerPosition[RIGHT], true);
             do_ImageSetting(row, RIGHT);
         }
         else if (row[IMAGEPOSITION].ToString() == "LeftAlong")
@@ -344,6 +345,7 @@ public class InGameCommentManager : MonoBehaviour
             speakerPosition[CENTER].GetComponent<Image>().color = noOneIsHere;
             speakerPosition[RIGHT].GetComponent<Image>().color = noOneIsHere;
 
+            imageWatchDirect(ref speakerPosition[LEFT], false);
             do_ImageSetting(row, LEFT);
         }
         else
@@ -400,18 +402,6 @@ public class InGameCommentManager : MonoBehaviour
         }
     }
 
-    private Sprite speakersBlindBannerImage(string character)
-    {
-        if (characterBlindSprites.TryGetValue(character, out Sprite sprite))
-        {
-            return sprite;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
     private void handleSelectGroup(int buttonAmount, bool isActive)
     {
         selectGroup.SetActive(isActive);
@@ -431,6 +421,17 @@ public class InGameCommentManager : MonoBehaviour
         page = int.Parse(dataRowCollection[page+buttonCode][GOTO].ToString());
     }
 
-
+    private void imageWatchDirect(ref GameObject character, bool isWatchLeft=false)
+    {
+        RectTransform rect = character.GetComponent<RectTransform>();
+        if (isWatchLeft) 
+        {
+            rect.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
+        }
+        else
+        {
+            rect.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+        }
+    }
     //
 }
