@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 public class Select_Supervisor : MonoBehaviour
 {
-    public GameObject Select_Icon;
+    //public GameObject Select_Icon;
     public GameObject[] Card;
 
     // Start is called before the first frame update
@@ -31,13 +31,13 @@ public class Select_Supervisor : MonoBehaviour
     private void Update()
     {
         //선택된 캐릭터 정보 체크 후 강조
-        foreach (GameObject Cname in Card)
-        {
-            if (Cname.name == UniteData.Selected_Character)
-            {
-                Select_Icon.transform.position = Cname.transform.position;
-            }
-        }
+        //foreach (GameObject Cname in Card)
+        //{
+        //    if (Cname.name == UniteData.Selected_Character)
+        //    {
+        //        Select_Icon.transform.position = Cname.transform.position;
+        //    }
+        //}
     }
 
     private void CheckList(GameObject character_card)
@@ -63,6 +63,15 @@ public class Select_Supervisor : MonoBehaviour
         //잠금이 풀린 상황이면
         if(CS.unlocked)
         {
+            //활성 Select Card 변경
+            foreach (GameObject Cname in Card)
+            {
+                if (Cname.name == UniteData.Selected_Character)
+                {
+                    Cname.transform.GetChild(0).gameObject.SetActive(false);
+                }
+            }
+            character_card.transform.GetChild(0).gameObject.SetActive(true);
             //선택가능하게 한다
             UniteData.Selected_Character = character_card.name;
             Debug.Log(UniteData.Selected_Character+"으로 선택했습니다.");
