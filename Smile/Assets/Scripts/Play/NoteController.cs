@@ -31,7 +31,7 @@ public class NoteController : MonoBehaviour
     RectTransform[] trans_mn;
 
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
-    [Header("등장할 노트 배경")] public GameObject Note_Bg;
+    [Header("등장할 상단 노트 UI")] public GameObject Note_Bg;
 
     private Transform[] NotePosition;
     [SerializeField] private GameObject[] NotePosGroup;
@@ -49,6 +49,7 @@ public class NoteController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 롱클릭 시 노트 이미지 움직임
         if (isClick[UniteData.noteIndex])
         {
             if (index_LongClick < 2)
@@ -79,6 +80,7 @@ public class NoteController : MonoBehaviour
             clickTime = 0;
         }
 
+        // 롱클릭 노트인지 기본 노트인지 판단
         if (index_LongClick < 2 && longNotePos[index_LongClick] == UniteData.noteIndex + 1)
             canlongClick = true;
        else canlongClick = false;

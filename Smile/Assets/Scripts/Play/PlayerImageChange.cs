@@ -19,23 +19,27 @@ public class PlayerImageChange : MonoBehaviour
 
     private void Awake()
     {
-        //캐릭터 지정
-        if (UniteData.Selected_Character == "Dandelion")
+        if (UniteData.Difficulty != 0)
         {
-            player = playerPrefab[0];
+            //캐릭터 지정
+            if (UniteData.Selected_Character == "Dandelion")
+            {
+                player = playerPrefab[0];
+            }
+            else if (UniteData.Selected_Character == "Tulip")
+            {
+                player = playerPrefab[1];
+            }
+            else if (UniteData.Selected_Character == "ForgetMeNot")
+            {
+                player = playerPrefab[2];
+            }
+            else
+            {
+                Debug.LogError("GameClear.cs 파일에서 캐릭터 선택 오류가 발생했습니다 \n 아마도 UniteData.Selected_Character 지정 문제이거나 해당 스크립트의 조건문에서 오류를 수정하세요.");
+            }
         }
-        else if (UniteData.Selected_Character == "Tulip")
-        {
-            player = playerPrefab[1];
-        }
-        else if(UniteData.Selected_Character == "ForgetMeNot")
-        {
-            player = playerPrefab[2];
-        }
-        else
-        {
-            Debug.LogError("GameClear.cs 파일에서 캐릭터 선택 오류가 발생했습니다 \n 아마도 UniteData.Selected_Character 지정 문제이거나 해당 스크립트의 조건문에서 오류를 수정하세요.");
-        }
+        else player = playerPrefab[0];
     }
     // Start is called before the first frame update
     void Start()
