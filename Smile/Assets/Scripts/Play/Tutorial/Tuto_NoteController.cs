@@ -75,14 +75,13 @@ public class Tuto_NoteController : MonoBehaviour
 
         UniteData.oneNoteSuccess = false;
 
-        // (랜덤으로) 노트 생성
+        // 노트 생성
         for (int i = 0; i < noteLength; i++)
         {
-            //noteNums[i] = Random.Range(0, 4);
             string columnName = $"noteNums{i}";
             noteNums[i] = int.Parse(UniteData.data[UniteData.mon_num][columnName].ToString());
             Debug.Log("noteNums[" + i + "] : " + noteNums[i]);
-            note[i].GetComponent<Image>().sprite = noteSprite[noteNums[i]];
+            note[i].GetComponent<Image>().sprite = noteSprite[noteNums[i]-1];
         }
         UniteData.noteNums = noteNums;
         UniteData.NoteSet = true;
@@ -177,6 +176,7 @@ public class Tuto_NoteController : MonoBehaviour
     private void Set_Note_Count()
     {
         noteLength = int.Parse(UniteData.data[UniteData.mon_num]["noteLength"].ToString());
+        Debug.Log("noteLength : " + noteLength);
     }
     IEnumerator MonsterBlink()
     {
