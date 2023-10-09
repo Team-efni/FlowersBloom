@@ -63,7 +63,6 @@ public class Tuto_NoteController : MonoBehaviour
             DoBgShow(true); // 상단 노트 UI 활성화
 
             meetMonster = true;
-
             //#endif
         }
     }
@@ -109,6 +108,7 @@ public class Tuto_NoteController : MonoBehaviour
             Debug.Log("All Success");
             meetMonster = false;
             UniteData.NoteSuccess = true;
+            UniteData.Move_Progress = true;
             MonsterDie();
             DoBgShow(false); // 상단 노트 UI 비활성화
             returnNote();
