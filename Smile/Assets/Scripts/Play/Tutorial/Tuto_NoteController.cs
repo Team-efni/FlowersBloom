@@ -16,6 +16,14 @@ public class Tuto_NoteController : MonoBehaviour
     [Header("fade out할 몬스터 오브젝트")] public GameObject target;
     [Header("등장할 상단 노트 UI")] public GameObject Note_Bg;
 
+    [Header("가이드 텍스트 박스 UI")] public GameObject guideTextBox;
+    [Header("가이드 텍스트 UI")] public Text guideText;
+    [Header("가이드 손가락 UI")] public GameObject guideFinger;
+
+    // 노트 버튼 위치
+    [SerializeField] private Transform[] noteBtn;
+    Transform transFinger;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +37,12 @@ public class Tuto_NoteController : MonoBehaviour
         UniteData.NoteSuccess = false;
         UniteData.oneNoteSuccess = false;
         DoBgShow(false); // 시작할 때는 상단 노트 UI 비활성화
+
+        // 가이드 손가락, 텍스트박스 비활성화
+        guideTextBox.SetActive(false);
+        guideFinger.SetActive(false);
+
+        transFinger = guideFinger.GetComponent<Transform>();
     }
 
     public void DoBgShow(bool check)
@@ -63,9 +77,54 @@ public class Tuto_NoteController : MonoBehaviour
             DoBgShow(true); // 상단 노트 UI 활성화
 
             meetMonster = true;
+
+            if (UniteData.mon_num == 1 || UniteData.mon_num == 2)
+                GuideTextSet();
             //#endif
         }
     }
+
+    private void GuideTextSet()
+    {
+        // 첫번째 몬스터 조우 시
+        if (UniteData.mon_num == 1)
+        {
+            // 텍스트 박스 표시
+            guideTextBox.SetActive(true);
+            guideText.text = "노트박스에 표시되는 색상 순서대로\r\n좌, 우의 노트를 터치하세요.";
+
+            // 가이드 손가락 표시
+            GuideFingerSet();
+
+            // 이동 멈추기
+            UniteData.Move_Progress = false;
+        }
+
+        // 스크립트 띄우기
+        if(UniteData.mon_num == 2)
+        {
+
+        }
+    }
+
+
+    private void GuideTextOff()
+    {
+        guideTextBox.SetActive(false);
+    }
+
+    private void GuideFingerSet()
+    {
+        guideFinger.SetActive(true);
+        transFinger.position = noteBtn[noteNums[UniteData.noteIndex]-1].position;
+    }
+
+    private void GuideFingerOff()
+    {
+        guideFinger.SetActive(false);
+    }
+
+
 
     private void NoteSetting()
     {
@@ -114,12 +173,23 @@ public class Tuto_NoteController : MonoBehaviour
             returnNote();
 
             target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+
+            // 튜토리얼 가이드, 손가락 off
+            GuideTextOff();
+            GuideFingerOff();
+
         }
 
         else
         {
             // 몬스터 깜빡임
             StartCoroutine(MonsterBlink());
+
+            if (UniteData.mon_num <= 2)
+            {
+                // 손가락 가이드 움직이기
+                GuideFingerSet();
+            }
         }
     }
 
@@ -130,6 +200,14 @@ public class Tuto_NoteController : MonoBehaviour
         {
             if (noteNums[UniteData.noteIndex] == i + 1)
                 NoteSuccess();
+            else
+            {
+                // 2번째 몬스터 때 틀린 노트 터치 -> 노트 아예 실패 시
+                if(UniteData.mon_num == 2)
+                {
+
+                }
+            }
         }
         Debug.Log("touchClick : " + i);
     }

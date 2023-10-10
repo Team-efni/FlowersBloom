@@ -67,3 +67,6 @@ TagManager:
   - name: FadeOut
     uniqueID: 1075064253
     locked: 0
+  - name: Guide
+    uniqueID: 3335221715
+    locked: 0
