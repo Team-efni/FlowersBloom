@@ -36,6 +36,8 @@ public class UniteData
 
     public static int noteIndex = 0;  // 현재 눌러야할 노트의 자리
 
+    public static int MapVisited = 0; // Non-Visited : 0, Visited : 1
+
     //유저 관련 데이터
     public static int[] GameClear = {
         PlayerPrefs.GetInt("GameClear-Easy", 0), //EASY
@@ -102,6 +104,8 @@ public static float BGM = PlayerPrefs.GetFloat("BGM", 0.7f); //배경음악 볼륨
         Selected_Character = "Dandelion";
         GameClear = new int[] { 0, 0, 0, 0, 0, 0 };
         StoryClear = new int[] { 0, 0, 0, 0, 0, 0 };
+        
+        MapVisited = 0;
 
         SaveUserData();
         Debug.Log("유저 데이터 초기화 완료");
