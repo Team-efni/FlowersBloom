@@ -1170,7 +1170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -228.99951, y: 418}
+  m_AnchoredPosition: {x: -228.99954, y: 418}
   m_SizeDelta: {x: -2810.547, y: -1337.48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &361787510
@@ -1464,11 +1464,21 @@ MonoBehaviour:
   playerPrefab:
   - {fileID: 2138096375}
   changePlayer: {fileID: 1506269896}
-  changePlayerImg:
-  - {fileID: 21300000, guid: d9a057aba293de647b5539d62dff5807, type: 3}
-  - {fileID: 21300000, guid: 97372efc81ba6fd46b5cc3038a8f7585, type: 3}
-  - {fileID: 21300000, guid: 7ff3ec02e5577fd48ac4a445a01725b3, type: 3}
-  - {fileID: 21300000, guid: f360aea93bd4a7c48921bd81c47ff619, type: 3}
+  changePlayerImg_D:
+  - {fileID: 21300000, guid: 7afbfba75a817754ea295d38014010b1, type: 3}
+  - {fileID: 21300000, guid: e8a7b6760e84bf149b101684b42c26d3, type: 3}
+  - {fileID: 21300000, guid: 197819f3b97e5da4896ff23727307a3c, type: 3}
+  - {fileID: 21300000, guid: 682342bd5e471a04fa12407aa9d3ace1, type: 3}
+  changePlayerImg_T:
+  - {fileID: 21300000, guid: 7afbfba75a817754ea295d38014010b1, type: 3}
+  - {fileID: 21300000, guid: e8a7b6760e84bf149b101684b42c26d3, type: 3}
+  - {fileID: 21300000, guid: 197819f3b97e5da4896ff23727307a3c, type: 3}
+  - {fileID: 21300000, guid: 682342bd5e471a04fa12407aa9d3ace1, type: 3}
+  changePlayerImg_F:
+  - {fileID: 21300000, guid: 7afbfba75a817754ea295d38014010b1, type: 3}
+  - {fileID: 21300000, guid: e8a7b6760e84bf149b101684b42c26d3, type: 3}
+  - {fileID: 21300000, guid: 197819f3b97e5da4896ff23727307a3c, type: 3}
+  - {fileID: 21300000, guid: 682342bd5e471a04fa12407aa9d3ace1, type: 3}
 --- !u!1 &552629094
 GameObject:
   m_ObjectHideFlags: 0
