@@ -1,5 +1,5 @@
 Command	Numbering	Goto	Branch	Character	Comment
-Prestart	0	2		민들레	이쪽이야!
+Prestart	0	1		민들레	이쪽이야!
 Prestart	1	2		System	Blind
 Prestart	2	3		민들레	이쪽 길목만 지나면, 이 섬에서 나갈 수 있어. 할 수 있지?
 Prestart	3	4		민들레	가자!

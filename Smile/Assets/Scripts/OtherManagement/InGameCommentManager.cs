@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -90,7 +91,7 @@ public class InGameCommentManager : MonoBehaviour
     private const int FPP = 3;
     private bool clickTemp = false;
     private bool printAll = false;
-
+    private bool enableClickMode = true;
     private void dataResetBeforeStartScripting()
     {
         page = 0;
@@ -101,10 +102,10 @@ public class InGameCommentManager : MonoBehaviour
     }
 
     private string[] tsv_file = {
-        "newType_W1E.tsv",
-        "W01. Normal.tsv",
-        "W01. Hard.tsv",
-        "newType_W1E.tsv",
+        "꽃피날 스토리easy1.tsv",
+        "꽃피날 스토리normal1.tsv",
+        "꽃피날 스토리hard1.tsv",
+        "꽃피날 스토리easy2.tsv",
         "newType_W1E.tsv",
         "newType_W1E.tsv"
     };
@@ -178,7 +179,7 @@ public class InGameCommentManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && enableClickMode)
         {
             // 마우스 클릭 위치에서 레이캐스트 수행
             PointerEventData pointerEventData = new PointerEventData(eventSystem);
@@ -371,11 +372,7 @@ public class InGameCommentManager : MonoBehaviour
 
         if (dataRowCollection[rowX][CHARACTER].ToString() == "System") 
         {
-            if(dataRowCollection[rowX][COMMENT].ToString()=="Blind")
-            {
-                //블라인드 작업 지시
-                Debug.Log("Blind");
-            }
+            do_SystemCommand(dataRowCollection[rowX][COMMENT].ToString());
             return;
         }
 
@@ -386,6 +383,33 @@ public class InGameCommentManager : MonoBehaviour
         pageEnd = uiComment.printTextToUI(text, row[COMMENT].ToString(), frameTime, FPP, isPrintingImmadiately); //텍스트 출력
 
         attach_CharacterImage(row);
+    }
+
+    private void do_SystemCommand(string commandText)
+    {
+        if (commandText== "Blind\r")
+        {
+            enableClickMode = false;
+
+            if(frameTime<=30)
+            {
+                blind.SetActive(true);
+                Image b_image=blind.GetComponent<Image>();
+                b_image.color = new Vector4(0f, 0f, 0f, 1.0f * frameTime / 30);
+            }
+            else if (frameTime > 120)
+            {
+                blind.SetActive(false);
+                initAboutTextValues();
+                page = int.Parse(dataRowCollection[page][GOTO].ToString());
+                enableClickMode = true;
+            }
+            else if(frameTime>90)
+            {
+                Image b_image = blind.GetComponent<Image>();
+                b_image.color = new Vector4(0f, 0f, 0f, -1.0f * (frameTime-120) / 30);
+            }
+        }
     }
 
     //분기 구현

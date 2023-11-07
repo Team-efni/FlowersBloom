@@ -1,0 +1,46 @@
+Command	Numbering	Goto	Branch	ImagePosition	ImageType	Character	Comment
+Prestart	0	2		CenterAlong	물망초	물망초	이 약초에요!
+Prestart	1	2				System	Image(A)
+Prestart	2	3	select				위험하게 생겼는데...
+Prestart	3	4	select				정말 이게 약초라고?
+Prestart	4	5		CenterAlong	물망초	물망초	네! 보라색이고, 양쪽 이파리의 크기가 다르고, 빛이 난다고 했어요!
+Prestart	5	7		CenterAlong	물망초	물망초	그리고 이렇게 살짝 찢으면..
+Prestart	6	7				System	Image(B)
+Prestart	7	8		CenterAlong	물망초	물망초	이걸! 먹으면 된다고 했어요!
+Prestart	8	9		CenterAlong	물망초	물망초	저도 강해질 수 있는거겠죠?
+Prestart	9	10		LeftTogether	튤립	튤립	음.. 그건 먹지 않는게 좋을 것 같아.
+Prestart	10	11		RightTogether	물망초	물망초	네? 그치만.. 이걸 먹으면 강해진다고...
+Prestart	11	12		LeftTogether	튤립	튤립	그건 누가 알려준거야? 촌장님?
+Prestart	12	13		RightTogether	물망초	물망초	아뇨.. 우연히 촌장님의 방에 들어가게 됐는데 구석에 꽂혀있는 두껍고, 표지가 까만 책에서 봤어요.
+Prestart	13	14		CenterAlong	민들레	민들레	뭐야 그거 어떻게 봐도 위험하잖아!!
+Prestart	14	15		LeftTogether	물망초	물망초	으으...
+Prestart	15	16		RightTogether	민들레	민들레	위험해! 그런건 먹지 마!
+Prestart	16	17		LeftTogether	물망초	물망초	네....
+Prestart	17	18		CenterAlong	튤립	튤립	그런것보다. 빨리 여길 벗어나야할 것 같아.
+Prestart	18	19		CenterAlong	튤립	튤립	안개에 가려져서 잘 보이지 않지만....
+Prestart	19	20	select				우릴 노리고 있는 녀석들이 많아
+Prestart	20	21	select				빨리 나가지 않으면...
+Prestart	21	22		CenterAlong	튤립	튤립	맞아. 더 몰려들기 전에 나가자고.
+Finish	0	1		LeftTogether	물망초	물망초	내 약초... 악마의 무시무시한 약초가...
+Finish	1	2		RightTogether	민들레	민들레	약초 이름이 그게 뭐야!! 왜 단번에 위험하단 걸 알지 못한건데!
+Finish	2	3	select				큰일날뻔 했네.
+Finish	3	4	select				나도 먹어보고 싶은데?
+Finish	4	5		RightTogether	민들레	민들레	장난치지 마!
+Finish	5	6		RightTogether	민들레	민들레	물망초. 아까 그 약초 아직 가지고 있어?
+Finish	6	7		LeftTogether	물망초	물망초	네, 드릴까요?
+Finish	7	8		CenterAlong	민들레	민들레	응. 내가 가지고 있을게. 어딘가 낯익어
+Finish	8	9		LeftTogether	튤립	튤립	이걸 본적이 있는거야?
+Finish	9	10		RightTogether	민들레	민들레	잘 모르겠어. 그래도 익숙한 부분이 있어.
+Finish	10	11		RightTogether	민들레	민들레	내가 가지고 있어도 될까?
+Finish	11	12		CenterAlong	물망초	물망초	네 그럼요.
+Finish	12	13		CenterAlong	민들레	민들레	응. 고마워!
+Finish	13	14		CenterAlong	민들레	민들레	물망초야 약초를 얻지 못하게됐는데... 이젠 어디로 가?
+Finish	14	15		LeftTogether	물망초	물망초	모르겠어요. 약초 하나때문에 너무 멀리까지 와버려서 다시 돌아갈 수 있을지.. 돌아간다해도 맞이해줄 가족도 없지만요... 하하
+Finish	15	16		RightTogether	민들레	민들레	어.. 우리랑 같이 갈래?
+Finish	16	17		LeftTogether	물망초	물망초	정말요?
+Finish	17	18		RightTogether	민들레	민들레	응, 하지만 우리랑 같이 다니면 위험할 수도 있어.
+Finish	18	19		RightTogether	민들레	민들레	물론 우리 기사님이 지켜줄거지만!
+Finish	19	20		CenterAlong	튤립	튤립	난 튤립기사야. 믿어도 좋아
+Finish	20	21		LeftTogether	물망초	물망초	감사합니다. 같이 가고싶어요! 나중엔 검을 쓰는 법도 가르쳐주세요!
+Finish	21	22		RightTogether	튤립	튤립	물론이야.
+Finish	22	23		CenterAlong	민들레	민들레	자, 거의 다왔어! 가자!
