@@ -38,7 +38,6 @@ public class UniteData
 
     public static int MapVisited = 0; // Non-Visited : 0, Visited : 1
 
-    public static bool tuto_wrongTouch = false; // 튜토리얼 두번째 노트 틀린 경우 판단
     public static bool tuto_meetMonster = false;
     //유저 관련 데이터
     public static int[] GameClear = {

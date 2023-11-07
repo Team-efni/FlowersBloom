@@ -43,8 +43,6 @@ public class Tuto_NoteController : MonoBehaviour
         guideFinger.SetActive(false);
 
         transFinger = guideFinger.GetComponent<Transform>();
-
-        UniteData.tuto_wrongTouch = false;
     }
 
     public void DoBgShow(bool check)
@@ -124,8 +122,6 @@ public class Tuto_NoteController : MonoBehaviour
 
         UniteData.oneNoteSuccess = false;
 
-        UniteData.tuto_wrongTouch = false;
-
         // 노트 생성
         for (int i = 0; i < noteLength; i++)
         {
@@ -194,14 +190,6 @@ public class Tuto_NoteController : MonoBehaviour
         {
             if (noteNums[UniteData.noteIndex] == i + 1)
                 NoteSuccess();
-            else
-            {
-                // 2번째 몬스터 때 틀린 노트 터치 -> 노트 아예 실패 시
-                if(UniteData.mon_num == 2)
-                {
-                    UniteData.tuto_wrongTouch = true;
-                }
-            }
         }
         Debug.Log("touchClick : " + i);
     }

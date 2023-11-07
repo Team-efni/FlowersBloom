@@ -129,7 +129,7 @@ public class Tuto_PlayerController : MonoBehaviour
             }
 
             // 2번째 몬스터에서 틀린 노트 터치 후 부딪힌 경우
-            else if (UniteData.mon_num == 2 && UniteData.tuto_wrongTouch)
+            else if (UniteData.mon_num == 2)
             {
                 // 이동 멈추기
                 UniteData.Move_Progress = false;
