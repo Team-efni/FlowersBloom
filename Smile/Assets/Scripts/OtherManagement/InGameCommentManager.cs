@@ -110,6 +110,8 @@ public class InGameCommentManager : MonoBehaviour
         "newType_W1E.tsv"
     };
 
+
+    private Vector3 goAwayToSky = new Vector3(0f, 2500f, 0f);
     private void do_ThrowOutObject()
     {
         Time.timeScale = 0f; //이거 때문에 페이드 처리가 안됨
@@ -120,7 +122,12 @@ public class InGameCommentManager : MonoBehaviour
         }
         foreach (GameObject obj in gameCharacters)
         {
-            obj.SetActive(false);
+            //활성화된 캐릭터는 하늘로 보내버리기
+            if(obj.activeSelf)
+            {
+                obj.transform.position=obj.transform.position + goAwayToSky;
+                break;
+            }
         }
     }
     private void do_BringInObject()
@@ -135,7 +142,10 @@ public class InGameCommentManager : MonoBehaviour
         {
             if (entry.Key == UniteData.Selected_Character)
             {
-                entry.Value.SetActive(true);
+                //부합된 캐릭터는 땅으로 꽂아버리기
+                entry.Value.transform.position=
+                    entry.Value.transform.position - goAwayToSky;
+                //entry.Value.SetActive(true);
                 break;
             }
         }
@@ -168,7 +178,7 @@ public class InGameCommentManager : MonoBehaviour
         {
             //스토리 끝 [함수로 분할]
             do_BringInObject();
-            Debug.LogError("스토리 파일에 해당 Command가 없습니다.");
+            Debug.LogWarning("스토리 파일에 해당 Command가 없습니다.");
             return;
         }
 
@@ -316,7 +326,7 @@ public class InGameCommentManager : MonoBehaviour
             imageWatchDirect(ref speakerPosition[RIGHT], true);
             do_ImageSetting(row, RIGHT);
 
-            if (speakerPosition[LEFT].GetComponent <Image>().sprite!=null)
+            if (speakerPosition[LEFT].GetComponent <Image>().sprite!=null && speakerPosition[LEFT].GetComponent<Image>().color!=whoIs)
             {
                 speakerPosition[LEFT].GetComponent<Image>().color = iWillListen;
             }
@@ -328,7 +338,7 @@ public class InGameCommentManager : MonoBehaviour
             imageWatchDirect(ref speakerPosition[LEFT], false);
             do_ImageSetting(row, LEFT);
 
-            if (speakerPosition[RIGHT].GetComponent<Image>().sprite != null)
+            if (speakerPosition[RIGHT].GetComponent<Image>().sprite != null && speakerPosition[RIGHT].GetComponent<Image>().color != whoIs)
             {
                 speakerPosition[RIGHT].GetComponent<Image>().color = iWillListen;
             }
