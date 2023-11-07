@@ -8183,27 +8183,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4680893929446006139, guid: 0a8faec100c401245950ae192a9a0cdd, type: 3}
   m_PrefabInstance: {fileID: 2138096374}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2138096376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2138096375}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6291fc77d3b4b4fa01bae7001c9273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cut_Scene_prefab: {fileID: 943078078}
-  go_notePoints:
-  - {fileID: 610206677}
-  - {fileID: 1472557600}
-  go_lifePoints:
-  - {fileID: 995975331}
-  - {fileID: 2049995662}
-  - {fileID: 2120075221}
-  Note_Bg: {fileID: 1136827836}
 --- !u!114 &2138096382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8225,3 +8204,4 @@ MonoBehaviour:
   - {fileID: 2049995662}
   - {fileID: 2120075221}
   Note_Bg: {fileID: 1136827836}
+  noteController: {fileID: 1693369086}

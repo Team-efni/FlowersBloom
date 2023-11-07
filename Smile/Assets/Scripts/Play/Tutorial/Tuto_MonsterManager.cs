@@ -59,7 +59,7 @@ public class Tuto_MonsterManager : MonoBehaviour
         Debug.Log("mon_num : " + UniteData.mon_num);
         if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Rose"))
             choice_mon = 0;
-        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Bose"))
+        else if (UniteData.data[UniteData.mon_num]["Monster"].ToString().Equals("Boss"))
             choice_mon = 1;
 
         UniteData.Closed_Monster = monster_name[choice_mon];

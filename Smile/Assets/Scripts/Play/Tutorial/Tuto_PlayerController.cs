@@ -151,11 +151,16 @@ public class Tuto_PlayerController : MonoBehaviour
         // 0이 되면 게임 오버
         if (UniteData.lifePoint == 0)
         {
+            // 보스 몬스터일때 목숨 재충전
+            if(UniteData.Closed_Monster == "Boss")
+            {
+                UniteData.lifePoint = 3;
+            }
             Make_Invisible_UI();
 
-            Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
+            //Animator fadeAnimator = GameObject.Find("FadeOut").GetComponent<Animator>();
             // 페이드 아웃 애니메이션 이후 게임 오버 씬을 전환합니다.
-            fadeAnimator.SetBool("IsStartFade", true);
+            //fadeAnimator.SetBool("IsStartFade", true);
         }
     }
 
