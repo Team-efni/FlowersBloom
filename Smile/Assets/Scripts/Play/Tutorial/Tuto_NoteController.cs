@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// 튜토리얼용 노트 컨트롤러
+//  가이드용 UI + 튜토리얼용 노트 컨트롤러
 // 기본 NoteController에서 튜토리얼만 구분할까 했지만 안쓰이는 함수가 너무 많아서 새로 작성함
 public class Tuto_NoteController : MonoBehaviour
 {
@@ -43,6 +43,8 @@ public class Tuto_NoteController : MonoBehaviour
         guideFinger.SetActive(false);
 
         transFinger = guideFinger.GetComponent<Transform>();
+
+        UniteData.tuto_wrongTouch = false;
     }
 
     public void DoBgShow(bool check)
@@ -78,33 +80,23 @@ public class Tuto_NoteController : MonoBehaviour
 
             meetMonster = true;
 
-            if (UniteData.mon_num == 1 || UniteData.mon_num == 2)
+            if (UniteData.mon_num == 1)
                 GuideTextSet();
             //#endif
         }
     }
 
-    private void GuideTextSet()
+    public void GuideTextSet()
     {
-        // 첫번째 몬스터 조우 시
-        if (UniteData.mon_num == 1)
-        {
-            // 텍스트 박스 표시
-            guideTextBox.SetActive(true);
-            guideText.text = "노트박스에 표시되는 색상 순서대로\r\n좌, 우의 노트를 터치하세요.";
+        // 텍스트 박스 표시
+        guideTextBox.SetActive(true);
+        guideText.text = "노트박스에 표시되는 색상 순서대로\r\n좌, 우의 노트를 터치하세요.";
 
-            // 가이드 손가락 표시
-            GuideFingerSet();
+        // 가이드 손가락 표시
+        GuideFingerSet();
 
-            // 이동 멈추기
-            UniteData.Move_Progress = false;
-        }
-
-        // 스크립트 띄우기
-        if(UniteData.mon_num == 2)
-        {
-
-        }
+        // 이동 멈추기
+        UniteData.Move_Progress = false;
     }
 
 
@@ -125,13 +117,14 @@ public class Tuto_NoteController : MonoBehaviour
     }
 
 
-
     private void NoteSetting()
     {
         UniteData.NoteSuccess = false;
         noteNums = new int[noteLength];
 
         UniteData.oneNoteSuccess = false;
+
+        UniteData.tuto_wrongTouch = false;
 
         // 노트 생성
         for (int i = 0; i < noteLength; i++)
@@ -178,6 +171,7 @@ public class Tuto_NoteController : MonoBehaviour
             GuideTextOff();
             GuideFingerOff();
 
+            UniteData.tuto_meetMonster = false;
         }
 
         else
@@ -185,7 +179,7 @@ public class Tuto_NoteController : MonoBehaviour
             // 몬스터 깜빡임
             StartCoroutine(MonsterBlink());
 
-            if (UniteData.mon_num <= 2)
+            if (UniteData.mon_num <= 1 || UniteData.tuto_meetMonster)
             {
                 // 손가락 가이드 움직이기
                 GuideFingerSet();
@@ -205,7 +199,7 @@ public class Tuto_NoteController : MonoBehaviour
                 // 2번째 몬스터 때 틀린 노트 터치 -> 노트 아예 실패 시
                 if(UniteData.mon_num == 2)
                 {
-
+                    UniteData.tuto_wrongTouch = true;
                 }
             }
         }
