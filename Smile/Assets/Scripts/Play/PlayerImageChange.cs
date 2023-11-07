@@ -10,12 +10,15 @@ public class PlayerImageChange : MonoBehaviour
     static public GameObject player;
 
     [Header("변경할 캐릭터 이미지 들어갈 오브젝트")] public GameObject changePlayer;
-    [Header("변경할 캐릭터 이미지")] public Sprite[] changePlayerImg;
+    [Header("변경할 캐릭터 이미지_민들레")] public Sprite[] changePlayerImg_D;
+    [Header("변경할 캐릭터 이미지_튤립")] public Sprite[] changePlayerImg_T;
+    [Header("변경할 캐릭터 이미지_물망초")] public Sprite[] changePlayerImg_F;
 
     private SpriteRenderer[] spriteRenderers;
     private SpriteRenderer sr_changePlayer;
 
     private int[] noteNums;
+    private Sprite[] changePlayerImg;
 
     private void Awake()
     {
@@ -25,14 +28,17 @@ public class PlayerImageChange : MonoBehaviour
             if (UniteData.Selected_Character == "Dandelion")
             {
                 player = playerPrefab[0];
+                changePlayerImg = changePlayerImg_D;
             }
             else if (UniteData.Selected_Character == "Tulip")
             {
                 player = playerPrefab[1];
+                changePlayerImg = changePlayerImg_T;
             }
             else if (UniteData.Selected_Character == "ForgetMeNot")
             {
                 player = playerPrefab[2];
+                changePlayerImg = changePlayerImg_F;
             }
             else
             {
