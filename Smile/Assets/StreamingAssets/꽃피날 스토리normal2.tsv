@@ -1,0 +1,62 @@
+Command	Numbering	Goto	Branch	ImagePosition	ImageType	Character	Comment
+Prestart	0	1		CenterAlong	민들레	민들레	이제 이 다리만 건너면!
+Prestart	1	2	select				다리 끝에 엄청난 건지 뭐지 하는 그게 있는거야?
+Prestart	2	3		CenterAlong	민들레	민들레	아니 그건 아니고...
+Prestart	3	4		CenterAlong	민들레	민들레	이 다리만 건너면 드디어 수한산이다 이거지...
+Prestart	4	5		LeftAlong	민들레	민들레	그 아이템은 수한산 꼭대기에 있어
+Prestart	5	6		RightTogether	튤립	튤립	그나저나 이 다리 건널 수 있는 거야?
+Prestart	6	8	select				무너지기 일보 직전인데?
+Prestart	7	10	select				이 정도면 괜찮아 보여.
+Prestart	8	9	ans	LeftTogether	민들레	민들레	그럼 돌아서 갈까? 이 다리를 건너지 않고 다른 길로 걸어가거나, 다리 밑으로 수영해가는 방법이 있기는 해.
+Prestart	9	12	ans	LeftTogether	민들레	민들레	물론, 지금까지 온 거리의 세 배는 저 가야하는 거리가 되겠지만 말야.
+Prestart	10	11	ans	LeftTogether	민들레	민들레	당연하지! 건널 수 있고 말고!
+Prestart	11	12	ans	LeftTogether	민들레	민들레	우린 날씬하니까 별로 무겁지도 않아서 별 탈 없을거야!
+Prestart	12	13		RightTogether	튤립	튤립	하... 어쩔 수 없지.
+Prestart	13	14		RightTogether	튤립	튤립	건너보는 수밖에. 우물쭈물하지 말고, 조심히, 빠르게 지나가야 해.
+Prestart	14	15		CenterAlong	물망초	물망초	( 조심히, 빠르게..! 기사님 대단해! )
+Prestart	15	16		CenterAlong	물망초	물망초	제가 예리한 편이라 금이 간 곳을 금방 알아챌 수 있어요. 앞장 설게요!
+Prestart	16	17		CenterAlong	튤립	튤립	응. 조심해야 해.
+Prestart	17	18		CenterAlong	물망초	물망초	(조심히, 빠르게...!)
+Finish	0	1		CenterAlong	민들레	민들레	다리끝이 보여! 거의 다 왔어! 달려! 으악!
+Finish	1	2		CenterAlong	튤립	튤립	거기 조심해!
+Finish	2	3		CenterAlong	민들레	민들레	으악!
+Finish	3	4		CenterAlong	물망초	물망초	기사님! 그쪽은 금이 많아요! 어서 이쪽으로!
+Finish	4	5	select				무너지기 일보직전 다리잖아!
+Finish	5	6		CenterAlong	민들레	민들레	이 정도일 줄은 몰랐지!
+Finish	6	7		CenterAlong	물망초	물망초	떠들 시간 없어요! 달려요!
+Finish	7	8				System	Blind
+Finish	8	9		CenterAlong	튤립	튤립	헉헉...
+Finish	9	10		CenterAlong	민들레	민들레	으아아아아
+Finish	10	11		CenterAlong	민들레	민들레	죽는 줄 알았네!
+Finish	11	13	select				그러게
+Finish	12	13	select				누구 때문에...
+Finish	13	14		CenterAlong	민들레	민들레	윽.. 살았으니 됐잖아!
+Finish	14	15		CenterAlong	민들레	민들레	그나저나 물망초 덕분에 무사히 올 수 있었던 거 같아.
+Finish	15	16		LeftAlong	민들레	민들레	이런 어두운 곳에서 어떻게 그렇게 잘 다니는거야?
+Finish	16	17		RightTogether	물망초	물망초	앗, 제가 소심하고... 항상 주눅 들어있고... 이런 성격이다보니 밤에도 혼자 어두운 곳에서 땅을 보면서..... 걸어서....
+Finish	17	18		RightTogether	물망초	물망초	....
+Finish	18	19		LeftTogether	민들레	민들레	앗
+Finish	19	20	select				민들레가 울렸네
+Finish	20	21		CenterAlong	튤립	튤립	민들레가 울렸어.
+Finish	21	22		CenterAlong	민들레	민들레	아, 아니!
+Finish	22	23		CenterAlong	민들레	민들레	울지마! 내가 미안해! 그런 사정이 있는 줄 모르고!
+Finish	23	24		CenterAlong	민들레	민들레	어떡... 아, 그 보라색 이파리라도 다시 줄까...!
+Finish	24	25		CenterAlong	튤립	튤립	그건 안돼. 진정해
+Finish	25	26		LeftAlong	민들레	민들레	그치만 나 미움받아버리면...
+Finish	26	27		RightTogether	물망초	물망초	헤헤.. 전 괜찮아요. 그건 위험하다고 하셨잖아요. 안 주셔도 괜찮아요.
+Finish	27	28		LeftTogether	민들레	민들레	응.. 미안해..
+Finish	28	29		RightTogether	물망초	물망초	아이 참. 괜찮다니깐요.
+Finish	29	30		RightTogether	물망초	물망초	그나저나 이젠 정말 거의 다 왔네요.
+Finish	30	31		LeftTogether	민들레	민들레	응. 코앞까지 왔어.
+Finish	31	32		LeftTogether	민들레	민들레	나도 사실 전설로만 들은 물건이라…. 있어야 할 텐데…
+Finish	32	33		LeftAlong	튤립	튤립	이제야 물어보는 건데, 그 아이템에 대해 무슨 말을 들었길래 그래?
+Finish	33	34		RightTogether	민들레	민들레	고약한 냄새를 단숨에 없어버릴 수 있는 전설의 아이템!
+Finish	34	35		RightTogether	민들레	민들레	너무 강력한 능력 때문에 수한산의 주민들이 봉인하고 있다…..
+Finish	35	36		RightTogether	민들레	민들레	라는! 이야기야! 멋있지!
+Finish	36	37	select				멋있는 건 모르겠지만… 확실히 필요한 물건이네
+Finish	37	38		RightTogether	민들레	민들레	응! 하루빨리 가지고 돌아가고 싶어!
+Finish	38	39		LeftTogether	튤립	튤립	하하. 그럼 쉬기도 많이 쉬었으니, 다시 가볼까?
+Finish	39	40		LeftTogether	튤립	튤립	내가 알기로는, 수한산 주민들은 해가 완전히 떴을 땐, 모습을 드러내지 않기로 유명해.
+Finish	40	41		LeftAlong	물망초	물망초	해를 싫어하는 걸까요?
+Finish	41	42		RightTogether	튤립	튤립	그건 나도 잘.. 무언가 사정이 있을 거야.
+Finish	42	43		CenterAlong	민들레	민들레	자, 다시 가볼까!

@@ -106,7 +106,7 @@ public class InGameCommentManager : MonoBehaviour
         "꽃피날 스토리normal1.tsv",
         "꽃피날 스토리hard1.tsv",
         "꽃피날 스토리easy2.tsv",
-        "newType_W1E.tsv",
+        "꽃피날 스토리normal2.tsv",
         "newType_W1E.tsv"
     };
 
