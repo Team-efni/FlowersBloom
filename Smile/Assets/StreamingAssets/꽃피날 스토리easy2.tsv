@@ -1,11 +1,11 @@
 Command	Numbering	Goto	Branch	ImagePosition	ImageType	Character	Comment
-Prestart	0	2		CenterAlong	물망초	물망초	이 약초에요!
-Prestart	1	2				System	Image(A)
+Prestart	0	1		CenterAlong	물망초	물망초	이 약초에요!
+Prestart	1	2				System	Image(아이템_잎)
 Prestart	2	3	select				위험하게 생겼는데...
 Prestart	3	4	select				정말 이게 약초라고?
 Prestart	4	5		CenterAlong	물망초	물망초	네! 보라색이고, 양쪽 이파리의 크기가 다르고, 빛이 난다고 했어요!
-Prestart	5	7		CenterAlong	물망초	물망초	그리고 이렇게 살짝 찢으면..
-Prestart	6	7				System	Image(B)
+Prestart	5	6		CenterAlong	물망초	물망초	그리고 이렇게 살짝 찢으면..
+Prestart	6	7				System	Image(아이템_찢어진 잎)
 Prestart	7	8		CenterAlong	물망초	물망초	이걸! 먹으면 된다고 했어요!
 Prestart	8	9		CenterAlong	물망초	물망초	저도 강해질 수 있는거겠죠?
 Prestart	9	10		LeftTogether	튤립	튤립	음.. 그건 먹지 않는게 좋을 것 같아.

@@ -14,7 +14,6 @@ public class InGameCommentManager : MonoBehaviour
     DataTable dataTable;
     DataRowCollection dataRowCollection;
     UI_Comment uiComment;
-    Animator animator;
 
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
@@ -35,9 +34,12 @@ public class InGameCommentManager : MonoBehaviour
     public GameObject[] UI_system;
     public GameObject[] gameCharacters;
 
+    public GameObject displayImageInStory;
+    public Sprite[] itemImageForStory;
+
     private Dictionary<string, GameObject> inGame_characters = new Dictionary<string, GameObject>();
     private Dictionary<string, Sprite> characterSprites = new Dictionary<string, Sprite>();
-    private Dictionary<string, Sprite> characterBlindSprites = new Dictionary<string, Sprite>();
+    private Dictionary<string, Sprite> itemSpriteList = new Dictionary<string, Sprite>();
 
     private Dictionary<int, List<Vector2>> buttonCoordinatePosition= new Dictionary<int, List<Vector2>>();
     private void Awake()
@@ -50,13 +52,14 @@ public class InGameCommentManager : MonoBehaviour
         inGame_characters.Add("Tulip", gameCharacters[1]);
         inGame_characters.Add("ForgetMeNot", gameCharacters[2]);
 
+        itemSpriteList.Add("아이템_잎", itemImageForStory[0]);
+        itemSpriteList.Add("아이템_찢어진_잎", itemImageForStory[1]);
+
         buttonCoordinatePosition.Add(1, new List<Vector2> { new Vector2(0f, 190f) });
         buttonCoordinatePosition.Add(2, new List<Vector2> { new Vector2(0f, 270f), new Vector2(0f, 70f) });
         buttonCoordinatePosition.Add(3, new List<Vector2> { new Vector2(0f, 397f), new Vector2(0f, 189f), new Vector2(0f, -22f) });
 
         Debug.LogError("빌드 전에 !꼭! play/canvas/comment 오브젝트를 비활성화 해주세요!!!!!");
-
-        animator = blind.GetComponent<Animator>();
     }
 
 
@@ -420,9 +423,25 @@ public class InGameCommentManager : MonoBehaviour
                 b_image.color = new Vector4(0f, 0f, 0f, -1.0f * (frameTime-120) / 30);
             }
         }
-    }
 
-    //분기 구현
+        if (commandText.Contains("Image"))
+        {
+            enableClickMode = false;
+
+            if (frameTime <= 5) 
+            {
+                displayImageInStory.SetActive(true);
+                findImageForUsingStory(commandText);
+            }
+            else if (frameTime > 120)
+            {
+                displayImageInStory.SetActive(false);
+                initAboutTextValues();
+                page = int.Parse(dataRowCollection[page][GOTO].ToString());
+                enableClickMode = true;
+            }
+        }
+    }
 
     private Sprite speakersBannerImage(string character)
     {
@@ -434,6 +453,16 @@ public class InGameCommentManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    private Sprite findImageForUsingStory(string comment)
+    {
+        foreach(KeyValuePair<string, Sprite> it in itemSpriteList)
+        {
+            if(comment.Contains(it.Key))
+            { return it.Value; }
+        }
+        return null;
     }
 
     private void handleSelectGroup(int buttonAmount, bool isActive)
