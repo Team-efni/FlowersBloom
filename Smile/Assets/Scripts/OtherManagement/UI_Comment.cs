@@ -50,10 +50,12 @@ public class UI_Comment : MonoBehaviour
         string processingSentence = sentence;
         if(!printImmediately) 
         {
-            if (frame / printPerFrame <= replaceClamp(sentence).Length) 
+            if (frame / printPerFrame <= replaceClamp(sentence).Length && printPerFrame != 0)  
             {
                 List<string> textInClampList = textInClamp(sentence);
                 processingSentence = textProcessing(replaceClamp(sentence), frame / printPerFrame, textInClampList);
+                text.text = processingSentence;
+                return 0;
             }
             else
             {
@@ -63,7 +65,7 @@ public class UI_Comment : MonoBehaviour
         }
 
         text.text = processingSentence;
-        return 0;
+        return 1;
     }
 
     private string textProcessing(string text, int textEnd, List<string> textInClampList)
