@@ -43,6 +43,12 @@ public class MapChange : MonoBehaviour
         StartCoroutine(ScaleDownCoroutine(1, "Nomal Map"));
     }
 
+    public void NormalBtn2()
+    {
+        UniteData.Difficulty = 5;
+        StartCoroutine(ScaleDownCoroutine(1, "Nomal Map2"));
+    }
+
     public void HardBtn()
     {
         UniteData.Difficulty = 3;

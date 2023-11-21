@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapMenu/Hard Map.unity
     guid: 7a4341b4e4ec2fd4f860b7543d023a7e
+  - enabled: 1
+    path: Assets/Scenes/MapMenu/Nomal Map2.unity
+    guid: 89e05f04b03b58d489e449fd476deb59
   m_configObjects: {}
