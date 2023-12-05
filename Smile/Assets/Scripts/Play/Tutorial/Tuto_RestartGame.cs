@@ -7,7 +7,7 @@ public class Tuto_RestartGame : MonoBehaviour
     private Tuto_GameManager t_gm; // GameClear
     private Tuto_NoteController t_nc;
     private Tuto_PlayerController t_pc;
-    private RepeatBG s_sb;
+    private Tuto_RepeatBG t_rb;
     private Tuto_MonsterManager t_mm; // RepeatMonster
     private BtnStop s_bs;
 
@@ -18,7 +18,7 @@ public class Tuto_RestartGame : MonoBehaviour
         t_gm = FindAnyObjectByType<Tuto_GameManager>();
         t_nc = FindAnyObjectByType<Tuto_NoteController>();
         t_pc = FindObjectOfType<Tuto_PlayerController>();
-        s_sb = FindObjectOfType<RepeatBG>();
+        t_rb = FindObjectOfType<Tuto_RepeatBG>();
         t_mm = FindAnyObjectByType<Tuto_MonsterManager>();
         s_bs = FindObjectOfType<BtnStop>();
     }
@@ -40,6 +40,6 @@ public class Tuto_RestartGame : MonoBehaviour
             UniteData.ReStart = false;
         }
 
-        s_sb.Initialized(); // 컷씬에서 돌아오는 경우에도 호출
+        t_rb.Initialized(); // 컷씬에서 돌아오는 경우에도 호출
     }
 }
