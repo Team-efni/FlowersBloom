@@ -397,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4071268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2749,6 +2749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993721780}
   - component: {fileID: 993721781}
+  - component: {fileID: 993721782}
   m_Layer: 0
   m_Name: MonsterSet
   m_TagString: Untagged
@@ -2783,6 +2784,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e1e77733ffec5740a6548acab44b1ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 350
+  posValue: 3000
+--- !u!114 &993721782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993721779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56bc3f74221b1e144a6fbeb051b9e979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 350

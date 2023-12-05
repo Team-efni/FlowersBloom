@@ -136,7 +136,6 @@ public class Tuto_PlayerController : MonoBehaviour
 
                 // 가이드 박스, 텍스트 표시
                 UniteData.tuto_meetMonster = true;
-                UniteData.mon_num--;
                 noteController.GetComponent<Tuto_NoteController>().GuideTextSet();
             }
         }

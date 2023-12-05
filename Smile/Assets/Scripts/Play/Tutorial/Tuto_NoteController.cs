@@ -95,6 +95,18 @@ public class Tuto_NoteController : MonoBehaviour
 
         // 이동 멈추기
         UniteData.Move_Progress = false;
+
+        // 첫번째 몬스터에서 손가락 커졌다가 작아지는 애니메이션
+        if(UniteData.mon_num == 1)
+        {
+            StartCoroutine("FingerBounce");
+        }
+
+        // 두번째 몬스터에서 가이드 깜빡이기
+        else if(UniteData.mon_num == 2)
+        {
+            StartCoroutine("GuideBlink");
+        }
     }
 
 
@@ -253,5 +265,52 @@ public class Tuto_NoteController : MonoBehaviour
         target.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
         yield return null;
 
+    }
+
+    // 가이드 손가락 커졌다가 작아지는 애니메이션
+    IEnumerator FingerBounce()
+    {
+        int i = 0;
+        Vector3 originalScale = guideFinger.transform.localScale;
+
+        while (!UniteData.Move_Progress) // 움직임 시작 전까지
+        {
+            if(i%2 == 0)
+            {
+                guideFinger.transform.localScale = originalScale; // 원래대로
+            }
+            else
+            {
+                guideFinger.transform.localScale = originalScale * 1.3f; // 크기 크게
+            }
+
+            yield return new WaitForSeconds(0.5f); // 변화 주기
+            i++;
+        }
+
+        guideFinger.transform.localScale = originalScale;
+        yield return null;
+    }
+
+    // 가이드 텍스트 및 손가락 흐려졌다가 돌아오는 애니메이션
+    IEnumerator GuideBlink()
+    {
+        float duration = 1.5f;
+        Color startColor = new Color32(255, 255, 255, 255);
+        Color endColor = new Color32(255, 255, 255, 180);
+        
+        while (!UniteData.Move_Progress) // 움직임 시작 전까지
+        {
+            float t = Mathf.PingPong(Time.time / duration, 1f);
+            Color lerpedColor = Color.Lerp(startColor, endColor, t);
+
+            guideTextBox.GetComponent<Image>().color = lerpedColor;
+            guideFinger.GetComponent<SpriteRenderer>().color = lerpedColor;
+
+            yield return null;
+        }
+
+        guideTextBox.GetComponent<Image>().color = startColor;
+        guideFinger.GetComponent<SpriteRenderer>().color = startColor;
     }
 }
