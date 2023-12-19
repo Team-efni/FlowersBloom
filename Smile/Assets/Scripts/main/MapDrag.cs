@@ -7,10 +7,13 @@ public class MapDrag : MonoBehaviour
     private Vector2 mousePosDown;
     private float cameraXPosDown;
     private Camera Camera;
+    private float[] backPos;
     public GameObject errorMessage_copy, back;
     public AudioSource audio;
     void Start()
     {
+        backPos[0] = back.transform.position.x;
+        backPos[1] = back.transform.position.y;
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
@@ -32,7 +35,7 @@ public class MapDrag : MonoBehaviour
             float newXPos = cameraPos.x + mousePosDown.x - mousePos.x;
             newXPos = Mathf.Clamp(newXPos, 0f, 3200f);
             Camera.transform.position = new Vector3(newXPos, cameraPos.y, cameraPos.z);
-            back.transform.position = new Vector3(newXPos + 1447, 601, 0);
+            back.transform.position = new Vector3(newXPos + backPos[0], backPos[1], 0);
             errorMessage_copy.transform.position = new Vector3(newXPos, 0, 0);
         }
 
