@@ -19,7 +19,7 @@ public class Tuto_RepeatBG : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = new Game_Timer(UniteData.Play_Scene_Time);
+        timer = new Game_Timer(UniteData.Play_Scene_Time < 6f ? UniteData.Play_Scene_Time : UniteData.Play_Scene_Time - 6f);
         Initialized();
     }
 

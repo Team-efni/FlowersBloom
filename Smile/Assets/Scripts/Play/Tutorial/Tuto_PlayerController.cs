@@ -24,6 +24,8 @@ public class Tuto_PlayerController : MonoBehaviour
     // 플레이어 애니메이션
     Animator playerAinm;
 
+    public GameObject storyCommentGroup;
+
     // 상단 노트 UI
     [Header("등장할 노트 배경")] public GameObject Note_Bg;
 
@@ -33,7 +35,7 @@ public class Tuto_PlayerController : MonoBehaviour
     void Start()
     {
         scenePass = GetComponent<IScenePass>();
-        scenePass.LoadSceneAsync("InGame-RN");
+        scenePass.LoadSceneAsync("InGame-RN-tutorial");
         playerAinm = GetComponent<Animator>();
 
         if (UniteData.lifePoint == 0)
@@ -111,11 +113,20 @@ public class Tuto_PlayerController : MonoBehaviour
                     // 몬스터에 닿으면 움직임을 멈춤
                     UniteData.Move_Progress = false;
 
-                    // 플레이어 애니메이션 멈춤
-                    playerAinm.SetBool("IsMoving", false);
+                    //스크립트 관련 코드
+                    if(StorySepCommand.Instance.getCommandBranch()==StorySepCommand.commandNum.First)
+                    {
+                        StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.CutEnter);
+                        storyCommentGroup.SetActive(true);
+                    }
+                    else
+                    {
+                        // 플레이어 애니메이션 멈춤
+                        playerAinm.SetBool("IsMoving", false);
 
-                    //씬 애니메이션을 본 뒤 이동
-                    StartCoroutine(LoadCutScene());
+                        //씬 애니메이션을 본 뒤 이동
+                        StartCoroutine(LoadCutScene());
+                    }
                 }
 
                 // 기회가 0이라면 목숨 포인트 감소
@@ -124,7 +135,7 @@ public class Tuto_PlayerController : MonoBehaviour
                     Debug.Log("UniteData.lifePoint " + UniteData.lifePoint);
                     // 목숨 포인트가 남아있다면 감소
                     //if(UniteData.lifePoint >= 0)
-                    MeetMonsterFail();
+                    MeetMonsterFail(); //목숨이 없다면 목숨포인트 충전하는 스크립트로 ㄱㄱ
                 }
             }
 
@@ -186,7 +197,7 @@ public class Tuto_PlayerController : MonoBehaviour
 
         //컷씬 애니메이션이 끝나면 씬 바로 이동
         yield return new WaitForSeconds(1.17f);
-        scenePass.SceneLoadStart("InGame-RN");
+        scenePass.SceneLoadStart("InGame-RN-tutorial"); //FIXME컷씬 이동
     }
 
     private void Make_Invisible_UI()

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.ParticleSystem;
 
@@ -13,6 +14,8 @@ public class TutorialCommentManager : MonoBehaviour
     DataTable dataTable;
     DataRowCollection dataRowCollection;
     UI_Comment uiComment;
+
+    public GameObject nodeManager;
 
     public GraphicRaycaster graphicRaycaster;
     public EventSystem eventSystem;
@@ -39,6 +42,9 @@ public class TutorialCommentManager : MonoBehaviour
     private Dictionary<string, Sprite> itemSpriteList = new Dictionary<string, Sprite>();
 
     private Dictionary<int, List<Vector2>> buttonCoordinatePosition = new Dictionary<int, List<Vector2>>();
+
+    public static bool cutsceneScriptPassed=false;
+    private static bool isPlayCutEnd = false;
     private void Awake()
     {
         characterSprites.Add("민들레", speakerSprites[0]);
@@ -132,6 +138,10 @@ public class TutorialCommentManager : MonoBehaviour
                 break;
             }
         }
+        foreach (GameObject obj in speakerPosition)
+        {
+            obj?.SetActive(true);
+        }
         textGroup.SetActive(false);
     }
 
@@ -140,6 +150,40 @@ public class TutorialCommentManager : MonoBehaviour
         UniteData.GameMode = "Scripting";
 
         dataResetBeforeStartScripting();
+
+        //컷씬 파트에서 만약 관련 없는 스크립트이면
+        if(cutsceneScriptPassed==true && SceneManager.GetActiveScene().name== "InGame-RN-tutorial")
+        {
+            //즉시 탈출
+            tuto_nodeControl.Instance.turnOnNodeManager(nodeManager);
+            do_BringInObject();
+            return;
+        }
+        //플레이 파트에서 관련 없는 스크립트면
+        if(isPlayCutEnd == true && SceneManager.GetActiveScene().name == "Tutorial" && StorySepCommand.Instance.getCommandBranch()==StorySepCommand.commandNum.CutEnd)
+        {
+            //즉시 탈출
+            do_BringInObject();
+
+            foreach (var entry in inGame_characters)
+            {
+                if (entry.Key == UniteData.Selected_Character)
+                {
+                    //부합된 캐릭터는 위로 올리기
+                    entry.Value.transform.position =
+                        entry.Value.transform.position + goAwayToSky;
+                    //entry.Value.SetActive(true);
+                    break;
+                }
+            }
+
+            return;
+        }
+        else if(StorySepCommand.Instance.getCommandBranch() == StorySepCommand.commandNum.CutEnd)
+        {
+            Debug.LogWarning("PASSHERE");
+            isPlayCutEnd = true;
+        }
         ////스토리 시작 전 오브젝트 비활성화
         do_ThrowOutObject();
 
@@ -153,27 +197,26 @@ public class TutorialCommentManager : MonoBehaviour
         {
             case StorySepCommand.commandNum.First:
                 dataRowCollection = startScripting("First");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.ClickFail);
-                break;
-            case StorySepCommand.commandNum.ClickFail:
-                dataRowCollection = startScripting("ClickFail");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.CutEnter);
+                //StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.ClickFail);
                 break;
             case StorySepCommand.commandNum.CutEnter:
                 dataRowCollection = startScripting("CutEnter");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.CutEnd);
+                //StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.CutEnd);
+                break;
+            case StorySepCommand.commandNum.CutEnter_E:
+                dataRowCollection = startScripting("CutEnter_E");
                 break;
             case StorySepCommand.commandNum.CutEnd:
                 dataRowCollection = startScripting("CutEnd");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.KilledBy);
+                //StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.KilledBy);
                 break;
             case StorySepCommand.commandNum.KilledBy:
                 dataRowCollection = startScripting("KilledBy");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.BossFail);
+                //StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.BossFail);
                 break;
             case StorySepCommand.commandNum.BossFail:
                 dataRowCollection = startScripting("BossFail");
-                StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.BossSuccess);
+                //StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.BossSuccess);
                 break;
             case StorySepCommand.commandNum.BossSuccess:
                 dataRowCollection = startScripting("BossSuccess");
@@ -444,6 +487,23 @@ public class TutorialCommentManager : MonoBehaviour
                 enableClickMode = true;
                 clickTemp = false;
             }
+        }
+
+        if(commandText.Contains("EnterCutScene"))
+        {
+            ScenePass scenePass = new ScenePass();
+            StorySepCommand.Instance.setCommandBranch(StorySepCommand.commandNum.CutEnter_E);
+            scenePass.SceneLoad_Immediately("InGame-RN-tutorial");
+        }
+
+        if (commandText.Contains("SceneStart")) //튜토리얼용 명령어
+        {
+            tuto_nodeControl.Instance.turnOnNodeManager(nodeManager);
+        }
+
+        if(commandText.Contains("Transfusion"))
+        {
+            //회복
         }
 
         if (commandText.Contains("Blind"))

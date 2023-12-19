@@ -1,4 +1,4 @@
-//#define RELEASE_D
+#define RELEASE_D
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class UniteData
 
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Scripting]
-    public static int Difficulty = 5; //게임 난이도 tuto = 0 / easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 .../ end = 7
+    public static int Difficulty = 0; //게임 난이도 tuto = 0 / easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 .../ end = 7
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 

@@ -6,7 +6,7 @@ public class StorySepCommand : Singleton<StorySepCommand>
 {
     public enum commandNum
     {
-        First, ClickFail, CutEnter, CutEnd, KilledBy, BossFail, BossSuccess
+        First, CutEnter, CutEnter_E, CutEnd, KilledBy, BossFail, BossSuccess
     }
 
     private commandNum commandBranch = commandNum.First;

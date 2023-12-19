@@ -19,6 +19,8 @@ public class Tuto_MonsterManager : MonoBehaviour
 
     public Tuto_NoteController noteController;
 
+    public GameObject storyCommentGroup;
+
     // 어떤 몬스터가 나올지 csv를 통해 읽어옴
     private static int choice_mon = 0;
 
@@ -33,6 +35,20 @@ public class Tuto_MonsterManager : MonoBehaviour
         if (UniteData.ReStart)
             Initialized();
         monster_image.sprite = monster_images[choice_mon];
+
+        //스크립트 실행
+        if (StorySepCommand.Instance.getCommandBranch() == StorySepCommand.commandNum.First)
+        {
+            storyCommentGroup.SetActive(true);
+        }
+        else if (StorySepCommand.Instance.getCommandBranch() == StorySepCommand.commandNum.CutEnd)
+        {
+            storyCommentGroup.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     public void Initialized()

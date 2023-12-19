@@ -397,7 +397,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4071268
 RectTransform:
   m_ObjectHideFlags: 0
@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75179862e9dc0140ad9fd9508ceec29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeManager: {fileID: 0}
   graphicRaycaster: {fileID: 1655915706}
   eventSystem: {fileID: 1109393312}
   textGroup: {fileID: 4071267}
@@ -2495,7 +2496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1185183942132619910, guid: 974b7a8650cebf7449d45a47677da1ff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1185183942132619911, guid: 974b7a8650cebf7449d45a47677da1ff, type: 3}
       propertyPath: m_RootOrder
@@ -4364,6 +4365,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2b399887f7d939a4d93c4edf09f4cc2a, type: 3}
   s_gameclear: {fileID: 1305994542}
   noteController: {fileID: 1693369090}
+  storyCommentGroup: {fileID: 4071267}
 --- !u!1 &1270306959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6591,7 +6593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1825740162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8114,5 +8116,6 @@ MonoBehaviour:
   - {fileID: 995975331}
   - {fileID: 2049995662}
   - {fileID: 2120075221}
+  storyCommentGroup: {fileID: 4071267}
   Note_Bg: {fileID: 1136827836}
   noteController: {fileID: 1693369086}
