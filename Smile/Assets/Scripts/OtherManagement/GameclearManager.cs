@@ -16,7 +16,7 @@ public class GameclearManager : MonoBehaviour
         UniteData.notePoint = 2; // 기회 포인트
         UniteData.lifePoint = 3; // 목숨 포인트
 
-        if(UniteData.Difficulty >= 5)
+        if(UniteData.Difficulty >= 6)
         {
             btn_nextStage.interactable = false;
         }
