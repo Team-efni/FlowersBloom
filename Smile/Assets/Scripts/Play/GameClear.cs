@@ -35,8 +35,12 @@ public class GameClear : MonoBehaviour
             //해당 캐릭터를 플레이어로 지정 후 활성화
             Debug.Log("Player : Dandelion");
             canPlay_prefab[0].SetActive(true);
+
+            canPlay_prefab[1].SetActive(false);
+            canPlay_prefab[2].SetActive(false);
+
             player = canPlay_prefab[0];
-            for(int i = 0; i < lifepoints.Length; i++)
+            for (int i = 0; i < lifepoints.Length; i++)
             {
                 Image image = lifepoints[i].GetComponent<Image>();
                 image.sprite = lifepoint_images[0];
@@ -46,7 +50,12 @@ public class GameClear : MonoBehaviour
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
             Debug.Log("Player : Tulip");
+
+
             canPlay_prefab[1].SetActive(true);
+            canPlay_prefab[0].SetActive(false);
+            canPlay_prefab[2].SetActive(false);
+
             player = canPlay_prefab[1];
             for (int i = 0; i < lifepoints.Length; i++)
             {
@@ -58,7 +67,12 @@ public class GameClear : MonoBehaviour
         {
             //해당 캐릭터를 플레이어로 지정 후 활성화
             Debug.Log("Player : ForgetMeNot");
+
             canPlay_prefab[2].SetActive(true);
+
+            canPlay_prefab[0].SetActive(false);
+            canPlay_prefab[1].SetActive(false);
+
             player = canPlay_prefab[2];
             for (int i = 0; i < lifepoints.Length; i++)
             {
