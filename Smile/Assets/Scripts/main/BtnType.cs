@@ -11,7 +11,9 @@ public class BtnType : MonoBehaviour
     Vector3 defualtScale;
     public CanvasGroup mainGroup;
     public CanvasGroup optionGroup;
+    public CanvasGroup teamGroup;
     private bool isOptionPanel;
+    private bool isTeamPanel;
    
     public void OnBtnClick()
     {
@@ -32,12 +34,19 @@ public class BtnType : MonoBehaviour
                 Debug.Log("»ç¿îµå");
                 break;
             case BTNType.Teammate:
-                Debug.Log("ÆÀ¿ø");
+                isOptionPanel = false;
+                isTeamPanel = true;
+                CanvasGroupOn(teamGroup);
+                CanvasGroupOff(optionGroup);
                 break;
             case BTNType.Back:
                 SaveSettingData();
                 CanvasGroupOn(mainGroup);
                 CanvasGroupOff(optionGroup);
+                break;
+            case BTNType.TeamBack:
+                CanvasGroupOn(optionGroup);
+                CanvasGroupOff(teamGroup);
                 break;
             case BTNType.Reset:
                 UniteData.ResetUserData();
@@ -100,6 +109,24 @@ public class BtnType : MonoBehaviour
                     SaveSettingData();
                     CanvasGroupOn(mainGroup);
                     CanvasGroupOff(optionGroup);
+                }
+            }
+        }
+
+        if (isTeamPanel)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                PointerEventData eventData = new PointerEventData(EventSystem.current);
+                eventData.position = Input.mousePosition;
+                List<RaycastResult> results = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(eventData, results);
+
+                if (results.Count == 0)
+                {
+                    SaveSettingData();
+                    CanvasGroupOn(optionGroup);
+                    CanvasGroupOff(teamGroup);
                 }
             }
         }

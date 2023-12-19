@@ -11,6 +11,7 @@ public enum BTNType
     Teammate,
     Back,
     Reset,
+    TeamBack,
 }
 public class MainUI : MonoBehaviour
 {
