@@ -44,6 +44,9 @@ public class Select_Supervisor : MonoBehaviour
     {
         Card_Status CS = character_card.GetComponent<Card_Status>();
 
+        //Select 이미지 활성화
+        if(UniteData.Selected_Character == character_card.name) character_card.transform.GetChild(0).gameObject.SetActive(true);
+
         //잠금 여부 결정
         if(character_card.name == "Tulip") unlock_Tulip(CS, character_card);
         if(character_card.name == "ForgetMeNot") unlock_ForgetMeNot(CS, character_card);
