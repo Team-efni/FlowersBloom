@@ -115,7 +115,7 @@ public class PlayerImageChange : MonoBehaviour
             spriteRenderer.color = color;
         }
 
-        yield return new WaitForSeconds(0.3f); // 사라지는 시간
+        yield return new WaitForSeconds(0.4f); // 사라지는 시간
 
         foreach (SpriteRenderer spriteRenderer in spriteRenderers)
         {
