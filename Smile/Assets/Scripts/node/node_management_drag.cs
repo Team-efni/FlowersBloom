@@ -26,7 +26,7 @@ public class node_management_drag : MonoBehaviour
     public UnityEvent<GameObject> onClick;
     public Animator animator;
 
-    private float Drag_fast = 16f;
+    public static float Drag_fast = 16f;
 
     private bool move_unlock = false;
 

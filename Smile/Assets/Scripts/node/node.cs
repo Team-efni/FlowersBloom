@@ -66,7 +66,6 @@ public class node : MonoBehaviour
     public GameObject nodedrag_prefab;
     public LineRenderer line_renderer;
     public GameObject Highlight_Node;
-    public GameObject[] backgrounds;
 
     [Header("아래의 항목에다가 노트의 이미지를 넣으면 됩니다")]
     public Sprite[] Node_image;
@@ -207,39 +206,6 @@ public class node : MonoBehaviour
         LineIndex = 0;
         line_renderer.material.color = Color.white;
 
-        //배경 세팅
-        // 처음에는 모든 배경 초기화
-        for (int i = 0; i < backgrounds.Length; i++)
-        {
-            backgrounds[i].SetActive(false);
-        }
-
-        // 배경 지정
-        switch (UniteData.Difficulty)
-        {
-            case 1:
-                backgrounds[0].SetActive(true);
-                break;
-            case 2:
-                backgrounds[1].SetActive(true);
-                break;
-            case 3:
-                backgrounds[2].SetActive(true);
-                break;
-            case 4:
-                backgrounds[3].SetActive(true);
-                break;
-            case 5:
-                backgrounds[3].SetActive(true);
-                break;
-            case 6:
-                backgrounds[3].SetActive(true);
-                break;
-            default:
-                backgrounds[0].SetActive(true);
-                break;
-        }
-
         //노드의 초기 설정을 지정한다
         Initialize_node_setting();
 
@@ -306,7 +272,8 @@ public class node : MonoBehaviour
         switch (UniteData.Difficulty)
         {
             case 1: //easy
-                if( cas == 0) {
+                node_management_drag.Drag_fast = 16f;
+                if ( cas == 0) {
                     fileName = "Cut_Easy_Type1";
                 }
                 else if( cas == 1) {
@@ -315,6 +282,7 @@ public class node : MonoBehaviour
                 break;
 
             case 2: //normal
+                node_management_drag.Drag_fast = 16f;
                 if (cas == 0) {
                     fileName = "Cut_Normal_Type1";
                 }
@@ -324,6 +292,7 @@ public class node : MonoBehaviour
                 break;
 
             case 3: //hard
+                node_management_drag.Drag_fast = 16f;
                 if (cas == 0) {
                     fileName = "Cut_Hard_Type1";
                 }
@@ -332,6 +301,7 @@ public class node : MonoBehaviour
                 }
                 break;
             case 4: //World2 easy
+                node_management_drag.Drag_fast = 20f;
                 if (cas == 0)
                 {
                     fileName = "Cut_Easy_Type1_W2";
@@ -342,23 +312,25 @@ public class node : MonoBehaviour
                 }
                 break;
             case 5: //World2 normal
+                node_management_drag.Drag_fast = 20f;
                 if (cas == 0)
                 {
-                    fileName = "Cut_Hard_Type1";
+                    fileName = "Cut_Normal_W2_T1";
                 }
                 else if (cas == 1)
                 {
-                    fileName = "Cut_Hard_Type2";
+                    fileName = "Cut_Normal_W2_T2";
                 }
                 break;
             case 6: //World2 hard
+                node_management_drag.Drag_fast = 23f;
                 if (cas == 0)
                 {
-                    fileName = "Cut_Hard_Type1";
+                    fileName = "Cut_Hard_W2_T1";
                 }
                 else if (cas == 1)
                 {
-                    fileName = "Cut_Hard_Type2";
+                    fileName = "Cut_Hard_W2_T2";
                 }
                 break;
 

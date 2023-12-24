@@ -1,0 +1,27 @@
+Command	Numbering	Goto	Branch	ImagePosition	ImageType	Character	Comment
+Prestart	0	1		CenterAlong	물망초	물망초	여긴가요...?
+Prestart	1	2		LeftAlong	민들레	민들레	응! 여기까지 오는 데 너무 오래 걸렸어!
+Prestart	2	3		RightTogether	튤립	튤립	이 정도면 빨리 온 거지. 나흘 만에 왔잖아.
+Prestart	3	4		LeftTogether	민들레	민들레	우리 선조는 6시간 만에 왔대.
+Prestart	4	5		RightTogether	튤립	튤립	...?
+Prestart	5	6		LeftTogether	민들레	민들레	자! 많이 늦은 만큼! 마지막까지 파이팅 해보자고!
+Prestart	6	7		RightTogether	물망초	물망초	네! 그럼, 어디로 가야하나요? 왼쪽? 오른쪽?
+Prestart	7	8		LeftTogether	민들레	민들레	......오... 오른쪽!
+Prestart	8	9	select				너... 모르지..
+Prestart	9	10		CenterAlong	민들레	민들레	.... 가자!!!!!!!!
+Finish	0	1		LeftAlong	민들레	민들레	다행히 주민들은 만나지 않았네...
+Finish	1	2		CenterAlong	물망초	물망초	전 한번쯤은 만나보고 싶었어요.
+Finish	2	3		CenterAlong	물망초	물망초	해도 아직 다 뜨지 않았는데..
+Finish	3	4		CenterAlong	물망초	물망초	무슨 사정이 있는 걸까요?
+Finish	4	5		LeftAlong	민들레	민들레	어떤 꽃들일지도 모르는데 오히려 좋은 거지!
+Finish	5	6		RightTogether	튤립	튤립	그래. 안전한게 제일이야.
+Finish	6	7		CenterAlong	물망초	물망초	어, 다들 저길 봐요!
+Finish	7	8				System	스프레이 이미지
+Finish	8	9		CenterAlong	튤립	튤립	이거야?
+Finish	9	10		CenterAlong	물망초	물망초	이건가요?
+Finish	10	11	select				그럼 이제..
+Finish	11	12		CenterAlong	민들레	민들레	응! 맞아! 이제 돌아가서, 우리 마을을 되찾는 일만 남았어!
+Finish	12	13		LeftAlong	튤립	튤립	너희 마을은 가본 적이 없네... 마지막으로 봤을 땐 어땠어?
+Finish	13	14		CenterAlong	민들레	민들레	너무... 끔찍했어!
+Finish	14	15		CenterAlong	민들레	민들레	그 냄새... 너무 독한 냄새.....
+Finish	15	16		CenterAlong	민들레	민들레	으... 빨리 가자! 마을이 더 망가지기 전에 어서 구하고 싶어
