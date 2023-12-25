@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GameClear : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameClear : MonoBehaviour
 
     public GameObject[] canPlay_prefab;
     public GameObject[] backgrounds;
+    private static GameObject[] backgrounds_stt;
 
     private float playerStartPositionX;
 
@@ -29,6 +31,7 @@ public class GameClear : MonoBehaviour
     private void Awake()
     {
         UniteData.finishGame = false;
+        backgrounds_stt = backgrounds;
         //캐릭터 지정
         if (UniteData.Selected_Character== "Dandelion")
         {
@@ -86,40 +89,7 @@ public class GameClear : MonoBehaviour
         }
 
 
-        // 처음에는 모든 배경 초기화
-        for(int i = 0; i < backgrounds.Length; i++)
-        {
-            backgrounds[i].SetActive(false);
-        }
-
-        // 배경 지정
-        switch (UniteData.Difficulty)
-        {
-            case 1:
-                backgrounds[0].SetActive(true); // W1E
-                break;
-            case 2:
-                backgrounds[1].SetActive(true); // W1N
-                break;
-            case 3:
-                backgrounds[2].SetActive(true); // W1H
-                break;
-            case 4:
-                backgrounds[3].SetActive(true); // world2_easy
-                break;
-            case 5:
-                backgrounds[4].SetActive(true); // world2_normal
-                break;
-            case 6:
-                backgrounds[5].SetActive(true); // world2_hard
-                break;
-            case 7:
-                backgrounds[6].SetActive(true); // ending
-                break;
-            default:
-                backgrounds[0].SetActive(true);
-                break;
-        }
+        backgroundSetting(UniteData.Difficulty);
     }
     // Start is called before the first frame update
     void Start()
@@ -187,5 +157,43 @@ public class GameClear : MonoBehaviour
     private void PlayerMove()
     {
         player.transform.position = player.transform.position + (player.transform.right * moveSpeed * Time.deltaTime);
+    }
+
+    public static void backgroundSetting(int value)
+    {
+        // 처음에는 모든 배경 초기화
+        foreach (var background in backgrounds_stt)
+        {
+            background.SetActive(false);
+        }
+
+        // 배경 지정
+        switch (value)
+        {
+            case 1:
+                backgrounds_stt[0].SetActive(true); // W1E
+                break;
+            case 2:
+                backgrounds_stt[1].SetActive(true); // W1N
+                break;
+            case 3:
+                backgrounds_stt[2].SetActive(true); // W1H
+                break;
+            case 4:
+                backgrounds_stt[3].SetActive(true); // world2_easy
+                break;
+            case 5:
+                backgrounds_stt[4].SetActive(true); // world2_normal
+                break;
+            case 6:
+                backgrounds_stt[5].SetActive(true); // world2_hard
+                break;
+            case 7:
+                backgrounds_stt[6].SetActive(true); // ending
+                break;
+            default:
+                backgrounds_stt[0].SetActive(true);
+                break;
+        }
     }
 }

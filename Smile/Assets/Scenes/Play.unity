@@ -457,6 +457,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d21f08e08f31c9e43820a832ae60b26d, type: 3}
   - {fileID: 21300000, guid: 08431b61355d97040a67c96532c52b83, type: 3}
   - {fileID: 21300000, guid: 0b69106c250410c458bc52eaa6da261f, type: 3}
+  - {fileID: 21300000, guid: 6240a63e7665d9d4d967fd55e923185d, type: 3}
+  - {fileID: 21300000, guid: 5dc8ba5f99cca9243853e294c02075d6, type: 3}
+  - {fileID: 21300000, guid: a251ff55b5dad7142834aee987338c7d, type: 3}
+  - {fileID: 21300000, guid: 6e3024f0a4367a449a3a6ca4e4fd3d9b, type: 3}
+  - {fileID: 21300000, guid: c1ac21b40a761e64294b98eb613ee2ed, type: 3}
+  - {fileID: 21300000, guid: 0253c20f3b154c640889d71ab463d6fd, type: 3}
+  - {fileID: 21300000, guid: fd9eda333a1038b478602f72d8e91e0d, type: 3}
+  - {fileID: 21300000, guid: d6a591e1cb7c5f742a51ccb6811f5813, type: 3}
   branchSprites:
   - {fileID: 21300000, guid: be8b3fb118723be4e9c99161e92cb3cf, type: 3}
   - {fileID: 21300000, guid: ad1387a0f7415fe419e376feb70655e7, type: 3}
@@ -4137,7 +4145,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624"
+  m_Text: 
 --- !u!222 &640767207
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4332,7 +4340,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB204\uAD6C\uC784?"
+  m_Text: 
 --- !u!222 &661982847
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6591,7 +6599,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624"
+  m_Text: 
 --- !u!222 &1019945417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8624,7 +8632,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624\uC721\uCE60\uD314\uAD6C\uC2ED\uC77C\uC774\uC0BC\uC0AC\uC624"
+  m_Text: 
 --- !u!222 &1356492360
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12187,9 +12195,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uAC83\uC740 \uD14C\uC2A4\uD2B8 \uD14D\uC2A4\uD2B8\uC785\uB2C8\uB2E4.
-    Testing Text System... \uC774\uAC83\uC740 \uD14C\uC2A4\uD2B8 \uD14D\uC2A4\uD2B8\uC785\uB2C8\uB2E4.
-    Testing Text System...\n"
+  m_Text: '
+
+'
 --- !u!222 &1813246310
 CanvasRenderer:
   m_ObjectHideFlags: 0

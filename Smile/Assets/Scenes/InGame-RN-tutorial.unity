@@ -3232,11 +3232,6 @@ MonoBehaviour:
   nodedrag_prefab: {fileID: 1627847216449090337, guid: 5504d241680394340a65245f6104ef42, type: 3}
   line_renderer: {fileID: 1741721794}
   Highlight_Node: {fileID: 411473128}
-  backgrounds:
-  - {fileID: 1056247391}
-  - {fileID: 1056247391}
-  - {fileID: 1056247391}
-  - {fileID: 1056247391}
   Node_image:
   - {fileID: 21300000, guid: c6ff787eeb0cf504289fe2065e7b97b7, type: 3}
   - {fileID: 21300000, guid: f93d3e53d1e6f5646b4dc00fd2068394, type: 3}
@@ -3641,6 +3636,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d21f08e08f31c9e43820a832ae60b26d, type: 3}
   - {fileID: 21300000, guid: 08431b61355d97040a67c96532c52b83, type: 3}
   - {fileID: 21300000, guid: 0b69106c250410c458bc52eaa6da261f, type: 3}
+  - {fileID: 21300000, guid: 6240a63e7665d9d4d967fd55e923185d, type: 3}
+  - {fileID: 21300000, guid: 5dc8ba5f99cca9243853e294c02075d6, type: 3}
+  - {fileID: 21300000, guid: a251ff55b5dad7142834aee987338c7d, type: 3}
+  - {fileID: 21300000, guid: 6e3024f0a4367a449a3a6ca4e4fd3d9b, type: 3}
+  - {fileID: 21300000, guid: c1ac21b40a761e64294b98eb613ee2ed, type: 3}
+  - {fileID: 21300000, guid: 0253c20f3b154c640889d71ab463d6fd, type: 3}
+  - {fileID: 21300000, guid: fd9eda333a1038b478602f72d8e91e0d, type: 3}
+  - {fileID: 21300000, guid: d6a591e1cb7c5f742a51ccb6811f5813, type: 3}
   UI_system: []
   gameCharacters: {fileID: 642796804}
   guideText: {fileID: 176844072}

@@ -1,45 +1,45 @@
 Command	Numbering	Goto	Branch	ImagePosition	ImageType	Character	Comment
 First	0	1		CenterAlong	민들레	민들레	나는 민들레. 고약한 냄새가 나는 식물에게 고향을 빼앗기고, 그 식물을 무찌를 수 있는 엄청난 아이템을 찾기 위해 여정에 나섰어.
-First	1	2		CenterAlong	민들레	민들레	그리고 그 여정을 도와줄 내 첫 번째 동료가 바로 너야!
+First	1	2		CenterAlong	민들레_미소	민들레	그리고 그 여정을 도와줄 내 첫 번째 동료가 바로 너야!
 First	2	4	select				왜 나야?
 First	3	6	select				싫어 난 민들레 안좋아해
-First	4	5	ans	CenterAlong	민들레	민들레	왜냐니? 내가 널 구해줬잖아!
+First	4	5	ans	CenterAlong	민들레_놀람	민들레	왜냐니? 내가 널 구해줬잖아!
 First	5	8	ans	CenterAlong	민들레	민들레	냄새에 고통받아 일어서지도 못하는 널 마을 변두리까지 옮겨온게 바로 나야!
 First	6	7	ans	CenterAlong	민들레	민들레	아니? 너 좋아해.
-First	7	8	ans	CenterAlong	민들레	민들레	왜냐면 내가 냄새에 고통받아 일어서지도 못하는 널 마을 변두리까지 옮겨온 장본인이거든! 고마워하라고!
+First	7	8	ans	CenterAlong	민들레_미소	민들레	왜냐면 내가 냄새에 고통받아 일어서지도 못하는 널 마을 변두리까지 옮겨온 장본인이거든! 고마워하라고!
 First	8	9	select				그건 고마워
-First	9	10		CenterAlong	민들레	민들레	그-러-니-까-! 넌 날 도와야해! 나와 함께 엄청난 아이템을 찾으러 가자!
+First	9	10		CenterAlong	민들레_미소	민들레	그-러-니-까-! 넌 날 도와야해! 나와 함께 엄청난 아이템을 찾으러 가자!
 First	10	11	select				엄청난 아이템?
 First	11	12		CenterAlong	민들레	민들레	응! 우리 마을을 무찌를 수 있는 아이템이야! 아까 말하지 않았어? 고약한 냄새를 없애고, 그녀석을 쫓아버릴 수 있어!
-First	12	13		CenterAlong	민들레	민들레	나랑 같이 가자! 너도 집을 잃고 싶지는 않잖아.
+First	12	13		CenterAlong	민들레_미소	민들레	나랑 같이 가자! 너도 집을 잃고 싶지는 않잖아.
 First	13	14	select				그래
-First	14	15		CenterAlong	민들레	민들레	오? 같이 가주는거야? 야호!
+First	14	15		CenterAlong	민들레_미소	민들레	오? 같이 가주는거야? 야호!
 First	15	16		CenterAlong	민들레	민들레	그 아이템은 멀지 않은 곳에 있어.
 First	16	17		CenterAlong	민들레	민들레	가장 먼저 지나가야 할 곳은... 이 마을을 빠져나가는 것 부터야!
 First	17	18		CenterAlong	민들레	민들레	내가 널 업고 꽤 멀리까지 오긴했지만 아직 조금 더 가야해. 따라와!
-First	18	20				System	Back(W1_EASY)
+First	18	19				System	Back(W1_EASY)
 First	19	20		CenterAlong	민들레	민들레	이제 이 길목만 지나가면 돼. 거의 다 왔으니 너무 걱정말라고!
 First	20	21				System	Blind, Back(W1_EASY)
-First	21	22		CenterAlong	민들레	민들레	으악! 독장미야! 때려!! 도망쳐!!! 때려!!!!!!!!!!!
+First	21	22		CenterAlong	민들레_화남	민들레	으악! 독장미야! 때려!! 도망쳐!!! 때려!!!!!!!!!!!
 First	22	23				Narrator	플레이를 시작하면, 러닝 페이즈가 진행됩니다. 네 개의 노트를 사용해 몬스터를 물리칠 수 있습니다.
 First	23	24				Narrator	상단에 표시되는 노트를 독장미와 부딪히기 전, 알맞은 순서로 입력하세요.
 CutEnter	0	1		CenterAlong	민들레	민들레	아. 미안. 빗나갔어...
-CutEnter	1	2		CenterAlong	민들레	민들레	괜찮아..!  저, 그, 내가! 시간을..! 돌릴 수 있어!.. 조금..!!!!
+CutEnter	1	2		CenterAlong	민들레_미소	민들레	괜찮아..!  저, 그, 내가! 시간을..! 돌릴 수 있어!.. 조금..!!!!
 CutEnter	2	3				System	EnterCutScene
 CutEnter_E	0	1		CenterAlong	민들레	민들레	대신... 내가 시간을 돌리는 동안 너가 날 지켜줘야 해!
-CutEnter_E	1	2		CenterAlong	민들레	민들레	으엑? 쉽게 보지마! 엄청 어려운 마법이라고!!
+CutEnter_E	1	2		CenterAlong	민들레_놀람	민들레	으엑? 쉽게 보지마! 엄청 어려운 마법이라고!!
 CutEnter_E	2	3		CenterAlong	민들레	민들레	자, 시작한다!!!
 CutEnter_E	3	4				Narrator	몬스터와 부딪히면, 컷신 페이즈가 진행됩니다. 원이 노트에 근접했을 때, 터치하여 승리할 수 있습니다. 이 페이즈에서 승리 시, 시간을 되돌릴 수 있습니다.
 CutEnter_E	4	5				System	SceneStart
 CutEnd	0	1		CenterAlong	민들레	민들레	헤...잘하네...
 CutEnd	1	2	select				야...
-CutEnd	2	3		CenterAlong	민들레	민들레	아, 다시 온다!
+CutEnd	2	3		CenterAlong	민들레_미소	민들레	아, 다시 온다!
 CutEnd	3	4				Narrator	컷신을 클리어 하면, 기회 포인트를 소모하게 되며, 시간을 과거로 돌려 기회가 다시 주어집니다. 독장미를 다시 무찌르세요.
 KilledBy	0	1		CenterAlong	민들레	민들레	거의 다왔어!
 KilledBy	1	2		CenterAlong	민들레	민들레	조금만 더 힘내!
 KilledBy	2	3				System	Transfusion
-BossFail	0	1		CenterAlong	민들레	민들레	설마 너 지금 저거랑 싸우려는거야?!
-BossFail	1	2		CenterAlong	민들레	민들레	뭐해 도망쳐!
-BossSuccess	0	1		CenterAlong	민들레	민들레	뭐야 어떻게 한거야
+BossFail	0	1		CenterAlong	민들레_놀람	민들레	설마 너 지금 저거랑 싸우려는거야?!
+BossFail	1	2		CenterAlong	민들레_화남	민들레	뭐해 도망쳐!
+BossSuccess	0	1		CenterAlong	민들레_놀람	민들레	뭐야 어떻게 한거야
 BossSuccess	1	2		CenterAlong	민들레	민들레	아니.. 뭐.. 잘했어!
-BossSuccess	2	3		CenterAlong	민들레	민들레	이제 바깥이 코앞이야, 가자!
+BossSuccess	2	3		CenterAlong	민들레_미소	민들레	이제 바깥이 코앞이야, 가자!

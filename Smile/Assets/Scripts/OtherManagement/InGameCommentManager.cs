@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 public class InGameCommentManager : MonoBehaviour
@@ -47,6 +48,14 @@ public class InGameCommentManager : MonoBehaviour
         characterSprites.Add("민들레", speakerSprites[0]);
         characterSprites.Add("튤립", speakerSprites[1]);
         characterSprites.Add("물망초", speakerSprites[2]);
+        characterSprites.Add("민들레_놀람", speakerSprites[3]);
+        characterSprites.Add("민들레_미소", speakerSprites[4]);
+        characterSprites.Add("민들레_인상", speakerSprites[5]);
+        characterSprites.Add("민들레_화남", speakerSprites[6]);
+        characterSprites.Add("튤립_놀람", speakerSprites[7]);
+        characterSprites.Add("튤립_미소", speakerSprites[8]);
+        characterSprites.Add("튤립_인상", speakerSprites[9]);
+        characterSprites.Add("튤립_화남", speakerSprites[10]);
 
         inGame_characters.Add("Dandelion", gameCharacters[0]);
         inGame_characters.Add("Tulip", gameCharacters[1]);
@@ -105,12 +114,12 @@ public class InGameCommentManager : MonoBehaviour
     }
 
     private string[] tsv_file = {
-        "꽃피날 스토리easy1.tsv",
-        "꽃피날 스토리normal1.tsv",
-        "꽃피날 스토리hard1.tsv",
-        "꽃피날 스토리easy2.tsv",
-        "꽃피날 스토리normal2.tsv",
-        "꽃피날 스토리hard2.tsv"
+        "꽃피날 스토리 - easy1ForC#.tsv",
+        "꽃피날 스토리 - normal1ForC#.tsv",
+        "꽃피날 스토리 - hard1ForC#.tsv",
+        "꽃피날 스토리 - easy2ForC#.tsv",
+        "꽃피날 스토리 - normal2ForC#.tsv",
+        "꽃피날 스토리 - hard2ForC#.tsv"
     };
 
 
@@ -313,7 +322,7 @@ public class InGameCommentManager : MonoBehaviour
 
     private void do_ImageSetting(DataRow row, int loc)
     {
-        if (row[IMAGETYPE].ToString() == row[CHARACTER].ToString())
+        if (row[IMAGETYPE].ToString().Contains(row[CHARACTER].ToString()))
         {
             speakerPosition[loc].GetComponent<Image>().color = ohItsYou;
             speakerPosition[loc].GetComponent<Image>().sprite = speakersBannerImage(row[IMAGETYPE].ToString());
@@ -417,7 +426,41 @@ public class InGameCommentManager : MonoBehaviour
 
     private void do_SystemCommand(string commandText)
     {
-        if (commandText== "Blind\r")
+        if (commandText.Contains("Back"))
+        {
+            int a = 1;
+            if (frameTime < 2)
+                enableClickMode = false;
+            if(commandText.Contains("Blind"))
+            {
+                a = 40;
+            }
+            if (frameTime == a)
+            {
+                //맵 체인지
+                if(commandText.Contains("W1_NORMAL"))
+                {
+                    GameClear.backgroundSetting(2);
+                }
+                else if(commandText.Contains("W1_HARD"))
+                {
+                    GameClear.backgroundSetting(3);
+                }
+
+                enableClickMode = true;
+                clickTemp = false;
+
+                if (a == 1)
+                {
+                    //다음 페이지로...
+                    initAboutTextValues();
+                    page = int.Parse(dataRowCollection[page][GOTO].ToString());
+                    clickTemp = true;
+                }
+            }
+        }
+
+        if (commandText.Contains("Blind"))
         {
             enableClickMode = false;
 
@@ -462,6 +505,7 @@ public class InGameCommentManager : MonoBehaviour
 
     private Sprite speakersBannerImage(string character)
     {
+        //Debug.Log(character); 야호~
         if (characterSprites.TryGetValue(character, out Sprite sprite))
         {
             return sprite;

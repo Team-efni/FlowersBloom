@@ -16,7 +16,7 @@ Finish	3	4		CenterAlong	물망초	물망초	무슨 사정이 있는 걸까요?
 Finish	4	5		LeftAlong	민들레	민들레	어떤 꽃들일지도 모르는데 오히려 좋은 거지!
 Finish	5	6		RightTogether	튤립	튤립	그래. 안전한게 제일이야.
 Finish	6	7		CenterAlong	물망초	물망초	어, 다들 저길 봐요!
-Finish	7	8				System	스프레이 이미지
+Finish	7	8				System	Image(스프레이)
 Finish	8	9		CenterAlong	튤립	튤립	이거야?
 Finish	9	10		CenterAlong	물망초	물망초	이건가요?
 Finish	10	11	select				그럼 이제..

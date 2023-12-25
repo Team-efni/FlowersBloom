@@ -50,6 +50,14 @@ public class TutorialCommentManager : MonoBehaviour
         characterSprites.Add("¹Îµé·¹", speakerSprites[0]);
         characterSprites.Add("Æ«¸³", speakerSprites[1]);
         characterSprites.Add("¹°¸ÁÃÊ", speakerSprites[2]);
+        characterSprites.Add("¹Îµé·¹_³î¶÷", speakerSprites[3]);
+        characterSprites.Add("¹Îµé·¹_¹Ì¼Ò", speakerSprites[4]);
+        characterSprites.Add("¹Îµé·¹_ÀÎ»ó", speakerSprites[5]);
+        characterSprites.Add("¹Îµé·¹_È­³²", speakerSprites[6]);
+        characterSprites.Add("Æ«¸³_³î¶÷", speakerSprites[7]);
+        characterSprites.Add("Æ«¸³_¹Ì¼Ò", speakerSprites[8]);
+        characterSprites.Add("Æ«¸³_ÀÎ»ó", speakerSprites[9]);
+        characterSprites.Add("Æ«¸³_È­³²", speakerSprites[10]);
 
         inGame_characters.Add("Dandelion", gameCharacters);
 
@@ -102,7 +110,7 @@ public class TutorialCommentManager : MonoBehaviour
         printAll = false;
     }
 
-    private string tsv_file = "²ÉÇÇ³¯ ½ºÅä¸®tutorial.tsv";
+    private string tsv_file = "²ÉÇÇ³¯ ½ºÅä¸® - tutorialForC#.tsv";
 
     private Vector3 goAwayToSky = new Vector3(0f, 2500f, 0f);
     private void do_ThrowOutObject()
