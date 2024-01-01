@@ -119,7 +119,8 @@ public class InGameCommentManager : MonoBehaviour
         "꽃피날 스토리 - hard1ForC#.tsv",
         "꽃피날 스토리 - easy2ForC#.tsv",
         "꽃피날 스토리 - normal2ForC#.tsv",
-        "꽃피날 스토리 - hard2ForC#.tsv"
+        "꽃피날 스토리 - hard2ForC#.tsv",
+        "꽃피날 스토리 - EndForC#.tsv"
     };
 
 
@@ -455,7 +456,7 @@ public class InGameCommentManager : MonoBehaviour
                     //다음 페이지로...
                     initAboutTextValues();
                     page = int.Parse(dataRowCollection[page][GOTO].ToString());
-                    clickTemp = true;
+                    enableClickMode = true;
                 }
             }
         }

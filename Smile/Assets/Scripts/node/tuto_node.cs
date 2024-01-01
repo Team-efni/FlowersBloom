@@ -218,7 +218,7 @@ public class tuto_node : MonoBehaviour
         if ((UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count) || UnPassed)
         {
             //쬐끔만 대기 [HACK]
-            for (int x = 0; x < 500000000; x++)
+            for (int x = 0; x < 200000000; x++)
             {
                 //대기
             }

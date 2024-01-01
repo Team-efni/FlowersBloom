@@ -1,4 +1,4 @@
-#define RELEASE_D
+//#define RELEASE_D
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +7,7 @@ public class UniteData
 
     //게임 관련 데이터
     public static string GameMode = "None"; //현재 게임 모드 ["None", Menu, Play, Scripting]
-    public static int Difficulty = 3; //게임 난이도 tuto = 0 / easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 .../ end = 7
+    public static int Difficulty = 2; //게임 난이도 tuto = 0 / easy = 1 / normal = 2 / hard = 3 / world 2 easy = 4 .../ end = 7
     public static int notePoint = 2; // 기회 포인트
     public static int lifePoint = 3; // 목숨 포인트
 
@@ -46,7 +46,8 @@ public class UniteData
         PlayerPrefs.GetInt("GameClear-Hard", 0), //HARD
         PlayerPrefs.GetInt("GameClear-W2-Easy", 0), //W2E
         PlayerPrefs.GetInt("GameClear-W2-Normal", 0), //W2N
-        PlayerPrefs.GetInt("GameClear-W2-Hard", 0) //W2H
+        PlayerPrefs.GetInt("GameClear-W2-Hard", 0), //W2H
+        PlayerPrefs.GetInt("story-End", 0) //ending
 }; // 난이도별 클리어 유무 0: false, 1: true
 
 
@@ -59,10 +60,11 @@ public class UniteData
         PlayerPrefs.GetInt("story-W2-Easy", 0), //W2E
         PlayerPrefs.GetInt("story-W2-Normal", 0), //W2N
         PlayerPrefs.GetInt("story-W2-Hard", 0) //W2H
+        PlayerPrefs.GetInt("story-End", 0) //ending
 }; // 스크립트 실행 여부 0: 미 / 1: Prestart만 / 2: Finish까지
 #else
 
-    public static int[] StoryClear = new int[] { 0, 0, 0, 0, 0, 0 };
+    public static int[] StoryClear = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 #endif
 
 //설정 관련 데이터
@@ -92,6 +94,7 @@ public static float BGM = PlayerPrefs.GetFloat("BGM", 0.7f); //배경음악 볼륨
         PlayerPrefs.SetInt("story-W2-Easy", StoryClear[3]);
         PlayerPrefs.SetInt("story-W2-Normal", StoryClear[4]);
         PlayerPrefs.SetInt("story-W2-Hard", StoryClear[5]);
+        PlayerPrefs.SetInt("story-End", StoryClear[6]);
 
         PlayerPrefs.SetString("Selected_Character", Selected_Character);
         PlayerPrefs.Save();
@@ -103,8 +106,8 @@ public static float BGM = PlayerPrefs.GetFloat("BGM", 0.7f); //배경음악 볼륨
         PlayerPrefs.SetFloat("Effect", Effect);
 
         Selected_Character = "Dandelion";
-        GameClear = new int[] { 0, 0, 0, 0, 0, 0 };
-        StoryClear = new int[] { 0, 0, 0, 0, 0, 0 };
+        GameClear = new int[] { 0, 0, 0, 0, 0, 0, 0 };
+        StoryClear = new int[] { 0, 0, 0, 0, 0, 0 , 0 };
         
         MapVisited = 0;
 

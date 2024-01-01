@@ -19,6 +19,14 @@ public class Node_Result : MonoBehaviour
             if(life.GetComponent<Image>().color!=del_color)
             {
                 life.GetComponent<Image>().color = del_color;
+                break;
+            }
+        }
+
+        foreach (GameObject life in node_result.LifePoint)
+        {
+            if (life.GetComponent<Image>().color != del_color)
+            {
                 return false;
             }
         }

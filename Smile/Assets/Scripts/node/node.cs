@@ -220,7 +220,7 @@ public class node : MonoBehaviour
         if ((UniteData.Node_LifePoint >= 0 && UniteData.Node_Click_Counter == node_location.Count) || UnPassed)
         {
             //ÂØ²û¸¸ ´ë±â [HACK]
-            for(int x=0; x<500000000; x++)
+            for(int x=0; x<200000000; x++)
             {
                 //´ë±â
             }
