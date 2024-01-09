@@ -59,7 +59,7 @@ public class UniteData
         PlayerPrefs.GetInt("story-Hard", 0), //HARD
         PlayerPrefs.GetInt("story-W2-Easy", 0), //W2E
         PlayerPrefs.GetInt("story-W2-Normal", 0), //W2N
-        PlayerPrefs.GetInt("story-W2-Hard", 0) //W2H
+        PlayerPrefs.GetInt("story-W2-Hard", 0), //W2H
         PlayerPrefs.GetInt("story-End", 0) //ending
 }; // 스크립트 실행 여부 0: 미 / 1: Prestart만 / 2: Finish까지
 #else
