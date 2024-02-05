@@ -44,31 +44,29 @@
 
 * `플레이 화면`
 
-  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/b9e91635-aeee-4131-909e-cb16f307096f" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/f3bb71e1-f927-43af-905d-955a1072b657" width="450" height="200"/>
   <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/4c026ce1-02e7-4dd8-9ea3-2b2c9a3c9552" width="450" height="200"/>
 
   
 
 * `플레이 화면 - 스토리`
 
-  
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/469471bd-76cf-467b-81d2-4971cf1697f4" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/bfbb14dc-ecda-4588-9a6c-ac4be7d7cfdb" width="450" height="200"/>
+
+
 
 * `컷씬 화면`
   
   <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/2b9aad2f-3ba1-4cea-bebb-e9bb32904f4b" width="450" height="200"/>
-
-
-  
-
-* `게임 클리어 화면`
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/5c23e8f8-a61f-40e6-a1b7-7f8476d34c18" width="450" height="200"/>
 
   
 
-* `게임 오버 화면`
+* `게임 클리어 및 게임 오버 화면`
 
-  
-
-  
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/6b5171fc-53e7-4b49-adb9-920984a18a3d" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/7d9c24f8-ba83-4aec-8299-65d3814881ff" width="450" height="200"/>
 </details>
 
 ## 🛠 핵심 기능
@@ -78,14 +76,13 @@
   
 ### 플레이 화면
 - 2D 백그라운드 스크롤링을 통한 게임 진행
-- 노트 터치 및 홀드를 통해 몬스터 제거
-- 스토리
-
-
+- 좌/우에 있는 4개의 노트를 터치 및 홀드하여 몬스터 제거
+- 스토리 진행을 통해 새로운 맵과 난이도 개방
 
 ### 컷씬 화면
-- 
-
+- 플레이 중 제한 시간 내 노트 입력에 실패할 때 진행되는 화면
+- 원이 줄어드는 타이밍에 맞추어 노트를 터치
+- 타이밍을 맞추지 못하거나 컷씬 노트 터치에 실패할 시 기회 포인트 차감
 
 
 ## 💡 서비스 구성도
