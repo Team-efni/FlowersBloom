@@ -5,21 +5,81 @@
 # 꽃이 피는 날
 > 빠른 판단과 순발력을 이용하여 일정 수의 몬스터를 쓰러뜨리는 스테이지형 캐주얼 모바일 게임
 
+<img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white"/>  <img src="https://img.shields.io/badge/PlayerPrefs-007AAC?style=flat">  <img src="https://img.shields.io/badge/-C%23-512BD4?style=flat&logo=C%23&logoColor=white">
+
+
 ## 📢 프로젝트 소개
 - 오른쪽으로 이동하며 마주치는 몬스터를, 노트를 이용해 쓰러뜨리는 모바일 게임
 - 몬스터와 마주치면 상단의 노트가 등장하며 이를 순서에 맞게 터치하거나 홀드하여 물리치며 진행한다.
 - 시간 내에 노트를 입력하지 못해 몬스터와 충돌하면 컷씬 화면이 등장한다.
 - 컷씬 화면에서는 줄어드는 원에 맞추어 노트를 터치해야 한다.
 
+<details>
+<summary>
+  
+### 꽃이 피는 날 화면 보기
+</summary>
 
-## 🛠 핵심 기능
-### 메뉴 화면
-- 
+* `타이틀 화면`
+  
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/8265ae7a-c6ed-4233-b1ad-f877563c85cf" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/7b740660-0766-4b11-9af3-1a97a22939f1" width="450" height="200"/>
+
+* `캐릭터 선택 화면`
+
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/1be1608c-b6df-41a8-b0bf-3e77245d9103" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/dacf71e8-4965-4dda-bf75-364f5ec5df2f" width="450" height="200"/>
+
+* `월드 맵 선택 화면`
+
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/162ddc07-6db6-4d0b-bc00-ebb147168664" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/fd496f6f-9cb0-4e2b-b0cc-cb9494c6b4f6" width="450" height="200"/>
+
+* `맵 선택 화면`
+
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/5359dcbb-e756-4dba-9954-1a479830512f" width="450" height="200"/>
+
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/9aa4ac7f-26d8-4195-8ad5-13326a4db82a" width="450" height="200"/>
+
+
+* `플레이 화면`
+
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/b9e91635-aeee-4131-909e-cb16f307096f" width="450" height="200"/>
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/4c026ce1-02e7-4dd8-9ea3-2b2c9a3c9552" width="450" height="200"/>
+
+  
+
+* `플레이 화면 - 스토리`
+
+  
+
+* `컷씬 화면`
+  
+  <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/2b9aad2f-3ba1-4cea-bebb-e9bb32904f4b" width="450" height="200"/>
 
 
   
+
+* `게임 클리어 화면`
+
+  
+
+* `게임 오버 화면`
+
+  
+
+  
+</details>
+
+## 🛠 핵심 기능
+### 메뉴 화면
+- 선택한 캐릭터에 따라 배경과 UI 등 변화
+- 화면 슬라이드를 통해 원하는 맵으로 이동
+  
 ### 플레이 화면
-- 
+- 2D 백그라운드 스크롤링을 통한 게임 진행
+- 노트 터치 및 홀드를 통해 몬스터 제거
+- 스토리
 
 
 
