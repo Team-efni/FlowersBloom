@@ -2,7 +2,7 @@
   <img src="https://github.com/Team-efni/FlowersBloom/assets/69100145/f86bb4a4-6c66-41a9-a980-0fbb3a25e4f8" align="right" height="90" />
 </a>
 
-# FlowersBloom
+# 꽃이 피는 날
 > 빠른 판단과 순발력을 이용하여 일정 수의 몬스터를 쓰러뜨리는 스테이지형 캐주얼 모바일 게임
 
 ## 📢 프로젝트 소개
