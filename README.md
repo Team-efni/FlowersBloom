@@ -2,7 +2,7 @@
   <img src="https://github.com/Team-efni/FlowersBloom/assets/69100145/f86bb4a4-6c66-41a9-a980-0fbb3a25e4f8" align="right" height="90" />
 </a>
 
-# 꽃이 피는 날
+# 🌸 꽃이 피는 날
 > 빠른 판단과 순발력을 이용하여 일정 수의 몬스터를 쓰러뜨리는 스테이지형 캐주얼 모바일 게임
 
 <img src="https://img.shields.io/badge/Unity-000000?style=flat&logo=unity&logoColor=white"/>  <img src="https://img.shields.io/badge/PlayerPrefs-007AAC?style=flat">  <img src="https://img.shields.io/badge/-C%23-512BD4?style=flat&logo=C%23&logoColor=white">
@@ -37,7 +37,7 @@
 ## 💡 서비스 구성도
 <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/e8bc2f51-3f9e-4962-b841-77542e403e38" height="400"/>
 
-## 꽃이 피는 날 화면 보기
+## 👀 꽃이 피는 날 화면 보기
 * `타이틀 화면`
   
   <img src = "https://github.com/Team-efni/FlowersBloom/assets/69100145/8265ae7a-c6ed-4233-b1ad-f877563c85cf" width="450" height="200"/>
