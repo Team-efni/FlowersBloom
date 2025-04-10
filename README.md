@@ -10,7 +10,7 @@
 ## 👩‍💻 Team EFNI
 - <b>기획</b> : <a href = "https://github.com/Siiieon">김시언</a>
 - <b>그래픽</b> : 김도형, 이유리
-- <b>프로그래밍</b> : <a href = "https://github.com/yehang218">김석희</a>, <a href = "https://github.com/TheHyperPay">김시훈</a>, <a href = "https://github.com/ksb3458">김수빈</a>
+- <b>프로그래밍</b> : <a href = "https://github.com/yehang218">김석희</a>, <a href = "https://github.com/ihatehudwedge">김시훈</a>, <a href = "https://github.com/ksb3458">김수빈</a>
 
 ## 📢 프로젝트 소개
 - 오른쪽으로 이동하며 마주치는 몬스터를, 노트를 이용해 쓰러뜨리는 모바일 게임
